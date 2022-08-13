@@ -34,13 +34,13 @@ namespace RangaHardwareStock
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.currentStockManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockInManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockOutManahementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.supplierManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.CurrentStockButton = new System.Windows.Forms.Button();
             this.Title2label = new System.Windows.Forms.Label();
             this.Title1label = new System.Windows.Forms.Label();
@@ -79,7 +79,7 @@ namespace RangaHardwareStock
             this.menuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(363, 460);
+            this.menuStrip.Size = new System.Drawing.Size(363, 436);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -96,14 +96,63 @@ namespace RangaHardwareStock
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(390, 4);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(359, 4);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Enabled = false;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(390, 32);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(359, 32);
             this.toolStripMenuItem2.Text = "-------------------------------------------------";
+            // 
+            // currentStockManagementToolStripMenuItem
+            // 
+            this.currentStockManagementToolStripMenuItem.BackColor = System.Drawing.Color.White;
+            this.currentStockManagementToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
+            this.currentStockManagementToolStripMenuItem.Name = "currentStockManagementToolStripMenuItem";
+            this.currentStockManagementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.currentStockManagementToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
+            this.currentStockManagementToolStripMenuItem.Text = "Current Stock Management";
+            // 
+            // stockInManagementToolStripMenuItem
+            // 
+            this.stockInManagementToolStripMenuItem.BackColor = System.Drawing.Color.White;
+            this.stockInManagementToolStripMenuItem.Name = "stockInManagementToolStripMenuItem";
+            this.stockInManagementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.stockInManagementToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
+            this.stockInManagementToolStripMenuItem.Text = "Stock In Management";
+            // 
+            // stockOutManahementToolStripMenuItem
+            // 
+            this.stockOutManahementToolStripMenuItem.BackColor = System.Drawing.Color.White;
+            this.stockOutManahementToolStripMenuItem.Name = "stockOutManahementToolStripMenuItem";
+            this.stockOutManahementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.stockOutManahementToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
+            this.stockOutManahementToolStripMenuItem.Text = "Stock Out Manahement";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripMenuItem3.Enabled = false;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(359, 32);
+            this.toolStripMenuItem3.Text = "------------------------------------------------";
+            // 
+            // supplierManagementToolStripMenuItem
+            // 
+            this.supplierManagementToolStripMenuItem.BackColor = System.Drawing.Color.White;
+            this.supplierManagementToolStripMenuItem.Name = "supplierManagementToolStripMenuItem";
+            this.supplierManagementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.supplierManagementToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
+            this.supplierManagementToolStripMenuItem.Text = "Supplier Management";
+            // 
+            // itemManagementToolStripMenuItem
+            // 
+            this.itemManagementToolStripMenuItem.BackColor = System.Drawing.Color.White;
+            this.itemManagementToolStripMenuItem.Name = "itemManagementToolStripMenuItem";
+            this.itemManagementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.itemManagementToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
+            this.itemManagementToolStripMenuItem.Text = "Item Management";
             // 
             // panel1
             // 
@@ -119,55 +168,6 @@ namespace RangaHardwareStock
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1545, 1033);
             this.panel1.TabIndex = 1;
-            // 
-            // currentStockManagementToolStripMenuItem
-            // 
-            this.currentStockManagementToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.currentStockManagementToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.currentStockManagementToolStripMenuItem.Name = "currentStockManagementToolStripMenuItem";
-            this.currentStockManagementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.currentStockManagementToolStripMenuItem.Size = new System.Drawing.Size(390, 52);
-            this.currentStockManagementToolStripMenuItem.Text = "Current Stock Management";
-            // 
-            // stockInManagementToolStripMenuItem
-            // 
-            this.stockInManagementToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.stockInManagementToolStripMenuItem.Name = "stockInManagementToolStripMenuItem";
-            this.stockInManagementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.stockInManagementToolStripMenuItem.Size = new System.Drawing.Size(390, 52);
-            this.stockInManagementToolStripMenuItem.Text = "Stock In Management";
-            // 
-            // stockOutManahementToolStripMenuItem
-            // 
-            this.stockOutManahementToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.stockOutManahementToolStripMenuItem.Name = "stockOutManahementToolStripMenuItem";
-            this.stockOutManahementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.stockOutManahementToolStripMenuItem.Size = new System.Drawing.Size(390, 52);
-            this.stockOutManahementToolStripMenuItem.Text = "Stock Out Manahement";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripMenuItem3.Enabled = false;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(390, 32);
-            this.toolStripMenuItem3.Text = "------------------------------------------------";
-            // 
-            // supplierManagementToolStripMenuItem
-            // 
-            this.supplierManagementToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.supplierManagementToolStripMenuItem.Name = "supplierManagementToolStripMenuItem";
-            this.supplierManagementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.supplierManagementToolStripMenuItem.Size = new System.Drawing.Size(390, 52);
-            this.supplierManagementToolStripMenuItem.Text = "Supplier Management";
-            // 
-            // itemManagementToolStripMenuItem
-            // 
-            this.itemManagementToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.itemManagementToolStripMenuItem.Name = "itemManagementToolStripMenuItem";
-            this.itemManagementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.itemManagementToolStripMenuItem.Size = new System.Drawing.Size(390, 52);
-            this.itemManagementToolStripMenuItem.Text = "Item Management";
             // 
             // CurrentStockButton
             // 
@@ -215,6 +215,7 @@ namespace RangaHardwareStock
             this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.MenuPanel);
             this.Controls.Add(this.panel1);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "HomeForm";
             this.ShowIcon = false;

@@ -37,6 +37,7 @@ namespace RangaHardwareStock
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Name = "CurrentStockManagementForm";
+            this.ShowIcon = false;
             this.Text = "Ranga Hardware Stock Management / Current Stock Management";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
