@@ -1627,7 +1627,7 @@ namespace RangaHardwareStock {
             
             private global::System.Data.DataColumn columnMesuring_Unit;
             
-            private global::System.Data.DataColumn columnSupplier_ID;
+            private global::System.Data.DataColumn columnSuppliers;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1696,9 +1696,9 @@ namespace RangaHardwareStock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Supplier_IDColumn {
+            public global::System.Data.DataColumn SuppliersColumn {
                 get {
-                    return this.columnSupplier_ID;
+                    return this.columnSuppliers;
                 }
             }
             
@@ -1739,17 +1739,24 @@ namespace RangaHardwareStock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CurrentStockViewRow AddCurrentStockViewRow(int Item_ID, string Item_Name, int Current_Stock, string Mesuring_Unit, int Supplier_ID) {
+            public CurrentStockViewRow AddCurrentStockViewRow(int Item_ID, string Item_Name, int Current_Stock, string Mesuring_Unit, string Suppliers) {
                 CurrentStockViewRow rowCurrentStockViewRow = ((CurrentStockViewRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Item_ID,
                         Item_Name,
                         Current_Stock,
                         Mesuring_Unit,
-                        Supplier_ID};
+                        Suppliers};
                 rowCurrentStockViewRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCurrentStockViewRow);
                 return rowCurrentStockViewRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public CurrentStockViewRow FindByItem_ID(int Item_ID) {
+                return ((CurrentStockViewRow)(this.Rows.Find(new object[] {
+                            Item_ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1773,7 +1780,7 @@ namespace RangaHardwareStock {
                 this.columnItem_Name = base.Columns["Item_Name"];
                 this.columnCurrent_Stock = base.Columns["Current_Stock"];
                 this.columnMesuring_Unit = base.Columns["Mesuring_Unit"];
-                this.columnSupplier_ID = base.Columns["Supplier_ID"];
+                this.columnSuppliers = base.Columns["Suppliers"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1787,15 +1794,19 @@ namespace RangaHardwareStock {
                 base.Columns.Add(this.columnCurrent_Stock);
                 this.columnMesuring_Unit = new global::System.Data.DataColumn("Mesuring_Unit", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMesuring_Unit);
-                this.columnSupplier_ID = new global::System.Data.DataColumn("Supplier_ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSupplier_ID);
+                this.columnSuppliers = new global::System.Data.DataColumn("Suppliers", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSuppliers);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnItem_ID}, true));
                 this.columnItem_ID.AllowDBNull = false;
+                this.columnItem_ID.Unique = true;
                 this.columnItem_Name.AllowDBNull = false;
                 this.columnItem_Name.MaxLength = 50;
                 this.columnCurrent_Stock.AllowDBNull = false;
                 this.columnMesuring_Unit.AllowDBNull = false;
                 this.columnMesuring_Unit.MaxLength = 50;
-                this.columnSupplier_ID.AllowDBNull = false;
+                this.columnSuppliers.ReadOnly = true;
+                this.columnSuppliers.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2280,13 +2291,30 @@ namespace RangaHardwareStock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Supplier_ID {
+            public string Suppliers {
                 get {
-                    return ((int)(this[this.tableCurrentStockView.Supplier_IDColumn]));
+                    try {
+                        return ((string)(this[this.tableCurrentStockView.SuppliersColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Suppliers\' in table \'CurrentStockView\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableCurrentStockView.Supplier_IDColumn] = value;
+                    this[this.tableCurrentStockView.SuppliersColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSuppliersNull() {
+                return this.IsNull(this.tableCurrentStockView.SuppliersColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSuppliersNull() {
+                this[this.tableCurrentStockView.SuppliersColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4011,7 +4039,7 @@ SELECT Item_ID, Supplier_ID FROM ItemSupplier WHERE (Item_ID = @Item_ID) AND (Su
             tableMapping.ColumnMappings.Add("Item_Name", "Item_Name");
             tableMapping.ColumnMappings.Add("Current_Stock", "Current_Stock");
             tableMapping.ColumnMappings.Add("Mesuring_Unit", "Mesuring_Unit");
-            tableMapping.ColumnMappings.Add("Supplier_ID", "Supplier_ID");
+            tableMapping.ColumnMappings.Add("Suppliers", "Suppliers");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4028,8 +4056,8 @@ SELECT Item_ID, Supplier_ID FROM ItemSupplier WHERE (Item_ID = @Item_ID) AND (Su
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Item_ID, Item_Name, Current_Stock, Mesuring_Unit, Supplier_ID FROM dbo.Cur" +
-                "rentStockView";
+            this._commandCollection[0].CommandText = "SELECT Item_ID, Item_Name, Current_Stock, Mesuring_Unit, Suppliers FROM dbo.Curre" +
+                "ntStockView";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
