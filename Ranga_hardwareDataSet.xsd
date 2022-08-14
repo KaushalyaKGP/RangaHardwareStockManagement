@@ -230,6 +230,26 @@ SELECT Item_ID, Supplier_ID FROM ItemSupplier WHERE (Item_ID = @Item_ID) AND (Su
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CurrentStockViewTableAdapter" GeneratorDataComponentClassName="CurrentStockViewTableAdapter" Name="CurrentStockView" UserDataComponentName="CurrentStockViewTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Ranga_hardwareConnectionString (Settings)" DbObjectName="dbo.CurrentStockView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Item_ID, Item_Name, Current_Stock, Mesuring_Unit, Supplier_ID FROM dbo.CurrentStockView</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Item_ID" DataSetColumn="Item_ID" />
+              <Mapping SourceColumn="Item_Name" DataSetColumn="Item_Name" />
+              <Mapping SourceColumn="Current_Stock" DataSetColumn="Current_Stock" />
+              <Mapping SourceColumn="Mesuring_Unit" DataSetColumn="Mesuring_Unit" />
+              <Mapping SourceColumn="Supplier_ID" DataSetColumn="Supplier_ID" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -238,7 +258,7 @@ SELECT Item_ID, Supplier_ID FROM ItemSupplier WHERE (Item_ID = @Item_ID) AND (Su
   <xs:element name="Ranga_hardwareDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="Ranga_hardwareDataSet" msprop:Generator_UserDSName="Ranga_hardwareDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Login" msprop:Generator_TableClassName="LoginDataTable" msprop:Generator_TableVarName="tableLogin" msprop:Generator_TablePropName="Login" msprop:Generator_RowDeletingName="LoginRowDeleting" msprop:Generator_RowChangingName="LoginRowChanging" msprop:Generator_RowEvHandlerName="LoginRowChangeEventHandler" msprop:Generator_RowDeletedName="LoginRowDeleted" msprop:Generator_UserTableName="Login" msprop:Generator_RowChangedName="LoginRowChanged" msprop:Generator_RowEvArgName="LoginRowChangeEvent" msprop:Generator_RowClassName="LoginRow">
+        <xs:element name="Login" msprop:Generator_TableClassName="LoginDataTable" msprop:Generator_TableVarName="tableLogin" msprop:Generator_RowChangedName="LoginRowChanged" msprop:Generator_TablePropName="Login" msprop:Generator_RowDeletingName="LoginRowDeleting" msprop:Generator_RowChangingName="LoginRowChanging" msprop:Generator_RowEvHandlerName="LoginRowChangeEventHandler" msprop:Generator_RowDeletedName="LoginRowDeleted" msprop:Generator_RowClassName="LoginRow" msprop:Generator_UserTableName="Login" msprop:Generator_RowEvArgName="LoginRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Username" msprop:Generator_ColumnVarNameInTable="columnUsername" msprop:Generator_ColumnPropNameInRow="Username" msprop:Generator_ColumnPropNameInTable="UsernameColumn" msprop:Generator_UserColumnName="Username">
@@ -258,7 +278,7 @@ SELECT Item_ID, Supplier_ID FROM ItemSupplier WHERE (Item_ID = @Item_ID) AND (Su
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Item" msprop:Generator_TableClassName="ItemDataTable" msprop:Generator_TableVarName="tableItem" msprop:Generator_RowChangedName="ItemRowChanged" msprop:Generator_TablePropName="Item" msprop:Generator_RowDeletingName="ItemRowDeleting" msprop:Generator_RowChangingName="ItemRowChanging" msprop:Generator_RowEvHandlerName="ItemRowChangeEventHandler" msprop:Generator_RowDeletedName="ItemRowDeleted" msprop:Generator_RowClassName="ItemRow" msprop:Generator_UserTableName="Item" msprop:Generator_RowEvArgName="ItemRowChangeEvent">
+        <xs:element name="Item" msprop:Generator_TableClassName="ItemDataTable" msprop:Generator_TableVarName="tableItem" msprop:Generator_TablePropName="Item" msprop:Generator_RowDeletingName="ItemRowDeleting" msprop:Generator_RowChangingName="ItemRowChanging" msprop:Generator_RowEvHandlerName="ItemRowChangeEventHandler" msprop:Generator_RowDeletedName="ItemRowDeleted" msprop:Generator_UserTableName="Item" msprop:Generator_RowChangedName="ItemRowChanged" msprop:Generator_RowEvArgName="ItemRowChangeEvent" msprop:Generator_RowClassName="ItemRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Item_ID" msprop:Generator_ColumnVarNameInTable="columnItem_ID" msprop:Generator_ColumnPropNameInRow="Item_ID" msprop:Generator_ColumnPropNameInTable="Item_IDColumn" msprop:Generator_UserColumnName="Item_ID" type="xs:int" />
@@ -280,7 +300,7 @@ SELECT Item_ID, Supplier_ID FROM ItemSupplier WHERE (Item_ID = @Item_ID) AND (Su
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Supplier" msprop:Generator_TableClassName="SupplierDataTable" msprop:Generator_TableVarName="tableSupplier" msprop:Generator_TablePropName="Supplier" msprop:Generator_RowDeletingName="SupplierRowDeleting" msprop:Generator_RowChangingName="SupplierRowChanging" msprop:Generator_RowEvHandlerName="SupplierRowChangeEventHandler" msprop:Generator_RowDeletedName="SupplierRowDeleted" msprop:Generator_UserTableName="Supplier" msprop:Generator_RowChangedName="SupplierRowChanged" msprop:Generator_RowEvArgName="SupplierRowChangeEvent" msprop:Generator_RowClassName="SupplierRow">
+        <xs:element name="Supplier" msprop:Generator_TableClassName="SupplierDataTable" msprop:Generator_TableVarName="tableSupplier" msprop:Generator_RowChangedName="SupplierRowChanged" msprop:Generator_TablePropName="Supplier" msprop:Generator_RowDeletingName="SupplierRowDeleting" msprop:Generator_RowChangingName="SupplierRowChanging" msprop:Generator_RowEvHandlerName="SupplierRowChangeEventHandler" msprop:Generator_RowDeletedName="SupplierRowDeleted" msprop:Generator_RowClassName="SupplierRow" msprop:Generator_UserTableName="Supplier" msprop:Generator_RowEvArgName="SupplierRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Supplier_ID" msprop:Generator_ColumnVarNameInTable="columnSupplier_ID" msprop:Generator_ColumnPropNameInRow="Supplier_ID" msprop:Generator_ColumnPropNameInTable="Supplier_IDColumn" msprop:Generator_UserColumnName="Supplier_ID" type="xs:int" />
@@ -315,10 +335,33 @@ SELECT Item_ID, Supplier_ID FROM ItemSupplier WHERE (Item_ID = @Item_ID) AND (Su
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ItemSupplier" msprop:Generator_TableClassName="ItemSupplierDataTable" msprop:Generator_TableVarName="tableItemSupplier" msprop:Generator_TablePropName="ItemSupplier" msprop:Generator_RowDeletingName="ItemSupplierRowDeleting" msprop:Generator_RowChangingName="ItemSupplierRowChanging" msprop:Generator_RowEvHandlerName="ItemSupplierRowChangeEventHandler" msprop:Generator_RowDeletedName="ItemSupplierRowDeleted" msprop:Generator_UserTableName="ItemSupplier" msprop:Generator_RowChangedName="ItemSupplierRowChanged" msprop:Generator_RowEvArgName="ItemSupplierRowChangeEvent" msprop:Generator_RowClassName="ItemSupplierRow">
+        <xs:element name="ItemSupplier" msprop:Generator_TableClassName="ItemSupplierDataTable" msprop:Generator_TableVarName="tableItemSupplier" msprop:Generator_RowChangedName="ItemSupplierRowChanged" msprop:Generator_TablePropName="ItemSupplier" msprop:Generator_RowDeletingName="ItemSupplierRowDeleting" msprop:Generator_RowChangingName="ItemSupplierRowChanging" msprop:Generator_RowEvHandlerName="ItemSupplierRowChangeEventHandler" msprop:Generator_RowDeletedName="ItemSupplierRowDeleted" msprop:Generator_RowClassName="ItemSupplierRow" msprop:Generator_UserTableName="ItemSupplier" msprop:Generator_RowEvArgName="ItemSupplierRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Item_ID" msprop:Generator_ColumnVarNameInTable="columnItem_ID" msprop:Generator_ColumnPropNameInRow="Item_ID" msprop:Generator_ColumnPropNameInTable="Item_IDColumn" msprop:Generator_UserColumnName="Item_ID" type="xs:int" />
+              <xs:element name="Supplier_ID" msprop:Generator_ColumnVarNameInTable="columnSupplier_ID" msprop:Generator_ColumnPropNameInRow="Supplier_ID" msprop:Generator_ColumnPropNameInTable="Supplier_IDColumn" msprop:Generator_UserColumnName="Supplier_ID" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CurrentStockView" msprop:Generator_TableClassName="CurrentStockViewDataTable" msprop:Generator_TableVarName="tableCurrentStockView" msprop:Generator_TablePropName="CurrentStockView" msprop:Generator_RowDeletingName="CurrentStockViewRowDeleting" msprop:Generator_RowChangingName="CurrentStockViewRowChanging" msprop:Generator_RowEvHandlerName="CurrentStockViewRowChangeEventHandler" msprop:Generator_RowDeletedName="CurrentStockViewRowDeleted" msprop:Generator_UserTableName="CurrentStockView" msprop:Generator_RowChangedName="CurrentStockViewRowChanged" msprop:Generator_RowEvArgName="CurrentStockViewRowChangeEvent" msprop:Generator_RowClassName="CurrentStockViewRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Item_ID" msprop:Generator_ColumnVarNameInTable="columnItem_ID" msprop:Generator_ColumnPropNameInRow="Item_ID" msprop:Generator_ColumnPropNameInTable="Item_IDColumn" msprop:Generator_UserColumnName="Item_ID" type="xs:int" />
+              <xs:element name="Item_Name" msprop:Generator_ColumnVarNameInTable="columnItem_Name" msprop:Generator_ColumnPropNameInRow="Item_Name" msprop:Generator_ColumnPropNameInTable="Item_NameColumn" msprop:Generator_UserColumnName="Item_Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Current_Stock" msprop:Generator_ColumnVarNameInTable="columnCurrent_Stock" msprop:Generator_ColumnPropNameInRow="Current_Stock" msprop:Generator_ColumnPropNameInTable="Current_StockColumn" msprop:Generator_UserColumnName="Current_Stock" type="xs:int" />
+              <xs:element name="Mesuring_Unit" msprop:Generator_ColumnVarNameInTable="columnMesuring_Unit" msprop:Generator_ColumnPropNameInRow="Mesuring_Unit" msprop:Generator_ColumnPropNameInTable="Mesuring_UnitColumn" msprop:Generator_UserColumnName="Mesuring_Unit">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="Supplier_ID" msprop:Generator_ColumnVarNameInTable="columnSupplier_ID" msprop:Generator_ColumnPropNameInRow="Supplier_ID" msprop:Generator_ColumnPropNameInTable="Supplier_IDColumn" msprop:Generator_UserColumnName="Supplier_ID" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
@@ -345,8 +388,8 @@ SELECT Item_ID, Supplier_ID FROM ItemSupplier WHERE (Item_ID = @Item_ID) AND (Su
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_ItemSupplier_Item" msdata:parent="Item" msdata:child="ItemSupplier" msdata:parentkey="Item_ID" msdata:childkey="Item_ID" msprop:Generator_UserChildTable="ItemSupplier" msprop:Generator_ChildPropName="GetItemSupplierRows" msprop:Generator_UserRelationName="FK_ItemSupplier_Item" msprop:Generator_ParentPropName="ItemRow" msprop:Generator_RelationVarName="relationFK_ItemSupplier_Item" msprop:Generator_UserParentTable="Item" />
-      <msdata:Relationship name="FK_ItemSupplier_Supplier" msdata:parent="Supplier" msdata:child="ItemSupplier" msdata:parentkey="Supplier_ID" msdata:childkey="Supplier_ID" msprop:Generator_UserChildTable="ItemSupplier" msprop:Generator_ChildPropName="GetItemSupplierRows" msprop:Generator_UserRelationName="FK_ItemSupplier_Supplier" msprop:Generator_ParentPropName="SupplierRow" msprop:Generator_RelationVarName="relationFK_ItemSupplier_Supplier" msprop:Generator_UserParentTable="Supplier" />
+      <msdata:Relationship name="FK_ItemSupplier_Item" msdata:parent="Item" msdata:child="ItemSupplier" msdata:parentkey="Item_ID" msdata:childkey="Item_ID" msprop:Generator_UserChildTable="ItemSupplier" msprop:Generator_ChildPropName="GetItemSupplierRows" msprop:Generator_UserRelationName="FK_ItemSupplier_Item" msprop:Generator_RelationVarName="relationFK_ItemSupplier_Item" msprop:Generator_UserParentTable="Item" msprop:Generator_ParentPropName="ItemRow" />
+      <msdata:Relationship name="FK_ItemSupplier_Supplier" msdata:parent="Supplier" msdata:child="ItemSupplier" msdata:parentkey="Supplier_ID" msdata:childkey="Supplier_ID" msprop:Generator_UserChildTable="ItemSupplier" msprop:Generator_ChildPropName="GetItemSupplierRows" msprop:Generator_UserRelationName="FK_ItemSupplier_Supplier" msprop:Generator_RelationVarName="relationFK_ItemSupplier_Supplier" msprop:Generator_UserParentTable="Supplier" msprop:Generator_ParentPropName="SupplierRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
