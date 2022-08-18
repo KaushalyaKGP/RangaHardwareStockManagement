@@ -181,6 +181,7 @@ namespace RangaHardwareStock
             this.CurrentStockButton.TabIndex = 5;
             this.CurrentStockButton.Text = "View Current Stock";
             this.CurrentStockButton.UseVisualStyleBackColor = false;
+            this.CurrentStockButton.Click += new System.EventHandler(this.CurrentStockButton_Click);
             // 
             // Title2label
             // 

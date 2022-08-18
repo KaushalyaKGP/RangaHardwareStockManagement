@@ -46,7 +46,7 @@ namespace RangaHardwareStock
             this.UsernameTextBox.Size = new System.Drawing.Size(475, 34);
             this.UsernameTextBox.TabIndex = 2;
             this.UsernameTextBox.Tag = "";
-            this.UsernameTextBox.Text = "Username";
+            this.UsernameTextBox.Text = "admin";
             this.UsernameTextBox.Enter += new System.EventHandler(this.UsernameTextBox_Enter);
             this.UsernameTextBox.Leave += new System.EventHandler(this.UsernameTextBox_Leave);
             // 
@@ -74,7 +74,7 @@ namespace RangaHardwareStock
             this.passwordTextBox.Size = new System.Drawing.Size(475, 34);
             this.passwordTextBox.TabIndex = 5;
             this.passwordTextBox.Tag = "";
-            this.passwordTextBox.Text = "Password";
+            this.passwordTextBox.Text = "admin";
             this.passwordTextBox.Enter += new System.EventHandler(this.passwordTextBox_Enter);
             this.passwordTextBox.Leave += new System.EventHandler(this.passwordTextBox_Leave);
             // 
@@ -97,7 +97,7 @@ namespace RangaHardwareStock
             this.resetPasswordButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.resetPasswordButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.resetPasswordButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetPasswordButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.resetPasswordButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.resetPasswordButton.Location = new System.Drawing.Point(498, 531);
             this.resetPasswordButton.Name = "resetPasswordButton";
             this.resetPasswordButton.Size = new System.Drawing.Size(181, 30);
