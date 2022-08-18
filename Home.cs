@@ -43,5 +43,10 @@ namespace RangaHardwareStock
             this.Hide();
             currentStock.Show();
         }
+
+        private void currentStockManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.CurrentStockButton.PerformClick();
+        }
     }
 }

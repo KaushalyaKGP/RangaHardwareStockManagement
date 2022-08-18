@@ -26,8 +26,9 @@ namespace RangaHardwareStock
         { index.Hide(); }
         private void CurrentStockButton_Click(object sender, EventArgs e)
         {
-            //to do - derect to current stock page
-            //this.Hide();
+            this.Hide();
+            CurrentStockManagementForm currentStock = new CurrentStockManagementForm();
+            currentStock.Show();
         }
 
         private void LoginButton_Click(object sender, EventArgs e)

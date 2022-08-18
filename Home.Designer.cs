@@ -79,7 +79,7 @@ namespace RangaHardwareStock
             this.menuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(363, 436);
+            this.menuStrip.Size = new System.Drawing.Size(363, 460);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -113,6 +113,7 @@ namespace RangaHardwareStock
             this.currentStockManagementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.currentStockManagementToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
             this.currentStockManagementToolStripMenuItem.Text = "Current Stock Management";
+            this.currentStockManagementToolStripMenuItem.Click += new System.EventHandler(this.currentStockManagementToolStripMenuItem_Click);
             // 
             // stockInManagementToolStripMenuItem
             // 
