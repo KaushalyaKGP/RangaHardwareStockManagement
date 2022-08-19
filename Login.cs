@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 
 namespace RangaHardwareStock
 {
+
     public partial class LoginForm : Form
 
     {

@@ -82,7 +82,7 @@ namespace RangaHardwareStock
             supplier_NameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             supplier_NameLabel.AutoSize = true;
             supplier_NameLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            supplier_NameLabel.Location = new System.Drawing.Point(588, 200);
+            supplier_NameLabel.Location = new System.Drawing.Point(669, 200);
             supplier_NameLabel.Name = "supplier_NameLabel";
             supplier_NameLabel.Size = new System.Drawing.Size(88, 20);
             supplier_NameLabel.TabIndex = 13;
@@ -108,9 +108,9 @@ namespace RangaHardwareStock
             this.item_IDComboBox.DataSource = this.itemBindingSource;
             this.item_IDComboBox.DisplayMember = "Item_ID";
             this.item_IDComboBox.FormattingEnabled = true;
-            this.item_IDComboBox.Location = new System.Drawing.Point(142, 250);
+            this.item_IDComboBox.Location = new System.Drawing.Point(159, 250);
             this.item_IDComboBox.Name = "item_IDComboBox";
-            this.item_IDComboBox.Size = new System.Drawing.Size(362, 24);
+            this.item_IDComboBox.Size = new System.Drawing.Size(370, 24);
             this.item_IDComboBox.TabIndex = 6;
             // 
             // item_NameComboBox
@@ -119,9 +119,9 @@ namespace RangaHardwareStock
             this.item_NameComboBox.DataSource = this.itemBindingSource;
             this.item_NameComboBox.DisplayMember = "Item_Name";
             this.item_NameComboBox.FormattingEnabled = true;
-            this.item_NameComboBox.Location = new System.Drawing.Point(142, 201);
+            this.item_NameComboBox.Location = new System.Drawing.Point(159, 201);
             this.item_NameComboBox.Name = "item_NameComboBox";
-            this.item_NameComboBox.Size = new System.Drawing.Size(362, 24);
+            this.item_NameComboBox.Size = new System.Drawing.Size(370, 24);
             this.item_NameComboBox.TabIndex = 8;
             // 
             // supplier_NameComboBox
@@ -130,9 +130,9 @@ namespace RangaHardwareStock
             this.supplier_NameComboBox.DataSource = this.supplierBindingSource;
             this.supplier_NameComboBox.DisplayMember = "Name";
             this.supplier_NameComboBox.FormattingEnabled = true;
-            this.supplier_NameComboBox.Location = new System.Drawing.Point(693, 197);
+            this.supplier_NameComboBox.Location = new System.Drawing.Point(774, 197);
             this.supplier_NameComboBox.Name = "supplier_NameComboBox";
-            this.supplier_NameComboBox.Size = new System.Drawing.Size(362, 24);
+            this.supplier_NameComboBox.Size = new System.Drawing.Size(370, 24);
             this.supplier_NameComboBox.TabIndex = 14;
             // 
             // SearchButton
