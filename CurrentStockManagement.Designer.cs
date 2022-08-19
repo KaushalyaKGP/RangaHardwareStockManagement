@@ -40,11 +40,6 @@ namespace RangaHardwareStock
             this.SearchButton = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
             this.CurrentStockDataGridView = new System.Windows.Forms.DataGridView();
-            this.Item_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Current_Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mesuring_Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
             this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.itemTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.ItemTableAdapter();
@@ -169,56 +164,18 @@ namespace RangaHardwareStock
             // 
             // CurrentStockDataGridView
             // 
+            this.CurrentStockDataGridView.AllowUserToAddRows = false;
+            this.CurrentStockDataGridView.AllowUserToDeleteRows = false;
             this.CurrentStockDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.CurrentStockDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.CurrentStockDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CurrentStockDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Item_ID,
-            this.Item_Name,
-            this.Current_Stock,
-            this.Mesuring_Unit,
-            this.Supplier});
             this.CurrentStockDataGridView.Location = new System.Drawing.Point(40, 323);
             this.CurrentStockDataGridView.Name = "CurrentStockDataGridView";
+            this.CurrentStockDataGridView.ReadOnly = true;
             this.CurrentStockDataGridView.RowHeadersWidth = 51;
             this.CurrentStockDataGridView.RowTemplate.Height = 24;
             this.CurrentStockDataGridView.Size = new System.Drawing.Size(1317, 492);
             this.CurrentStockDataGridView.TabIndex = 17;
-            // 
-            // Item_ID
-            // 
-            this.Item_ID.HeaderText = "Item_ID";
-            this.Item_ID.MinimumWidth = 6;
-            this.Item_ID.Name = "Item_ID";
-            this.Item_ID.ReadOnly = true;
-            // 
-            // Item_Name
-            // 
-            this.Item_Name.HeaderText = "Item_Name";
-            this.Item_Name.MinimumWidth = 6;
-            this.Item_Name.Name = "Item_Name";
-            this.Item_Name.ReadOnly = true;
-            // 
-            // Current_Stock
-            // 
-            this.Current_Stock.HeaderText = "Current_Stock";
-            this.Current_Stock.MinimumWidth = 6;
-            this.Current_Stock.Name = "Current_Stock";
-            this.Current_Stock.ReadOnly = true;
-            // 
-            // Mesuring_Unit
-            // 
-            this.Mesuring_Unit.HeaderText = "Mesuring_Unit";
-            this.Mesuring_Unit.MinimumWidth = 6;
-            this.Mesuring_Unit.Name = "Mesuring_Unit";
-            this.Mesuring_Unit.ReadOnly = true;
-            // 
-            // Supplier
-            // 
-            this.Supplier.HeaderText = "Supplier";
-            this.Supplier.MinimumWidth = 6;
-            this.Supplier.Name = "Supplier";
-            this.Supplier.ReadOnly = true;
             // 
             // ranga_hardwareDataSet
             // 
@@ -301,11 +258,6 @@ namespace RangaHardwareStock
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.DataGridView CurrentStockDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Item_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Item_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Current_Stock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mesuring_Unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Supplier;
         private Ranga_hardwareDataSet ranga_hardwareDataSet;
         private System.Windows.Forms.BindingSource itemBindingSource;
         private Ranga_hardwareDataSetTableAdapters.ItemTableAdapter itemTableAdapter;
