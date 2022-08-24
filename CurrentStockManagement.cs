@@ -14,6 +14,10 @@ namespace RangaHardwareStock
 
     public partial class CurrentStockManagementForm : Form
     {
+
+        SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\3rd Year Project\DEVELOPMENT PROJECT  - software\RangaHardwareStock\Ranga hardware.mdf; Integrated Security = True");
+        DataTable dt = new DataTable();
+
         public CurrentStockManagementForm()
         {
             InitializeComponent();
@@ -25,6 +29,15 @@ namespace RangaHardwareStock
         }
 
         
+        private void SetInitioalStage()
+        {
+            this.item_NameComboBox.Text = "All";
+            this.item_IDComboBox.Text = "All";
+            this.supplier_NameComboBox.Text = "All";
+
+            
+            CurrentStockDataGridView.DataSource = dt;
+        }
 
         private void CurrentStockManagementForm_Load(object sender, EventArgs e)
         {
@@ -33,16 +46,10 @@ namespace RangaHardwareStock
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Item' table. You can move, or remove it, as needed.
             this.itemTableAdapter.Fill(this.ranga_hardwareDataSet.Item);
 
-            this.item_NameComboBox.Text = "All";
-            this.item_IDComboBox.Text = "All";
-            this.supplier_NameComboBox.Text = "All";
-
             //fill data view
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\3rd Year Project\DEVELOPMENT PROJECT  - software\RangaHardwareStock\Ranga hardware.mdf; Integrated Security = True");
-            SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,i.Current_Stock,i.Mesuring_Unit,s.Name FROM Item i , Supplier s WHERE i.Supplier_ID = s.Supplier_ID ORDER BY i.Item_ID", con);
-            DataTable dt = new DataTable();
+            SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,i.Current_Stock,i.Mesuring_Unit,s.Name FROM Item i , Supplier s WHERE i.Supplier_ID = s.Supplier_ID ORDER BY i.Item_Name", con);
             sda.Fill(dt);
-            CurrentStockDataGridView.DataSource = dt;
+            SetInitioalStage();
 
         }
 
@@ -53,11 +60,56 @@ namespace RangaHardwareStock
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            this.item_NameComboBox.Text = "All";
-            this.item_IDComboBox.Text = "All";
-            this.supplier_NameComboBox.Text = "All";
-
-            //need to add initial stage of table
+            SetInitioalStage();
         }
-    }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            //check if initial stage changed
+            if(!(this.item_IDComboBox.Text == "All" && this.item_NameComboBox.Text == "All" && this.supplier_NameComboBox.Text == "All"))
+            { 
+                // give data matched to search
+                DataTable dtSearch = new DataTable();
+
+                if(this.item_IDComboBox.Text != "All" && this.item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text != "All")
+                {
+                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,i.Current_Stock,i.Mesuring_Unit,s.Name FROM Item i , Supplier s WHERE i.Supplier_ID = s.Supplier_ID AND i.Item_ID = '"+item_IDComboBox.Text+"' AND i.Item_Name = '"+item_NameComboBox.Text+ "' AND s.Name = '"+supplier_NameComboBox.Text+"' ORDER BY i.Item_Name", con);
+                    sda.Fill(dtSearch);
+                }
+                else if(this.item_IDComboBox.Text != "All" && this.item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text == "All")
+                {
+                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,i.Current_Stock,i.Mesuring_Unit,s.Name FROM Item i , Supplier s WHERE i.Supplier_ID = s.Supplier_ID AND i.Item_ID = '" + item_IDComboBox.Text + "' AND i.Item_Name = '" + item_NameComboBox.Text + "'  ORDER BY i.Item_Name", con);
+                    sda.Fill(dtSearch);
+                }
+                else if (this.item_IDComboBox.Text != "All" && this.item_NameComboBox.Text == "All" && this.supplier_NameComboBox.Text != "All")
+                {
+                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,i.Current_Stock,i.Mesuring_Unit,s.Name FROM Item i , Supplier s WHERE i.Supplier_ID = s.Supplier_ID AND i.Item_ID = '" + item_IDComboBox.Text + "'  AND s.Name = '" + supplier_NameComboBox.Text + "' ORDER BY i.Item_Name", con);
+                    sda.Fill(dtSearch);
+                }
+                else if (this.item_IDComboBox.Text == "All" && this.item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text != "All")
+                {
+                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,i.Current_Stock,i.Mesuring_Unit,s.Name FROM Item i , Supplier s WHERE i.Supplier_ID = s.Supplier_ID  AND i.Item_Name = '" + item_NameComboBox.Text + "' AND s.Name = '" + supplier_NameComboBox.Text + "' ORDER BY i.Item_Name", con);
+                    sda.Fill(dtSearch);
+                }
+                else if (this.item_IDComboBox.Text != "All" && this.item_NameComboBox.Text == "All" && this.supplier_NameComboBox.Text == "All")
+                {
+                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,i.Current_Stock,i.Mesuring_Unit,s.Name FROM Item i , Supplier s WHERE i.Supplier_ID = s.Supplier_ID AND i.Item_ID = '" + item_IDComboBox.Text + "'  ORDER BY i.Item_Name", con);
+                    sda.Fill(dtSearch);
+                }
+                else if (this.item_IDComboBox.Text == "All" && this.item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text == "All")
+                {
+                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,i.Current_Stock,i.Mesuring_Unit,s.Name FROM Item i , Supplier s WHERE i.Supplier_ID = s.Supplier_ID  AND i.Item_Name = '" + item_NameComboBox.Text + "'  ORDER BY i.Item_Name", con);
+                    sda.Fill(dtSearch);
+                }
+                else if (this.item_IDComboBox.Text == "All" && this.item_NameComboBox.Text == "All" && this.supplier_NameComboBox.Text != "All")
+                {
+                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,i.Current_Stock,i.Mesuring_Unit,s.Name FROM Item i , Supplier s WHERE i.Supplier_ID = s.Supplier_ID  AND s.Name = '" + supplier_NameComboBox.Text + "' ORDER BY i.Item_Name", con);
+                    sda.Fill(dtSearch);
+                }
+                CurrentStockDataGridView.DataSource = dtSearch;
+                //-------------------------------------------------------------------------------------
+            }
+        }
+
+        }
 }

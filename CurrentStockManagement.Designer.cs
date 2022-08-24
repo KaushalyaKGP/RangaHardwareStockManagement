@@ -147,6 +147,7 @@ namespace RangaHardwareStock
             this.SearchButton.TabIndex = 15;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = false;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // BackButton
             // 
