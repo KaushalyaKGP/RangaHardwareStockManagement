@@ -104,6 +104,12 @@
     <Compile Include="ResetPassword.Designer.cs">
       <DependentUpon>ResetPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="StockIn ManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockIn ManagementForm.Designer.cs">
+      <DependentUpon>StockIn ManagementForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CurrentStockManagement.resx">
       <DependentUpon>CurrentStockManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +134,9 @@
     </Compile>
     <EmbeddedResource Include="ResetPassword.resx">
       <DependentUpon>ResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockIn ManagementForm.resx">
+      <DependentUpon>StockIn ManagementForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
