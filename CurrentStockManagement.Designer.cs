@@ -33,26 +33,32 @@ namespace RangaHardwareStock
             System.Windows.Forms.Label item_IDLabel;
             System.Windows.Forms.Label item_NameLabel;
             System.Windows.Forms.Label supplier_NameLabel;
+            System.Windows.Forms.Label StockLevelLabel;
             this.Titlelabel = new System.Windows.Forms.Label();
             this.item_IDComboBox = new System.Windows.Forms.ComboBox();
+            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
             this.item_NameComboBox = new System.Windows.Forms.ComboBox();
             this.supplier_NameComboBox = new System.Windows.Forms.ComboBox();
+            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SearchButton = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
             this.CurrentStockDataGridView = new System.Windows.Forms.DataGridView();
-            this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
-            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.itemTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.ItemTableAdapter();
             this.ResetButton = new System.Windows.Forms.Button();
-            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.supplierTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.SupplierTableAdapter();
+            this.StockLevelComboBox = new System.Windows.Forms.ComboBox();
+            this.stockLevelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.stockLevelTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockLevelTableAdapter();
             item_IDLabel = new System.Windows.Forms.Label();
             item_NameLabel = new System.Windows.Forms.Label();
             supplier_NameLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.CurrentStockDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
+            StockLevelLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrentStockDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockLevelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // item_IDLabel
@@ -82,7 +88,7 @@ namespace RangaHardwareStock
             supplier_NameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             supplier_NameLabel.AutoSize = true;
             supplier_NameLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            supplier_NameLabel.Location = new System.Drawing.Point(669, 200);
+            supplier_NameLabel.Location = new System.Drawing.Point(551, 204);
             supplier_NameLabel.Name = "supplier_NameLabel";
             supplier_NameLabel.Size = new System.Drawing.Size(88, 20);
             supplier_NameLabel.TabIndex = 13;
@@ -94,10 +100,10 @@ namespace RangaHardwareStock
             this.Titlelabel.BackColor = System.Drawing.SystemColors.Control;
             this.Titlelabel.Font = new System.Drawing.Font("Bernard MT Condensed", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titlelabel.ForeColor = System.Drawing.Color.Black;
-            this.Titlelabel.Location = new System.Drawing.Point(452, 41);
+            this.Titlelabel.Location = new System.Drawing.Point(403, 41);
             this.Titlelabel.Margin = new System.Windows.Forms.Padding(0);
             this.Titlelabel.Name = "Titlelabel";
-            this.Titlelabel.Size = new System.Drawing.Size(501, 108);
+            this.Titlelabel.Size = new System.Drawing.Size(541, 108);
             this.Titlelabel.TabIndex = 5;
             this.Titlelabel.Text = "Current Stock";
             this.Titlelabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -110,8 +116,18 @@ namespace RangaHardwareStock
             this.item_IDComboBox.FormattingEnabled = true;
             this.item_IDComboBox.Location = new System.Drawing.Point(159, 250);
             this.item_IDComboBox.Name = "item_IDComboBox";
-            this.item_IDComboBox.Size = new System.Drawing.Size(370, 24);
+            this.item_IDComboBox.Size = new System.Drawing.Size(355, 24);
             this.item_IDComboBox.TabIndex = 6;
+            // 
+            // itemBindingSource
+            // 
+            this.itemBindingSource.DataMember = "Item";
+            this.itemBindingSource.DataSource = this.ranga_hardwareDataSet;
+            // 
+            // ranga_hardwareDataSet
+            // 
+            this.ranga_hardwareDataSet.DataSetName = "Ranga_hardwareDataSet";
+            this.ranga_hardwareDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // item_NameComboBox
             // 
@@ -121,7 +137,7 @@ namespace RangaHardwareStock
             this.item_NameComboBox.FormattingEnabled = true;
             this.item_NameComboBox.Location = new System.Drawing.Point(159, 201);
             this.item_NameComboBox.Name = "item_NameComboBox";
-            this.item_NameComboBox.Size = new System.Drawing.Size(370, 24);
+            this.item_NameComboBox.Size = new System.Drawing.Size(355, 24);
             this.item_NameComboBox.TabIndex = 8;
             // 
             // supplier_NameComboBox
@@ -130,10 +146,15 @@ namespace RangaHardwareStock
             this.supplier_NameComboBox.DataSource = this.supplierBindingSource;
             this.supplier_NameComboBox.DisplayMember = "Name";
             this.supplier_NameComboBox.FormattingEnabled = true;
-            this.supplier_NameComboBox.Location = new System.Drawing.Point(774, 197);
+            this.supplier_NameComboBox.Location = new System.Drawing.Point(676, 201);
             this.supplier_NameComboBox.Name = "supplier_NameComboBox";
-            this.supplier_NameComboBox.Size = new System.Drawing.Size(370, 24);
+            this.supplier_NameComboBox.Size = new System.Drawing.Size(355, 24);
             this.supplier_NameComboBox.TabIndex = 14;
+            // 
+            // supplierBindingSource
+            // 
+            this.supplierBindingSource.DataMember = "Supplier";
+            this.supplierBindingSource.DataSource = this.ranga_hardwareDataSet;
             // 
             // SearchButton
             // 
@@ -141,7 +162,7 @@ namespace RangaHardwareStock
             this.SearchButton.BackColor = System.Drawing.Color.LightSeaGreen;
             this.SearchButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchButton.ForeColor = System.Drawing.Color.White;
-            this.SearchButton.Location = new System.Drawing.Point(1006, 250);
+            this.SearchButton.Location = new System.Drawing.Point(1039, 250);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(156, 47);
             this.SearchButton.TabIndex = 15;
@@ -155,7 +176,7 @@ namespace RangaHardwareStock
             this.BackButton.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BackButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BackButton.ForeColor = System.Drawing.Color.Black;
-            this.BackButton.Location = new System.Drawing.Point(1201, 845);
+            this.BackButton.Location = new System.Drawing.Point(1144, 845);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(156, 47);
             this.BackButton.TabIndex = 16;
@@ -175,18 +196,8 @@ namespace RangaHardwareStock
             this.CurrentStockDataGridView.ReadOnly = true;
             this.CurrentStockDataGridView.RowHeadersWidth = 51;
             this.CurrentStockDataGridView.RowTemplate.Height = 24;
-            this.CurrentStockDataGridView.Size = new System.Drawing.Size(1317, 492);
+            this.CurrentStockDataGridView.Size = new System.Drawing.Size(1260, 492);
             this.CurrentStockDataGridView.TabIndex = 17;
-            // 
-            // ranga_hardwareDataSet
-            // 
-            this.ranga_hardwareDataSet.DataSetName = "Ranga_hardwareDataSet";
-            this.ranga_hardwareDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // itemBindingSource
-            // 
-            this.itemBindingSource.DataMember = "Item";
-            this.itemBindingSource.DataSource = this.ranga_hardwareDataSet;
             // 
             // itemTableAdapter
             // 
@@ -206,14 +217,41 @@ namespace RangaHardwareStock
             this.ResetButton.UseVisualStyleBackColor = false;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
-            // supplierBindingSource
-            // 
-            this.supplierBindingSource.DataMember = "Supplier";
-            this.supplierBindingSource.DataSource = this.ranga_hardwareDataSet;
-            // 
             // supplierTableAdapter
             // 
             this.supplierTableAdapter.ClearBeforeFill = true;
+            // 
+            // StockLevelLabel
+            // 
+            StockLevelLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            StockLevelLabel.AutoSize = true;
+            StockLevelLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            StockLevelLabel.Location = new System.Drawing.Point(551, 256);
+            StockLevelLabel.Name = "StockLevelLabel";
+            StockLevelLabel.Size = new System.Drawing.Size(113, 20);
+            StockLevelLabel.TabIndex = 19;
+            StockLevelLabel.Text = "Stock Level :";
+            // 
+            // StockLevelComboBox
+            // 
+            this.StockLevelComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.StockLevelComboBox.DataSource = this.stockLevelBindingSource;
+            this.StockLevelComboBox.DisplayMember = "Value";
+            this.StockLevelComboBox.FormattingEnabled = true;
+            this.StockLevelComboBox.Location = new System.Drawing.Point(676, 253);
+            this.StockLevelComboBox.Name = "StockLevelComboBox";
+            this.StockLevelComboBox.Size = new System.Drawing.Size(355, 24);
+            this.StockLevelComboBox.TabIndex = 20;
+            this.StockLevelComboBox.ValueMember = "LevelCode";
+            // 
+            // stockLevelBindingSource
+            // 
+            this.stockLevelBindingSource.DataMember = "StockLevel";
+            this.stockLevelBindingSource.DataSource = this.ranga_hardwareDataSet;
+            // 
+            // stockLevelTableAdapter
+            // 
+            this.stockLevelTableAdapter.ClearBeforeFill = true;
             // 
             // CurrentStockManagementForm
             // 
@@ -221,7 +259,9 @@ namespace RangaHardwareStock
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::RangaHardwareStock.Properties.Resources.hardware_tools_isolated_on_white_background_E9HYP9_1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1404, 904);
+            this.ClientSize = new System.Drawing.Size(1347, 904);
+            this.Controls.Add(StockLevelLabel);
+            this.Controls.Add(this.StockLevelComboBox);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.CurrentStockDataGridView);
             this.Controls.Add(this.BackButton);
@@ -241,10 +281,11 @@ namespace RangaHardwareStock
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CurrentStockManagementForm_FormClosed);
             this.Load += new System.EventHandler(this.CurrentStockManagementForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.CurrentStockDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrentStockDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockLevelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,5 +306,8 @@ namespace RangaHardwareStock
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.BindingSource supplierBindingSource;
         private Ranga_hardwareDataSetTableAdapters.SupplierTableAdapter supplierTableAdapter;
+        private System.Windows.Forms.ComboBox StockLevelComboBox;
+        private System.Windows.Forms.BindingSource stockLevelBindingSource;
+        private Ranga_hardwareDataSetTableAdapters.StockLevelTableAdapter stockLevelTableAdapter;
     }
 }
