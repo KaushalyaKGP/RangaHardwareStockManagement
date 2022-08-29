@@ -54,7 +54,9 @@ namespace RangaHardwareStock
 WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode
 ORDER BY i.Item_Name", con);
             sda.Fill(dt);
+            CurrentStockDataGridView.Columns[5].DefaultCellStyle.Format = "0.00##";
             SetInitioalStage();
+            
 
         }
 
@@ -75,7 +77,9 @@ ORDER BY i.Item_Name", con);
             { 
                 // give data matched to search
                 DataTable dtSearch = new DataTable();
+                
 
+                
                 if (this.item_IDComboBox.Text != "All" && this.item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text != "All" && this.StockLevelComboBox.Text != "All")
                 {
                     SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID, i.Item_Name, l.Value AS Stock_Status, i.Current_Stock, i.Mesuring_Unit,i.Unit_Price, s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND i.Item_ID = '" + item_IDComboBox.Text + "' AND i.Item_Name = '" + item_NameComboBox.Text + "' AND s.Name = '" + supplier_NameComboBox.Text + "' AND l.Value = '" + StockLevelComboBox.Text + "'  ORDER BY i.Item_Name", con);
@@ -155,7 +159,9 @@ ORDER BY i.Item_Name", con);
                     sda.Fill(dtSearch);
                 }
 
+                
                 CurrentStockDataGridView.DataSource = dtSearch;
+                CurrentStockDataGridView.Columns[6].DefaultCellStyle.Format = "0.00##";
                 //-------------------------------------------------------------------------------------
             }
         }
