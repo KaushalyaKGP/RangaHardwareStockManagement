@@ -54,9 +54,10 @@ namespace RangaHardwareStock
 WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode
 ORDER BY i.Item_Name", con);
             sda.Fill(dt);
-            CurrentStockDataGridView.Columns[5].DefaultCellStyle.Format = "0.00##";
-            SetInitioalStage();
             
+            SetInitioalStage();
+            CurrentStockDataGridView.Columns[5].DefaultCellStyle.Format = "0.00##";
+
 
         }
 
