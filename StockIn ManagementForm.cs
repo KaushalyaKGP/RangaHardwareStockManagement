@@ -36,5 +36,10 @@ namespace RangaHardwareStock
             this.stockInTableTableAdapter.Fill(this.ranga_hardwareDataSet.StockInTable);
 
         }
+
+        private void StockIn_ManagementForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            HomeForm.showForm();
+        }
     }
 }

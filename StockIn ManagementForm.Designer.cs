@@ -336,6 +336,7 @@ namespace RangaHardwareStock
             this.Controls.Add(this.Titlelabel);
             this.Name = "StockIn_ManagementForm";
             this.Text = "Ranga Hardware Stock Management / Stock In Management";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StockIn_ManagementForm_FormClosed);
             this.Load += new System.EventHandler(this.StockIn_ManagementForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CurrentStockDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
