@@ -95,7 +95,7 @@ namespace RangaHardwareStock
             PaymentStatusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             PaymentStatusLabel.AutoSize = true;
             PaymentStatusLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            PaymentStatusLabel.Location = new System.Drawing.Point(940, 396);
+            PaymentStatusLabel.Location = new System.Drawing.Point(913, 396);
             PaymentStatusLabel.Name = "PaymentStatusLabel";
             PaymentStatusLabel.Size = new System.Drawing.Size(145, 20);
             PaymentStatusLabel.TabIndex = 38;
@@ -139,11 +139,11 @@ namespace RangaHardwareStock
             SupplierLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             SupplierLabel.AutoSize = true;
             SupplierLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            SupplierLabel.Location = new System.Drawing.Point(447, 396);
+            SupplierLabel.Location = new System.Drawing.Point(467, 396);
             SupplierLabel.Name = "SupplierLabel";
-            SupplierLabel.Size = new System.Drawing.Size(173, 20);
+            SupplierLabel.Size = new System.Drawing.Size(88, 20);
             SupplierLabel.TabIndex = 44;
-            SupplierLabel.Text = "Supplier/Customer :";
+            SupplierLabel.Text = "Supplier :";
             // 
             // ResetButton
             // 
@@ -255,9 +255,9 @@ namespace RangaHardwareStock
             this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.comboBox1.DisplayMember = "Value";
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(1111, 394);
+            this.comboBox1.Location = new System.Drawing.Point(1082, 394);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(251, 24);
+            this.comboBox1.Size = new System.Drawing.Size(280, 24);
             this.comboBox1.TabIndex = 39;
             this.comboBox1.ValueMember = "LevelCode";
             // 
@@ -267,9 +267,9 @@ namespace RangaHardwareStock
             this.ItemNameComboBox.DataSource = this.itemBindingSource;
             this.ItemNameComboBox.DisplayMember = "Item_Name";
             this.ItemNameComboBox.FormattingEnabled = true;
-            this.ItemNameComboBox.Location = new System.Drawing.Point(149, 394);
+            this.ItemNameComboBox.Location = new System.Drawing.Point(139, 394);
             this.ItemNameComboBox.Name = "ItemNameComboBox";
-            this.ItemNameComboBox.Size = new System.Drawing.Size(251, 24);
+            this.ItemNameComboBox.Size = new System.Drawing.Size(280, 24);
             this.ItemNameComboBox.TabIndex = 37;
             this.ItemNameComboBox.ValueMember = "Item_ID";
             // 
@@ -293,9 +293,9 @@ namespace RangaHardwareStock
             // 
             this.SupplierComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.SupplierComboBox.FormattingEnabled = true;
-            this.SupplierComboBox.Location = new System.Drawing.Point(643, 394);
+            this.SupplierComboBox.Location = new System.Drawing.Point(581, 396);
             this.SupplierComboBox.Name = "SupplierComboBox";
-            this.SupplierComboBox.Size = new System.Drawing.Size(251, 24);
+            this.SupplierComboBox.Size = new System.Drawing.Size(280, 24);
             this.SupplierComboBox.TabIndex = 45;
             this.SupplierComboBox.ValueMember = "LevelCode";
             // 
