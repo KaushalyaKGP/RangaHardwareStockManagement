@@ -21,8 +21,8 @@ namespace RangaHardwareStock
         private void SetInitioalStage()
         {
             this.BatchIDComboBox.Text = "All";
-            //this.item_IDComboBox.Text = "All";
-            //this.supplier_NameComboBox.Text = "All";
+            this.ItemNameComboBox.Text = "All";
+            this.SupplierComboBox.Text = "All";
             //this.StockLevelComboBox.Text = "All";
 
 
@@ -32,8 +32,14 @@ namespace RangaHardwareStock
 
         private void StockIn_ManagementForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Customer' table. You can move, or remove it, as needed.
+            this.customerTableAdapter.Fill(this.ranga_hardwareDataSet.Customer);
+            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Item' table. You can move, or remove it, as needed.
+            this.itemTableAdapter.Fill(this.ranga_hardwareDataSet.Item);
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockInTable' table. You can move, or remove it, as needed.
             this.stockInTableTableAdapter.Fill(this.ranga_hardwareDataSet.StockInTable);
+            this.ActiveControl = this.SearchButton;
+            this.SetInitioalStage();
 
         }
 

@@ -53,6 +53,8 @@ namespace RangaHardwareStock
             this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
             this.stockInTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.stockInTableTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockInTableTableAdapter();
+            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.itemTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.ItemTableAdapter();
             DateInLabel = new System.Windows.Forms.Label();
             BatchIDLabel = new System.Windows.Forms.Label();
             PaymentStatusLabel = new System.Windows.Forms.Label();
@@ -63,6 +65,7 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.CurrentStockDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockInTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // DateInLabel
@@ -261,12 +264,14 @@ namespace RangaHardwareStock
             // ItemNameComboBox
             // 
             this.ItemNameComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ItemNameComboBox.DisplayMember = "Name";
+            this.ItemNameComboBox.DataSource = this.itemBindingSource;
+            this.ItemNameComboBox.DisplayMember = "Item_Name";
             this.ItemNameComboBox.FormattingEnabled = true;
             this.ItemNameComboBox.Location = new System.Drawing.Point(149, 394);
             this.ItemNameComboBox.Name = "ItemNameComboBox";
             this.ItemNameComboBox.Size = new System.Drawing.Size(251, 24);
             this.ItemNameComboBox.TabIndex = 37;
+            this.ItemNameComboBox.ValueMember = "Item_ID";
             // 
             // DateInFromDateTimePicker
             // 
@@ -287,7 +292,6 @@ namespace RangaHardwareStock
             // SupplierComboBox
             // 
             this.SupplierComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.SupplierComboBox.DisplayMember = "Value";
             this.SupplierComboBox.FormattingEnabled = true;
             this.SupplierComboBox.Location = new System.Drawing.Point(643, 394);
             this.SupplierComboBox.Name = "SupplierComboBox";
@@ -308,6 +312,15 @@ namespace RangaHardwareStock
             // stockInTableTableAdapter
             // 
             this.stockInTableTableAdapter.ClearBeforeFill = true;
+            // 
+            // itemBindingSource
+            // 
+            this.itemBindingSource.DataMember = "Item";
+            this.itemBindingSource.DataSource = this.ranga_hardwareDataSet;
+            // 
+            // itemTableAdapter
+            // 
+            this.itemTableAdapter.ClearBeforeFill = true;
             // 
             // StockIn_ManagementForm
             // 
@@ -344,6 +357,7 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.CurrentStockDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockInTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -367,5 +381,7 @@ namespace RangaHardwareStock
         private Ranga_hardwareDataSet ranga_hardwareDataSet;
         private System.Windows.Forms.BindingSource stockInTableBindingSource;
         private Ranga_hardwareDataSetTableAdapters.StockInTableTableAdapter stockInTableTableAdapter;
+        private System.Windows.Forms.BindingSource itemBindingSource;
+        private Ranga_hardwareDataSetTableAdapters.ItemTableAdapter itemTableAdapter;
     }
 }
