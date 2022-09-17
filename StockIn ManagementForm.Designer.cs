@@ -241,7 +241,6 @@ namespace RangaHardwareStock
             this.BatchIDComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.BatchIDComboBox.DataSource = this.stockInTableBindingSource;
             this.BatchIDComboBox.DisplayMember = "Stock_In_ID";
-            this.BatchIDComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BatchIDComboBox.FormattingEnabled = true;
             this.BatchIDComboBox.Location = new System.Drawing.Point(152, 283);
             this.BatchIDComboBox.Name = "BatchIDComboBox";
