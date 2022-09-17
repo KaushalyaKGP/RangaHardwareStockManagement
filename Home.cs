@@ -49,5 +49,12 @@ namespace RangaHardwareStock
         {
             this.CurrentStockButton.PerformClick();
         }
+
+        private void stockInManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StockIn_ManagementForm stockIn = new StockIn_ManagementForm();
+            this.Hide();
+            stockIn.Show();
+        }
     }
 }
