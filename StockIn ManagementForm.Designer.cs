@@ -176,7 +176,7 @@ namespace RangaHardwareStock
             this.BackButton.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BackButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BackButton.ForeColor = System.Drawing.Color.Black;
-            this.BackButton.Location = new System.Drawing.Point(1206, 831);
+            this.BackButton.Location = new System.Drawing.Point(1206, 819);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(156, 47);
             this.BackButton.TabIndex = 27;
@@ -336,6 +336,7 @@ namespace RangaHardwareStock
             this.Controls.Add(this.Titlelabel);
             this.Name = "StockIn_ManagementForm";
             this.Text = "Ranga Hardware Stock Management / Stock In Management";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StockIn_ManagementForm_FormClosed);
             this.Load += new System.EventHandler(this.StockIn_ManagementForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CurrentStockDataGridView)).EndInit();
