@@ -144,7 +144,7 @@ namespace RangaHardwareStock
             // 
             // ResetButton
             // 
-            this.ResetButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ResetButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ResetButton.BackColor = System.Drawing.Color.Maroon;
             this.ResetButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResetButton.ForeColor = System.Drawing.Color.White;
@@ -185,7 +185,7 @@ namespace RangaHardwareStock
             // 
             // SearchButton
             // 
-            this.SearchButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.SearchButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.SearchButton.BackColor = System.Drawing.Color.LightSeaGreen;
             this.SearchButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchButton.ForeColor = System.Drawing.Color.White;
@@ -212,7 +212,7 @@ namespace RangaHardwareStock
             // 
             // NewInboundOrderButton
             // 
-            this.NewInboundOrderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.NewInboundOrderButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.NewInboundOrderButton.BackColor = System.Drawing.Color.LightSeaGreen;
             this.NewInboundOrderButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NewInboundOrderButton.ForeColor = System.Drawing.Color.White;
@@ -225,7 +225,7 @@ namespace RangaHardwareStock
             // 
             // NewCustomerReturnButton
             // 
-            this.NewCustomerReturnButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.NewCustomerReturnButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.NewCustomerReturnButton.BackColor = System.Drawing.Color.LightSeaGreen;
             this.NewCustomerReturnButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NewCustomerReturnButton.ForeColor = System.Drawing.Color.White;
@@ -270,6 +270,7 @@ namespace RangaHardwareStock
             // 
             // DateInFromDateTimePicker
             // 
+            this.DateInFromDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.DateInFromDateTimePicker.Location = new System.Drawing.Point(234, 336);
             this.DateInFromDateTimePicker.Name = "DateInFromDateTimePicker";
             this.DateInFromDateTimePicker.Size = new System.Drawing.Size(200, 22);
@@ -277,6 +278,7 @@ namespace RangaHardwareStock
             // 
             // DateInToDateTimePicker
             // 
+            this.DateInToDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.DateInToDateTimePicker.Location = new System.Drawing.Point(554, 336);
             this.DateInToDateTimePicker.Name = "DateInToDateTimePicker";
             this.DateInToDateTimePicker.Size = new System.Drawing.Size(200, 22);
