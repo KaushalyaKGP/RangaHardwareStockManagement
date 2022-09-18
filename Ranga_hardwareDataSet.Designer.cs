@@ -68,6 +68,8 @@ namespace RangaHardwareStock {
         
         private SupplierDataTable tableSupplier;
         
+        private SupplierCustmerListDataTable tableSupplierCustmerList;
+        
         private global::System.Data.DataRelation relationFK_CustomerReturn_CustomerReturnReason;
         
         private global::System.Data.DataRelation relationFK_CustomerReturn_StockInTable;
@@ -211,6 +213,9 @@ namespace RangaHardwareStock {
                 }
                 if ((ds.Tables["Supplier"] != null)) {
                     base.Tables.Add(new SupplierDataTable(ds.Tables["Supplier"]));
+                }
+                if ((ds.Tables["SupplierCustmerList"] != null)) {
+                    base.Tables.Add(new SupplierCustmerListDataTable(ds.Tables["SupplierCustmerList"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -452,6 +457,16 @@ namespace RangaHardwareStock {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public SupplierCustmerListDataTable SupplierCustmerList {
+            get {
+                return this.tableSupplierCustmerList;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -582,6 +597,9 @@ namespace RangaHardwareStock {
                 }
                 if ((ds.Tables["Supplier"] != null)) {
                     base.Tables.Add(new SupplierDataTable(ds.Tables["Supplier"]));
+                }
+                if ((ds.Tables["SupplierCustmerList"] != null)) {
+                    base.Tables.Add(new SupplierCustmerListDataTable(ds.Tables["SupplierCustmerList"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -748,6 +766,12 @@ namespace RangaHardwareStock {
                     this.tableSupplier.InitVars();
                 }
             }
+            this.tableSupplierCustmerList = ((SupplierCustmerListDataTable)(base.Tables["SupplierCustmerList"]));
+            if ((initTable == true)) {
+                if ((this.tableSupplierCustmerList != null)) {
+                    this.tableSupplierCustmerList.InitVars();
+                }
+            }
             this.relationFK_CustomerReturn_CustomerReturnReason = this.Relations["FK_CustomerReturn_CustomerReturnReason"];
             this.relationFK_CustomerReturn_StockInTable = this.Relations["FK_CustomerReturn_StockInTable"];
             this.relationFK_CustomerReturnItems_CustomerReturn = this.Relations["FK_CustomerReturnItems_CustomerReturn"];
@@ -827,6 +851,8 @@ namespace RangaHardwareStock {
             base.Tables.Add(this.tableStockType);
             this.tableSupplier = new SupplierDataTable();
             base.Tables.Add(this.tableSupplier);
+            this.tableSupplierCustmerList = new SupplierCustmerListDataTable();
+            base.Tables.Add(this.tableSupplierCustmerList);
             this.relationFK_CustomerReturn_CustomerReturnReason = new global::System.Data.DataRelation("FK_CustomerReturn_CustomerReturnReason", new global::System.Data.DataColumn[] {
                         this.tableCustomerReturnReason.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableCustomerReturn.ReasonColumn}, false);
@@ -1063,6 +1089,12 @@ namespace RangaHardwareStock {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeSupplierCustmerList() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -1181,6 +1213,9 @@ namespace RangaHardwareStock {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void SupplierRowChangeEventHandler(object sender, SupplierRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void SupplierCustmerListRowChangeEventHandler(object sender, SupplierCustmerListRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -7829,6 +7864,271 @@ namespace RangaHardwareStock {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class SupplierCustmerListDataTable : global::System.Data.TypedTableBase<SupplierCustmerListRow> {
+            
+            private global::System.Data.DataColumn columnSupplier_or_Customer_ID;
+            
+            private global::System.Data.DataColumn columnName;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public SupplierCustmerListDataTable() {
+                this.TableName = "SupplierCustmerList";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal SupplierCustmerListDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected SupplierCustmerListDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Supplier_or_Customer_IDColumn {
+                get {
+                    return this.columnSupplier_or_Customer_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public SupplierCustmerListRow this[int index] {
+                get {
+                    return ((SupplierCustmerListRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event SupplierCustmerListRowChangeEventHandler SupplierCustmerListRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event SupplierCustmerListRowChangeEventHandler SupplierCustmerListRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event SupplierCustmerListRowChangeEventHandler SupplierCustmerListRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event SupplierCustmerListRowChangeEventHandler SupplierCustmerListRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddSupplierCustmerListRow(SupplierCustmerListRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public SupplierCustmerListRow AddSupplierCustmerListRow(string Supplier_or_Customer_ID, string Name) {
+                SupplierCustmerListRow rowSupplierCustmerListRow = ((SupplierCustmerListRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Supplier_or_Customer_ID,
+                        Name};
+                rowSupplierCustmerListRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSupplierCustmerListRow);
+                return rowSupplierCustmerListRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                SupplierCustmerListDataTable cln = ((SupplierCustmerListDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new SupplierCustmerListDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnSupplier_or_Customer_ID = base.Columns["Supplier_or_Customer_ID"];
+                this.columnName = base.Columns["Name"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnSupplier_or_Customer_ID = new global::System.Data.DataColumn("Supplier_or_Customer_ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSupplier_or_Customer_ID);
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
+                this.columnSupplier_or_Customer_ID.AllowDBNull = false;
+                this.columnSupplier_or_Customer_ID.MaxLength = 10;
+                this.columnName.AllowDBNull = false;
+                this.columnName.MaxLength = 50;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public SupplierCustmerListRow NewSupplierCustmerListRow() {
+                return ((SupplierCustmerListRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new SupplierCustmerListRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(SupplierCustmerListRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.SupplierCustmerListRowChanged != null)) {
+                    this.SupplierCustmerListRowChanged(this, new SupplierCustmerListRowChangeEvent(((SupplierCustmerListRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.SupplierCustmerListRowChanging != null)) {
+                    this.SupplierCustmerListRowChanging(this, new SupplierCustmerListRowChangeEvent(((SupplierCustmerListRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.SupplierCustmerListRowDeleted != null)) {
+                    this.SupplierCustmerListRowDeleted(this, new SupplierCustmerListRowChangeEvent(((SupplierCustmerListRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.SupplierCustmerListRowDeleting != null)) {
+                    this.SupplierCustmerListRowDeleting(this, new SupplierCustmerListRowChangeEvent(((SupplierCustmerListRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveSupplierCustmerListRow(SupplierCustmerListRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                Ranga_hardwareDataSet ds = new Ranga_hardwareDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "SupplierCustmerListDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class CustomerRow : global::System.Data.DataRow {
@@ -9935,6 +10235,43 @@ namespace RangaHardwareStock {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class SupplierCustmerListRow : global::System.Data.DataRow {
+            
+            private SupplierCustmerListDataTable tableSupplierCustmerList;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal SupplierCustmerListRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableSupplierCustmerList = ((SupplierCustmerListDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Supplier_or_Customer_ID {
+                get {
+                    return ((string)(this[this.tableSupplierCustmerList.Supplier_or_Customer_IDColumn]));
+                }
+                set {
+                    this[this.tableSupplierCustmerList.Supplier_or_Customer_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableSupplierCustmerList.NameColumn]));
+                }
+                set {
+                    this[this.tableSupplierCustmerList.NameColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -10668,6 +11005,40 @@ namespace RangaHardwareStock {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public SupplierRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class SupplierCustmerListRowChangeEvent : global::System.EventArgs {
+            
+            private SupplierCustmerListRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public SupplierCustmerListRowChangeEvent(SupplierCustmerListRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public SupplierCustmerListRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -18896,6 +19267,174 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class SupplierCustmerListTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public SupplierCustmerListTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "SupplierCustmerList";
+            tableMapping.ColumnMappings.Add("Supplier_or_Customer_ID", "Supplier_or_Customer_ID");
+            tableMapping.ColumnMappings.Add("Name", "Name");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::RangaHardwareStock.Properties.Settings.Default.Ranga_hardwareConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Supplier_or_Customer_ID, Name FROM dbo.SupplierCustmerList";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(Ranga_hardwareDataSet.SupplierCustmerListDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual Ranga_hardwareDataSet.SupplierCustmerListDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            Ranga_hardwareDataSet.SupplierCustmerListDataTable dataTable = new Ranga_hardwareDataSet.SupplierCustmerListDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -19471,6 +20010,15 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateUpdatedRows(Ranga_hardwareDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._stockTypeTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.StockType.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._stockTypeTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._stockOutTypeTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.StockOutType.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -19489,21 +20037,21 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._stockTypeTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.StockType.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._stockTypeTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._customerTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Customer.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._customerTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._customerReturnReasonTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.CustomerReturnReason.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._customerReturnReasonTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -19525,24 +20073,6 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._stockInTableTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.StockInTable.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._stockInTableTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._returnToSupplierReasonsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ReturnToSupplierReasons.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._returnToSupplierReasonsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._paymentStatusTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.PaymentStatus.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -19561,39 +20091,21 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._customerReturnReasonTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.CustomerReturnReason.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._returnToSupplierReasonsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ReturnToSupplierReasons.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._customerReturnReasonTableAdapter.Update(updatedRows));
+                    result = (result + this._returnToSupplierReasonsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._itemTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._stockInTableTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.StockInTable.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._itemTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._salesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Sales.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._salesTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._inboundOrderInTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.InboundOrderIn.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._inboundOrderInTableAdapter.Update(updatedRows));
+                    result = (result + this._stockInTableTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -19606,6 +20118,24 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._inboundOrderInTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.InboundOrderIn.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._inboundOrderInTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._itemTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._itemTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._returnToSupplierTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ReturnToSupplier.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -19615,12 +20145,12 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._loginTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Login.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._salesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Sales.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._loginTableAdapter.Update(updatedRows));
+                    result = (result + this._salesTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -19633,12 +20163,21 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._salesItemsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.SalesItems.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._lostDamageStockOutTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.LostDamageStockOut.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._salesItemsTableAdapter.Update(updatedRows));
+                    result = (result + this._lostDamageStockOutTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._loginTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Login.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._loginTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -19660,12 +20199,12 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._lostDamageStockOutTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.LostDamageStockOut.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._salesItemsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.SalesItems.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._lostDamageStockOutTableAdapter.Update(updatedRows));
+                    result = (result + this._salesItemsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -19679,6 +20218,14 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateInsertedRows(Ranga_hardwareDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._stockTypeTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.StockType.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._stockTypeTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._stockOutTypeTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.StockOutType.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -19695,19 +20242,19 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._stockTypeTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.StockType.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._stockTypeTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._customerTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Customer.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._customerTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._customerReturnReasonTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.CustomerReturnReason.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._customerReturnReasonTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -19727,22 +20274,6 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._stockInTableTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.StockInTable.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._stockInTableTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._returnToSupplierReasonsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ReturnToSupplierReasons.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._returnToSupplierReasonsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._paymentStatusTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.PaymentStatus.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -19759,35 +20290,19 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._customerReturnReasonTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.CustomerReturnReason.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._returnToSupplierReasonsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ReturnToSupplierReasons.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._customerReturnReasonTableAdapter.Update(addedRows));
+                    result = (result + this._returnToSupplierReasonsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._itemTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._stockInTableTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.StockInTable.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._itemTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._salesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Sales.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._salesTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._inboundOrderInTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.InboundOrderIn.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._inboundOrderInTableAdapter.Update(addedRows));
+                    result = (result + this._stockInTableTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -19799,6 +20314,22 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._inboundOrderInTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.InboundOrderIn.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._inboundOrderInTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._itemTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._itemTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._returnToSupplierTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ReturnToSupplier.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -19807,11 +20338,11 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._loginTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Login.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._salesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Sales.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._loginTableAdapter.Update(addedRows));
+                    result = (result + this._salesTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -19823,11 +20354,19 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._salesItemsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.SalesItems.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._lostDamageStockOutTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.LostDamageStockOut.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._salesItemsTableAdapter.Update(addedRows));
+                    result = (result + this._lostDamageStockOutTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._loginTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Login.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._loginTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -19847,11 +20386,11 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._lostDamageStockOutTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.LostDamageStockOut.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._salesItemsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.SalesItems.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._lostDamageStockOutTableAdapter.Update(addedRows));
+                    result = (result + this._salesItemsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -19865,11 +20404,11 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(Ranga_hardwareDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._lostDamageStockOutTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.LostDamageStockOut.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._salesItemsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.SalesItems.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._lostDamageStockOutTableAdapter.Update(deletedRows));
+                    result = (result + this._salesItemsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -19889,11 +20428,19 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._salesItemsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.SalesItems.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._loginTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Login.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._salesItemsTableAdapter.Update(deletedRows));
+                    result = (result + this._loginTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._lostDamageStockOutTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.LostDamageStockOut.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._lostDamageStockOutTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -19905,11 +20452,11 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._loginTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Login.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._salesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Sales.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._loginTableAdapter.Update(deletedRows));
+                    result = (result + this._salesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -19921,11 +20468,11 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._customerReturnTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.CustomerReturn.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._itemTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._customerReturnTableAdapter.Update(deletedRows));
+                    result = (result + this._itemTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -19937,27 +20484,27 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._salesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Sales.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._customerReturnTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.CustomerReturn.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._salesTableAdapter.Update(deletedRows));
+                    result = (result + this._customerReturnTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._itemTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._stockInTableTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.StockInTable.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._itemTableAdapter.Update(deletedRows));
+                    result = (result + this._stockInTableTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._customerReturnReasonTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.CustomerReturnReason.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._returnToSupplierReasonsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ReturnToSupplierReasons.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._customerReturnReasonTableAdapter.Update(deletedRows));
+                    result = (result + this._returnToSupplierReasonsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -19977,22 +20524,6 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._returnToSupplierReasonsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ReturnToSupplierReasons.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._returnToSupplierReasonsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._stockInTableTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.StockInTable.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._stockInTableTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._stockLevelTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.StockLevel.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -20009,19 +20540,19 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._customerReturnReasonTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.CustomerReturnReason.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._customerReturnReasonTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._customerTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Customer.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._customerTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._stockTypeTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.StockType.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._stockTypeTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -20038,6 +20569,14 @@ SELECT Supplier_ID, Name, Company, Address, [Contact No], Email_Address, Contact
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._stockOutTypeTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._stockTypeTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.StockType.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._stockTypeTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
