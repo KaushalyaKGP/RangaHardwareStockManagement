@@ -55,6 +55,8 @@ namespace RangaHardwareStock
             this.SupplierComboBox = new System.Windows.Forms.ComboBox();
             this.stockInTableTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockInTableTableAdapter();
             this.itemTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.ItemTableAdapter();
+            this.supplierCustmerListBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.supplierCustmerListTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.SupplierCustmerListTableAdapter();
             DateInLabel = new System.Windows.Forms.Label();
             BatchIDLabel = new System.Windows.Forms.Label();
             PaymentStatusLabel = new System.Windows.Forms.Label();
@@ -66,6 +68,7 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.stockInTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierCustmerListBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // DateInLabel
@@ -307,13 +310,14 @@ namespace RangaHardwareStock
             // SupplierComboBox
             // 
             this.SupplierComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.SupplierComboBox.DisplayMember = "LevelCode";
+            this.SupplierComboBox.DataSource = this.supplierCustmerListBindingSource;
+            this.SupplierComboBox.DisplayMember = "Name";
             this.SupplierComboBox.FormattingEnabled = true;
             this.SupplierComboBox.Location = new System.Drawing.Point(622, 396);
             this.SupplierComboBox.Name = "SupplierComboBox";
             this.SupplierComboBox.Size = new System.Drawing.Size(265, 24);
             this.SupplierComboBox.TabIndex = 45;
-            this.SupplierComboBox.ValueMember = "LevelCode";
+            this.SupplierComboBox.ValueMember = "Supplier_or_Customer_ID";
             // 
             // stockInTableTableAdapter
             // 
@@ -322,6 +326,15 @@ namespace RangaHardwareStock
             // itemTableAdapter
             // 
             this.itemTableAdapter.ClearBeforeFill = true;
+            // 
+            // supplierCustmerListBindingSource
+            // 
+            this.supplierCustmerListBindingSource.DataMember = "SupplierCustmerList";
+            this.supplierCustmerListBindingSource.DataSource = this.ranga_hardwareDataSet;
+            // 
+            // supplierCustmerListTableAdapter
+            // 
+            this.supplierCustmerListTableAdapter.ClearBeforeFill = true;
             // 
             // StockIn_ManagementForm
             // 
@@ -359,6 +372,7 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.stockInTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierCustmerListBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -384,5 +398,7 @@ namespace RangaHardwareStock
         private Ranga_hardwareDataSetTableAdapters.StockInTableTableAdapter stockInTableTableAdapter;
         private System.Windows.Forms.BindingSource itemBindingSource;
         private Ranga_hardwareDataSetTableAdapters.ItemTableAdapter itemTableAdapter;
+        private System.Windows.Forms.BindingSource supplierCustmerListBindingSource;
+        private Ranga_hardwareDataSetTableAdapters.SupplierCustmerListTableAdapter supplierCustmerListTableAdapter;
     }
 }

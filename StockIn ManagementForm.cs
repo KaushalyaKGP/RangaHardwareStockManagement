@@ -32,6 +32,8 @@ namespace RangaHardwareStock
 
         private void StockIn_ManagementForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.SupplierCustmerList' table. You can move, or remove it, as needed.
+            this.supplierCustmerListTableAdapter.Fill(this.ranga_hardwareDataSet.SupplierCustmerList);
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Customer' table. You can move, or remove it, as needed.
             this.customerTableAdapter.Fill(this.ranga_hardwareDataSet.Customer);
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Item' table. You can move, or remove it, as needed.
