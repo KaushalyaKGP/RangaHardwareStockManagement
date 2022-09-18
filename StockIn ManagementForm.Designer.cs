@@ -57,6 +57,8 @@ namespace RangaHardwareStock
             this.itemTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.ItemTableAdapter();
             this.supplierCustmerListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.supplierCustmerListTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.SupplierCustmerListTableAdapter();
+            this.paymentStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.paymentStatusTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.PaymentStatusTableAdapter();
             DateInLabel = new System.Windows.Forms.Label();
             BatchIDLabel = new System.Windows.Forms.Label();
             PaymentStatusLabel = new System.Windows.Forms.Label();
@@ -69,6 +71,7 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierCustmerListBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentStatusBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // DateInLabel
@@ -266,13 +269,14 @@ namespace RangaHardwareStock
             // comboBox1
             // 
             this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.comboBox1.DisplayMember = "Value";
+            this.comboBox1.DataSource = this.paymentStatusBindingSource;
+            this.comboBox1.DisplayMember = "Status";
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(1097, 394);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(265, 24);
             this.comboBox1.TabIndex = 39;
-            this.comboBox1.ValueMember = "LevelCode";
+            this.comboBox1.ValueMember = "Id";
             // 
             // ItemNameComboBox
             // 
@@ -336,6 +340,15 @@ namespace RangaHardwareStock
             // 
             this.supplierCustmerListTableAdapter.ClearBeforeFill = true;
             // 
+            // paymentStatusBindingSource
+            // 
+            this.paymentStatusBindingSource.DataMember = "PaymentStatus";
+            this.paymentStatusBindingSource.DataSource = this.ranga_hardwareDataSet;
+            // 
+            // paymentStatusTableAdapter
+            // 
+            this.paymentStatusTableAdapter.ClearBeforeFill = true;
+            // 
             // StockIn_ManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -373,6 +386,7 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierCustmerListBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentStatusBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,5 +414,7 @@ namespace RangaHardwareStock
         private Ranga_hardwareDataSetTableAdapters.ItemTableAdapter itemTableAdapter;
         private System.Windows.Forms.BindingSource supplierCustmerListBindingSource;
         private Ranga_hardwareDataSetTableAdapters.SupplierCustmerListTableAdapter supplierCustmerListTableAdapter;
+        private System.Windows.Forms.BindingSource paymentStatusBindingSource;
+        private Ranga_hardwareDataSetTableAdapters.PaymentStatusTableAdapter paymentStatusTableAdapter;
     }
 }
