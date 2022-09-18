@@ -41,6 +41,13 @@ namespace RangaHardwareStock
         }
         //.................................
 
+        //Back Button Click Event
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            StockIn_ManagementForm.ActiveForm.Close();
+        }
+        //--------------------------------------------
+
         private void StockIn_ManagementForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.PaymentStatus' table. You can move, or remove it, as needed.
