@@ -38,7 +38,7 @@ namespace RangaHardwareStock
             System.Windows.Forms.Label DateInToLabel;
             System.Windows.Forms.Label SupplierCustomerLabel;
             this.ResetButton = new System.Windows.Forms.Button();
-            this.CurrentStockDataGridView = new System.Windows.Forms.DataGridView();
+            this.StockInDataGridView = new System.Windows.Forms.DataGridView();
             this.BackButton = new System.Windows.Forms.Button();
             this.SearchButton = new System.Windows.Forms.Button();
             this.Titlelabel = new System.Windows.Forms.Label();
@@ -47,7 +47,7 @@ namespace RangaHardwareStock
             this.BatchIDComboBox = new System.Windows.Forms.ComboBox();
             this.stockInTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.PaymentStatusComboBox = new System.Windows.Forms.ComboBox();
             this.ItemNameComboBox = new System.Windows.Forms.ComboBox();
             this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DateInFromDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -66,7 +66,7 @@ namespace RangaHardwareStock
             DateInFromLabel = new System.Windows.Forms.Label();
             DateInToLabel = new System.Windows.Forms.Label();
             SupplierCustomerLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.CurrentStockDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StockInDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockInTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
@@ -164,20 +164,20 @@ namespace RangaHardwareStock
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = false;
             // 
-            // CurrentStockDataGridView
+            // StockInDataGridView
             // 
-            this.CurrentStockDataGridView.AllowUserToAddRows = false;
-            this.CurrentStockDataGridView.AllowUserToDeleteRows = false;
-            this.CurrentStockDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.CurrentStockDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.CurrentStockDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CurrentStockDataGridView.Location = new System.Drawing.Point(45, 524);
-            this.CurrentStockDataGridView.Name = "CurrentStockDataGridView";
-            this.CurrentStockDataGridView.ReadOnly = true;
-            this.CurrentStockDataGridView.RowHeadersWidth = 51;
-            this.CurrentStockDataGridView.RowTemplate.Height = 24;
-            this.CurrentStockDataGridView.Size = new System.Drawing.Size(1317, 277);
-            this.CurrentStockDataGridView.TabIndex = 28;
+            this.StockInDataGridView.AllowUserToAddRows = false;
+            this.StockInDataGridView.AllowUserToDeleteRows = false;
+            this.StockInDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.StockInDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.StockInDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.StockInDataGridView.Location = new System.Drawing.Point(45, 524);
+            this.StockInDataGridView.Name = "StockInDataGridView";
+            this.StockInDataGridView.ReadOnly = true;
+            this.StockInDataGridView.RowHeadersWidth = 51;
+            this.StockInDataGridView.RowTemplate.Height = 24;
+            this.StockInDataGridView.Size = new System.Drawing.Size(1317, 277);
+            this.StockInDataGridView.TabIndex = 28;
             // 
             // BackButton
             // 
@@ -204,6 +204,7 @@ namespace RangaHardwareStock
             this.SearchButton.TabIndex = 26;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = false;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // Titlelabel
             // 
@@ -266,17 +267,17 @@ namespace RangaHardwareStock
             this.ranga_hardwareDataSet.DataSetName = "Ranga_hardwareDataSet";
             this.ranga_hardwareDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // comboBox1
+            // PaymentStatusComboBox
             // 
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.comboBox1.DataSource = this.paymentStatusBindingSource;
-            this.comboBox1.DisplayMember = "Status";
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(1097, 394);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(265, 24);
-            this.comboBox1.TabIndex = 39;
-            this.comboBox1.ValueMember = "Id";
+            this.PaymentStatusComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.PaymentStatusComboBox.DataSource = this.paymentStatusBindingSource;
+            this.PaymentStatusComboBox.DisplayMember = "Status";
+            this.PaymentStatusComboBox.FormattingEnabled = true;
+            this.PaymentStatusComboBox.Location = new System.Drawing.Point(1097, 394);
+            this.PaymentStatusComboBox.Name = "PaymentStatusComboBox";
+            this.PaymentStatusComboBox.Size = new System.Drawing.Size(265, 24);
+            this.PaymentStatusComboBox.TabIndex = 39;
+            this.PaymentStatusComboBox.ValueMember = "Id";
             // 
             // ItemNameComboBox
             // 
@@ -363,7 +364,7 @@ namespace RangaHardwareStock
             this.Controls.Add(DateInFromLabel);
             this.Controls.Add(this.DateInFromDateTimePicker);
             this.Controls.Add(PaymentStatusLabel);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.PaymentStatusComboBox);
             this.Controls.Add(ItemNameLabel);
             this.Controls.Add(this.ItemNameComboBox);
             this.Controls.Add(DateInLabel);
@@ -372,7 +373,7 @@ namespace RangaHardwareStock
             this.Controls.Add(this.NewCustomerReturnButton);
             this.Controls.Add(this.NewInboundOrderButton);
             this.Controls.Add(this.ResetButton);
-            this.Controls.Add(this.CurrentStockDataGridView);
+            this.Controls.Add(this.StockInDataGridView);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.Titlelabel);
@@ -381,7 +382,7 @@ namespace RangaHardwareStock
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StockIn_ManagementForm_FormClosed);
             this.Load += new System.EventHandler(this.StockIn_ManagementForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.CurrentStockDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StockInDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockInTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
@@ -395,14 +396,14 @@ namespace RangaHardwareStock
         #endregion
 
         private System.Windows.Forms.Button ResetButton;
-        private System.Windows.Forms.DataGridView CurrentStockDataGridView;
+        private System.Windows.Forms.DataGridView StockInDataGridView;
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.Label Titlelabel;
         private System.Windows.Forms.Button NewInboundOrderButton;
         private System.Windows.Forms.Button NewCustomerReturnButton;
         private System.Windows.Forms.ComboBox BatchIDComboBox;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox PaymentStatusComboBox;
         private System.Windows.Forms.ComboBox ItemNameComboBox;
         private System.Windows.Forms.DateTimePicker DateInFromDateTimePicker;
         private System.Windows.Forms.DateTimePicker DateInToDateTimePicker;
