@@ -163,6 +163,7 @@ namespace RangaHardwareStock
             this.ResetButton.TabIndex = 29;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = false;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // StockInDataGridView
             // 

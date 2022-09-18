@@ -34,6 +34,13 @@ namespace RangaHardwareStock
         }
         //--------------------------------
 
+        //Reset Button Click Event 
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            this.SetInitioalStage();
+        }
+        //.................................
+
         private void StockIn_ManagementForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.PaymentStatus' table. You can move, or remove it, as needed.
@@ -78,5 +85,7 @@ ON PS.Id = IB.Payment_Status", con);
         {
 
         }
+
+        
     }
 }
