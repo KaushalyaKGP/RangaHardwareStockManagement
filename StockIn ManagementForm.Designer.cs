@@ -134,7 +134,7 @@ namespace RangaHardwareStock
             DateInToLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             DateInToLabel.AutoSize = true;
             DateInToLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            DateInToLabel.Location = new System.Drawing.Point(492, 337);
+            DateInToLabel.Location = new System.Drawing.Point(511, 337);
             DateInToLabel.Name = "DateInToLabel";
             DateInToLabel.Size = new System.Drawing.Size(39, 20);
             DateInToLabel.TabIndex = 43;
@@ -301,17 +301,20 @@ namespace RangaHardwareStock
             // DateInFromDateTimePicker
             // 
             this.DateInFromDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.DateInFromDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DateInFromDateTimePicker.Location = new System.Drawing.Point(234, 336);
             this.DateInFromDateTimePicker.Name = "DateInFromDateTimePicker";
-            this.DateInFromDateTimePicker.Size = new System.Drawing.Size(200, 22);
+            this.DateInFromDateTimePicker.Size = new System.Drawing.Size(223, 22);
             this.DateInFromDateTimePicker.TabIndex = 40;
+            this.DateInFromDateTimePicker.Value = new System.DateTime(2021, 1, 1, 0, 0, 0, 0);
             // 
             // DateInToDateTimePicker
             // 
             this.DateInToDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.DateInToDateTimePicker.Location = new System.Drawing.Point(554, 336);
+            this.DateInToDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DateInToDateTimePicker.Location = new System.Drawing.Point(573, 336);
             this.DateInToDateTimePicker.Name = "DateInToDateTimePicker";
-            this.DateInToDateTimePicker.Size = new System.Drawing.Size(200, 22);
+            this.DateInToDateTimePicker.Size = new System.Drawing.Size(238, 22);
             this.DateInToDateTimePicker.TabIndex = 42;
             // 
             // SupplierComboBox

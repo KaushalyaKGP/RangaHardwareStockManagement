@@ -28,6 +28,7 @@ namespace RangaHardwareStock
             this.ItemNameComboBox.Text = "All";
             this.SupplierComboBox.Text = "All";
             this.PaymentStatusComboBox.Text = "All";
+            this.DateInFromDateTimePicker.Value = Convert.ToDateTime("1/1/2020");
 
 
             StockInDataGridView.DataSource = dt;
@@ -83,16 +84,18 @@ ON PS.Id = IB.Payment_Status", con);
 
         }
 
+
         private void StockIn_ManagementForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             HomeForm.showForm();
         }
 
+        //Search Optiont working when search button click
         private void SearchButton_Click(object sender, EventArgs e)
         {
 
         }
-
+        //------------------------------------------------------------------------
         
     }
 }
