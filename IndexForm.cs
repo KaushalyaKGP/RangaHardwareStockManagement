@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace RangaHardwareStock
 {
+    
     public partial class IndexForm : Form
     {
         public IndexForm()
@@ -28,7 +29,9 @@ namespace RangaHardwareStock
         {
             this.Hide();
             CurrentStockManagementForm currentStock = new CurrentStockManagementForm();
+            
             currentStock.Show();
+            
         }
 
         private void LoginButton_Click(object sender, EventArgs e)

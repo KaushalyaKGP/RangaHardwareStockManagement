@@ -25,7 +25,14 @@ namespace RangaHardwareStock
 
         private void CurrentStockManagementForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            HomeForm.showForm();
+            if(Globles.loginIndex == true)
+            {
+                HomeForm.showForm();
+            }
+            else
+            {
+                IndexForm.showForm();
+            }
         }
 
         
@@ -61,10 +68,7 @@ ORDER BY i.Item_Name", con);
 
         }
 
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            CurrentStockManagementForm.ActiveForm.Close();
-        }
+        
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
@@ -167,5 +171,11 @@ ORDER BY i.Item_Name", con);
             }
         }
 
+        
+
+        private void BackButton_Click_1(object sender, EventArgs e)
+        {
+                CurrentStockManagementForm.ActiveForm.Close();
         }
+    }
 }

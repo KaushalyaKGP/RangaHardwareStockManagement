@@ -29,12 +29,14 @@ namespace RangaHardwareStock
 
         private void HomeForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Globles.loginIndex = false;
             IndexForm.showForm();
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
+            Globles.loginIndex = false;
             IndexForm.showForm();
         }
 

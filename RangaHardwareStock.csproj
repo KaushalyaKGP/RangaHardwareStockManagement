@@ -69,6 +69,7 @@
     <Compile Include="CurrentStockManagement.Designer.cs">
       <DependentUpon>CurrentStockManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Globles.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
