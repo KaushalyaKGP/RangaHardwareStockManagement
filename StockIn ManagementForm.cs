@@ -25,9 +25,11 @@ namespace RangaHardwareStock
         private void SetInitioalStage()
         {
             this.BatchIDComboBox.Text = "All";
+            this.TypeComboBox.Text = "All";
             this.ItemNameComboBox.Text = "All";
             this.SupplierComboBox.Text = "All";
             this.PaymentStatusComboBox.Text = "All";
+            this.PaymentStatusComboBox.Enabled = false;
             this.DateInFromDateTimePicker.Value = Convert.ToDateTime("1/1/2020");
 
 
@@ -51,6 +53,8 @@ namespace RangaHardwareStock
 
         private void StockIn_ManagementForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockInType' table. You can move, or remove it, as needed.
+            this.stockInTypeTableAdapter.Fill(this.ranga_hardwareDataSet.StockInType);
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.PaymentStatus' table. You can move, or remove it, as needed.
             this.paymentStatusTableAdapter.Fill(this.ranga_hardwareDataSet.PaymentStatus);
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.SupplierCustmerList' table. You can move, or remove it, as needed.
@@ -84,7 +88,15 @@ ON PS.Id = IB.Payment_Status", con);
 
         }
 
-
+        //Enable / desable payment stutus option based on type
+        private void TypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.TypeComboBox.Text == "Inbound Order")
+            { this.PaymentStatusComboBox.Enabled = true; }
+            else
+            { this.PaymentStatusComboBox.Enabled = false; }
+        }
+        //--------------------------------------------------------
         private void StockIn_ManagementForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             HomeForm.showForm();
@@ -95,7 +107,9 @@ ON PS.Id = IB.Payment_Status", con);
         {
 
         }
-        //------------------------------------------------------------------------
+
         
+        //------------------------------------------------------------------------
+
     }
 }
