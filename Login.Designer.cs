@@ -46,7 +46,7 @@ namespace RangaHardwareStock
             this.UsernameTextBox.Size = new System.Drawing.Size(475, 34);
             this.UsernameTextBox.TabIndex = 2;
             this.UsernameTextBox.Tag = "";
-            this.UsernameTextBox.Text = "Username";
+            this.UsernameTextBox.Text = "Admin";
             this.UsernameTextBox.Enter += new System.EventHandler(this.UsernameTextBox_Enter);
             this.UsernameTextBox.Leave += new System.EventHandler(this.UsernameTextBox_Leave);
             // 
@@ -74,7 +74,7 @@ namespace RangaHardwareStock
             this.passwordTextBox.Size = new System.Drawing.Size(475, 34);
             this.passwordTextBox.TabIndex = 5;
             this.passwordTextBox.Tag = "";
-            this.passwordTextBox.Text = "Password";
+            this.passwordTextBox.Text = "admin";
             this.passwordTextBox.Enter += new System.EventHandler(this.passwordTextBox_Enter);
             this.passwordTextBox.Leave += new System.EventHandler(this.passwordTextBox_Leave);
             // 

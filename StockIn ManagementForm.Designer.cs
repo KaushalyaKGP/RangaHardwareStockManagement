@@ -33,7 +33,6 @@ namespace RangaHardwareStock
             System.Windows.Forms.Label DateInLabel;
             System.Windows.Forms.Label BatchIDLabel;
             System.Windows.Forms.Label PaymentStatusLabel;
-            System.Windows.Forms.Label ItemNameLabel;
             System.Windows.Forms.Label DateInFromLabel;
             System.Windows.Forms.Label DateInToLabel;
             System.Windows.Forms.Label SupplierCustomerLabel;
@@ -50,14 +49,11 @@ namespace RangaHardwareStock
             this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
             this.PaymentStatusComboBox = new System.Windows.Forms.ComboBox();
             this.paymentStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ItemNameComboBox = new System.Windows.Forms.ComboBox();
-            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DateInFromDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.DateInToDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.SupplierComboBox = new System.Windows.Forms.ComboBox();
             this.supplierCustmerListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.stockInTableTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockInTableTableAdapter();
-            this.itemTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.ItemTableAdapter();
             this.supplierCustmerListTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.SupplierCustmerListTableAdapter();
             this.paymentStatusTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.PaymentStatusTableAdapter();
             this.TypeComboBox = new System.Windows.Forms.ComboBox();
@@ -66,7 +62,6 @@ namespace RangaHardwareStock
             DateInLabel = new System.Windows.Forms.Label();
             BatchIDLabel = new System.Windows.Forms.Label();
             PaymentStatusLabel = new System.Windows.Forms.Label();
-            ItemNameLabel = new System.Windows.Forms.Label();
             DateInFromLabel = new System.Windows.Forms.Label();
             DateInToLabel = new System.Windows.Forms.Label();
             SupplierCustomerLabel = new System.Windows.Forms.Label();
@@ -75,7 +70,6 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.stockInTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymentStatusBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierCustmerListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockInTypeBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -107,22 +101,11 @@ namespace RangaHardwareStock
             PaymentStatusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             PaymentStatusLabel.AutoSize = true;
             PaymentStatusLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            PaymentStatusLabel.Location = new System.Drawing.Point(927, 396);
+            PaymentStatusLabel.Location = new System.Drawing.Point(558, 393);
             PaymentStatusLabel.Name = "PaymentStatusLabel";
             PaymentStatusLabel.Size = new System.Drawing.Size(145, 20);
             PaymentStatusLabel.TabIndex = 38;
             PaymentStatusLabel.Text = "Payment Status :";
-            // 
-            // ItemNameLabel
-            // 
-            ItemNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            ItemNameLabel.AutoSize = true;
-            ItemNameLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            ItemNameLabel.Location = new System.Drawing.Point(52, 396);
-            ItemNameLabel.Name = "ItemNameLabel";
-            ItemNameLabel.Size = new System.Drawing.Size(54, 20);
-            ItemNameLabel.TabIndex = 36;
-            ItemNameLabel.Text = "Item :";
             // 
             // DateInFromLabel
             // 
@@ -151,11 +134,22 @@ namespace RangaHardwareStock
             SupplierCustomerLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             SupplierCustomerLabel.AutoSize = true;
             SupplierCustomerLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            SupplierCustomerLabel.Location = new System.Drawing.Point(428, 396);
+            SupplierCustomerLabel.Location = new System.Drawing.Point(52, 393);
             SupplierCustomerLabel.Name = "SupplierCustomerLabel";
             SupplierCustomerLabel.Size = new System.Drawing.Size(173, 20);
             SupplierCustomerLabel.TabIndex = 44;
             SupplierCustomerLabel.Text = "Supplier/Customer :";
+            // 
+            // TypeLabel
+            // 
+            TypeLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            TypeLabel.AutoSize = true;
+            TypeLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            TypeLabel.Location = new System.Drawing.Point(492, 283);
+            TypeLabel.Name = "TypeLabel";
+            TypeLabel.Size = new System.Drawing.Size(59, 20);
+            TypeLabel.TabIndex = 46;
+            TypeLabel.Text = "Type :";
             // 
             // ResetButton
             // 
@@ -281,7 +275,7 @@ namespace RangaHardwareStock
             this.PaymentStatusComboBox.DataSource = this.paymentStatusBindingSource;
             this.PaymentStatusComboBox.DisplayMember = "Status";
             this.PaymentStatusComboBox.FormattingEnabled = true;
-            this.PaymentStatusComboBox.Location = new System.Drawing.Point(1097, 394);
+            this.PaymentStatusComboBox.Location = new System.Drawing.Point(728, 391);
             this.PaymentStatusComboBox.Name = "PaymentStatusComboBox";
             this.PaymentStatusComboBox.Size = new System.Drawing.Size(265, 24);
             this.PaymentStatusComboBox.TabIndex = 39;
@@ -292,23 +286,6 @@ namespace RangaHardwareStock
             this.paymentStatusBindingSource.DataMember = "PaymentStatus";
             this.paymentStatusBindingSource.DataSource = this.ranga_hardwareDataSet;
             // 
-            // ItemNameComboBox
-            // 
-            this.ItemNameComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ItemNameComboBox.DataSource = this.itemBindingSource;
-            this.ItemNameComboBox.DisplayMember = "Item_Name";
-            this.ItemNameComboBox.FormattingEnabled = true;
-            this.ItemNameComboBox.Location = new System.Drawing.Point(127, 394);
-            this.ItemNameComboBox.Name = "ItemNameComboBox";
-            this.ItemNameComboBox.Size = new System.Drawing.Size(265, 24);
-            this.ItemNameComboBox.TabIndex = 37;
-            this.ItemNameComboBox.ValueMember = "Item_ID";
-            // 
-            // itemBindingSource
-            // 
-            this.itemBindingSource.DataMember = "Item";
-            this.itemBindingSource.DataSource = this.ranga_hardwareDataSet;
-            // 
             // DateInFromDateTimePicker
             // 
             this.DateInFromDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -317,7 +294,7 @@ namespace RangaHardwareStock
             this.DateInFromDateTimePicker.Name = "DateInFromDateTimePicker";
             this.DateInFromDateTimePicker.Size = new System.Drawing.Size(223, 22);
             this.DateInFromDateTimePicker.TabIndex = 40;
-            this.DateInFromDateTimePicker.Value = new System.DateTime(2021, 1, 1, 0, 0, 0, 0);
+            this.DateInFromDateTimePicker.Value = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
             // 
             // DateInToDateTimePicker
             // 
@@ -334,7 +311,7 @@ namespace RangaHardwareStock
             this.SupplierComboBox.DataSource = this.supplierCustmerListBindingSource;
             this.SupplierComboBox.DisplayMember = "Name";
             this.SupplierComboBox.FormattingEnabled = true;
-            this.SupplierComboBox.Location = new System.Drawing.Point(622, 396);
+            this.SupplierComboBox.Location = new System.Drawing.Point(253, 393);
             this.SupplierComboBox.Name = "SupplierComboBox";
             this.SupplierComboBox.Size = new System.Drawing.Size(265, 24);
             this.SupplierComboBox.TabIndex = 45;
@@ -349,10 +326,6 @@ namespace RangaHardwareStock
             // 
             this.stockInTableTableAdapter.ClearBeforeFill = true;
             // 
-            // itemTableAdapter
-            // 
-            this.itemTableAdapter.ClearBeforeFill = true;
-            // 
             // supplierCustmerListTableAdapter
             // 
             this.supplierCustmerListTableAdapter.ClearBeforeFill = true;
@@ -360,17 +333,6 @@ namespace RangaHardwareStock
             // paymentStatusTableAdapter
             // 
             this.paymentStatusTableAdapter.ClearBeforeFill = true;
-            // 
-            // TypeLabel
-            // 
-            TypeLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            TypeLabel.AutoSize = true;
-            TypeLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            TypeLabel.Location = new System.Drawing.Point(492, 283);
-            TypeLabel.Name = "TypeLabel";
-            TypeLabel.Size = new System.Drawing.Size(59, 20);
-            TypeLabel.TabIndex = 46;
-            TypeLabel.Text = "Type :";
             // 
             // TypeComboBox
             // 
@@ -411,8 +373,6 @@ namespace RangaHardwareStock
             this.Controls.Add(this.DateInFromDateTimePicker);
             this.Controls.Add(PaymentStatusLabel);
             this.Controls.Add(this.PaymentStatusComboBox);
-            this.Controls.Add(ItemNameLabel);
-            this.Controls.Add(this.ItemNameComboBox);
             this.Controls.Add(DateInLabel);
             this.Controls.Add(BatchIDLabel);
             this.Controls.Add(this.BatchIDComboBox);
@@ -432,7 +392,6 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.stockInTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymentStatusBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierCustmerListBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockInTypeBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -451,15 +410,12 @@ namespace RangaHardwareStock
         private System.Windows.Forms.Button NewCustomerReturnButton;
         private System.Windows.Forms.ComboBox BatchIDComboBox;
         private System.Windows.Forms.ComboBox PaymentStatusComboBox;
-        private System.Windows.Forms.ComboBox ItemNameComboBox;
         private System.Windows.Forms.DateTimePicker DateInFromDateTimePicker;
         private System.Windows.Forms.DateTimePicker DateInToDateTimePicker;
         private System.Windows.Forms.ComboBox SupplierComboBox;
         private Ranga_hardwareDataSet ranga_hardwareDataSet;
         private System.Windows.Forms.BindingSource stockInTableBindingSource;
         private Ranga_hardwareDataSetTableAdapters.StockInTableTableAdapter stockInTableTableAdapter;
-        private System.Windows.Forms.BindingSource itemBindingSource;
-        private Ranga_hardwareDataSetTableAdapters.ItemTableAdapter itemTableAdapter;
         private System.Windows.Forms.BindingSource supplierCustmerListBindingSource;
         private Ranga_hardwareDataSetTableAdapters.SupplierCustmerListTableAdapter supplierCustmerListTableAdapter;
         private System.Windows.Forms.BindingSource paymentStatusBindingSource;
