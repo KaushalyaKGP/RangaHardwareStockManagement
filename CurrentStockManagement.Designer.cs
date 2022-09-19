@@ -49,7 +49,7 @@ namespace RangaHardwareStock
             this.StockLevelComboBox = new System.Windows.Forms.ComboBox();
             this.stockLevelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.stockLevelTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockLevelTableAdapter();
-            this.BackButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             item_IDLabel = new System.Windows.Forms.Label();
             item_NameLabel = new System.Windows.Forms.Label();
             supplier_NameLabel = new System.Windows.Forms.Label();
@@ -239,19 +239,19 @@ namespace RangaHardwareStock
             // 
             this.stockLevelTableAdapter.ClearBeforeFill = true;
             // 
-            // BackButton
+            // backButton
             // 
-            this.BackButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.BackButton.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.BackButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackButton.ForeColor = System.Drawing.Color.Black;
-            this.BackButton.Location = new System.Drawing.Point(1144, 835);
-            this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(156, 47);
-            this.BackButton.TabIndex = 28;
-            this.BackButton.Text = "Back";
-            this.BackButton.UseVisualStyleBackColor = false;
-            this.BackButton.Click += new System.EventHandler(this.BackButton_Click_1);
+            this.backButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.backButton.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.backButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backButton.ForeColor = System.Drawing.Color.White;
+            this.backButton.Location = new System.Drawing.Point(1144, 831);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(156, 47);
+            this.backButton.TabIndex = 21;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // CurrentStockManagementForm
             // 
@@ -260,7 +260,7 @@ namespace RangaHardwareStock
             this.BackgroundImage = global::RangaHardwareStock.Properties.Resources.hardware_tools_isolated_on_white_background_E9HYP9_1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1347, 904);
-            this.Controls.Add(this.BackButton);
+            this.Controls.Add(this.backButton);
             this.Controls.Add(StockLevelLabel);
             this.Controls.Add(this.StockLevelComboBox);
             this.Controls.Add(this.ResetButton);
@@ -308,6 +308,6 @@ namespace RangaHardwareStock
         private System.Windows.Forms.ComboBox StockLevelComboBox;
         private System.Windows.Forms.BindingSource stockLevelBindingSource;
         private Ranga_hardwareDataSetTableAdapters.StockLevelTableAdapter stockLevelTableAdapter;
-        private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.Button backButton;
     }
 }

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace RangaHardwareStock
 {
 
@@ -25,13 +26,13 @@ namespace RangaHardwareStock
 
         private void CurrentStockManagementForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if(Globles.loginIndex == true)
+            if(Globles.loginIndex == false)
             {
-                HomeForm.showForm();
+                IndexForm.showForm();
             }
             else
             {
-                IndexForm.showForm();
+                HomeForm.showForm();
             }
         }
 
@@ -171,11 +172,9 @@ ORDER BY i.Item_Name", con);
             }
         }
 
-        
-
-        private void BackButton_Click_1(object sender, EventArgs e)
+        private void backButton_Click(object sender, EventArgs e)
         {
-                CurrentStockManagementForm.ActiveForm.Close();
+            CurrentStockManagementForm.ActiveForm.Close();
         }
     }
 }

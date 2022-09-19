@@ -94,9 +94,10 @@ namespace RangaHardwareStock
             sda.Fill(dt);
             if(dt.Rows.Count==1)
             {
+                Globles.loginIndex = true;
                 this.Hide();
                 HomeForm home = new HomeForm();
-                Globles.loginIndex = true;
+                
                 home.ShowDialog();
                
             }

@@ -35,9 +35,7 @@ namespace RangaHardwareStock
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Globles.loginIndex = false;
-            IndexForm.showForm();
+            HomeForm.ActiveForm.Close();
         }
 
         private void CurrentStockButton_Click(object sender, EventArgs e)

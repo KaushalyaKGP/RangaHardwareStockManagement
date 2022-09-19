@@ -8,6 +8,6 @@ namespace RangaHardwareStock
 {
     public static class Globles
     {
-        public static bool loginIndex = false;
+        public static Boolean loginIndex = false;
     }
 }
