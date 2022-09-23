@@ -93,13 +93,22 @@ namespace RangaHardwareStock
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if(dt.Rows.Count==1)
-            {
-                Globles.loginIndex = true;
-                this.Hide();
-                HomeForm home = new HomeForm();
-                
-                home.ShowDialog();
-               
+            {   
+                if((dt.Rows[0].Field<string>("Username")==this.UsernameTextBox.Text) && (dt.Rows[0].Field<string>("Password") == this.passwordTextBox.Text))
+                {
+                    Globles.loginIndex = true;
+                    this.Hide();
+                    HomeForm home = new HomeForm();
+
+                    home.ShowDialog();
+                }
+
+                else
+                {
+                    MessageBox.Show("Check Spellings !", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                }
+
+
             }
             else
             {
