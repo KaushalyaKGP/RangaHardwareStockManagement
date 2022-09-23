@@ -60,6 +60,7 @@ namespace RangaHardwareStock
             {
                 currentPasswordTextBox.Text = "Current Password";
                 currentPasswordTextBox.ForeColor = Color.DarkGray;
+                currentPasswordTextBox.UseSystemPasswordChar = false;
             }
         }
 
@@ -79,6 +80,7 @@ namespace RangaHardwareStock
             {
                 newPasswordTextBox1.Text = "New Password";
                 newPasswordTextBox1.ForeColor = Color.DarkGray;
+                newPasswordTextBox1.UseSystemPasswordChar = false;
             }
         }
 
@@ -98,6 +100,7 @@ namespace RangaHardwareStock
             {
                 newPasswordTextBox2.Text = "Re Enter New Password";
                 newPasswordTextBox2.ForeColor = Color.DarkGray;
+                newPasswordTextBox2.UseSystemPasswordChar = false;
             }
         }
 
