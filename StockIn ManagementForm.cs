@@ -52,6 +52,14 @@ namespace RangaHardwareStock
 
         private void StockIn_ManagementForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.PaymentStatus' table. You can move, or remove it, as needed.
+            this.paymentStatusTableAdapter.Fill(this.ranga_hardwareDataSet.PaymentStatus);
+            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.SupplierCustmerList' table. You can move, or remove it, as needed.
+            this.supplierCustmerListTableAdapter.Fill(this.ranga_hardwareDataSet.SupplierCustmerList);
+            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockInType' table. You can move, or remove it, as needed.
+            this.stockInTypeTableAdapter.Fill(this.ranga_hardwareDataSet.StockInType);
+            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockInTable' table. You can move, or remove it, as needed.
+            this.stockInTableTableAdapter.Fill(this.ranga_hardwareDataSet.StockInTable);
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockInType' table. You can move, or remove it, as needed.
             this.stockInTypeTableAdapter.Fill(this.ranga_hardwareDataSet.StockInType);
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.PaymentStatus' table. You can move, or remove it, as needed.
@@ -469,8 +477,18 @@ ON PS.Id = IB.Payment_Status", con);
             StockInDataGridView.DataSource = dtSearch;
         }
 
-
         //------------------------------------------------------------------------
 
+        //direct to stock in form
+        private void NewInboundOrderButton_Click(object sender, EventArgs e)
+        {
+            InboundOrderIn inboundOrder = new InboundOrderIn();
+            inboundOrder.Show();
+        }
+
+        private void NewCustomerReturnButton_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
         }

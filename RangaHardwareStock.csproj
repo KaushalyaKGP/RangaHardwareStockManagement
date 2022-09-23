@@ -76,6 +76,12 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="InboundOrderIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InboundOrderIn.Designer.cs">
+      <DependentUpon>InboundOrderIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="IndexForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InboundOrderIn.resx">
+      <DependentUpon>InboundOrderIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IndexForm.resx">
       <DependentUpon>IndexForm.cs</DependentUpon>
