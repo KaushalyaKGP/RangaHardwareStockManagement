@@ -13,6 +13,17 @@ namespace RangaHardwareStock
 {
     public partial class StockIn_ManagementForm : Form
     {
+        private static StockIn_ManagementForm _stockIn_ManagementForm = new StockIn_ManagementForm();
+
+        public static void ShowForm()
+        {
+            _stockIn_ManagementForm.Show();
+        }
+        public static void HideForm()
+        {
+            _stockIn_ManagementForm.Hide();
+        }
+
         SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\3rd Year Project\DEVELOPMENT PROJECT  - software\RangaHardwareStock\Ranga hardware.mdf; Integrated Security = True");
         DataTable dt = new DataTable();
 
@@ -483,6 +494,7 @@ ON PS.Id = IB.Payment_Status", con);
         private void NewInboundOrderButton_Click(object sender, EventArgs e)
         {
             InboundOrderIn inboundOrder = new InboundOrderIn();
+            this.Hide();
             inboundOrder.Show();
         }
 
