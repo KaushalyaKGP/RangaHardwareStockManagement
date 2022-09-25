@@ -50,7 +50,6 @@ namespace RangaHardwareStock
             this.AddItemButton = new System.Windows.Forms.Button();
             this.AddNewInboundOrderButton = new System.Windows.Forms.Button();
             this.TotalCostTextBox = new System.Windows.Forms.TextBox();
-            this.PaidAmountTextBox = new System.Windows.Forms.TextBox();
             this.PendingPaymentsTextBox = new System.Windows.Forms.TextBox();
             this.BatchIDTextBox = new System.Windows.Forms.TextBox();
             this.AmountNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -60,6 +59,7 @@ namespace RangaHardwareStock
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit_Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total_Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PeidAmountNumericUpDown = new System.Windows.Forms.NumericUpDown();
             SupplierCustomerLabel = new System.Windows.Forms.Label();
             DateInLabel = new System.Windows.Forms.Label();
             BatchIDLabel = new System.Windows.Forms.Label();
@@ -75,6 +75,7 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitCostNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PeidAmountNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // SupplierCustomerLabel
@@ -297,14 +298,6 @@ namespace RangaHardwareStock
             this.TotalCostTextBox.Size = new System.Drawing.Size(226, 22);
             this.TotalCostTextBox.TabIndex = 73;
             // 
-            // PaidAmountTextBox
-            // 
-            this.PaidAmountTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.PaidAmountTextBox.Location = new System.Drawing.Point(650, 746);
-            this.PaidAmountTextBox.Name = "PaidAmountTextBox";
-            this.PaidAmountTextBox.Size = new System.Drawing.Size(226, 22);
-            this.PaidAmountTextBox.TabIndex = 75;
-            // 
             // PendingPaymentsTextBox
             // 
             this.PendingPaymentsTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -368,6 +361,15 @@ namespace RangaHardwareStock
             this.Total_Cost.Name = "Total_Cost";
             this.Total_Cost.ReadOnly = true;
             // 
+            // PeidAmountNumericUpDown
+            // 
+            this.PeidAmountNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.PeidAmountNumericUpDown.DecimalPlaces = 2;
+            this.PeidAmountNumericUpDown.Location = new System.Drawing.Point(638, 746);
+            this.PeidAmountNumericUpDown.Name = "PeidAmountNumericUpDown";
+            this.PeidAmountNumericUpDown.Size = new System.Drawing.Size(248, 22);
+            this.PeidAmountNumericUpDown.TabIndex = 81;
+            // 
             // InboundOrderIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -375,12 +377,12 @@ namespace RangaHardwareStock
             this.BackgroundImage = global::RangaHardwareStock.Properties.Resources.hardware_tools_isolated_on_white_background_E9HYP9_1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1404, 904);
+            this.Controls.Add(this.PeidAmountNumericUpDown);
             this.Controls.Add(this.UnitCostNumericUpDown);
             this.Controls.Add(this.AmountNumericUpDown);
             this.Controls.Add(this.BatchIDTextBox);
             this.Controls.Add(this.PendingPaymentsTextBox);
             this.Controls.Add(PendingPaymentsLabel);
-            this.Controls.Add(this.PaidAmountTextBox);
             this.Controls.Add(PaidAmountLabel);
             this.Controls.Add(this.TotalCostTextBox);
             this.Controls.Add(TotalCostLabel);
@@ -409,6 +411,7 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitCostNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PeidAmountNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -425,7 +428,6 @@ namespace RangaHardwareStock
         private System.Windows.Forms.Button AddItemButton;
         private System.Windows.Forms.Button AddNewInboundOrderButton;
         private System.Windows.Forms.TextBox TotalCostTextBox;
-        private System.Windows.Forms.TextBox PaidAmountTextBox;
         private System.Windows.Forms.TextBox PendingPaymentsTextBox;
         private Ranga_hardwareDataSet ranga_hardwareDataSet;
         private System.Windows.Forms.TextBox BatchIDTextBox;
@@ -437,5 +439,6 @@ namespace RangaHardwareStock
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit_Cost;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total_Cost;
+        private System.Windows.Forms.NumericUpDown PeidAmountNumericUpDown;
     }
 }
