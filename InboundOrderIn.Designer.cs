@@ -45,10 +45,12 @@ namespace RangaHardwareStock
             this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
             this.DateInDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.InboundOrderItemsDataGridView = new System.Windows.Forms.DataGridView();
+            this.Item_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit_Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total_Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemNameComboBox = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.AmountTextBox = new System.Windows.Forms.TextBox();
-            this.UnitCostTextBox = new System.Windows.Forms.TextBox();
             this.AddItemButton = new System.Windows.Forms.Button();
             this.AddNewInboundOrderButton = new System.Windows.Forms.Button();
             this.TotalCostTextBox = new System.Windows.Forms.TextBox();
@@ -56,11 +58,8 @@ namespace RangaHardwareStock
             this.PendingPaymentsTextBox = new System.Windows.Forms.TextBox();
             this.supplierTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.SupplierTableAdapter();
             this.BatchIDTextBox = new System.Windows.Forms.TextBox();
-            this.Stock_In_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit_Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total_Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AmountNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.UnitCostNumericUpDown = new System.Windows.Forms.NumericUpDown();
             SupplierCustomerLabel = new System.Windows.Forms.Label();
             DateInLabel = new System.Windows.Forms.Label();
             BatchIDLabel = new System.Windows.Forms.Label();
@@ -74,6 +73,8 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InboundOrderItemsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AmountNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UnitCostNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // SupplierCustomerLabel
@@ -229,7 +230,6 @@ namespace RangaHardwareStock
             this.InboundOrderItemsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.InboundOrderItemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.InboundOrderItemsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Stock_In_Id,
             this.Item_ID,
             this.amount,
             this.unit_Cost,
@@ -240,6 +240,31 @@ namespace RangaHardwareStock
             this.InboundOrderItemsDataGridView.RowTemplate.Height = 24;
             this.InboundOrderItemsDataGridView.Size = new System.Drawing.Size(1316, 332);
             this.InboundOrderItemsDataGridView.TabIndex = 62;
+            // 
+            // Item_ID
+            // 
+            this.Item_ID.HeaderText = "Item_ID";
+            this.Item_ID.MinimumWidth = 6;
+            this.Item_ID.Name = "Item_ID";
+            // 
+            // amount
+            // 
+            this.amount.HeaderText = "amount";
+            this.amount.MinimumWidth = 6;
+            this.amount.Name = "amount";
+            // 
+            // unit_Cost
+            // 
+            this.unit_Cost.HeaderText = "unit_Cost";
+            this.unit_Cost.MinimumWidth = 6;
+            this.unit_Cost.Name = "unit_Cost";
+            // 
+            // Total_Cost
+            // 
+            this.Total_Cost.HeaderText = "Total_Cost";
+            this.Total_Cost.MinimumWidth = 6;
+            this.Total_Cost.Name = "Total_Cost";
+            this.Total_Cost.ReadOnly = true;
             // 
             // ItemNameComboBox
             // 
@@ -261,22 +286,6 @@ namespace RangaHardwareStock
             this.pictureBox1.TabIndex = 65;
             this.pictureBox1.TabStop = false;
             // 
-            // AmountTextBox
-            // 
-            this.AmountTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.AmountTextBox.Location = new System.Drawing.Point(603, 315);
-            this.AmountTextBox.Name = "AmountTextBox";
-            this.AmountTextBox.Size = new System.Drawing.Size(100, 22);
-            this.AmountTextBox.TabIndex = 67;
-            // 
-            // UnitCostTextBox
-            // 
-            this.UnitCostTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.UnitCostTextBox.Location = new System.Drawing.Point(898, 315);
-            this.UnitCostTextBox.Name = "UnitCostTextBox";
-            this.UnitCostTextBox.Size = new System.Drawing.Size(263, 22);
-            this.UnitCostTextBox.TabIndex = 69;
-            // 
             // AddItemButton
             // 
             this.AddItemButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -289,6 +298,7 @@ namespace RangaHardwareStock
             this.AddItemButton.TabIndex = 70;
             this.AddItemButton.Text = "Add Item";
             this.AddItemButton.UseVisualStyleBackColor = false;
+            this.AddItemButton.Click += new System.EventHandler(this.AddItemButton_Click);
             // 
             // AddNewInboundOrderButton
             // 
@@ -296,7 +306,7 @@ namespace RangaHardwareStock
             this.AddNewInboundOrderButton.BackColor = System.Drawing.Color.LightSeaGreen;
             this.AddNewInboundOrderButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddNewInboundOrderButton.ForeColor = System.Drawing.Color.White;
-            this.AddNewInboundOrderButton.Location = new System.Drawing.Point(1031, 802);
+            this.AddNewInboundOrderButton.Location = new System.Drawing.Point(1031, 798);
             this.AddNewInboundOrderButton.Name = "AddNewInboundOrderButton";
             this.AddNewInboundOrderButton.Size = new System.Drawing.Size(330, 47);
             this.AddNewInboundOrderButton.TabIndex = 71;
@@ -340,38 +350,20 @@ namespace RangaHardwareStock
             this.BatchIDTextBox.Size = new System.Drawing.Size(115, 22);
             this.BatchIDTextBox.TabIndex = 78;
             // 
-            // Stock_In_Id
+            // AmountNumericUpDown
             // 
-            this.Stock_In_Id.HeaderText = "Stock_In_Id";
-            this.Stock_In_Id.MinimumWidth = 6;
-            this.Stock_In_Id.Name = "Stock_In_Id";
-            this.Stock_In_Id.ReadOnly = true;
-            this.Stock_In_Id.Visible = false;
+            this.AmountNumericUpDown.Location = new System.Drawing.Point(608, 314);
+            this.AmountNumericUpDown.Name = "AmountNumericUpDown";
+            this.AmountNumericUpDown.Size = new System.Drawing.Size(120, 22);
+            this.AmountNumericUpDown.TabIndex = 79;
             // 
-            // Item_ID
+            // UnitCostNumericUpDown
             // 
-            this.Item_ID.HeaderText = "Item_ID";
-            this.Item_ID.MinimumWidth = 6;
-            this.Item_ID.Name = "Item_ID";
-            // 
-            // amount
-            // 
-            this.amount.HeaderText = "amount";
-            this.amount.MinimumWidth = 6;
-            this.amount.Name = "amount";
-            // 
-            // unit_Cost
-            // 
-            this.unit_Cost.HeaderText = "unit_Cost";
-            this.unit_Cost.MinimumWidth = 6;
-            this.unit_Cost.Name = "unit_Cost";
-            // 
-            // Total_Cost
-            // 
-            this.Total_Cost.HeaderText = "Total_Cost";
-            this.Total_Cost.MinimumWidth = 6;
-            this.Total_Cost.Name = "Total_Cost";
-            this.Total_Cost.ReadOnly = true;
+            this.UnitCostNumericUpDown.DecimalPlaces = 2;
+            this.UnitCostNumericUpDown.Location = new System.Drawing.Point(913, 315);
+            this.UnitCostNumericUpDown.Name = "UnitCostNumericUpDown";
+            this.UnitCostNumericUpDown.Size = new System.Drawing.Size(248, 22);
+            this.UnitCostNumericUpDown.TabIndex = 80;
             // 
             // InboundOrderIn
             // 
@@ -380,6 +372,8 @@ namespace RangaHardwareStock
             this.BackgroundImage = global::RangaHardwareStock.Properties.Resources.hardware_tools_isolated_on_white_background_E9HYP9_1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1404, 904);
+            this.Controls.Add(this.UnitCostNumericUpDown);
+            this.Controls.Add(this.AmountNumericUpDown);
             this.Controls.Add(this.BatchIDTextBox);
             this.Controls.Add(this.PendingPaymentsTextBox);
             this.Controls.Add(PendingPaymentsLabel);
@@ -389,9 +383,7 @@ namespace RangaHardwareStock
             this.Controls.Add(TotalCostLabel);
             this.Controls.Add(this.AddNewInboundOrderButton);
             this.Controls.Add(this.AddItemButton);
-            this.Controls.Add(this.UnitCostTextBox);
             this.Controls.Add(UnitCostLabel);
-            this.Controls.Add(this.AmountTextBox);
             this.Controls.Add(AmountLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(ItemNameLabel);
@@ -405,12 +397,15 @@ namespace RangaHardwareStock
             this.Controls.Add(this.Titlelabel);
             this.Name = "InboundOrderIn";
             this.Text = "Ranga Hardware Stock Management / Stock In Management / New Inbound Order In";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InboundOrderIn_FormClosing);
             this.Load += new System.EventHandler(this.InboundOrderIn_Load);
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InboundOrderItemsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AmountNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UnitCostNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -424,8 +419,6 @@ namespace RangaHardwareStock
         private System.Windows.Forms.DataGridView InboundOrderItemsDataGridView;
         private System.Windows.Forms.ComboBox ItemNameComboBox;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox AmountTextBox;
-        private System.Windows.Forms.TextBox UnitCostTextBox;
         private System.Windows.Forms.Button AddItemButton;
         private System.Windows.Forms.Button AddNewInboundOrderButton;
         private System.Windows.Forms.TextBox TotalCostTextBox;
@@ -435,10 +428,11 @@ namespace RangaHardwareStock
         private System.Windows.Forms.BindingSource supplierBindingSource;
         private Ranga_hardwareDataSetTableAdapters.SupplierTableAdapter supplierTableAdapter;
         private System.Windows.Forms.TextBox BatchIDTextBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stock_In_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit_Cost;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total_Cost;
+        private System.Windows.Forms.NumericUpDown AmountNumericUpDown;
+        private System.Windows.Forms.NumericUpDown UnitCostNumericUpDown;
     }
 }

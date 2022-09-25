@@ -123,7 +123,7 @@ namespace RangaHardwareStock
                     //Update New Password
                     con.Open();
                     SqlCommand com = new SqlCommand(@"UPDATE Login SET Password = '"+newPasswordTextBox1.Text+"' WHERE Username = '"+UsernameTextBox.Text+"'", con);
-                    //sda2.Update(con)
+                    
                     com.ExecuteNonQuery();
                     con.Close();
                     MessageBox.Show("Password Updated", this.Text, MessageBoxButtons.OK,MessageBoxIcon.Information);

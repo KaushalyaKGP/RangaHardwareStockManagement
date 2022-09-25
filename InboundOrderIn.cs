@@ -15,6 +15,9 @@ namespace RangaHardwareStock
     {
         SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\3rd Year Project\DEVELOPMENT PROJECT  - software\RangaHardwareStock\Ranga hardware.mdf; Integrated Security = True");
 
+        //data of items
+        DataTable items = new DataTable();
+        //------------
         public InboundOrderIn()
         {
             InitializeComponent();
@@ -33,9 +36,10 @@ namespace RangaHardwareStock
             this.BatchIDTextBox.Text = dt.Rows[0][0].ToString();
             //--------------------
             //View Item List Based on Selected Supplier
-            //SetItemList();
+            SetItemList();
             //--------------------------
 
+            
 
 
 
@@ -72,6 +76,13 @@ WHERE Supplier_ID = "+this.SupplierComboBox.SelectedValue +"", con);
         private void InboundOrderIn_FormClosing(object sender, FormClosingEventArgs e)
         {
             StockIn_ManagementForm.ShowForm();
+        }
+
+        private void AddItemButton_Click(object sender, EventArgs e)
+        {
+            int total_Cost = (int.Parse(this.UnitCostTextBox.Text))*(int.Parse(this.AmountTextBox.Text));
+            this.InboundOrderItemsDataGridView.Rows.Add(this.ItemNameComboBox.Text, this.AmountTextBox.Text, this.UnitCostTextBox.Text, total_Cost);
+            
         }
     }
 }
