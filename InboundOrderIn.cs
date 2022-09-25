@@ -25,7 +25,9 @@ namespace RangaHardwareStock
 
         private void InboundOrderIn_Load(object sender, EventArgs e)
         {
-            
+            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Supplier' table. You can move, or remove it, as needed.
+            this.supplierTableAdapter.Fill(this.ranga_hardwareDataSet.Supplier);
+
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Supplier' table. You can move, or remove it, as needed.
             this.supplierTableAdapter.Fill(this.ranga_hardwareDataSet.Supplier);
 
@@ -80,8 +82,8 @@ WHERE Supplier_ID = "+this.SupplierComboBox.SelectedValue +"", con);
 
         private void AddItemButton_Click(object sender, EventArgs e)
         {
-            int total_Cost = (int.Parse(this.UnitCostTextBox.Text))*(int.Parse(this.AmountTextBox.Text));
-            this.InboundOrderItemsDataGridView.Rows.Add(this.ItemNameComboBox.Text, this.AmountTextBox.Text, this.UnitCostTextBox.Text, total_Cost);
+            float total_Cost = (float.Parse(this.UnitCostNumericUpDown.Text))*(float.Parse(this.AmountNumericUpDown.Text));
+            this.InboundOrderItemsDataGridView.Rows.Add(this.ItemNameComboBox.Text, this.AmountNumericUpDown.Text, this.UnitCostNumericUpDown.Text, total_Cost.ToString("0.00"));
             
         }
     }
