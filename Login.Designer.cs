@@ -46,7 +46,7 @@ namespace RangaHardwareStock
             this.UsernameTextBox.Size = new System.Drawing.Size(475, 34);
             this.UsernameTextBox.TabIndex = 2;
             this.UsernameTextBox.Tag = "";
-            this.UsernameTextBox.Text = "Admin";
+            this.UsernameTextBox.Text = "admin";
             this.UsernameTextBox.Enter += new System.EventHandler(this.UsernameTextBox_Enter);
             this.UsernameTextBox.Leave += new System.EventHandler(this.UsernameTextBox_Leave);
             // 

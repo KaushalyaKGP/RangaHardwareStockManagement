@@ -45,6 +45,10 @@ namespace RangaHardwareStock
             this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
             this.DateInDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.InboundOrderItemsDataGridView = new System.Windows.Forms.DataGridView();
+            this.Item_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit_Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total_Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemNameComboBox = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.AddItemButton = new System.Windows.Forms.Button();
@@ -55,10 +59,6 @@ namespace RangaHardwareStock
             this.AmountNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.UnitCostNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.supplierTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.SupplierTableAdapter();
-            this.Item_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit_Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total_Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PeidAmountNumericUpDown = new System.Windows.Forms.NumericUpDown();
             SupplierCustomerLabel = new System.Windows.Forms.Label();
             DateInLabel = new System.Windows.Forms.Label();
@@ -237,10 +237,39 @@ namespace RangaHardwareStock
             this.Total_Cost});
             this.InboundOrderItemsDataGridView.Location = new System.Drawing.Point(45, 377);
             this.InboundOrderItemsDataGridView.Name = "InboundOrderItemsDataGridView";
+            this.InboundOrderItemsDataGridView.ReadOnly = true;
             this.InboundOrderItemsDataGridView.RowHeadersWidth = 51;
             this.InboundOrderItemsDataGridView.RowTemplate.Height = 24;
             this.InboundOrderItemsDataGridView.Size = new System.Drawing.Size(1316, 332);
             this.InboundOrderItemsDataGridView.TabIndex = 62;
+            // 
+            // Item_ID
+            // 
+            this.Item_ID.HeaderText = "Item";
+            this.Item_ID.MinimumWidth = 6;
+            this.Item_ID.Name = "Item_ID";
+            this.Item_ID.ReadOnly = true;
+            // 
+            // amount
+            // 
+            this.amount.HeaderText = "amount";
+            this.amount.MinimumWidth = 6;
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
+            // 
+            // unit_Cost
+            // 
+            this.unit_Cost.HeaderText = "unit_Cost";
+            this.unit_Cost.MinimumWidth = 6;
+            this.unit_Cost.Name = "unit_Cost";
+            this.unit_Cost.ReadOnly = true;
+            // 
+            // Total_Cost
+            // 
+            this.Total_Cost.HeaderText = "Total_Cost";
+            this.Total_Cost.MinimumWidth = 6;
+            this.Total_Cost.Name = "Total_Cost";
+            this.Total_Cost.ReadOnly = true;
             // 
             // ItemNameComboBox
             // 
@@ -289,12 +318,14 @@ namespace RangaHardwareStock
             this.AddNewInboundOrderButton.TabIndex = 71;
             this.AddNewInboundOrderButton.Text = "Save New Inbound Order";
             this.AddNewInboundOrderButton.UseVisualStyleBackColor = false;
+            this.AddNewInboundOrderButton.Click += new System.EventHandler(this.AddNewInboundOrderButton_Click);
             // 
             // TotalCostTextBox
             // 
             this.TotalCostTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.TotalCostTextBox.Location = new System.Drawing.Point(179, 746);
             this.TotalCostTextBox.Name = "TotalCostTextBox";
+            this.TotalCostTextBox.ReadOnly = true;
             this.TotalCostTextBox.Size = new System.Drawing.Size(226, 22);
             this.TotalCostTextBox.TabIndex = 73;
             // 
@@ -303,6 +334,7 @@ namespace RangaHardwareStock
             this.PendingPaymentsTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.PendingPaymentsTextBox.Location = new System.Drawing.Point(1135, 746);
             this.PendingPaymentsTextBox.Name = "PendingPaymentsTextBox";
+            this.PendingPaymentsTextBox.ReadOnly = true;
             this.PendingPaymentsTextBox.Size = new System.Drawing.Size(226, 22);
             this.PendingPaymentsTextBox.TabIndex = 77;
             // 
@@ -336,39 +368,20 @@ namespace RangaHardwareStock
             // 
             this.supplierTableAdapter.ClearBeforeFill = true;
             // 
-            // Item_ID
-            // 
-            this.Item_ID.HeaderText = "Item";
-            this.Item_ID.MinimumWidth = 6;
-            this.Item_ID.Name = "Item_ID";
-            // 
-            // amount
-            // 
-            this.amount.HeaderText = "amount";
-            this.amount.MinimumWidth = 6;
-            this.amount.Name = "amount";
-            // 
-            // unit_Cost
-            // 
-            this.unit_Cost.HeaderText = "unit_Cost";
-            this.unit_Cost.MinimumWidth = 6;
-            this.unit_Cost.Name = "unit_Cost";
-            // 
-            // Total_Cost
-            // 
-            this.Total_Cost.HeaderText = "Total_Cost";
-            this.Total_Cost.MinimumWidth = 6;
-            this.Total_Cost.Name = "Total_Cost";
-            this.Total_Cost.ReadOnly = true;
-            // 
             // PeidAmountNumericUpDown
             // 
             this.PeidAmountNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.PeidAmountNumericUpDown.DecimalPlaces = 2;
             this.PeidAmountNumericUpDown.Location = new System.Drawing.Point(638, 746);
+            this.PeidAmountNumericUpDown.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
             this.PeidAmountNumericUpDown.Name = "PeidAmountNumericUpDown";
             this.PeidAmountNumericUpDown.Size = new System.Drawing.Size(248, 22);
             this.PeidAmountNumericUpDown.TabIndex = 81;
+            this.PeidAmountNumericUpDown.ValueChanged += new System.EventHandler(this.PeidAmountNumericUpDown_ValueChanged);
             // 
             // InboundOrderIn
             // 

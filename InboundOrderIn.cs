@@ -13,6 +13,9 @@ namespace RangaHardwareStock
 {
     public partial class InboundOrderIn : Form
     {
+
+        float TotalCost = 0;
+        float pendingPaynemts;
         SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\3rd Year Project\DEVELOPMENT PROJECT  - software\RangaHardwareStock\Ranga hardware.mdf; Integrated Security = True");
 
         //data of items
@@ -82,8 +85,51 @@ WHERE Supplier_ID = "+this.SupplierComboBox.SelectedValue +"", con);
 
         private void AddItemButton_Click(object sender, EventArgs e)
         {
-            float total_Cost = (float.Parse(this.UnitCostNumericUpDown.Text))*(float.Parse(this.AmountNumericUpDown.Text));
-            this.InboundOrderItemsDataGridView.Rows.Add(this.ItemNameComboBox.Text, this.AmountNumericUpDown.Text, this.UnitCostNumericUpDown.Text, total_Cost.ToString("0.00"));
+            float total_Item_Cost = (float.Parse(this.UnitCostNumericUpDown.Text))*(float.Parse(this.AmountNumericUpDown.Text));
+            this.InboundOrderItemsDataGridView.Rows.Add(this.ItemNameComboBox.Text, this.AmountNumericUpDown.Text, this.UnitCostNumericUpDown.Text, total_Item_Cost.ToString("0.00"));
+            TotalCost += total_Item_Cost;
+            TotalCostTextBox.Text = TotalCost.ToString("0.00");
+            pendingPaynemts = TotalCost - (float)this.PeidAmountNumericUpDown.Value;
+            PendingPaymentsTextBox.Text = pendingPaynemts.ToString("0.00");
+        }
+
+        private void PeidAmountNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if((float)PeidAmountNumericUpDown.Value > TotalCost)
+            {
+                MessageBox.Show("Invalid Paid Amount", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                PeidAmountNumericUpDown.Value = 0;
+            }
+            else
+            {
+                pendingPaynemts = TotalCost - (float)this.PeidAmountNumericUpDown.Value;
+                PendingPaymentsTextBox.Text = pendingPaynemts.ToString("0.00");
+            }
+            
+        }
+
+        private void AddNewInboundOrderButton_Click(object sender, EventArgs e)
+        {
+            //set payment status
+            int paymrntStatus;
+            if (TotalCost == 0)
+            {
+                pendingPaynemts = 3;
+            }
+            else if ((pendingPaynemts == 0) && (TotalCost != 0))
+            {
+                paymrntStatus = 0;
+            }
+            else if((pendingPaynemts == TotalCost) && (TotalCost != 0))
+            {
+                paymrntStatus = 1;
+            }
+            else if (pendingPaynemts < TotalCost)
+            {
+                paymrntStatus = 2;
+            }
+            
+            
             
         }
     }
