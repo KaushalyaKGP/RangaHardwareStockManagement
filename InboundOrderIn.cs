@@ -46,6 +46,8 @@ namespace RangaHardwareStock
 
             
 
+            
+
 
 
         }
@@ -85,12 +87,54 @@ WHERE Supplier_ID = "+this.SupplierComboBox.SelectedValue +"", con);
 
         private void AddItemButton_Click(object sender, EventArgs e)
         {
-            float total_Item_Cost = (float.Parse(this.UnitCostNumericUpDown.Text))*(float.Parse(this.AmountNumericUpDown.Text));
-            this.InboundOrderItemsDataGridView.Rows.Add(this.ItemNameComboBox.Text, this.AmountNumericUpDown.Text, this.UnitCostNumericUpDown.Text, total_Item_Cost.ToString("0.00"));
-            TotalCost += total_Item_Cost;
-            TotalCostTextBox.Text = TotalCost.ToString("0.00");
-            pendingPaynemts = TotalCost - (float)this.PeidAmountNumericUpDown.Value;
-            PendingPaymentsTextBox.Text = pendingPaynemts.ToString("0.00");
+            //Validate same item repitition
+            int repeat = -1;
+           
+            if(InboundOrderItemsDataGridView.Rows.Count>0)
+            {
+                string searchItem = this.ItemNameComboBox.Text;
+                
+                foreach (DataGridViewRow row in InboundOrderItemsDataGridView.Rows)
+                {
+                    if (row.Cells[0].Value != null)
+                    {
+
+                        if (row.Cells[0].Value.ToString().Equals(searchItem))
+                        {
+                            MessageBox.Show("Same Item Repeating !");
+                            repeat = 1;
+                        }
+
+                    }
+                }
+                    
+            }
+            
+           
+            
+            
+            //validate amount is>0
+            if((AmountNumericUpDown.Value>0)&&(repeat==-1))
+            {
+                float total_Item_Cost = (float.Parse(this.UnitCostNumericUpDown.Text)) * (float.Parse(this.AmountNumericUpDown.Text));
+                this.InboundOrderItemsDataGridView.Rows.Add(this.ItemNameComboBox.Text, this.AmountNumericUpDown.Text, this.UnitCostNumericUpDown.Text, total_Item_Cost.ToString("0.00"));
+                TotalCost += total_Item_Cost;
+                TotalCostTextBox.Text = TotalCost.ToString("0.00");
+                pendingPaynemts = TotalCost - (float)this.PeidAmountNumericUpDown.Value;
+                PendingPaymentsTextBox.Text = pendingPaynemts.ToString("0.00");
+
+                //clear add item data input options
+                this.ItemNameComboBox.SelectedIndex = 0;
+                this.AmountNumericUpDown.Value = 0;
+                this.UnitCostNumericUpDown.Value = 0;
+                //-------------
+            }
+
+            else if((AmountNumericUpDown.Value >= 0) && (repeat == -1))
+            {
+                MessageBox.Show("Please Enter Amount");
+            }
+
         }
 
         private void PeidAmountNumericUpDown_ValueChanged(object sender, EventArgs e)
@@ -110,11 +154,12 @@ WHERE Supplier_ID = "+this.SupplierComboBox.SelectedValue +"", con);
 
         private void AddNewInboundOrderButton_Click(object sender, EventArgs e)
         {
+            
             //set payment status
-            int paymrntStatus;
+            int paymrntStatus = 4;
             if (TotalCost == 0)
             {
-                pendingPaynemts = 3;
+                paymrntStatus = 3;
             }
             else if ((pendingPaynemts == 0) && (TotalCost != 0))
             {
@@ -128,6 +173,8 @@ WHERE Supplier_ID = "+this.SupplierComboBox.SelectedValue +"", con);
             {
                 paymrntStatus = 2;
             }
+            //---------------------------------------------------------------
+            
             
             
             

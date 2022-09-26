@@ -351,6 +351,11 @@ namespace RangaHardwareStock
             // 
             this.AmountNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.AmountNumericUpDown.Location = new System.Drawing.Point(608, 315);
+            this.AmountNumericUpDown.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.AmountNumericUpDown.Name = "AmountNumericUpDown";
             this.AmountNumericUpDown.Size = new System.Drawing.Size(120, 22);
             this.AmountNumericUpDown.TabIndex = 79;
@@ -360,6 +365,11 @@ namespace RangaHardwareStock
             this.UnitCostNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.UnitCostNumericUpDown.DecimalPlaces = 2;
             this.UnitCostNumericUpDown.Location = new System.Drawing.Point(913, 315);
+            this.UnitCostNumericUpDown.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
             this.UnitCostNumericUpDown.Name = "UnitCostNumericUpDown";
             this.UnitCostNumericUpDown.Size = new System.Drawing.Size(248, 22);
             this.UnitCostNumericUpDown.TabIndex = 80;
