@@ -17,6 +17,7 @@ namespace RangaHardwareStock
 
         public static void ShowForm()
         {
+            _stockIn_ManagementForm.SetInitioalStage();
             _stockIn_ManagementForm.Show();
         }
         public static void HideForm()
@@ -41,8 +42,25 @@ namespace RangaHardwareStock
             this.PaymentStatusComboBox.Text = "All";
             this.PaymentStatusComboBox.Enabled = false;
             this.DateInFromDateTimePicker.Value = Convert.ToDateTime("1/1/2020");
-
-
+            //Fill data grid
+            dt.Rows.Clear();
+            SqlDataAdapter sda = new SqlDataAdapter(@"SELECT SI.Stock_In_ID,ST.Type,SI.In_Date AS Stock_In_Date,S.Name AS Supplier_Name, C.Name AS Customer_Name ,PS.Status AS Payment_Status 
+FROM StockInTable SI
+LEFT JOIN InboundOrderIn IB
+ON SI.Stock_In_ID = IB.Stock_In_Id
+LEFT JOIN StockInType ST
+ON SI.Type = ST.Id
+LEFT JOIN Supplier S
+ON IB.Supplier_ID = S.Supplier_ID
+LEFT JOIN CustomerReturn CR
+ON CR.Stock_In_ID = SI.Stock_In_ID
+LEFT JOIN Sales SL
+ON SL.Stock_Out_Id = CR.Stock_Out_ID
+LEFT JOIN Customer C
+ON C.Customer_ID = SL.Customer_ID
+LEFT JOIN PaymentStatus PS
+ON PS.Id = IB.Payment_Status", con);
+            sda.Fill(dt);
             StockInDataGridView.DataSource = dt;
         }
         //--------------------------------
@@ -81,26 +99,6 @@ namespace RangaHardwareStock
             this.stockInTableTableAdapter.Fill(this.ranga_hardwareDataSet.StockInTable);
             this.ActiveControl = this.SearchButton;
 
-            //Fill data grid
-            SqlDataAdapter sda = new SqlDataAdapter(@"SELECT SI.Stock_In_ID,ST.Type,SI.In_Date AS Stock_In_Date,S.Name AS Supplier_Name, C.Name AS Customer_Name ,PS.Status AS Payment_Status 
-FROM StockInTable SI
-LEFT JOIN InboundOrderIn IB
-ON SI.Stock_In_ID = IB.Stock_In_Id
-LEFT JOIN StockInType ST
-ON SI.Type = ST.Id
-LEFT JOIN Supplier S
-ON IB.Supplier_ID = S.Supplier_ID
-LEFT JOIN CustomerReturn CR
-ON CR.Stock_In_ID = SI.Stock_In_ID
-LEFT JOIN Sales SL
-ON SL.Stock_Out_Id = CR.Stock_Out_ID
-LEFT JOIN Customer C
-ON C.Customer_ID = SL.Customer_ID
-LEFT JOIN PaymentStatus PS
-ON PS.Id = IB.Payment_Status", con);
-            sda.Fill(dt);
-
-            this.SetInitioalStage();
 
         }
 

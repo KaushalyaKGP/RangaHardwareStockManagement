@@ -19,8 +19,9 @@ namespace RangaHardwareStock
         SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\3rd Year Project\DEVELOPMENT PROJECT  - software\RangaHardwareStock\Ranga hardware.mdf; Integrated Security = True");
 
         //data of items
-        DataTable items = new DataTable();
+        DataTable InboundOrderInItems = new DataTable();
         //------------
+        
         public InboundOrderIn()
         {
             InitializeComponent();
@@ -44,9 +45,18 @@ namespace RangaHardwareStock
             SetItemList();
             //--------------------------
 
-            
+            //set items table
+            InboundOrderInItems.Clear();
+            InboundOrderInItems.Columns.Add("Stock_In_Id", typeof(int));
+            InboundOrderInItems.Columns.Add("Item_ID", typeof(int));
+            InboundOrderInItems.Columns.Add("amount", typeof(int));
+            InboundOrderInItems.Columns.Add("unit_Cost", typeof(float));
+            InboundOrderInItems.Columns.Add("Total_Cost", typeof(float));
+            //-------------------
 
-            
+            //set date today
+            this.DateInDateTimePicker.Value = DateTime.Today;
+            //--------------
 
 
 
@@ -123,14 +133,21 @@ WHERE Supplier_ID = "+this.SupplierComboBox.SelectedValue +"", con);
                 pendingPaynemts = TotalCost - (float)this.PeidAmountNumericUpDown.Value;
                 PendingPaymentsTextBox.Text = pendingPaynemts.ToString("0.00");
 
+                //Add data to table
+                InboundOrderInItems.Rows.Add(new object[] { int.Parse(BatchIDTextBox.Text), ItemNameComboBox.SelectedValue, AmountNumericUpDown.Value, (float)UnitCostNumericUpDown.Value, total_Item_Cost });
+                
+                //---------------------------
+
                 //clear add item data input options
                 this.ItemNameComboBox.SelectedIndex = 0;
                 this.AmountNumericUpDown.Value = 0;
                 this.UnitCostNumericUpDown.Value = 0;
                 //-------------
+
+                
             }
 
-            else if((AmountNumericUpDown.Value >= 0) && (repeat == -1))
+            else if((AmountNumericUpDown.Value <= 0) && (repeat == -1))
             {
                 MessageBox.Show("Please Enter Amount");
             }
@@ -174,6 +191,34 @@ WHERE Supplier_ID = "+this.SupplierComboBox.SelectedValue +"", con);
                 paymrntStatus = 2;
             }
             //---------------------------------------------------------------
+
+            //save new inbound order to database
+
+            //validate items added
+            if(InboundOrderInItems.Rows.Count>0)
+            {
+                SqlCommand command; 
+
+                //Save to StockIn table
+                SqlDataAdapter stockInDataAdupter = new SqlDataAdapter();
+                command = new SqlCommand(@"INSERT INTO StockInTable
+VALUES("+int.Parse(this.BatchIDTextBox.Text)+", 1, '"+this.DateInDateTimePicker.Value+"')",con);
+                stockInDataAdupter.InsertCommand = command;
+                con.Open();
+                stockInDataAdupter.InsertCommand.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("");
+                //-----------------
+
+
+                InboundOrderIn.ActiveForm.Close();
+
+            }
+            else
+            {
+                MessageBox.Show("Please add items !");
+            }
+            //----------------------------------
             
             
             

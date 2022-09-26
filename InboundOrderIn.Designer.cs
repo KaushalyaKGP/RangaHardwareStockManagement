@@ -222,7 +222,7 @@ namespace RangaHardwareStock
             this.DateInDateTimePicker.Name = "DateInDateTimePicker";
             this.DateInDateTimePicker.Size = new System.Drawing.Size(223, 22);
             this.DateInDateTimePicker.TabIndex = 53;
-            this.DateInDateTimePicker.Value = new System.DateTime(2022, 9, 23, 0, 0, 0, 0);
+            this.DateInDateTimePicker.Value = new System.DateTime(2022, 9, 26, 0, 0, 0, 0);
             // 
             // InboundOrderItemsDataGridView
             // 
