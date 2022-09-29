@@ -17,9 +17,16 @@ namespace RangaHardwareStock
 
         public static void ShowForm()
         {
-            _stockIn_ManagementForm.SetInitioalStage();
+
+            if (StockIn_ManagementForm.ActiveForm == null)
+            {
+                _stockIn_ManagementForm = new StockIn_ManagementForm();
+            }
             _stockIn_ManagementForm.Show();
+            _stockIn_ManagementForm.SetInitioalStage();
+            
         }
+        
         public static void HideForm()
         {
             _stockIn_ManagementForm.Hide();

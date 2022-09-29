@@ -207,8 +207,73 @@ VALUES("+int.Parse(this.BatchIDTextBox.Text)+", 1, '"+this.DateInDateTimePicker.
                 con.Open();
                 stockInDataAdupter.InsertCommand.ExecuteNonQuery();
                 con.Close();
-                MessageBox.Show("");
+
                 //-----------------
+
+                //Save to inboundOrderIn table
+                SqlDataAdapter InboundOrderInDataAdupter = new SqlDataAdapter();
+                command = new SqlCommand(@"INSERT INTO InboundOrderIn (Stock_In_Id,Supplier_ID,Payment_Status,Cost,Paid_Amount,Pending_Payment)
+VALUES(" + int.Parse(this.BatchIDTextBox.Text) + ","+this.SupplierComboBox.SelectedValue+","+paymrntStatus+","+float.Parse(this.TotalCostTextBox.Text)+ "," + (float)this.PeidAmountNumericUpDown.Value + "," + float.Parse(this.PendingPaymentsTextBox.Text) + ")", con);
+                InboundOrderInDataAdupter.InsertCommand = command;
+                con.Open();
+                InboundOrderInDataAdupter.InsertCommand.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("New Inbound Order Added");
+                //----------------------------
+
+                //Save to inboundOrderInItems table & Update Item current stock
+                SqlDataAdapter InboundOrderItemsAdupter = new SqlDataAdapter();
+                
+                for (int i=0;i<InboundOrderInItems.Rows.Count;i++)
+                {
+                    //update inboundOrderInItems table
+                    int StockInId = (int)InboundOrderInItems.Rows[i][0];
+                    int ItemID = (int)InboundOrderInItems.Rows[i][1];
+                    int amount = (int)InboundOrderInItems.Rows[i][2];
+                    float unit_Cost = (float)InboundOrderInItems.Rows[i][3];
+                    float Total_Cost = (float)InboundOrderInItems.Rows[i][4];
+
+                    command = new SqlCommand(@"INSERT INTO InboundOrderItems(Stock_In_Id,Item_ID,amount,unit_Cost,Total_Cost)
+VALUES ("+StockInId+","+ItemID+","+amount+","+unit_Cost+","+Total_Cost+")", con);
+                    InboundOrderItemsAdupter.InsertCommand = command;
+                    con.Open();
+                    InboundOrderItemsAdupter.InsertCommand.ExecuteNonQuery();
+                    con.Close();
+                    //-------------------------
+
+                    //update item table current stock & stock satatus
+                    SqlDataAdapter ItemAdupter = new SqlDataAdapter(@"SELECT Current_Stock,Min_Quentity FROM[Item] WHERE Item_ID = "+ItemID+";", con);
+                    DataTable dataTable = new DataTable();
+                    dataTable.Clear();
+                    
+                    ItemAdupter.Fill(dataTable);
+                    int CurrentStock = (int)dataTable.Rows[0][0] + amount;
+                    int Min_Quentity = (int)dataTable.Rows[0][1];
+                    int Stock_Status;
+
+                    if (CurrentStock>Min_Quentity)
+                    {
+                        Stock_Status = 2;
+                    }
+                    else
+                    {
+                        Stock_Status = 1;
+                    }
+
+                    
+                    SqlCommand com = new SqlCommand(@"UPDATE Item SET Current_Stock = "+CurrentStock+", Stock_Status = "+Stock_Status+" WHERE Item_ID = "+ItemID+"; ", con);
+                    con.Open();
+                    com.ExecuteNonQuery();
+                    con.Close();
+                    //-----------------------------------------
+
+
+
+                }
+
+                //------------------------------------
+
+
 
 
                 InboundOrderIn.ActiveForm.Close();
