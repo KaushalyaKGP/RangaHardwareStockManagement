@@ -60,6 +60,7 @@ namespace RangaHardwareStock
             this.UnitCostNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.supplierTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.SupplierTableAdapter();
             this.PeidAmountNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.ResetButton = new System.Windows.Forms.Button();
             SupplierCustomerLabel = new System.Windows.Forms.Label();
             DateInLabel = new System.Windows.Forms.Label();
             BatchIDLabel = new System.Windows.Forms.Label();
@@ -312,7 +313,7 @@ namespace RangaHardwareStock
             this.AddNewInboundOrderButton.BackColor = System.Drawing.Color.LightSeaGreen;
             this.AddNewInboundOrderButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddNewInboundOrderButton.ForeColor = System.Drawing.Color.White;
-            this.AddNewInboundOrderButton.Location = new System.Drawing.Point(1031, 798);
+            this.AddNewInboundOrderButton.Location = new System.Drawing.Point(801, 799);
             this.AddNewInboundOrderButton.Name = "AddNewInboundOrderButton";
             this.AddNewInboundOrderButton.Size = new System.Drawing.Size(330, 47);
             this.AddNewInboundOrderButton.TabIndex = 71;
@@ -393,6 +394,20 @@ namespace RangaHardwareStock
             this.PeidAmountNumericUpDown.TabIndex = 81;
             this.PeidAmountNumericUpDown.ValueChanged += new System.EventHandler(this.PeidAmountNumericUpDown_ValueChanged);
             // 
+            // ResetButton
+            // 
+            this.ResetButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ResetButton.BackColor = System.Drawing.Color.Maroon;
+            this.ResetButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResetButton.ForeColor = System.Drawing.Color.White;
+            this.ResetButton.Location = new System.Drawing.Point(1205, 799);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(156, 47);
+            this.ResetButton.TabIndex = 82;
+            this.ResetButton.Text = "Reset";
+            this.ResetButton.UseVisualStyleBackColor = false;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
             // InboundOrderIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -400,6 +415,7 @@ namespace RangaHardwareStock
             this.BackgroundImage = global::RangaHardwareStock.Properties.Resources.hardware_tools_isolated_on_white_background_E9HYP9_1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1404, 904);
+            this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.PeidAmountNumericUpDown);
             this.Controls.Add(this.UnitCostNumericUpDown);
             this.Controls.Add(this.AmountNumericUpDown);
@@ -463,5 +479,6 @@ namespace RangaHardwareStock
         private System.Windows.Forms.DataGridViewTextBoxColumn unit_Cost;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total_Cost;
         private System.Windows.Forms.NumericUpDown PeidAmountNumericUpDown;
+        private System.Windows.Forms.Button ResetButton;
     }
 }

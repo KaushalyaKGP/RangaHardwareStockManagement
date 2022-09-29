@@ -289,5 +289,20 @@ VALUES ("+StockInId+","+ItemID+","+amount+","+unit_Cost+","+Total_Cost+")", con)
             
             
         }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            this.DateInDateTimePicker.Value = DateTime.Today;
+            this.SupplierComboBox.SelectedIndex = 0;
+            this.AmountNumericUpDown.Value = 0;
+            this.UnitCostNumericUpDown.Value = 0;
+            this.InboundOrderItemsDataGridView.Rows.Clear();
+            this.InboundOrderInItems.Rows.Clear();
+            this.TotalCost = 0;
+            this.TotalCostTextBox.Text = TotalCost.ToString("0.00");
+            this.PeidAmountNumericUpDown.Value = 0;
+            this.PendingPaymentsTextBox.Text = "";
+
+        }
     }
 }
