@@ -32,14 +32,14 @@ namespace RangaHardwareStock
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label TypeLabel;
             System.Windows.Forms.Label SupplierCustomerLabel;
-            System.Windows.Forms.Label DateInToLabel;
-            System.Windows.Forms.Label DateInFromLabel;
-            System.Windows.Forms.Label DateInLabel;
+            System.Windows.Forms.Label DateOutToLabel;
+            System.Windows.Forms.Label DateOutFromLabel;
+            System.Windows.Forms.Label DateOutLabel;
             System.Windows.Forms.Label BatchIDLabel;
             this.TypeComboBox = new System.Windows.Forms.ComboBox();
             this.ItemComboBox = new System.Windows.Forms.ComboBox();
-            this.DateInToDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.DateInFromDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.DateOutToDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.DateOutFromDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.BatchIDComboBox = new System.Windows.Forms.ComboBox();
             this.ReturnToSupplierButton = new System.Windows.Forms.Button();
             this.SalesButton = new System.Windows.Forms.Button();
@@ -58,9 +58,9 @@ namespace RangaHardwareStock
             this.itemTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.ItemTableAdapter();
             TypeLabel = new System.Windows.Forms.Label();
             SupplierCustomerLabel = new System.Windows.Forms.Label();
-            DateInToLabel = new System.Windows.Forms.Label();
-            DateInFromLabel = new System.Windows.Forms.Label();
-            DateInLabel = new System.Windows.Forms.Label();
+            DateOutToLabel = new System.Windows.Forms.Label();
+            DateOutFromLabel = new System.Windows.Forms.Label();
+            DateOutLabel = new System.Windows.Forms.Label();
             BatchIDLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.StockOutDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
@@ -91,38 +91,38 @@ namespace RangaHardwareStock
             SupplierCustomerLabel.TabIndex = 64;
             SupplierCustomerLabel.Text = "Item :";
             // 
-            // DateInToLabel
+            // DateOutToLabel
             // 
-            DateInToLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            DateInToLabel.AutoSize = true;
-            DateInToLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            DateInToLabel.Location = new System.Drawing.Point(510, 343);
-            DateInToLabel.Name = "DateInToLabel";
-            DateInToLabel.Size = new System.Drawing.Size(39, 20);
-            DateInToLabel.TabIndex = 63;
-            DateInToLabel.Text = "To :";
+            DateOutToLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            DateOutToLabel.AutoSize = true;
+            DateOutToLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            DateOutToLabel.Location = new System.Drawing.Point(510, 343);
+            DateOutToLabel.Name = "DateOutToLabel";
+            DateOutToLabel.Size = new System.Drawing.Size(39, 20);
+            DateOutToLabel.TabIndex = 63;
+            DateOutToLabel.Text = "To :";
             // 
-            // DateInFromLabel
+            // DateOutFromLabel
             // 
-            DateInFromLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            DateInFromLabel.AutoSize = true;
-            DateInFromLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            DateInFromLabel.Location = new System.Drawing.Point(167, 343);
-            DateInFromLabel.Name = "DateInFromLabel";
-            DateInFromLabel.Size = new System.Drawing.Size(60, 20);
-            DateInFromLabel.TabIndex = 61;
-            DateInFromLabel.Text = "From :";
+            DateOutFromLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            DateOutFromLabel.AutoSize = true;
+            DateOutFromLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            DateOutFromLabel.Location = new System.Drawing.Point(167, 343);
+            DateOutFromLabel.Name = "DateOutFromLabel";
+            DateOutFromLabel.Size = new System.Drawing.Size(60, 20);
+            DateOutFromLabel.TabIndex = 61;
+            DateOutFromLabel.Text = "From :";
             // 
-            // DateInLabel
+            // DateOutLabel
             // 
-            DateInLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            DateInLabel.AutoSize = true;
-            DateInLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            DateInLabel.Location = new System.Drawing.Point(51, 343);
-            DateInLabel.Name = "DateInLabel";
-            DateInLabel.Size = new System.Drawing.Size(76, 20);
-            DateInLabel.TabIndex = 57;
-            DateInLabel.Text = "Date In :";
+            DateOutLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            DateOutLabel.AutoSize = true;
+            DateOutLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            DateOutLabel.Location = new System.Drawing.Point(51, 343);
+            DateOutLabel.Name = "DateOutLabel";
+            DateOutLabel.Size = new System.Drawing.Size(90, 20);
+            DateOutLabel.TabIndex = 57;
+            DateOutLabel.Text = "Date Out :";
             // 
             // BatchIDLabel
             // 
@@ -159,24 +159,24 @@ namespace RangaHardwareStock
             this.ItemComboBox.TabIndex = 65;
             this.ItemComboBox.ValueMember = "Item_ID";
             // 
-            // DateInToDateTimePicker
+            // DateOutToDateTimePicker
             // 
-            this.DateInToDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.DateInToDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateInToDateTimePicker.Location = new System.Drawing.Point(572, 342);
-            this.DateInToDateTimePicker.Name = "DateInToDateTimePicker";
-            this.DateInToDateTimePicker.Size = new System.Drawing.Size(238, 22);
-            this.DateInToDateTimePicker.TabIndex = 62;
+            this.DateOutToDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.DateOutToDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DateOutToDateTimePicker.Location = new System.Drawing.Point(572, 342);
+            this.DateOutToDateTimePicker.Name = "DateOutToDateTimePicker";
+            this.DateOutToDateTimePicker.Size = new System.Drawing.Size(238, 22);
+            this.DateOutToDateTimePicker.TabIndex = 62;
             // 
-            // DateInFromDateTimePicker
+            // DateOutFromDateTimePicker
             // 
-            this.DateInFromDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.DateInFromDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateInFromDateTimePicker.Location = new System.Drawing.Point(233, 342);
-            this.DateInFromDateTimePicker.Name = "DateInFromDateTimePicker";
-            this.DateInFromDateTimePicker.Size = new System.Drawing.Size(223, 22);
-            this.DateInFromDateTimePicker.TabIndex = 60;
-            this.DateInFromDateTimePicker.Value = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.DateOutFromDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.DateOutFromDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DateOutFromDateTimePicker.Location = new System.Drawing.Point(233, 342);
+            this.DateOutFromDateTimePicker.Name = "DateOutFromDateTimePicker";
+            this.DateOutFromDateTimePicker.Size = new System.Drawing.Size(223, 22);
+            this.DateOutFromDateTimePicker.TabIndex = 60;
+            this.DateOutFromDateTimePicker.Value = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
             // 
             // BatchIDComboBox
             // 
@@ -228,6 +228,7 @@ namespace RangaHardwareStock
             this.ResetButton.TabIndex = 52;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = false;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // StockOutDataGridView
             // 
@@ -270,6 +271,7 @@ namespace RangaHardwareStock
             this.SearchButton.TabIndex = 49;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = false;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // Titlelabel
             // 
@@ -342,11 +344,11 @@ namespace RangaHardwareStock
             this.Controls.Add(this.TypeComboBox);
             this.Controls.Add(SupplierCustomerLabel);
             this.Controls.Add(this.ItemComboBox);
-            this.Controls.Add(DateInToLabel);
-            this.Controls.Add(this.DateInToDateTimePicker);
-            this.Controls.Add(DateInFromLabel);
-            this.Controls.Add(this.DateInFromDateTimePicker);
-            this.Controls.Add(DateInLabel);
+            this.Controls.Add(DateOutToLabel);
+            this.Controls.Add(this.DateOutToDateTimePicker);
+            this.Controls.Add(DateOutFromLabel);
+            this.Controls.Add(this.DateOutFromDateTimePicker);
+            this.Controls.Add(DateOutLabel);
             this.Controls.Add(BatchIDLabel);
             this.Controls.Add(this.BatchIDComboBox);
             this.Controls.Add(this.ReturnToSupplierButton);
@@ -375,8 +377,8 @@ namespace RangaHardwareStock
 
         private System.Windows.Forms.ComboBox TypeComboBox;
         private System.Windows.Forms.ComboBox ItemComboBox;
-        private System.Windows.Forms.DateTimePicker DateInToDateTimePicker;
-        private System.Windows.Forms.DateTimePicker DateInFromDateTimePicker;
+        private System.Windows.Forms.DateTimePicker DateOutToDateTimePicker;
+        private System.Windows.Forms.DateTimePicker DateOutFromDateTimePicker;
         private System.Windows.Forms.ComboBox BatchIDComboBox;
         private System.Windows.Forms.Button ReturnToSupplierButton;
         private System.Windows.Forms.Button SalesButton;
