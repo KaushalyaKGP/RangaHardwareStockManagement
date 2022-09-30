@@ -256,6 +256,7 @@ namespace RangaHardwareStock
             this.BackButton.TabIndex = 50;
             this.BackButton.Text = "Back";
             this.BackButton.UseVisualStyleBackColor = false;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
             // SearchButton
             // 
@@ -357,6 +358,8 @@ namespace RangaHardwareStock
             this.Controls.Add(this.Titlelabel);
             this.Name = "StockOutManagementForm";
             this.Text = "Ranga Hardware Stock Management / Stock Out Management";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StockOutManagementForm_FormClosed);
             this.Load += new System.EventHandler(this.StockOutManagementForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.StockOutDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();

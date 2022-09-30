@@ -131,6 +131,7 @@ namespace RangaHardwareStock
             this.stockOutManahementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.stockOutManahementToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
             this.stockOutManahementToolStripMenuItem.Text = "Stock Out Manahement";
+            this.stockOutManahementToolStripMenuItem.Click += new System.EventHandler(this.stockOutManahementToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
