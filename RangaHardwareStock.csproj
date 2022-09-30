@@ -117,6 +117,12 @@
     <Compile Include="StockIn ManagementForm.Designer.cs">
       <DependentUpon>StockIn ManagementForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StockOutManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockOutManagementForm.Designer.cs">
+      <DependentUpon>StockOutManagementForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CurrentStockManagement.resx">
       <DependentUpon>CurrentStockManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StockIn ManagementForm.resx">
       <DependentUpon>StockIn ManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockOutManagementForm.resx">
+      <DependentUpon>StockOutManagementForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

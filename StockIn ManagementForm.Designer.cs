@@ -45,19 +45,19 @@ namespace RangaHardwareStock
             this.NewInboundOrderButton = new System.Windows.Forms.Button();
             this.NewCustomerReturnButton = new System.Windows.Forms.Button();
             this.BatchIDComboBox = new System.Windows.Forms.ComboBox();
+            this.stockInTableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
             this.PaymentStatusComboBox = new System.Windows.Forms.ComboBox();
+            this.paymentStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DateInFromDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.DateInToDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.SupplierComboBox = new System.Windows.Forms.ComboBox();
-            this.TypeComboBox = new System.Windows.Forms.ComboBox();
-            this.stockInTableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.stockInTableTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockInTableTableAdapter();
-            this.stockInTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.stockInTypeTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockInTypeTableAdapter();
             this.supplierCustmerListBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.TypeComboBox = new System.Windows.Forms.ComboBox();
+            this.stockInTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.stockInTableTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockInTableTableAdapter();
+            this.stockInTypeTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockInTypeTableAdapter();
             this.supplierCustmerListTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.SupplierCustmerListTableAdapter();
-            this.paymentStatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.paymentStatusTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.PaymentStatusTableAdapter();
             DateInLabel = new System.Windows.Forms.Label();
             BatchIDLabel = new System.Windows.Forms.Label();
@@ -67,11 +67,11 @@ namespace RangaHardwareStock
             SupplierCustomerLabel = new System.Windows.Forms.Label();
             TypeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.StockInDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockInTableBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stockInTypeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierCustmerListBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymentStatusBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierCustmerListBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockInTypeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // DateInLabel
@@ -261,6 +261,11 @@ namespace RangaHardwareStock
             this.BatchIDComboBox.Size = new System.Drawing.Size(277, 24);
             this.BatchIDComboBox.TabIndex = 33;
             // 
+            // stockInTableBindingSource1
+            // 
+            this.stockInTableBindingSource1.DataMember = "StockInTable";
+            this.stockInTableBindingSource1.DataSource = this.ranga_hardwareDataSet;
+            // 
             // ranga_hardwareDataSet
             // 
             this.ranga_hardwareDataSet.DataSetName = "Ranga_hardwareDataSet";
@@ -277,6 +282,11 @@ namespace RangaHardwareStock
             this.PaymentStatusComboBox.Size = new System.Drawing.Size(265, 24);
             this.PaymentStatusComboBox.TabIndex = 39;
             this.PaymentStatusComboBox.ValueMember = "Id";
+            // 
+            // paymentStatusBindingSource
+            // 
+            this.paymentStatusBindingSource.DataMember = "PaymentStatus";
+            this.paymentStatusBindingSource.DataSource = this.ranga_hardwareDataSet;
             // 
             // DateInFromDateTimePicker
             // 
@@ -309,6 +319,11 @@ namespace RangaHardwareStock
             this.SupplierComboBox.TabIndex = 45;
             this.SupplierComboBox.ValueMember = "Supplier_or_Customer_ID";
             // 
+            // supplierCustmerListBindingSource
+            // 
+            this.supplierCustmerListBindingSource.DataMember = "SupplierCustmerList";
+            this.supplierCustmerListBindingSource.DataSource = this.ranga_hardwareDataSet;
+            // 
             // TypeComboBox
             // 
             this.TypeComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -322,37 +337,22 @@ namespace RangaHardwareStock
             this.TypeComboBox.ValueMember = "Id";
             this.TypeComboBox.SelectedIndexChanged += new System.EventHandler(this.TypeComboBox_SelectedIndexChanged);
             // 
-            // stockInTableBindingSource1
-            // 
-            this.stockInTableBindingSource1.DataMember = "StockInTable";
-            this.stockInTableBindingSource1.DataSource = this.ranga_hardwareDataSet;
-            // 
-            // stockInTableTableAdapter
-            // 
-            this.stockInTableTableAdapter.ClearBeforeFill = true;
-            // 
             // stockInTypeBindingSource
             // 
             this.stockInTypeBindingSource.DataMember = "StockInType";
             this.stockInTypeBindingSource.DataSource = this.ranga_hardwareDataSet;
             // 
+            // stockInTableTableAdapter
+            // 
+            this.stockInTableTableAdapter.ClearBeforeFill = true;
+            // 
             // stockInTypeTableAdapter
             // 
             this.stockInTypeTableAdapter.ClearBeforeFill = true;
             // 
-            // supplierCustmerListBindingSource
-            // 
-            this.supplierCustmerListBindingSource.DataMember = "SupplierCustmerList";
-            this.supplierCustmerListBindingSource.DataSource = this.ranga_hardwareDataSet;
-            // 
             // supplierCustmerListTableAdapter
             // 
             this.supplierCustmerListTableAdapter.ClearBeforeFill = true;
-            // 
-            // paymentStatusBindingSource
-            // 
-            this.paymentStatusBindingSource.DataMember = "PaymentStatus";
-            this.paymentStatusBindingSource.DataSource = this.ranga_hardwareDataSet;
             // 
             // paymentStatusTableAdapter
             // 
@@ -391,11 +391,11 @@ namespace RangaHardwareStock
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StockIn_ManagementForm_FormClosed);
             this.Load += new System.EventHandler(this.StockIn_ManagementForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.StockInDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockInTableBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stockInTypeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierCustmerListBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymentStatusBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierCustmerListBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockInTypeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
