@@ -47,6 +47,40 @@ namespace RangaHardwareStock
             this.ItemComboBox.Text = "All";
             this.DateInFromDateTimePicker.Value = Convert.ToDateTime("1/1/2020");
             this.DateInToDateTimePicker.Value = DateTime.Today;
+
+            SqlDataAdapter sda = new SqlDataAdapter(@"SELECT so.Stock_Out_ID AS Batch_ID,sot.Type,so.Out_Date,st.Stock_Type AS From_Stock_Type ,Items = STUFF((SELECT DISTINCT ', ' +Item_Name FROM (SELECT so.Stock_Out_ID AS Batch_ID,sot.Type,so.Out_Date,st.Stock_Type AS From_Stock_Type ,i.Item_Name
+FROM StockOut so
+LEFT JOIN StockOutType sot
+ON so.Type = sot.Id
+LEFT JOIN StockType st
+ON so.From_Stock_Type = st.Id
+LEFT JOIN SalesItems sl
+ON so.Stock_Out_ID = sl.Stock_Out_Id
+LEFT JOIN ReturnToSupplierItems rs
+ON so.Stock_Out_ID = rs.Stock_Out_ID
+LEFT JOIN LostDamageStockOut l
+ON so.Stock_Out_ID = l.Stock_Out_Id
+LEFT JOIN Item i
+ON sl.Item_ID = i.Item_ID OR rs.Item_ID = i.Item_ID OR l.Item_ID = i.Item_ID) as s
+WHERE s.Batch_ID = so.Stock_Out_ID FOR XML PATH('')), 1, 2, '')
+FROM StockOut so
+LEFT JOIN StockOutType sot
+ON so.Type = sot.Id
+LEFT JOIN StockType st
+ON so.From_Stock_Type = st.Id
+LEFT JOIN SalesItems sl
+ON so.Stock_Out_ID = sl.Stock_Out_Id
+LEFT JOIN ReturnToSupplierItems rs
+ON so.Stock_Out_ID = rs.Stock_Out_ID
+LEFT JOIN LostDamageStockOut l
+ON so.Stock_Out_ID = l.Stock_Out_Id
+LEFT JOIN Item i
+ON sl.Item_ID = i.Item_ID OR rs.Item_ID = i.Item_ID OR l.Item_ID = i.Item_ID
+GROUP BY so.Stock_Out_ID,sot.Type,so.Out_Date,st.Stock_Type",con);
+            dt.Rows.Clear();
+            sda.Fill(dt);
+            this.StockOutDataGridView.DataSource = dt;
+
         }
 
         private void StockOutManagementForm_Load(object sender, EventArgs e)
