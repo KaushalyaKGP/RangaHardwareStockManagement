@@ -91,6 +91,12 @@ GROUP BY so.Stock_Out_ID,sot.Type,so.Out_Date,st.Stock_Type",con);
             this.stockOutTypeTableAdapter.Fill(this.ranga_hardwareDataSet.StockOutType);
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockOut' table. You can move, or remove it, as needed.
             this.stockOutTableAdapter.Fill(this.ranga_hardwareDataSet.StockOut);
+            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Item' table. You can move, or remove it, as needed.
+            this.itemTableAdapter.Fill(this.ranga_hardwareDataSet.Item);
+            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockOutType' table. You can move, or remove it, as needed.
+            this.stockOutTypeTableAdapter.Fill(this.ranga_hardwareDataSet.StockOutType);
+            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockOut' table. You can move, or remove it, as needed.
+            this.stockOutTableAdapter.Fill(this.ranga_hardwareDataSet.StockOut);
 
         }
 
@@ -418,6 +424,11 @@ WHERE so.Out_Date>='" + DateOutFromDateTimePicker.Value + "' AND so.Out_Date<='"
 
 
             StockOutDataGridView.DataSource = SearchTable;
+        }
+
+        private void SalesButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
