@@ -31,17 +31,20 @@ namespace RangaHardwareStock
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label TypeLabel;
-            System.Windows.Forms.Label SupplierCustomerLabel;
+            System.Windows.Forms.Label ItemLabel;
             System.Windows.Forms.Label DateOutToLabel;
             System.Windows.Forms.Label DateOutFromLabel;
             System.Windows.Forms.Label DateOutLabel;
             System.Windows.Forms.Label BatchIDLabel;
             this.TypeComboBox = new System.Windows.Forms.ComboBox();
+            this.stockOutTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
             this.ItemComboBox = new System.Windows.Forms.ComboBox();
+            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DateOutToDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.DateOutFromDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.BatchIDComboBox = new System.Windows.Forms.ComboBox();
+            this.stockOutBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ReturnToSupplierButton = new System.Windows.Forms.Button();
             this.SalesButton = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
@@ -51,23 +54,20 @@ namespace RangaHardwareStock
             this.Titlelabel = new System.Windows.Forms.Label();
             this.LostDamagedButton = new System.Windows.Forms.Button();
             this.OtherStockOutButton = new System.Windows.Forms.Button();
-            this.stockOutBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.stockOutTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockOutTableAdapter();
-            this.stockOutTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.stockOutTypeTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockOutTypeTableAdapter();
-            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.itemTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.ItemTableAdapter();
             TypeLabel = new System.Windows.Forms.Label();
-            SupplierCustomerLabel = new System.Windows.Forms.Label();
+            ItemLabel = new System.Windows.Forms.Label();
             DateOutToLabel = new System.Windows.Forms.Label();
             DateOutFromLabel = new System.Windows.Forms.Label();
             DateOutLabel = new System.Windows.Forms.Label();
             BatchIDLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StockOutDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stockOutBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockOutTypeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockOutBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StockOutDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // TypeLabel
@@ -81,16 +81,16 @@ namespace RangaHardwareStock
             TypeLabel.TabIndex = 66;
             TypeLabel.Text = "Type :";
             // 
-            // SupplierCustomerLabel
+            // ItemLabel
             // 
-            SupplierCustomerLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            SupplierCustomerLabel.AutoSize = true;
-            SupplierCustomerLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            SupplierCustomerLabel.Location = new System.Drawing.Point(51, 399);
-            SupplierCustomerLabel.Name = "SupplierCustomerLabel";
-            SupplierCustomerLabel.Size = new System.Drawing.Size(54, 20);
-            SupplierCustomerLabel.TabIndex = 64;
-            SupplierCustomerLabel.Text = "Item :";
+            ItemLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            ItemLabel.AutoSize = true;
+            ItemLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            ItemLabel.Location = new System.Drawing.Point(51, 399);
+            ItemLabel.Name = "ItemLabel";
+            ItemLabel.Size = new System.Drawing.Size(54, 20);
+            ItemLabel.TabIndex = 64;
+            ItemLabel.Text = "Item :";
             // 
             // DateOutToLabel
             // 
@@ -148,6 +148,11 @@ namespace RangaHardwareStock
             this.TypeComboBox.TabIndex = 67;
             this.TypeComboBox.ValueMember = "Id";
             // 
+            // stockOutTypeBindingSource
+            // 
+            this.stockOutTypeBindingSource.DataMember = "StockOutType";
+            this.stockOutTypeBindingSource.DataSource = this.ranga_hardwareDataSet;
+            // 
             // ranga_hardwareDataSet
             // 
             this.ranga_hardwareDataSet.DataSetName = "Ranga_hardwareDataSet";
@@ -164,6 +169,11 @@ namespace RangaHardwareStock
             this.ItemComboBox.Size = new System.Drawing.Size(265, 24);
             this.ItemComboBox.TabIndex = 65;
             this.ItemComboBox.ValueMember = "Item_ID";
+            // 
+            // itemBindingSource
+            // 
+            this.itemBindingSource.DataMember = "Item";
+            this.itemBindingSource.DataSource = this.ranga_hardwareDataSet;
             // 
             // DateOutToDateTimePicker
             // 
@@ -195,6 +205,11 @@ namespace RangaHardwareStock
             this.BatchIDComboBox.Size = new System.Drawing.Size(277, 24);
             this.BatchIDComboBox.TabIndex = 56;
             this.BatchIDComboBox.ValueMember = "Stock_Out_ID";
+            // 
+            // stockOutBindingSource
+            // 
+            this.stockOutBindingSource.DataMember = "StockOut";
+            this.stockOutBindingSource.DataSource = this.ranga_hardwareDataSet;
             // 
             // ReturnToSupplierButton
             // 
@@ -320,28 +335,13 @@ namespace RangaHardwareStock
             this.OtherStockOutButton.Text = "Other";
             this.OtherStockOutButton.UseVisualStyleBackColor = false;
             // 
-            // stockOutBindingSource
-            // 
-            this.stockOutBindingSource.DataMember = "StockOut";
-            this.stockOutBindingSource.DataSource = this.ranga_hardwareDataSet;
-            // 
             // stockOutTableAdapter
             // 
             this.stockOutTableAdapter.ClearBeforeFill = true;
             // 
-            // stockOutTypeBindingSource
-            // 
-            this.stockOutTypeBindingSource.DataMember = "StockOutType";
-            this.stockOutTypeBindingSource.DataSource = this.ranga_hardwareDataSet;
-            // 
             // stockOutTypeTableAdapter
             // 
             this.stockOutTypeTableAdapter.ClearBeforeFill = true;
-            // 
-            // itemBindingSource
-            // 
-            this.itemBindingSource.DataMember = "Item";
-            this.itemBindingSource.DataSource = this.ranga_hardwareDataSet;
             // 
             // itemTableAdapter
             // 
@@ -358,7 +358,7 @@ namespace RangaHardwareStock
             this.Controls.Add(this.LostDamagedButton);
             this.Controls.Add(TypeLabel);
             this.Controls.Add(this.TypeComboBox);
-            this.Controls.Add(SupplierCustomerLabel);
+            this.Controls.Add(ItemLabel);
             this.Controls.Add(this.ItemComboBox);
             this.Controls.Add(DateOutToLabel);
             this.Controls.Add(this.DateOutToDateTimePicker);
@@ -379,11 +379,11 @@ namespace RangaHardwareStock
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StockOutManagementForm_FormClosed);
             this.Load += new System.EventHandler(this.StockOutManagementForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StockOutDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stockOutBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockOutTypeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockOutBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StockOutDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

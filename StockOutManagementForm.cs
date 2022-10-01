@@ -428,7 +428,8 @@ WHERE so.Out_Date>='" + DateOutFromDateTimePicker.Value + "' AND so.Out_Date<='"
 
         private void SalesButton_Click(object sender, EventArgs e)
         {
-
+            SalesForm salesForm = new SalesForm();
+            salesForm.Show();
         }
     }
 }
