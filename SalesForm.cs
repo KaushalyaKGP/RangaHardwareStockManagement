@@ -49,6 +49,12 @@ namespace RangaHardwareStock
             this.CustomerComboBox.Enabled = false;
             this.CustomerComboBox.Text = "";
 
+            this.DeleteSelectedSalesRecordButton.Enabled = false;
+            this.DeleteSelectedSalesRecordButton.Visible = false;
+
+            this.CustomerReturnButton.Enabled = false;
+            this.CustomerReturnButton.Visible = false;
+
 
 
         }
@@ -65,7 +71,7 @@ LEFT JOIN (SELECT sl.Stock_Out_Id , c.Name , soi.Items,sl.[Net Sales] as [Net_Sa
 FROM Sales sl
 LEFT JOIN Customer c
 ON sl.Customer_ID = c.Customer_ID
-LEFT JOIN (SELECT si.Stock_Out_Id,Items = STUFF((SELECT DISTINCT ', ' +Items FROM (SELECT si.Stock_Out_Id,CONCAT( i.Item_Name,'-',si.Amount) as Items FROM SalesItems si, Item i WHERE si.Item_ID = i.Item_ID) as a WHERE si.Stock_Out_Id = a.Stock_Out_ID FOR XML PATH('')), 1, 2, '') FROM SalesItems si, Item i WHERE si.Item_ID = i.Item_ID GROUP BY si.Stock_Out_Id) as soi
+LEFT JOIN (SELECT si.Stock_Out_Id,Items = STUFF((SELECT DISTINCT ', ' +Items FROM (SELECT si.Stock_Out_Id,CONCAT( i.Item_Name,' ','-',' ',si.Amount,' ',i.Mesuring_Unit) as Items FROM SalesItems si, Item i WHERE si.Item_ID = i.Item_ID) as a WHERE si.Stock_Out_Id = a.Stock_Out_ID FOR XML PATH('')), 1, 2, '') FROM SalesItems si, Item i WHERE si.Item_ID = i.Item_ID GROUP BY si.Stock_Out_Id) as soi
 ON sl.Stock_Out_Id = soi.Stock_Out_Id) as i
 ON so.Stock_Out_ID = i.Stock_Out_Id
 WHERE so.Type = 1", con);
@@ -93,6 +99,11 @@ WHERE si.Item_ID = i.Item_ID AND si.Stock_Out_Id = "+ this.SalesDataGridView.Row
             this.NetSalesTextBox.Text = this.SalesDataGridView.Rows[e.RowIndex].Cells[5].Value.ToString();
 
 
+        }
+
+        private void SalesForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            StockOutManagementForm.ShowForm();
         }
     }
 }

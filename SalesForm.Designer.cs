@@ -432,6 +432,7 @@ namespace RangaHardwareStock
             this.Name = "SalesForm";
             this.Text = "Ranga Hardware Stock Management / Stock Out Management / Sales";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SalesForm_FormClosed);
             this.Load += new System.EventHandler(this.SalesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SalesDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuantityNumericUpDown)).EndInit();
