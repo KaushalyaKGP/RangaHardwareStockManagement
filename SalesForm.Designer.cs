@@ -29,6 +29,7 @@ namespace RangaHardwareStock
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label NetSalesLabel;
             System.Windows.Forms.Label CustomerLabel;
             System.Windows.Forms.Label SupplierCustomerLabel;
@@ -58,6 +59,16 @@ namespace RangaHardwareStock
             this.ItemLabel = new System.Windows.Forms.Label();
             this.QuantityLabel = new System.Windows.Forms.Label();
             this.CustomerReturnButton = new System.Windows.Forms.Button();
+            this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
+            this.stockTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.stockTypeTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockTypeTableAdapter();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.customerTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.CustomerTableAdapter();
+            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.itemTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.ItemTableAdapter();
+            this.AvailableStockLabel = new System.Windows.Forms.Label();
+            this.AvailableStockCountLable = new System.Windows.Forms.Label();
+            this.Unit2Label = new System.Windows.Forms.Label();
             NetSalesLabel = new System.Windows.Forms.Label();
             CustomerLabel = new System.Windows.Forms.Label();
             SupplierCustomerLabel = new System.Windows.Forms.Label();
@@ -68,6 +79,10 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SalesItemsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockTypeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // NetSalesLabel
@@ -153,6 +168,7 @@ namespace RangaHardwareStock
             this.BackButton.TabIndex = 72;
             this.BackButton.Text = "Back";
             this.BackButton.UseVisualStyleBackColor = false;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
             // Titlelabel
             // 
@@ -170,8 +186,8 @@ namespace RangaHardwareStock
             // 
             // QuantityNumericUpDown
             // 
-            this.QuantityNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.QuantityNumericUpDown.Location = new System.Drawing.Point(1089, 236);
+            this.QuantityNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.QuantityNumericUpDown.Location = new System.Drawing.Point(1089, 264);
             this.QuantityNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -192,11 +208,11 @@ namespace RangaHardwareStock
             // 
             // AddItemButton
             // 
-            this.AddItemButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.AddItemButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.AddItemButton.BackColor = System.Drawing.Color.LightSeaGreen;
             this.AddItemButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddItemButton.ForeColor = System.Drawing.Color.White;
-            this.AddItemButton.Location = new System.Drawing.Point(995, 297);
+            this.AddItemButton.Location = new System.Drawing.Point(995, 303);
             this.AddItemButton.Name = "AddItemButton";
             this.AddItemButton.Size = new System.Drawing.Size(156, 47);
             this.AddItemButton.TabIndex = 93;
@@ -215,14 +231,16 @@ namespace RangaHardwareStock
             // 
             // ItemNameComboBox
             // 
-            this.ItemNameComboBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.ItemNameComboBox.DisplayMember = "Supplier_ID";
+            this.ItemNameComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ItemNameComboBox.DataSource = this.itemBindingSource;
+            this.ItemNameComboBox.DisplayMember = "Item_Name";
             this.ItemNameComboBox.FormattingEnabled = true;
             this.ItemNameComboBox.Location = new System.Drawing.Point(1089, 185);
             this.ItemNameComboBox.Name = "ItemNameComboBox";
             this.ItemNameComboBox.Size = new System.Drawing.Size(274, 24);
             this.ItemNameComboBox.TabIndex = 89;
-            this.ItemNameComboBox.ValueMember = "Supplier_ID";
+            this.ItemNameComboBox.ValueMember = "Item_ID";
+            this.ItemNameComboBox.SelectedIndexChanged += new System.EventHandler(this.ItemNameComboBox_SelectedIndexChanged);
             // 
             // SalesItemsDataGridView
             // 
@@ -266,13 +284,15 @@ namespace RangaHardwareStock
             // FromStockTypeComboBox
             // 
             this.FromStockTypeComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.FromStockTypeComboBox.DisplayMember = "Name";
+            this.FromStockTypeComboBox.DataSource = this.stockTypeBindingSource;
+            this.FromStockTypeComboBox.DisplayMember = "Stock_Type";
             this.FromStockTypeComboBox.FormattingEnabled = true;
             this.FromStockTypeComboBox.Location = new System.Drawing.Point(902, 130);
             this.FromStockTypeComboBox.Name = "FromStockTypeComboBox";
             this.FromStockTypeComboBox.Size = new System.Drawing.Size(331, 24);
             this.FromStockTypeComboBox.TabIndex = 86;
-            this.FromStockTypeComboBox.ValueMember = "Supplier_ID";
+            this.FromStockTypeComboBox.ValueMember = "Id";
+            this.FromStockTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.FromStockTypeComboBox_SelectedIndexChanged);
             // 
             // SalesDateTimePicker
             // 
@@ -297,12 +317,14 @@ namespace RangaHardwareStock
             // CustomerComboBox
             // 
             this.CustomerComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.CustomerComboBox.DisplayMember = "Supplier_ID";
+            this.CustomerComboBox.DataSource = this.customerBindingSource;
+            this.CustomerComboBox.DisplayMember = "Name";
             this.CustomerComboBox.FormattingEnabled = true;
             this.CustomerComboBox.Location = new System.Drawing.Point(153, 382);
             this.CustomerComboBox.Name = "CustomerComboBox";
             this.CustomerComboBox.Size = new System.Drawing.Size(274, 24);
             this.CustomerComboBox.TabIndex = 105;
+            this.CustomerComboBox.ValueMember = "Customer_ID";
             // 
             // NetSalesTextBox
             // 
@@ -338,6 +360,7 @@ namespace RangaHardwareStock
             this.AddNewSalesButton.TabIndex = 108;
             this.AddNewSalesButton.Text = "Add New Sales";
             this.AddNewSalesButton.UseVisualStyleBackColor = false;
+            this.AddNewSalesButton.Click += new System.EventHandler(this.AddNewSalesButton_Click);
             // 
             // DeleteSelectedSalesRecordButton
             // 
@@ -351,12 +374,13 @@ namespace RangaHardwareStock
             this.DeleteSelectedSalesRecordButton.TabIndex = 109;
             this.DeleteSelectedSalesRecordButton.Text = "Delete Selected Sales Record";
             this.DeleteSelectedSalesRecordButton.UseVisualStyleBackColor = false;
+            this.DeleteSelectedSalesRecordButton.Click += new System.EventHandler(this.DeleteSelectedSalesRecordButton_Click);
             // 
             // UnitLable
             // 
-            this.UnitLable.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.UnitLable.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.UnitLable.AutoSize = true;
-            this.UnitLable.Location = new System.Drawing.Point(1229, 239);
+            this.UnitLable.Location = new System.Drawing.Point(1229, 267);
             this.UnitLable.Name = "UnitLable";
             this.UnitLable.Size = new System.Drawing.Size(33, 17);
             this.UnitLable.TabIndex = 110;
@@ -364,7 +388,7 @@ namespace RangaHardwareStock
             // 
             // ItemLabel
             // 
-            this.ItemLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ItemLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ItemLabel.AutoSize = true;
             this.ItemLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ItemLabel.Location = new System.Drawing.Point(995, 187);
@@ -375,10 +399,10 @@ namespace RangaHardwareStock
             // 
             // QuantityLabel
             // 
-            this.QuantityLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.QuantityLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.QuantityLabel.AutoSize = true;
             this.QuantityLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.QuantityLabel.Location = new System.Drawing.Point(995, 237);
+            this.QuantityLabel.Location = new System.Drawing.Point(995, 265);
             this.QuantityLabel.Name = "QuantityLabel";
             this.QuantityLabel.Size = new System.Drawing.Size(87, 20);
             this.QuantityLabel.TabIndex = 112;
@@ -397,12 +421,80 @@ namespace RangaHardwareStock
             this.CustomerReturnButton.Text = "Add Customer Return";
             this.CustomerReturnButton.UseVisualStyleBackColor = false;
             // 
+            // ranga_hardwareDataSet
+            // 
+            this.ranga_hardwareDataSet.DataSetName = "Ranga_hardwareDataSet";
+            this.ranga_hardwareDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // stockTypeBindingSource
+            // 
+            this.stockTypeBindingSource.DataMember = "StockType";
+            this.stockTypeBindingSource.DataSource = this.ranga_hardwareDataSet;
+            // 
+            // stockTypeTableAdapter
+            // 
+            this.stockTypeTableAdapter.ClearBeforeFill = true;
+            // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataMember = "Customer";
+            this.customerBindingSource.DataSource = this.ranga_hardwareDataSet;
+            // 
+            // customerTableAdapter
+            // 
+            this.customerTableAdapter.ClearBeforeFill = true;
+            // 
+            // itemBindingSource
+            // 
+            this.itemBindingSource.DataMember = "Item";
+            this.itemBindingSource.DataSource = this.ranga_hardwareDataSet;
+            // 
+            // itemTableAdapter
+            // 
+            this.itemTableAdapter.ClearBeforeFill = true;
+            // 
+            // AvailableStockLabel
+            // 
+            this.AvailableStockLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AvailableStockLabel.AutoSize = true;
+            this.AvailableStockLabel.ForeColor = System.Drawing.Color.SeaGreen;
+            this.AvailableStockLabel.Location = new System.Drawing.Point(1089, 212);
+            this.AvailableStockLabel.Name = "AvailableStockLabel";
+            this.AvailableStockLabel.Size = new System.Drawing.Size(116, 17);
+            this.AvailableStockLabel.TabIndex = 114;
+            this.AvailableStockLabel.Text = "Available Stock : ";
+            // 
+            // AvailableStockCountLable
+            // 
+            this.AvailableStockCountLable.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AvailableStockCountLable.AutoSize = true;
+            this.AvailableStockCountLable.ForeColor = System.Drawing.Color.SeaGreen;
+            this.AvailableStockCountLable.Location = new System.Drawing.Point(1205, 212);
+            this.AvailableStockCountLable.Name = "AvailableStockCountLable";
+            this.AvailableStockCountLable.Size = new System.Drawing.Size(84, 17);
+            this.AvailableStockCountLable.TabIndex = 115;
+            this.AvailableStockCountLable.Text = "Stock Count";
+            // 
+            // Unit2Label
+            // 
+            this.Unit2Label.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.Unit2Label.AutoSize = true;
+            this.Unit2Label.ForeColor = System.Drawing.Color.SeaGreen;
+            this.Unit2Label.Location = new System.Drawing.Point(1306, 212);
+            this.Unit2Label.Name = "Unit2Label";
+            this.Unit2Label.Size = new System.Drawing.Size(33, 17);
+            this.Unit2Label.TabIndex = 116;
+            this.Unit2Label.Text = "Unit";
+            // 
             // SalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1404, 904);
+            this.Controls.Add(this.Unit2Label);
+            this.Controls.Add(this.AvailableStockCountLable);
+            this.Controls.Add(this.AvailableStockLabel);
             this.Controls.Add(this.CustomerReturnButton);
             this.Controls.Add(this.QuantityLabel);
             this.Controls.Add(this.ItemLabel);
@@ -439,6 +531,10 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SalesItemsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockTypeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -469,5 +565,15 @@ namespace RangaHardwareStock
         private System.Windows.Forms.Label ItemLabel;
         private System.Windows.Forms.Label QuantityLabel;
         private System.Windows.Forms.Button CustomerReturnButton;
+        private Ranga_hardwareDataSet ranga_hardwareDataSet;
+        private System.Windows.Forms.BindingSource stockTypeBindingSource;
+        private Ranga_hardwareDataSetTableAdapters.StockTypeTableAdapter stockTypeTableAdapter;
+        private System.Windows.Forms.BindingSource customerBindingSource;
+        private Ranga_hardwareDataSetTableAdapters.CustomerTableAdapter customerTableAdapter;
+        private System.Windows.Forms.BindingSource itemBindingSource;
+        private Ranga_hardwareDataSetTableAdapters.ItemTableAdapter itemTableAdapter;
+        private System.Windows.Forms.Label AvailableStockLabel;
+        private System.Windows.Forms.Label AvailableStockCountLable;
+        private System.Windows.Forms.Label Unit2Label;
     }
 }
