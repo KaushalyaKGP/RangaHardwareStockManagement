@@ -15,6 +15,9 @@ namespace RangaHardwareStock
     {
         SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\3rd Year Project\DEVELOPMENT PROJECT  - software\RangaHardwareStock\Ranga hardware.mdf; Integrated Security = True");
         DataTable dt = new DataTable();
+
+        float netSales = 0;
+        DataTable salesItemsAddTable = new DataTable();
         
         public SalesForm()
         {
@@ -23,6 +26,12 @@ namespace RangaHardwareStock
 
         private void setInnitial()
         {
+            netSales = 0;
+            this.salesItemsAddTable.Columns.Clear();
+            this.salesItemsAddTable.Rows.Clear();
+
+            SalesDataGridView.Enabled = true;
+
             this.BatchIDTextBox.Text = "";
 
             this.SalesDateTimePicker.Enabled = false;
@@ -97,13 +106,13 @@ WHERE so.Type = 1", con);
                 {
                     quantityCommand = new SqlCommand(@"SELECT i.Current_Stock
 FROM Item i
-WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + ";", con);
+WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + "", con);
                 }
                 else if (this.FromStockTypeComboBox.Text == "Customer Return Stock")
                 {
                     quantityCommand = new SqlCommand(@"SELECT i.Customer_Return_Stock
 FROM Item i
-WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + ";", con);
+WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + "", con);
                 }
 
                 con.Open();
@@ -125,7 +134,15 @@ WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + ";", con);
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockType' table. You can move, or remove it, as needed.
             this.stockTypeTableAdapter.Fill(this.ranga_hardwareDataSet.StockType);
             setInnitial();
-            
+
+            //set items table
+            salesItemsAddTable.Clear();
+            salesItemsAddTable.Columns.Add("Stock_In_Id", typeof(int));
+            salesItemsAddTable.Columns.Add("Item_ID", typeof(int));
+            salesItemsAddTable.Columns.Add("Amount", typeof(int));
+            salesItemsAddTable.Columns.Add("Total_Price", typeof(float));
+            //-------------------
+
 
         }
 
@@ -184,6 +201,7 @@ WHERE si.Item_ID = i.Item_ID AND si.Stock_Out_Id = "+ this.SalesDataGridView.Row
 
             //clear Item List & Add Columns
             this.SalesItemsDataGridView.DataSource = null;
+            this.SalesItemsDataGridView.Columns.Clear();
             this.SalesItemsDataGridView.ColumnCount = 3;
             this.SalesItemsDataGridView.Columns[0].Name = "Item";
             this.SalesItemsDataGridView.Columns[1].Name = "Quantity";
@@ -218,6 +236,17 @@ WHERE si.Item_ID = i.Item_ID AND si.Stock_Out_Id = "+ this.SalesDataGridView.Row
             this.CustomerReturnButton.Enabled = false;
             this.CustomerReturnButton.Visible = false;
 
+            this.DeleteSelectedSalesRecordButton.Enabled = false;
+            this.DeleteSelectedSalesRecordButton.Visible = false;
+
+            this.CustomerReturnButton.Enabled = false;
+            this.CustomerReturnButton.Visible = false;
+
+            this.SalesDataGridView.Enabled = false;
+
+            this.SaveButton.Enabled = true;
+            this.SaveButton.Visible = true;
+
 
 
 
@@ -230,21 +259,26 @@ WHERE si.Item_ID = i.Item_ID AND si.Stock_Out_Id = "+ this.SalesDataGridView.Row
             {
                 SqlCommand unitCommand = new SqlCommand(@"SELECT i.Mesuring_Unit
 FROM Item i
-WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + ";", con);
+WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + "", con);
                 con.Open();
                 this.UnitLable.Text = unitCommand.ExecuteScalar().ToString();
                 con.Close();
                 this.Unit2Label.Text = this.UnitLable.Text;
+                getAvailableStock();
             }
             //-----------------------------------
 
-            getAvailableStock();
+            
         }
 
 
         private void FromStockTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            getAvailableStock();
+            if(FromStockTypeComboBox.SelectedValue!=null)
+            {
+                getAvailableStock();
+            }
+            
         }
 
         private void DeleteSelectedSalesRecordButton_Click(object sender, EventArgs e)
@@ -311,6 +345,123 @@ WHERE si.Stock_Out_Id ="+int.Parse(this.BatchIDTextBox.Text)+" AND si.Item_ID = 
 
             MessageBox.Show("Record Deleted");
             setInnitial();
+        }
+
+        private void AddItemButton_Click(object sender, EventArgs e)
+        {
+
+            //Validate same item repitition
+            int repeat = -1;
+            
+
+            if (SalesItemsDataGridView.Rows.Count > 0)
+            {
+                string searchItem = this.ItemNameComboBox.Text;
+
+                foreach (DataGridViewRow row in SalesItemsDataGridView.Rows)
+                {
+                    if (row.Cells[0].Value != null)
+                    {
+
+                        if (row.Cells[0].Value.ToString().Equals(searchItem))
+                        {
+                            MessageBox.Show("Same Item Repeating !");
+                            repeat = 1;
+                        }
+
+                    }
+                }
+
+            }
+
+
+
+
+            //validate amount is>0 & amount<current stock or customer return stock
+
+            if ((QuantityNumericUpDown.Value > 0) && (repeat == -1))
+            {
+                bool stockAvailability = true;
+
+                if (this.FromStockTypeComboBox.Text == "CurrentStock")
+                {
+                    SqlCommand currentStockCommand = new SqlCommand(@"SELECT i.Current_Stock
+FROM Item i
+WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + ";", con);
+                    con.Open();
+                    int currentStock = int.Parse(currentStockCommand.ExecuteScalar().ToString());
+                    con.Close();
+
+                    if(this.QuantityNumericUpDown.Value > currentStock)
+                    {
+                        stockAvailability = false;
+                    }
+                }
+
+                else if (this.FromStockTypeComboBox.Text == "Customer Return Stock")
+                {
+                    SqlCommand CRStockCommand = new SqlCommand(@"SELECT i.Customer_Return_Stock
+FROM Item i
+WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + ";", con);
+                    con.Open();
+                    int customerReturnStock = int.Parse(CRStockCommand.ExecuteScalar().ToString());
+                    con.Close();
+
+                    if (this.QuantityNumericUpDown.Value > customerReturnStock)
+                    {
+                        stockAvailability = false;
+                    }
+                }
+
+                if(stockAvailability == true)
+                {
+                    float itemTotal = 0;
+                    float itemPrice = 0;
+                    SqlCommand itemPriceCommand = new SqlCommand(@"SELECT i.Unit_Price
+FROM Item i
+WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + ";", con);
+                    con.Open();
+                    itemPrice = int.Parse(itemPriceCommand.ExecuteScalar().ToString());
+                    con.Close();
+
+                    itemTotal = (float)this.QuantityNumericUpDown.Value * itemPrice;
+                    netSales += itemTotal;
+
+                    this.NetSalesTextBox.Text = netSales.ToString("0.00");
+
+                    //Add data to table
+                    salesItemsAddTable.Rows.Add(new object[] { int.Parse(BatchIDTextBox.Text), ItemNameComboBox.SelectedValue, QuantityNumericUpDown.Value, itemTotal });
+                    //---------------------------
+
+                    //Update data grid
+                    this.SalesItemsDataGridView.Rows.Add(this.ItemNameComboBox.Text, this.QuantityNumericUpDown.Text,itemTotal.ToString("0.00"));
+                    //-----------
+
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Available stock not enough for this sales");
+                }
+
+                
+
+                
+                //clear add item data input options
+                this.ItemNameComboBox.SelectedIndex = 0;
+                this.QuantityNumericUpDown.Value = 0;
+                //-------------
+
+                this.FromStockTypeComboBox.Enabled = false;
+
+
+            }
+
+            else if ((QuantityNumericUpDown.Value <= 0) && (repeat == -1))
+            {
+                MessageBox.Show("Please Enter Quantity");
+            }
         }
     }
 }
