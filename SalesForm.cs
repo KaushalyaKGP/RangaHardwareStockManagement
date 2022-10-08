@@ -27,8 +27,15 @@ namespace RangaHardwareStock
         private void setInnitial()
         {
             netSales = 0;
-            this.salesItemsAddTable.Columns.Clear();
-            this.salesItemsAddTable.Rows.Clear();
+            
+            //set items table
+            salesItemsAddTable.Columns.Clear();
+            salesItemsAddTable.Rows.Clear();
+            salesItemsAddTable.Columns.Add("Stock_In_Id", typeof(int));
+            salesItemsAddTable.Columns.Add("Item_ID", typeof(int));
+            salesItemsAddTable.Columns.Add("Amount", typeof(int));
+            salesItemsAddTable.Columns.Add("Total_Price", typeof(float));
+            //-------------------
 
             SalesDataGridView.Enabled = true;
 
@@ -137,13 +144,7 @@ WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + "", con);
             this.stockTypeTableAdapter.Fill(this.ranga_hardwareDataSet.StockType);
             setInnitial();
 
-            //set items table
-            salesItemsAddTable.Clear();
-            salesItemsAddTable.Columns.Add("Stock_In_Id", typeof(int));
-            salesItemsAddTable.Columns.Add("Item_ID", typeof(int));
-            salesItemsAddTable.Columns.Add("Amount", typeof(int));
-            salesItemsAddTable.Columns.Add("Total_Price", typeof(float));
-            //-------------------
+            
 
 
         }
@@ -487,6 +488,16 @@ VALUES(" + int.Parse(this.BatchIDTextBox.Text) + ",1,'" + this.SalesDateTimePick
                 stockOutTableInsertCommand.ExecuteNonQuery();
                 con.Close();
                 //------------------------------------
+
+
+                //Saving To Sales Table
+                SqlCommand salesTableInsertCommand = new SqlCommand(@"INSERT INTO Sales (Stock_Out_Id,Customer_ID,[Net Sales])
+VALUES(" + int.Parse(this.BatchIDTextBox.Text) + ", "+this.CustomerComboBox.SelectedValue+", "+float.Parse(this.NetSalesTextBox.Text)+")", con);
+
+                con.Open();
+                salesTableInsertCommand.ExecuteNonQuery();
+                con.Close();
+                //----------------------
 
                 MessageBox.Show("New Sales Record Saved.");
                 setInnitial();
