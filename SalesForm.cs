@@ -31,7 +31,7 @@ namespace RangaHardwareStock
             //set items table
             salesItemsAddTable.Columns.Clear();
             salesItemsAddTable.Rows.Clear();
-            salesItemsAddTable.Columns.Add("Stock_In_Id", typeof(int));
+            salesItemsAddTable.Columns.Add("Stock_out_Id", typeof(int));
             salesItemsAddTable.Columns.Add("Item_ID", typeof(int));
             salesItemsAddTable.Columns.Add("Amount", typeof(int));
             salesItemsAddTable.Columns.Add("Total_Price", typeof(float));
@@ -499,7 +499,56 @@ VALUES(" + int.Parse(this.BatchIDTextBox.Text) + ", "+this.CustomerComboBox.Sele
                 con.Close();
                 //----------------------
 
-                MessageBox.Show("New Sales Record Saved.");
+                //Saving to SalesItem Table & Update stock level & stock status In item table
+                for (int i = 0; i < salesItemsAddTable.Rows.Count; i++)
+                {
+                    //update sales item table
+                    int Stock_out_Id = (int)salesItemsAddTable.Rows[i][0];
+                    int Item_ID = (int)salesItemsAddTable.Rows[i][1];
+                    int Amount = (int)salesItemsAddTable.Rows[i][2];
+                    float Total_Price = (float)salesItemsAddTable.Rows[i][3];
+
+                    SqlCommand salesItemTabaleInsertCommand = new SqlCommand(@"INSERT INTO SalesItems(Stock_Out_Id,Item_ID,Amount,[Total Price])
+VALUES ("+Stock_out_Id+","+Item_ID+","+Amount+","+Total_Price+")", con);
+                
+                    con.Open();
+                    salesItemTabaleInsertCommand.ExecuteNonQuery();
+                    con.Close();
+                    //------------------------------
+
+                    //Update stock level & stock status In item table
+                    SqlDataAdapter ItemAdupter = new SqlDataAdapter(@"SELECT Current_Stock,Min_Quentity FROM[Item] WHERE Item_ID = " + Item_ID + ";", con);
+                    DataTable dataTable = new DataTable();
+                    dataTable.Clear();
+
+                    ItemAdupter.Fill(dataTable);
+                    int CurrentStock = (int)dataTable.Rows[0][0] - Amount;
+                    int Min_Quentity = (int)dataTable.Rows[0][1];
+                    int Stock_Status;
+
+                    if(CurrentStock==0)
+                    {
+                        Stock_Status = 0;
+                    }
+                    else if(CurrentStock < Min_Quentity)
+                    {
+                        Stock_Status = 1;
+                    }
+                    else
+                    {
+                        Stock_Status = 2;
+                    }
+
+                    SqlCommand itemTableUpdateCommand = new SqlCommand(@"UPDATE Item SET Current_Stock = " + CurrentStock + ", Stock_Status = " + Stock_Status + " WHERE Item_ID = " + Item_ID + "; ", con);
+                    con.Open();
+                    itemTableUpdateCommand.ExecuteNonQuery();
+                    con.Close();
+                    //----------------------------------------------------
+                }
+
+                //-------------------------------
+
+                    MessageBox.Show("New Sales Record Saved.");
                 setInnitial();
             }
             else
