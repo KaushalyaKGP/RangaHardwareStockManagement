@@ -368,6 +368,7 @@ namespace RangaHardwareStock
             this.SaveButton.TabIndex = 107;
             this.SaveButton.Text = "Save New Sales";
             this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // AddNewSalesButton
             // 

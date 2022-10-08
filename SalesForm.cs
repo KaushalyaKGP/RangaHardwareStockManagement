@@ -49,10 +49,12 @@ namespace RangaHardwareStock
             this.QuantityNumericUpDown.Visible = false;
 
             this.SalesItemsDataGridView.DataSource = null;
+            this.SalesItemsDataGridView.Columns.Clear();
             this.SalesItemsDataGridView.ColumnCount = 3;
             this.SalesItemsDataGridView.Columns[0].Name = "Item";
             this.SalesItemsDataGridView.Columns[1].Name = "Quantity";
             this.SalesItemsDataGridView.Columns[2].Name = "ItemTotal";
+            this.salesItemsAddTable.Rows.Clear();
 
             this.AddItemButton.Enabled = false;
             this.AddItemButton.Visible = false;
@@ -247,6 +249,8 @@ WHERE si.Item_ID = i.Item_ID AND si.Stock_Out_Id = "+ this.SalesDataGridView.Row
             this.SaveButton.Enabled = true;
             this.SaveButton.Visible = true;
 
+            this.SalesDateTimePicker.Enabled = true;
+
 
 
 
@@ -282,69 +286,75 @@ WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + "", con);
         }
 
         private void DeleteSelectedSalesRecordButton_Click(object sender, EventArgs e)
-        {
-            DataTable itemlistTable = new DataTable();
-            SqlDataAdapter itemsListAdupter = new SqlDataAdapter(@"SELECT si.Item_Id, si.Amount, i.Min_Quentity,i.Current_Stock
-FROM SalesItems si,Item i 
-WHERE si.Stock_Out_Id ="+int.Parse(this.BatchIDTextBox.Text)+" AND si.Item_ID = i.Item_ID ", con);
-            itemsListAdupter.Fill(itemlistTable);
-
-            
-            SqlCommand changeStockCommand = new SqlCommand();
-
-            foreach (DataRow dataRow in itemlistTable.Rows)
+        { 
+            //check id user realy want to delete
+            DialogResult result= MessageBox.Show("Do you realy want to delete the record? \ndeleted records will not be abeled to recovered!", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result==DialogResult.Yes)
             {
-                //Update stock level & Stock Status
-                if(this.FromStockTypeComboBox.Text == "CurrentStock")
-                {
-                    int CurrentStock = (int)dataRow[3] + (int)dataRow[1];
-                    int Min_Quentity = (int)dataRow[2];
-                    int Stock_Status;
+                DataTable itemlistTable = new DataTable();
+                SqlDataAdapter itemsListAdupter = new SqlDataAdapter(@"SELECT si.Item_Id, si.Amount, i.Min_Quentity,i.Current_Stock
+FROM SalesItems si,Item i 
+WHERE si.Stock_Out_Id =" + int.Parse(this.BatchIDTextBox.Text) + " AND si.Item_ID = i.Item_ID ", con);
+                itemsListAdupter.Fill(itemlistTable);
 
-                    if (CurrentStock > Min_Quentity)
-                    {
-                        Stock_Status = 2;
-                    }
-                    else
-                    {
-                        Stock_Status = 1;
-                    }
-                    changeStockCommand = new SqlCommand(@"UPDATE Item SET Current_Stock += "+int.Parse(dataRow[1].ToString())+ ",Stock_Status = "+Stock_Status+"  WHERE Item_ID = " + int.Parse(dataRow[0].ToString()) + "", con);
-                }
-                else if(this.FromStockTypeComboBox.Text == "Customer Return Stock")
+
+                SqlCommand changeStockCommand = new SqlCommand();
+
+                foreach (DataRow dataRow in itemlistTable.Rows)
                 {
-                    changeStockCommand = new SqlCommand(@"UPDATE Item SET Customer_Return_Stock +=" + int.Parse(dataRow[1].ToString()) + "  WHERE Item_ID = " + int.Parse(dataRow[0].ToString()) + "", con);
+                    //Update stock level & Stock Status
+                    if (this.FromStockTypeComboBox.Text == "CurrentStock")
+                    {
+                        int CurrentStock = (int)dataRow[3] + (int)dataRow[1];
+                        int Min_Quentity = (int)dataRow[2];
+                        int Stock_Status;
+
+                        if (CurrentStock > Min_Quentity)
+                        {
+                            Stock_Status = 2;
+                        }
+                        else
+                        {
+                            Stock_Status = 1;
+                        }
+                        changeStockCommand = new SqlCommand(@"UPDATE Item SET Current_Stock += " + int.Parse(dataRow[1].ToString()) + ",Stock_Status = " + Stock_Status + "  WHERE Item_ID = " + int.Parse(dataRow[0].ToString()) + "", con);
+                    }
+                    else if (this.FromStockTypeComboBox.Text == "Customer Return Stock")
+                    {
+                        changeStockCommand = new SqlCommand(@"UPDATE Item SET Customer_Return_Stock +=" + int.Parse(dataRow[1].ToString()) + "  WHERE Item_ID = " + int.Parse(dataRow[0].ToString()) + "", con);
+                    }
+                    con.Open();
+                    changeStockCommand.ExecuteNonQuery();
+                    con.Close();
+                    //---------------------------------------------------------
+
                 }
+
+                //Delete SalesItem Records
+                SqlCommand DeleteItemsCommand = new SqlCommand(@"DELETE FROM SalesItems WHERE Stock_Out_Id = " + int.Parse(this.BatchIDTextBox.Text) + "", con);
                 con.Open();
-                changeStockCommand.ExecuteNonQuery();
+                DeleteItemsCommand.ExecuteNonQuery();
                 con.Close();
-                //---------------------------------------------------------
+                //-----------------------
 
+                //Delete sales record
+                SqlCommand DeleteSalesCommand = new SqlCommand(@"DELETE FROM Sales WHERE Stock_Out_Id = " + int.Parse(this.BatchIDTextBox.Text) + "", con);
+                con.Open();
+                DeleteSalesCommand.ExecuteNonQuery();
+                con.Close();
+                //--------------------
+
+                //Delete stockout record
+                SqlCommand DeleteStockOutCommand = new SqlCommand(@"DELETE FROM StockOut WHERE Stock_Out_Id = " + int.Parse(this.BatchIDTextBox.Text) + "", con);
+                con.Open();
+                DeleteStockOutCommand.ExecuteNonQuery();
+                con.Close();
+                //---------------------
+
+                MessageBox.Show("Record Deleted");
+                setInnitial();
             }
-
-            //Delete SalesItem Records
-            SqlCommand DeleteItemsCommand = new SqlCommand(@"DELETE FROM SalesItems WHERE Stock_Out_Id = " + int.Parse(this.BatchIDTextBox.Text) + "", con);
-            con.Open();
-            DeleteItemsCommand.ExecuteNonQuery();
-            con.Close();
-            //-----------------------
             
-            //Delete sales record
-            SqlCommand DeleteSalesCommand = new SqlCommand(@"DELETE FROM Sales WHERE Stock_Out_Id = " + int.Parse(this.BatchIDTextBox.Text) + "", con);
-            con.Open();
-            DeleteSalesCommand.ExecuteNonQuery();
-            con.Close();
-            //--------------------
-           
-            //Delete stockout record
-            SqlCommand DeleteStockOutCommand = new SqlCommand(@"DELETE FROM StockOut WHERE Stock_Out_Id = " + int.Parse(this.BatchIDTextBox.Text) + "", con);
-            con.Open();
-            DeleteStockOutCommand.ExecuteNonQuery();
-            con.Close();
-            //---------------------
-
-            MessageBox.Show("Record Deleted");
-            setInnitial();
         }
 
         private void AddItemButton_Click(object sender, EventArgs e)
@@ -462,6 +472,30 @@ WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + ";", con);
             {
                 MessageBox.Show("Please Enter Quantity");
             }
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            //check items added
+            if(salesItemsAddTable.Rows.Count!=0)
+            {
+                //Save into stockOut Tabale
+                SqlCommand stockOutTableInsertCommand = new SqlCommand(@"INSERT INTO StockOut (Stock_Out_ID,Type,Out_Date,From_Stock_Type )
+VALUES(" + int.Parse(this.BatchIDTextBox.Text) + ",1,'" + this.SalesDateTimePicker.Value + "'," + this.FromStockTypeComboBox.SelectedValue + ")", con);
+
+                con.Open();
+                stockOutTableInsertCommand.ExecuteNonQuery();
+                con.Close();
+                //------------------------------------
+
+                MessageBox.Show("New Sales Record Saved.");
+                setInnitial();
+            }
+            else
+            {
+                MessageBox.Show("Please Add Items");
+            }
+
         }
     }
 }
