@@ -13,6 +13,27 @@ namespace RangaHardwareStock
 {
     public partial class SalesForm : Form
     {
+        private static SalesForm _salesForm = new SalesForm();
+
+        public static void ShowForm()
+        {
+
+            if (SalesForm.ActiveForm == null)
+            {
+                _salesForm = new SalesForm();
+            }
+            _salesForm.Show();
+            _salesForm.setInnitial();
+
+        }
+
+        public static void HideForm()
+        {
+            _salesForm.Hide();
+        }
+
+
+        public static int SalesId = -1;
         SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\3rd Year Project\DEVELOPMENT PROJECT  - software\RangaHardwareStock\Ranga hardware.mdf; Integrated Security = True");
         DataTable dt = new DataTable();
 
@@ -151,6 +172,7 @@ WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + "", con);
 
         private void SalesDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            SalesId = (int)this.SalesDataGridView.Rows[e.RowIndex].Cells[0].Value;
             this.SalesDataGridView.CurrentRow.Selected = true;
             this.BatchIDTextBox.Text = this.SalesDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
             this.SalesDateTimePicker.Value = DateTime.Parse(this.SalesDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
@@ -556,6 +578,13 @@ VALUES ("+Stock_out_Id+","+Item_ID+","+Amount+","+Total_Price+")", con);
                 MessageBox.Show("Please Add Items");
             }
 
+        }
+
+        private void CustomerReturnButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            CustomerReturnForm customerReturn = new CustomerReturnForm();
+            customerReturn.Show();
         }
     }
 }

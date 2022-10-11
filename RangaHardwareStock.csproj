@@ -69,6 +69,12 @@
     <Compile Include="CurrentStockManagement.Designer.cs">
       <DependentUpon>CurrentStockManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomerReturnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerReturnForm.Designer.cs">
+      <DependentUpon>CustomerReturnForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Globles.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
@@ -131,6 +137,9 @@
     </Compile>
     <EmbeddedResource Include="CurrentStockManagement.resx">
       <DependentUpon>CurrentStockManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerReturnForm.resx">
+      <DependentUpon>CustomerReturnForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

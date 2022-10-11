@@ -235,6 +235,7 @@ namespace RangaHardwareStock
             this.ItemNameComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ItemNameComboBox.DataSource = this.itemBindingSource;
             this.ItemNameComboBox.DisplayMember = "Item_Name";
+            this.ItemNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ItemNameComboBox.FormattingEnabled = true;
             this.ItemNameComboBox.Location = new System.Drawing.Point(1089, 185);
             this.ItemNameComboBox.Name = "ItemNameComboBox";
@@ -297,6 +298,7 @@ namespace RangaHardwareStock
             this.FromStockTypeComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.FromStockTypeComboBox.DataSource = this.stockTypeBindingSource;
             this.FromStockTypeComboBox.DisplayMember = "Stock_Type";
+            this.FromStockTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FromStockTypeComboBox.FormattingEnabled = true;
             this.FromStockTypeComboBox.Location = new System.Drawing.Point(902, 130);
             this.FromStockTypeComboBox.Name = "FromStockTypeComboBox";
@@ -335,6 +337,7 @@ namespace RangaHardwareStock
             this.CustomerComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.CustomerComboBox.DataSource = this.customerBindingSource;
             this.CustomerComboBox.DisplayMember = "Name";
+            this.CustomerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CustomerComboBox.FormattingEnabled = true;
             this.CustomerComboBox.Location = new System.Drawing.Point(153, 382);
             this.CustomerComboBox.Name = "CustomerComboBox";
@@ -442,6 +445,7 @@ namespace RangaHardwareStock
             this.CustomerReturnButton.TabIndex = 113;
             this.CustomerReturnButton.Text = "Add Customer Return";
             this.CustomerReturnButton.UseVisualStyleBackColor = false;
+            this.CustomerReturnButton.Click += new System.EventHandler(this.CustomerReturnButton_Click);
             // 
             // stockTypeTableAdapter
             // 
