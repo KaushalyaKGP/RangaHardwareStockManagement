@@ -34,7 +34,7 @@ namespace RangaHardwareStock
             System.Windows.Forms.Label DataLabel;
             System.Windows.Forms.Label CustomerReturnIDLabel;
             System.Windows.Forms.Label label1;
-            this.AvailableStockLabel = new System.Windows.Forms.Label();
+            this.SoldQuantityLabel = new System.Windows.Forms.Label();
             this.QuantityLabel = new System.Windows.Forms.Label();
             this.ItemLabel = new System.Windows.Forms.Label();
             this.SaveButton = new System.Windows.Forms.Button();
@@ -51,7 +51,7 @@ namespace RangaHardwareStock
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.DiscriptionRichTextBox = new System.Windows.Forms.RichTextBox();
             this.Unit2Label = new System.Windows.Forms.Label();
-            this.AvailableStockCountLable = new System.Windows.Forms.Label();
+            this.SoldQuantityCountLable = new System.Windows.Forms.Label();
             this.UnitLable = new System.Windows.Forms.Label();
             this.BackButton = new System.Windows.Forms.Button();
             this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
@@ -112,16 +112,16 @@ namespace RangaHardwareStock
             label1.TabIndex = 136;
             label1.Text = "Discription :";
             // 
-            // AvailableStockLabel
+            // SoldQuantityLabel
             // 
-            this.AvailableStockLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.AvailableStockLabel.AutoSize = true;
-            this.AvailableStockLabel.ForeColor = System.Drawing.Color.SeaGreen;
-            this.AvailableStockLabel.Location = new System.Drawing.Point(1093, 475);
-            this.AvailableStockLabel.Name = "AvailableStockLabel";
-            this.AvailableStockLabel.Size = new System.Drawing.Size(116, 17);
-            this.AvailableStockLabel.TabIndex = 135;
-            this.AvailableStockLabel.Text = "Available Stock : ";
+            this.SoldQuantityLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.SoldQuantityLabel.AutoSize = true;
+            this.SoldQuantityLabel.ForeColor = System.Drawing.Color.SeaGreen;
+            this.SoldQuantityLabel.Location = new System.Drawing.Point(1093, 475);
+            this.SoldQuantityLabel.Name = "SoldQuantityLabel";
+            this.SoldQuantityLabel.Size = new System.Drawing.Size(105, 17);
+            this.SoldQuantityLabel.TabIndex = 135;
+            this.SoldQuantityLabel.Text = "Sold Quantity : ";
             // 
             // QuantityLabel
             // 
@@ -204,6 +204,7 @@ namespace RangaHardwareStock
             this.ItemNameComboBox.Size = new System.Drawing.Size(274, 24);
             this.ItemNameComboBox.TabIndex = 122;
             this.ItemNameComboBox.ValueMember = "Item_ID";
+            this.ItemNameComboBox.SelectedIndexChanged += new System.EventHandler(this.ItemNameComboBox_SelectedIndexChanged);
             // 
             // CRItemsDataGridView
             // 
@@ -303,16 +304,16 @@ namespace RangaHardwareStock
             this.Unit2Label.TabIndex = 140;
             this.Unit2Label.Text = "Unit";
             // 
-            // AvailableStockCountLable
+            // SoldQuantityCountLable
             // 
-            this.AvailableStockCountLable.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.AvailableStockCountLable.AutoSize = true;
-            this.AvailableStockCountLable.ForeColor = System.Drawing.Color.SeaGreen;
-            this.AvailableStockCountLable.Location = new System.Drawing.Point(1217, 475);
-            this.AvailableStockCountLable.Name = "AvailableStockCountLable";
-            this.AvailableStockCountLable.Size = new System.Drawing.Size(84, 17);
-            this.AvailableStockCountLable.TabIndex = 139;
-            this.AvailableStockCountLable.Text = "Stock Count";
+            this.SoldQuantityCountLable.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.SoldQuantityCountLable.AutoSize = true;
+            this.SoldQuantityCountLable.ForeColor = System.Drawing.Color.SeaGreen;
+            this.SoldQuantityCountLable.Location = new System.Drawing.Point(1217, 475);
+            this.SoldQuantityCountLable.Name = "SoldQuantityCountLable";
+            this.SoldQuantityCountLable.Size = new System.Drawing.Size(61, 17);
+            this.SoldQuantityCountLable.TabIndex = 139;
+            this.SoldQuantityCountLable.Text = "Quantity";
             // 
             // UnitLable
             // 
@@ -358,11 +359,11 @@ namespace RangaHardwareStock
             this.ClientSize = new System.Drawing.Size(1404, 904);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.Unit2Label);
-            this.Controls.Add(this.AvailableStockCountLable);
+            this.Controls.Add(this.SoldQuantityCountLable);
             this.Controls.Add(this.UnitLable);
             this.Controls.Add(this.DiscriptionRichTextBox);
             this.Controls.Add(label1);
-            this.Controls.Add(this.AvailableStockLabel);
+            this.Controls.Add(this.SoldQuantityLabel);
             this.Controls.Add(this.QuantityLabel);
             this.Controls.Add(this.ItemLabel);
             this.Controls.Add(this.SaveButton);
@@ -381,6 +382,7 @@ namespace RangaHardwareStock
             this.Name = "CustomerReturnForm";
             this.Text = "Ranga Hardware Stock Management / Stock Out Management / Sales / Customer Return";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CustomerReturnForm_FormClosed);
             this.Load += new System.EventHandler(this.CustomerReturnForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.QuantityNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CRItemsDataGridView)).EndInit();
@@ -394,7 +396,7 @@ namespace RangaHardwareStock
 
         #endregion
 
-        private System.Windows.Forms.Label AvailableStockLabel;
+        private System.Windows.Forms.Label SoldQuantityLabel;
         private System.Windows.Forms.Label QuantityLabel;
         private System.Windows.Forms.Label ItemLabel;
         private System.Windows.Forms.Button SaveButton;
@@ -411,7 +413,7 @@ namespace RangaHardwareStock
         private System.Windows.Forms.DataGridViewTextBoxColumn Item_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.Label Unit2Label;
-        private System.Windows.Forms.Label AvailableStockCountLable;
+        private System.Windows.Forms.Label SoldQuantityCountLable;
         private System.Windows.Forms.Label UnitLable;
         private System.Windows.Forms.Button BackButton;
         private Ranga_hardwareDataSet ranga_hardwareDataSet;
