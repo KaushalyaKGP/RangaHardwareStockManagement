@@ -46,6 +46,8 @@ namespace RangaHardwareStock
             this.Item_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReasonComboBox = new System.Windows.Forms.ComboBox();
+            this.customerReturnReasonBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
             this.CRDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.Titlelabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -54,8 +56,6 @@ namespace RangaHardwareStock
             this.SoldQuantityCountLable = new System.Windows.Forms.Label();
             this.UnitLable = new System.Windows.Forms.Label();
             this.BackButton = new System.Windows.Forms.Button();
-            this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
-            this.customerReturnReasonBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customerReturnReasonTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.CustomerReturnReasonTableAdapter();
             ReasonLabel = new System.Windows.Forms.Label();
             DataLabel = new System.Windows.Forms.Label();
@@ -63,9 +63,9 @@ namespace RangaHardwareStock
             label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.QuantityNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CRItemsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerReturnReasonBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // ReasonLabel
@@ -157,6 +157,7 @@ namespace RangaHardwareStock
             this.SaveButton.TabIndex = 132;
             this.SaveButton.Text = "Save Customer Return";
             this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // QuantityNumericUpDown
             // 
@@ -192,6 +193,7 @@ namespace RangaHardwareStock
             this.AddItemButton.TabIndex = 124;
             this.AddItemButton.Text = "Add Item";
             this.AddItemButton.UseVisualStyleBackColor = false;
+            this.AddItemButton.Click += new System.EventHandler(this.AddItemButton_Click);
             // 
             // ItemNameComboBox
             // 
@@ -249,6 +251,16 @@ namespace RangaHardwareStock
             this.ReasonComboBox.Size = new System.Drawing.Size(346, 24);
             this.ReasonComboBox.TabIndex = 120;
             this.ReasonComboBox.ValueMember = "Id";
+            // 
+            // customerReturnReasonBindingSource
+            // 
+            this.customerReturnReasonBindingSource.DataMember = "CustomerReturnReason";
+            this.customerReturnReasonBindingSource.DataSource = this.ranga_hardwareDataSet;
+            // 
+            // ranga_hardwareDataSet
+            // 
+            this.ranga_hardwareDataSet.DataSetName = "Ranga_hardwareDataSet";
+            this.ranga_hardwareDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // CRDateTimePicker
             // 
@@ -338,16 +350,6 @@ namespace RangaHardwareStock
             this.BackButton.Text = "Back";
             this.BackButton.UseVisualStyleBackColor = false;
             // 
-            // ranga_hardwareDataSet
-            // 
-            this.ranga_hardwareDataSet.DataSetName = "Ranga_hardwareDataSet";
-            this.ranga_hardwareDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // customerReturnReasonBindingSource
-            // 
-            this.customerReturnReasonBindingSource.DataMember = "CustomerReturnReason";
-            this.customerReturnReasonBindingSource.DataSource = this.ranga_hardwareDataSet;
-            // 
             // customerReturnReasonTableAdapter
             // 
             this.customerReturnReasonTableAdapter.ClearBeforeFill = true;
@@ -386,9 +388,9 @@ namespace RangaHardwareStock
             this.Load += new System.EventHandler(this.CustomerReturnForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.QuantityNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CRItemsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerReturnReasonBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

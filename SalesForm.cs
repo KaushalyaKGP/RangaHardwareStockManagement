@@ -581,10 +581,26 @@ VALUES ("+Stock_out_Id+","+Item_ID+","+Amount+","+Total_Price+")", con);
         }
 
         private void CustomerReturnButton_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            CustomerReturnForm customerReturn = new CustomerReturnForm();
-            customerReturn.Show();
+        {   //check if selected sale already has a customer return
+            SqlCommand Command = new SqlCommand(@"SELECT  c.Stock_In_ID
+FROM CustomerReturn c, Sales s
+WHERE s.Stock_Out_Id = c.Stock_Out_ID AND s.Stock_Out_Id = "+SalesId+"", con);
+            con.Open();
+            
+            
+            if (Command.ExecuteScalar()==null)
+            {
+                con.Close();
+                this.Hide();
+                CustomerReturnForm customerReturn = new CustomerReturnForm();
+                customerReturn.Show();
+            }
+            else
+            {
+                con.Close();
+                MessageBox.Show("Selectes sales already has a customer return record !");
+            }
+            
         }
     }
 }
