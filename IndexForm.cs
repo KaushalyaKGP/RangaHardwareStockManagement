@@ -38,8 +38,7 @@ namespace RangaHardwareStock
         {
             //to - do -- direct to login page
             this.Hide();
-            LoginForm login = new LoginForm();
-            login.Show();
+            LoginForm.ShowForm();
         }
 
         private void IndexForm_FormClosed(object sender, FormClosedEventArgs e)

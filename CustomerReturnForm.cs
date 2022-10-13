@@ -184,5 +184,10 @@ VALUES (" + StockInId + "," + ItemID + "," + amount + ")", con);
                 MessageBox.Show("Please Add Items");
             }
         }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            CustomerReturnForm.ActiveForm.Close();
+        }
     }
 }

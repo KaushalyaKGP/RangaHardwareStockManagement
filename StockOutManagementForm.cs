@@ -18,7 +18,7 @@ namespace RangaHardwareStock
         public static void ShowForm()
         {
 
-            if (StockOutManagementForm.ActiveForm == null)
+            if(_stockOutManagementForm.IsDisposed)
             {
                 _stockOutManagementForm = new StockOutManagementForm();
             }
@@ -100,10 +100,6 @@ GROUP BY so.Stock_Out_ID,sot.Type,so.Out_Date,st.Stock_Type",con);
 
         }
 
-        public static implicit operator StockOutManagementForm(StockIn_ManagementForm v)
-        {
-            throw new NotImplementedException();
-        }
 
         private void StockOutManagementForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -429,8 +425,8 @@ WHERE so.Out_Date>='" + DateOutFromDateTimePicker.Value + "' AND so.Out_Date<='"
         private void SalesButton_Click(object sender, EventArgs e)
         {
             StockOutManagementForm.HideForm();
-            SalesForm salesForm = new SalesForm();
-            salesForm.Show();
+
+            SalesForm.ShowForm();
         }
     }
 }

@@ -21,7 +21,13 @@ namespace RangaHardwareStock
         private static HomeForm home = new HomeForm();
 
         public static void showForm()
-        { home.Show(); }
+        {
+            if(home.IsDisposed)
+            {
+                home = new HomeForm();
+            }
+            home.Show(); 
+        }
 
         public static void HideForm()
         { home.Hide(); }

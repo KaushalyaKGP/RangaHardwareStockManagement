@@ -15,6 +15,7 @@ namespace RangaHardwareStock
 
     public partial class CurrentStockManagementForm : Form
     {
+        
 
         SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\3rd Year Project\DEVELOPMENT PROJECT  - software\RangaHardwareStock\Ranga hardware.mdf; Integrated Security = True");
         DataTable dt = new DataTable();
@@ -23,6 +24,7 @@ namespace RangaHardwareStock
         {
             InitializeComponent();
         }
+
 
         private void CurrentStockManagementForm_FormClosed(object sender, FormClosedEventArgs e)
         {

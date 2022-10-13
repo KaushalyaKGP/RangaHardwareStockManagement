@@ -13,6 +13,7 @@ namespace RangaHardwareStock
 {
     public partial class StockIn_ManagementForm : Form
     {
+        bool formCloseIndex = false;
         private static StockIn_ManagementForm _stockIn_ManagementForm = new StockIn_ManagementForm();
 
         public static void ShowForm()
@@ -120,7 +121,11 @@ ON PS.Id = IB.Payment_Status", con);
         //--------------------------------------------------------
         private void StockIn_ManagementForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            HomeForm.showForm();
+            if(formCloseIndex == false)
+            {
+                HomeForm.showForm();
+            }
+            
         }
 
         //Search Optiont working when search button click
@@ -505,7 +510,9 @@ ON PS.Id = IB.Payment_Status", con);
 
         private void NewCustomerReturnButton_Click(object sender, EventArgs e)
         {
-           
+            formCloseIndex = true;
+            this.Close();
+            SalesForm.ShowForm();
         }
     }
         }

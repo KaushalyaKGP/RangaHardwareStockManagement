@@ -17,10 +17,28 @@ namespace RangaHardwareStock
     {
         //private string username = "admin";
         //private string password = "admin";
-        
 
-        
-        
+        private static LoginForm loginForm = new LoginForm();
+
+        public static void ShowForm()
+        {
+
+            if (LoginForm.ActiveForm == null)
+            {
+                loginForm = new LoginForm();
+            }
+            loginForm.Show();
+            
+
+        }
+
+        public static void HideForm()
+        {
+            loginForm.Hide();
+        }
+
+
+
         public LoginForm()
         {
             InitializeComponent();
@@ -98,9 +116,8 @@ namespace RangaHardwareStock
                 {
                     Globles.loginIndex = true;
                     this.Hide();
-                    HomeForm home = new HomeForm();
+                    HomeForm.showForm();
 
-                    home.ShowDialog();
                 }
 
                 else
