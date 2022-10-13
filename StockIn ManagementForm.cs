@@ -503,7 +503,7 @@ ON PS.Id = IB.Payment_Status", con);
         //direct to stock in form
         private void NewInboundOrderButton_Click(object sender, EventArgs e)
         {
-            InboundOrderIn inboundOrder = new InboundOrderIn();
+            InboundOrderForm inboundOrder = new InboundOrderForm();
             this.Hide();
             inboundOrder.Show();
         }

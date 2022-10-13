@@ -42,7 +42,7 @@ namespace RangaHardwareStock
             this.BackButton = new System.Windows.Forms.Button();
             this.SearchButton = new System.Windows.Forms.Button();
             this.Titlelabel = new System.Windows.Forms.Label();
-            this.NewInboundOrderButton = new System.Windows.Forms.Button();
+            this.InboundOrderButton = new System.Windows.Forms.Button();
             this.NewCustomerReturnButton = new System.Windows.Forms.Button();
             this.BatchIDComboBox = new System.Windows.Forms.ComboBox();
             this.stockInTableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -222,19 +222,19 @@ namespace RangaHardwareStock
             this.Titlelabel.Text = "Stock In Management";
             this.Titlelabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // NewInboundOrderButton
+            // InboundOrderButton
             // 
-            this.NewInboundOrderButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.NewInboundOrderButton.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.NewInboundOrderButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewInboundOrderButton.ForeColor = System.Drawing.Color.White;
-            this.NewInboundOrderButton.Location = new System.Drawing.Point(45, 166);
-            this.NewInboundOrderButton.Name = "NewInboundOrderButton";
-            this.NewInboundOrderButton.Size = new System.Drawing.Size(336, 88);
-            this.NewInboundOrderButton.TabIndex = 30;
-            this.NewInboundOrderButton.Text = "New Inbound Order";
-            this.NewInboundOrderButton.UseVisualStyleBackColor = false;
-            this.NewInboundOrderButton.Click += new System.EventHandler(this.NewInboundOrderButton_Click);
+            this.InboundOrderButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.InboundOrderButton.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.InboundOrderButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InboundOrderButton.ForeColor = System.Drawing.Color.White;
+            this.InboundOrderButton.Location = new System.Drawing.Point(45, 166);
+            this.InboundOrderButton.Name = "InboundOrderButton";
+            this.InboundOrderButton.Size = new System.Drawing.Size(336, 88);
+            this.InboundOrderButton.TabIndex = 30;
+            this.InboundOrderButton.Text = "Inbound Order";
+            this.InboundOrderButton.UseVisualStyleBackColor = false;
+            this.InboundOrderButton.Click += new System.EventHandler(this.NewInboundOrderButton_Click);
             // 
             // NewCustomerReturnButton
             // 
@@ -379,7 +379,7 @@ namespace RangaHardwareStock
             this.Controls.Add(BatchIDLabel);
             this.Controls.Add(this.BatchIDComboBox);
             this.Controls.Add(this.NewCustomerReturnButton);
-            this.Controls.Add(this.NewInboundOrderButton);
+            this.Controls.Add(this.InboundOrderButton);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.StockInDataGridView);
             this.Controls.Add(this.BackButton);
@@ -408,7 +408,7 @@ namespace RangaHardwareStock
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.Label Titlelabel;
-        private System.Windows.Forms.Button NewInboundOrderButton;
+        private System.Windows.Forms.Button InboundOrderButton;
         private System.Windows.Forms.Button NewCustomerReturnButton;
         private System.Windows.Forms.ComboBox BatchIDComboBox;
         private System.Windows.Forms.ComboBox PaymentStatusComboBox;

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace RangaHardwareStock
 {
-    public partial class InboundOrderIn : Form
+    public partial class InboundOrderForm : Form
     {
 
         float TotalCost = 0;
@@ -22,7 +22,7 @@ namespace RangaHardwareStock
         DataTable InboundOrderInItems = new DataTable();
         //------------
         
-        public InboundOrderIn()
+        public InboundOrderForm()
         {
             InitializeComponent();
         }
@@ -276,7 +276,7 @@ VALUES ("+StockInId+","+ItemID+","+amount+","+unit_Cost+","+Total_Cost+")", con)
 
 
 
-                InboundOrderIn.ActiveForm.Close();
+                InboundOrderForm.ActiveForm.Close();
 
             }
             else
