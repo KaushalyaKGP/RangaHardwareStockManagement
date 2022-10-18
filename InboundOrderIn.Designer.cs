@@ -65,7 +65,7 @@ namespace RangaHardwareStock
             this.ReturntoSupplierButton = new System.Windows.Forms.Button();
             this.DeleteInboundOrderButton = new System.Windows.Forms.Button();
             this.AddNewInboundOrderButton = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.InboundOrderDataGridView = new System.Windows.Forms.DataGridView();
             this.BackButton = new System.Windows.Forms.Button();
             SupplierCustomerLabel = new System.Windows.Forms.Label();
             DateInLabel = new System.Windows.Forms.Label();
@@ -84,7 +84,7 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.UnitCostNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PeidAmountNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InboundOrderDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // SupplierCustomerLabel
@@ -122,7 +122,7 @@ namespace RangaHardwareStock
             // 
             // ItemNameLabel
             // 
-            ItemNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            ItemNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             ItemNameLabel.AutoSize = true;
             ItemNameLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ItemNameLabel.Location = new System.Drawing.Point(983, 162);
@@ -133,7 +133,7 @@ namespace RangaHardwareStock
             // 
             // AmountLabel
             // 
-            AmountLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            AmountLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             AmountLabel.AutoSize = true;
             AmountLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             AmountLabel.Location = new System.Drawing.Point(983, 206);
@@ -144,7 +144,7 @@ namespace RangaHardwareStock
             // 
             // UnitCostLabel
             // 
-            UnitCostLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            UnitCostLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             UnitCostLabel.AutoSize = true;
             UnitCostLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             UnitCostLabel.Location = new System.Drawing.Point(983, 246);
@@ -197,7 +197,7 @@ namespace RangaHardwareStock
             this.Titlelabel.Name = "Titlelabel";
             this.Titlelabel.Size = new System.Drawing.Size(917, 108);
             this.Titlelabel.TabIndex = 21;
-            this.Titlelabel.Text = "New Inbound Order";
+            this.Titlelabel.Text = "Inbound Order";
             this.Titlelabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SupplierComboBox
@@ -282,7 +282,7 @@ namespace RangaHardwareStock
             // 
             // ItemNameComboBox
             // 
-            this.ItemNameComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ItemNameComboBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ItemNameComboBox.DisplayMember = "Supplier_ID";
             this.ItemNameComboBox.FormattingEnabled = true;
             this.ItemNameComboBox.Location = new System.Drawing.Point(1043, 160);
@@ -358,7 +358,7 @@ namespace RangaHardwareStock
             // 
             // AmountNumericUpDown
             // 
-            this.AmountNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AmountNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.AmountNumericUpDown.Location = new System.Drawing.Point(1070, 205);
             this.AmountNumericUpDown.Maximum = new decimal(new int[] {
             100000,
@@ -371,7 +371,7 @@ namespace RangaHardwareStock
             // 
             // UnitCostNumericUpDown
             // 
-            this.UnitCostNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.UnitCostNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.UnitCostNumericUpDown.DecimalPlaces = 2;
             this.UnitCostNumericUpDown.Location = new System.Drawing.Point(1083, 245);
             this.UnitCostNumericUpDown.Maximum = new decimal(new int[] {
@@ -465,15 +465,17 @@ namespace RangaHardwareStock
             this.AddNewInboundOrderButton.Text = "Add New Inbound Order";
             this.AddNewInboundOrderButton.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // InboundOrderDataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(45, 566);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1315, 273);
-            this.dataGridView1.TabIndex = 117;
+            this.InboundOrderDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.InboundOrderDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.InboundOrderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.InboundOrderDataGridView.Location = new System.Drawing.Point(45, 566);
+            this.InboundOrderDataGridView.Name = "InboundOrderDataGridView";
+            this.InboundOrderDataGridView.RowHeadersWidth = 51;
+            this.InboundOrderDataGridView.RowTemplate.Height = 24;
+            this.InboundOrderDataGridView.Size = new System.Drawing.Size(1315, 273);
+            this.InboundOrderDataGridView.TabIndex = 117;
             // 
             // BackButton
             // 
@@ -495,7 +497,7 @@ namespace RangaHardwareStock
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1404, 904);
             this.Controls.Add(this.BackButton);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.InboundOrderDataGridView);
             this.Controls.Add(this.ReturntoSupplierButton);
             this.Controls.Add(this.DeleteInboundOrderButton);
             this.Controls.Add(this.AddNewInboundOrderButton);
@@ -537,7 +539,7 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.UnitCostNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PeidAmountNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InboundOrderDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -571,7 +573,7 @@ namespace RangaHardwareStock
         private System.Windows.Forms.Button ReturntoSupplierButton;
         private System.Windows.Forms.Button DeleteInboundOrderButton;
         private System.Windows.Forms.Button AddNewInboundOrderButton;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView InboundOrderDataGridView;
         private System.Windows.Forms.Button BackButton;
     }
 }

@@ -17,6 +17,7 @@ namespace RangaHardwareStock
         float TotalCost = 0;
         float pendingPaynemts;
         SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\3rd Year Project\DEVELOPMENT PROJECT  - software\RangaHardwareStock\Ranga hardware.mdf; Integrated Security = True");
+        DataTable dt = new DataTable();
 
         //data of items
         DataTable InboundOrderInItems = new DataTable();
@@ -25,6 +26,32 @@ namespace RangaHardwareStock
         public InboundOrderForm()
         {
             InitializeComponent();
+        }
+
+        private void setInitials()
+        {
+            SqlDataAdapter sda = new SqlDataAdapter(@"SELECT si.Stock_In_ID,si.In_Date,i.Supplier,i.[Payment Status],i.Cost,i.Paid_Amount,i.Pending_Payment,i.Items,ri.ReturnToSupplierID,ri.[Return Reason],ri.Comment,ri.Items as [Returned items] 
+FROM StockInTable si
+LEFT JOIN (SELECT ib.Stock_In_Id , s.Name as Supplier,ps.Status as [Payment Status],ib.Cost, ib.Paid_Amount,ib.Pending_Payment , ioi.Items
+FROM InboundOrderIn ib
+LEFT JOIN Supplier s
+ON ib.Supplier_ID = s.Supplier_ID
+LEFT JOIN PaymentStatus ps
+ON ib.Payment_Status = ps.Id
+LEFT JOIN (SELECT ibi.Stock_In_Id,Items = STUFF((SELECT DISTINCT ', ' +Items FROM (SELECT ibi.Stock_In_Id,CONCAT( i.Item_Name,' ','-',' ',ibi.amount,' ',i.Mesuring_Unit) as Items FROM InboundOrderItems ibi, Item i WHERE ibi.Item_ID = i.Item_ID) as a WHERE ibi.Stock_In_Id = a.Stock_In_Id FOR XML PATH('')), 1, 2, '') FROM InboundOrderItems ibi, Item i WHERE ibi.Item_ID = i.Item_ID GROUP BY ibi.Stock_In_Id) as ioi
+ON ib.Stock_In_Id = ioi.Stock_In_Id) as i
+ON si.Stock_In_ID = i.Stock_In_Id
+LEFT JOIN (SELECT rs.Stock_In_ID,rs.Stock_Out_ID as ReturnToSupplierID,rsr.Reason as [Return Reason],rs.Comment ,rsi.Items
+FROM ReturnToSupplier rs
+LEFT JOIN ReturnToSupplierReasons rsr
+ON rsr.Id = rs.Reason
+LEFT JOIN (SELECT rsi.Stock_Out_ID,Items = STUFF((SELECT DISTINCT ', ' +Items FROM (SELECT rsi.Stock_Out_ID,CONCAT( i.Item_Name,' ','-',' ',rsi.Amount,' ',i.Mesuring_Unit) as Items FROM ReturnToSupplierItems rsi, Item i WHERE rsi.Item_ID = i.Item_ID) as a WHERE rsi.Stock_Out_ID = a.Stock_Out_ID FOR XML PATH('')), 1, 2, '') FROM ReturnToSupplierItems rsi, Item i WHERE rsi.Item_ID = i.Item_ID GROUP BY rsi.Stock_Out_ID) as rsi
+ON rs.Stock_Out_ID = rsi.Stock_Out_ID) as ri
+ON si.Stock_In_ID = ri.Stock_In_ID
+WHERE si.Type = 1", con);
+            dt.Rows.Clear();
+            sda.Fill(dt);
+            InboundOrderDataGridView.DataSource = dt;
         }
 
         private void InboundOrderIn_Load(object sender, EventArgs e)
@@ -57,7 +84,7 @@ namespace RangaHardwareStock
             //set date today
             this.DateInDateTimePicker.Value = DateTime.Today;
             //--------------
-
+            setInitials();
 
 
         }
