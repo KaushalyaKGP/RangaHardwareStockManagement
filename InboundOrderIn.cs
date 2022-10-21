@@ -13,7 +13,7 @@ namespace RangaHardwareStock
 {
     public partial class InboundOrderForm : Form
     {
-
+        int StockInID;
         float TotalCost = 0;
         float pendingPaynemts;
         SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\3rd Year Project\DEVELOPMENT PROJECT  - software\RangaHardwareStock\Ranga hardware.mdf; Integrated Security = True");
@@ -30,6 +30,20 @@ namespace RangaHardwareStock
 
         private void setInitials()
         {
+            //set items table
+            InboundOrderInItems.Columns.Clear();
+            InboundOrderInItems.Clear();
+            InboundOrderInItems.Columns.Add("Stock_In_Id", typeof(int));
+            InboundOrderInItems.Columns.Add("Item_ID", typeof(int));
+            InboundOrderInItems.Columns.Add("amount", typeof(int));
+            InboundOrderInItems.Columns.Add("unit_Cost", typeof(float));
+            InboundOrderInItems.Columns.Add("Total_Cost", typeof(float));
+            //-------------------
+
+            //Set Inbound order Data Grid
+
+            InboundOrderDataGridView.Enabled = true;
+
             SqlDataAdapter sda = new SqlDataAdapter(@"SELECT si.Stock_In_ID,si.In_Date,i.Supplier,i.[Payment Status],i.Cost,i.Paid_Amount,i.Pending_Payment,i.Items,ri.ReturnToSupplierID,ri.[Return Reason],ri.Comment,ri.Items as [Returned items] 
 FROM StockInTable si
 LEFT JOIN (SELECT ib.Stock_In_Id , s.Name as Supplier,ps.Status as [Payment Status],ib.Cost, ib.Paid_Amount,ib.Pending_Payment , ioi.Items
@@ -52,6 +66,61 @@ WHERE si.Type = 1", con);
             dt.Rows.Clear();
             sda.Fill(dt);
             InboundOrderDataGridView.DataSource = dt;
+            //-------------------------------------------------
+
+
+            this.BatchIDTextBox.Text = "";
+
+            this.DateInDateTimePicker.Enabled = true;
+            this.DateInDateTimePicker.Value = DateTime.Today;
+
+            this.SupplierComboBox.Enabled = true;
+            this.SupplierComboBox.Text = "";
+
+
+            this.ItemLabel.Visible = false;
+
+            this.ItemNameComboBox.Enabled = false;
+            this.ItemNameComboBox.Visible = false;
+
+            this.UnitLable.Visible = false;
+            this.InboundStockLabel.Visible = false;
+            this.InboundStockCountLable.Visible = false;
+            this.Unit2Label.Visible = false;
+
+            this.QuantityLabel.Visible = false;
+            this.QuantityNumericUpDown.Enabled = false;
+            this.QuantityNumericUpDown.Visible = false;
+
+            this.AddItemButton.Enabled = false;
+            this.AddItemButton.Visible = false;
+
+            this.InboundOrderItemsDataGridView.DataSource = null;
+            this.InboundOrderItemsDataGridView.Columns.Clear();
+            this.InboundOrderItemsDataGridView.ColumnCount = 4;
+            this.InboundOrderItemsDataGridView.Columns[0].Name = "Item";
+            this.InboundOrderItemsDataGridView.Columns[1].Name = "Quantity";
+            this.InboundOrderItemsDataGridView.Columns[2].Name = "Unit Cost";
+            this.InboundOrderItemsDataGridView.Columns[3].Name = "ItemTotal";
+            this.InboundOrderInItems.Rows.Clear();
+
+            this.SaveNewInboundOrderButton.Enabled = false;
+            this.SaveNewInboundOrderButton.Visible = false;
+
+            this.ResetButton.Enabled = false;
+            this.ResetButton.Visible = false;
+
+            this.TotalCostTextBox.Text = "";
+            this.PeidAmountNumericUpDown.Enabled = false;
+            this.PeidAmountNumericUpDown.Value = 0;
+            this.PendingPaymentsTextBox.Text = "";
+
+            this.DeleteInboundOrderButton.Enabled = false;
+            this.DeleteInboundOrderButton.Visible = false;
+
+            this.ReturntoSupplierButton.Enabled = false;
+            this.ReturntoSupplierButton.Visible = false;
+
         }
 
         private void InboundOrderIn_Load(object sender, EventArgs e)
@@ -72,14 +141,7 @@ WHERE si.Type = 1", con);
             SetItemList();
             //--------------------------
 
-            //set items table
-            InboundOrderInItems.Clear();
-            InboundOrderInItems.Columns.Add("Stock_In_Id", typeof(int));
-            InboundOrderInItems.Columns.Add("Item_ID", typeof(int));
-            InboundOrderInItems.Columns.Add("amount", typeof(int));
-            InboundOrderInItems.Columns.Add("unit_Cost", typeof(float));
-            InboundOrderInItems.Columns.Add("Total_Cost", typeof(float));
-            //-------------------
+            
 
             //set date today
             this.DateInDateTimePicker.Value = DateTime.Today;
@@ -151,30 +213,30 @@ WHERE Supplier_ID = "+this.SupplierComboBox.SelectedValue +"", con);
             
             
             //validate amount is>0
-            if((AmountNumericUpDown.Value>0)&&(repeat==-1))
+            if((QuantityNumericUpDown.Value>0)&&(repeat==-1))
             {
-                float total_Item_Cost = (float.Parse(this.UnitCostNumericUpDown.Text)) * (float.Parse(this.AmountNumericUpDown.Text));
-                this.InboundOrderItemsDataGridView.Rows.Add(this.ItemNameComboBox.Text, this.AmountNumericUpDown.Text, this.UnitCostNumericUpDown.Text, total_Item_Cost.ToString("0.00"));
+                float total_Item_Cost = (float.Parse(this.UnitCostNumericUpDown.Text)) * (float.Parse(this.QuantityNumericUpDown.Text));
+                this.InboundOrderItemsDataGridView.Rows.Add(this.ItemNameComboBox.Text, this.QuantityNumericUpDown.Text, this.UnitCostNumericUpDown.Text, total_Item_Cost.ToString("0.00"));
                 TotalCost += total_Item_Cost;
                 TotalCostTextBox.Text = TotalCost.ToString("0.00");
                 pendingPaynemts = TotalCost - (float)this.PeidAmountNumericUpDown.Value;
                 PendingPaymentsTextBox.Text = pendingPaynemts.ToString("0.00");
 
                 //Add data to table
-                InboundOrderInItems.Rows.Add(new object[] { int.Parse(BatchIDTextBox.Text), ItemNameComboBox.SelectedValue, AmountNumericUpDown.Value, (float)UnitCostNumericUpDown.Value, total_Item_Cost });
+                InboundOrderInItems.Rows.Add(new object[] { int.Parse(BatchIDTextBox.Text), ItemNameComboBox.SelectedValue, QuantityNumericUpDown.Value, (float)UnitCostNumericUpDown.Value, total_Item_Cost });
                 
                 //---------------------------
 
                 //clear add item data input options
                 this.ItemNameComboBox.SelectedIndex = 0;
-                this.AmountNumericUpDown.Value = 0;
+                this.QuantityNumericUpDown.Value = 0;
                 this.UnitCostNumericUpDown.Value = 0;
                 //-------------
 
                 
             }
 
-            else if((AmountNumericUpDown.Value <= 0) && (repeat == -1))
+            else if((QuantityNumericUpDown.Value <= 0) && (repeat == -1))
             {
                 MessageBox.Show("Please Enter Amount");
             }
@@ -321,7 +383,7 @@ VALUES ("+StockInId+","+ItemID+","+amount+","+unit_Cost+","+Total_Cost+")", con)
         {
             this.DateInDateTimePicker.Value = DateTime.Today;
             this.SupplierComboBox.SelectedIndex = 0;
-            this.AmountNumericUpDown.Value = 0;
+            this.QuantityNumericUpDown.Value = 0;
             this.UnitCostNumericUpDown.Value = 0;
             this.InboundOrderItemsDataGridView.Rows.Clear();
             this.InboundOrderInItems.Rows.Clear();
@@ -329,6 +391,35 @@ VALUES ("+StockInId+","+ItemID+","+amount+","+unit_Cost+","+Total_Cost+")", con)
             this.TotalCostTextBox.Text = TotalCost.ToString("0.00");
             this.PeidAmountNumericUpDown.Value = 0;
             this.PendingPaymentsTextBox.Text = "";
+
+        }
+
+        private void InboundOrderDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            StockInID = (int)this.InboundOrderDataGridView.Rows[e.RowIndex].Cells[0].Value;
+            this.InboundOrderDataGridView.CurrentRow.Selected = true;
+            this.BatchIDTextBox.Text = this.InboundOrderDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+            this.DateInDateTimePicker.Value = DateTime.Parse(this.InboundOrderDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
+            this.SupplierComboBox.Text = this.InboundOrderDataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+            SqlDataAdapter items = new SqlDataAdapter(@"SELECT i.Item_Name as Item, ii.amount as Quantity,ii.unit_Cost,ii.Total_Cost
+FROM InboundOrderItems ii, Item i
+WHERE ii.Item_ID = i.Item_ID AND ii.Stock_In_Id = "+ StockInID + "", con);
+            DataTable itemFillTable = new DataTable();
+            itemFillTable.Rows.Clear();
+            items.Fill(itemFillTable);
+            this.InboundOrderDataGridView.Columns.Clear();
+            this.InboundOrderDataGridView.DataSource = itemFillTable;
+
+            this.TotalCostTextBox.Text = this.InboundOrderDataGridView.Rows[e.RowIndex].Cells[4].Value.ToString();
+            this.PeidAmountNumericUpDown.Text = this.InboundOrderDataGridView.Rows[e.RowIndex].Cells[5].Value.ToString();
+            this.PendingPaymentsTextBox.Text = this.InboundOrderDataGridView.Rows[e.RowIndex].Cells[6].Value.ToString();
+
+            this.DeleteInboundOrderButton.Enabled = true;
+            this.DeleteInboundOrderButton.Visible = true;
+
+            this.ReturntoSupplierButton.Enabled = true;
+            this.ReturntoSupplierButton.Visible = true;
 
         }
     }
