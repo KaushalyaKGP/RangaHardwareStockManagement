@@ -22,7 +22,7 @@ namespace RangaHardwareStock
         //data of items
         DataTable InboundOrderInItems = new DataTable();
         //------------
-        
+
         public InboundOrderForm()
         {
             InitializeComponent();
@@ -84,13 +84,14 @@ WHERE si.Type = 1", con);
             this.ItemNameComboBox.Visible = false;
 
             this.UnitLable.Visible = false;
-            this.InboundStockLabel.Visible = false;
-            this.InboundStockCountLable.Visible = false;
-            this.Unit2Label.Visible = false;
 
             this.QuantityLabel.Visible = false;
             this.QuantityNumericUpDown.Enabled = false;
             this.QuantityNumericUpDown.Visible = false;
+
+            this.UnitCostLabel.Visible = false;
+            this.UnitCostNumericUpDown.Enabled = false;
+            this.UnitCostNumericUpDown.Visible = false;
 
             this.AddItemButton.Enabled = false;
             this.AddItemButton.Visible = false;
@@ -131,17 +132,10 @@ WHERE si.Type = 1", con);
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Supplier' table. You can move, or remove it, as needed.
             this.supplierTableAdapter.Fill(this.ranga_hardwareDataSet.Supplier);
 
-            //Auto generate ID
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT ISNULL(MAX(cast (Stock_In_ID as int)),0)+1 FROM StockInTable",con);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            this.BatchIDTextBox.Text = dt.Rows[0][0].ToString();
-            //--------------------
-            //View Item List Based on Selected Supplier
-            SetItemList();
-            //--------------------------
-
             
+            
+
+
 
             //set date today
             this.DateInDateTimePicker.Value = DateTime.Today;
@@ -156,9 +150,9 @@ WHERE si.Type = 1", con);
             //View Item List Based on Selected Supplier
             SqlDataAdapter sda2 = new SqlDataAdapter(@"SELECT Item_ID,Item_Name
 FROM Item
-WHERE Supplier_ID = "+this.SupplierComboBox.SelectedValue +"", con);
+WHERE Supplier_ID = " + this.SupplierComboBox.SelectedValue + "", con);
 
-            
+
             DataTable dt2 = new DataTable();
             try
             {
@@ -169,7 +163,7 @@ WHERE Supplier_ID = "+this.SupplierComboBox.SelectedValue +"", con);
             }
             catch
             {
-                
+
             }
             //------------------------------------------------
         }
@@ -184,200 +178,27 @@ WHERE Supplier_ID = "+this.SupplierComboBox.SelectedValue +"", con);
             StockIn_ManagementForm.ShowForm();
         }
 
-        private void AddItemButton_Click(object sender, EventArgs e)
-        {
-            //Validate same item repitition
-            int repeat = -1;
-           
-            if(InboundOrderItemsDataGridView.Rows.Count>0)
-            {
-                string searchItem = this.ItemNameComboBox.Text;
-                
-                foreach (DataGridViewRow row in InboundOrderItemsDataGridView.Rows)
-                {
-                    if (row.Cells[0].Value != null)
-                    {
-
-                        if (row.Cells[0].Value.ToString().Equals(searchItem))
-                        {
-                            MessageBox.Show("Same Item Repeating !");
-                            repeat = 1;
-                        }
-
-                    }
-                }
-                    
-            }
-            
-           
-            
-            
-            //validate amount is>0
-            if((QuantityNumericUpDown.Value>0)&&(repeat==-1))
-            {
-                float total_Item_Cost = (float.Parse(this.UnitCostNumericUpDown.Text)) * (float.Parse(this.QuantityNumericUpDown.Text));
-                this.InboundOrderItemsDataGridView.Rows.Add(this.ItemNameComboBox.Text, this.QuantityNumericUpDown.Text, this.UnitCostNumericUpDown.Text, total_Item_Cost.ToString("0.00"));
-                TotalCost += total_Item_Cost;
-                TotalCostTextBox.Text = TotalCost.ToString("0.00");
-                pendingPaynemts = TotalCost - (float)this.PeidAmountNumericUpDown.Value;
-                PendingPaymentsTextBox.Text = pendingPaynemts.ToString("0.00");
-
-                //Add data to table
-                InboundOrderInItems.Rows.Add(new object[] { int.Parse(BatchIDTextBox.Text), ItemNameComboBox.SelectedValue, QuantityNumericUpDown.Value, (float)UnitCostNumericUpDown.Value, total_Item_Cost });
-                
-                //---------------------------
-
-                //clear add item data input options
-                this.ItemNameComboBox.SelectedIndex = 0;
-                this.QuantityNumericUpDown.Value = 0;
-                this.UnitCostNumericUpDown.Value = 0;
-                //-------------
-
-                
-            }
-
-            else if((QuantityNumericUpDown.Value <= 0) && (repeat == -1))
-            {
-                MessageBox.Show("Please Enter Amount");
-            }
-
-        }
 
         private void PeidAmountNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            if((float)PeidAmountNumericUpDown.Value > TotalCost)
+            if(PeidAmountNumericUpDown.Enabled==true)
             {
-                MessageBox.Show("Invalid Paid Amount", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Question);
-                PeidAmountNumericUpDown.Value = 0;
-            }
-            else
-            {
-                pendingPaynemts = TotalCost - (float)this.PeidAmountNumericUpDown.Value;
-                PendingPaymentsTextBox.Text = pendingPaynemts.ToString("0.00");
-            }
-            
-        }
-
-        private void AddNewInboundOrderButton_Click(object sender, EventArgs e)
-        {
-            
-            //set payment status
-            int paymrntStatus = 4;
-            if (TotalCost == 0)
-            {
-                paymrntStatus = 3;
-            }
-            else if ((pendingPaynemts == 0) && (TotalCost != 0))
-            {
-                paymrntStatus = 0;
-            }
-            else if((pendingPaynemts == TotalCost) && (TotalCost != 0))
-            {
-                paymrntStatus = 1;
-            }
-            else if (pendingPaynemts < TotalCost)
-            {
-                paymrntStatus = 2;
-            }
-            //---------------------------------------------------------------
-
-            //save new inbound order to database
-
-            //validate items added
-            if(InboundOrderInItems.Rows.Count>0)
-            {
-                SqlCommand command; 
-
-                //Save to StockIn table
-                SqlDataAdapter stockInDataAdupter = new SqlDataAdapter();
-                command = new SqlCommand(@"INSERT INTO StockInTable
-VALUES("+int.Parse(this.BatchIDTextBox.Text)+", 1, '"+this.DateInDateTimePicker.Value+"')",con);
-                stockInDataAdupter.InsertCommand = command;
-                con.Open();
-                stockInDataAdupter.InsertCommand.ExecuteNonQuery();
-                con.Close();
-
-                //-----------------
-
-                //Save to inboundOrderIn table
-                SqlDataAdapter InboundOrderInDataAdupter = new SqlDataAdapter();
-                command = new SqlCommand(@"INSERT INTO InboundOrderIn (Stock_In_Id,Supplier_ID,Payment_Status,Cost,Paid_Amount,Pending_Payment)
-VALUES(" + int.Parse(this.BatchIDTextBox.Text) + ","+this.SupplierComboBox.SelectedValue+","+paymrntStatus+","+float.Parse(this.TotalCostTextBox.Text)+ "," + (float)this.PeidAmountNumericUpDown.Value + "," + float.Parse(this.PendingPaymentsTextBox.Text) + ")", con);
-                InboundOrderInDataAdupter.InsertCommand = command;
-                con.Open();
-                InboundOrderInDataAdupter.InsertCommand.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show("New Inbound Order Added");
-                //----------------------------
-
-                //Save to inboundOrderInItems table & Update Item current stock
-                SqlDataAdapter InboundOrderItemsAdupter = new SqlDataAdapter();
-                
-                for (int i=0;i<InboundOrderInItems.Rows.Count;i++)
+                if ((float)PeidAmountNumericUpDown.Value > TotalCost)
                 {
-                    //update inboundOrderInItems table
-                    int StockInId = (int)InboundOrderInItems.Rows[i][0];
-                    int ItemID = (int)InboundOrderInItems.Rows[i][1];
-                    int amount = (int)InboundOrderInItems.Rows[i][2];
-                    float unit_Cost = (float)InboundOrderInItems.Rows[i][3];
-                    float Total_Cost = (float)InboundOrderInItems.Rows[i][4];
-
-                    command = new SqlCommand(@"INSERT INTO InboundOrderItems(Stock_In_Id,Item_ID,amount,unit_Cost,Total_Cost)
-VALUES ("+StockInId+","+ItemID+","+amount+","+unit_Cost+","+Total_Cost+")", con);
-                    InboundOrderItemsAdupter.InsertCommand = command;
-                    con.Open();
-                    InboundOrderItemsAdupter.InsertCommand.ExecuteNonQuery();
-                    con.Close();
-                    //-------------------------
-
-                    //update item table current stock & stock satatus
-                    SqlDataAdapter ItemAdupter = new SqlDataAdapter(@"SELECT Current_Stock,Min_Quentity FROM[Item] WHERE Item_ID = "+ItemID+";", con);
-                    DataTable dataTable = new DataTable();
-                    dataTable.Clear();
-                    
-                    ItemAdupter.Fill(dataTable);
-                    int CurrentStock = (int)dataTable.Rows[0][0] + amount;
-                    int Min_Quentity = (int)dataTable.Rows[0][1];
-                    int Stock_Status;
-
-                    if (CurrentStock>Min_Quentity)
-                    {
-                        Stock_Status = 2;
-                    }
-                    else
-                    {
-                        Stock_Status = 1;
-                    }
-
-                    
-                    SqlCommand com = new SqlCommand(@"UPDATE Item SET Current_Stock = "+CurrentStock+", Stock_Status = "+Stock_Status+" WHERE Item_ID = "+ItemID+"; ", con);
-                    con.Open();
-                    com.ExecuteNonQuery();
-                    con.Close();
-                    //-----------------------------------------
-
-
-
+                    MessageBox.Show("Invalid Paid Amount", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    PeidAmountNumericUpDown.Value = 0;
                 }
-
-                //------------------------------------
-
-
-
-
-                InboundOrderForm.ActiveForm.Close();
-
+                else
+                {
+                    pendingPaynemts = TotalCost - (float)this.PeidAmountNumericUpDown.Value;
+                    PendingPaymentsTextBox.Text = pendingPaynemts.ToString("0.00");
+                }
             }
-            else
-            {
-                MessageBox.Show("Please add items !");
-            }
-            //----------------------------------
             
-            
-            
-            
+
         }
+
+       
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
@@ -404,12 +225,12 @@ VALUES ("+StockInId+","+ItemID+","+amount+","+unit_Cost+","+Total_Cost+")", con)
 
             SqlDataAdapter items = new SqlDataAdapter(@"SELECT i.Item_Name as Item, ii.amount as Quantity,ii.unit_Cost,ii.Total_Cost
 FROM InboundOrderItems ii, Item i
-WHERE ii.Item_ID = i.Item_ID AND ii.Stock_In_Id = "+ StockInID + "", con);
+WHERE ii.Item_ID = i.Item_ID AND ii.Stock_In_Id = " + StockInID + "", con);
             DataTable itemFillTable = new DataTable();
             itemFillTable.Rows.Clear();
             items.Fill(itemFillTable);
-            this.InboundOrderDataGridView.Columns.Clear();
-            this.InboundOrderDataGridView.DataSource = itemFillTable;
+            this.InboundOrderItemsDataGridView.Columns.Clear();
+            this.InboundOrderItemsDataGridView.DataSource = itemFillTable;
 
             this.TotalCostTextBox.Text = this.InboundOrderDataGridView.Rows[e.RowIndex].Cells[4].Value.ToString();
             this.PeidAmountNumericUpDown.Text = this.InboundOrderDataGridView.Rows[e.RowIndex].Cells[5].Value.ToString();
@@ -421,6 +242,359 @@ WHERE ii.Item_ID = i.Item_ID AND ii.Stock_In_Id = "+ StockInID + "", con);
             this.ReturntoSupplierButton.Enabled = true;
             this.ReturntoSupplierButton.Visible = true;
 
+        }
+
+        private void DeleteInboundOrderButton_Click(object sender, EventArgs e)
+        {
+            //check iF user realy want to delete
+            DialogResult result = MessageBox.Show("Do you realy want to delete the record? \ndeleted records will not be abeled to recovered!", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                DataTable itemlistTable = new DataTable();
+                SqlDataAdapter itemsListAdupter = new SqlDataAdapter(@"SELECT ii.Item_Id, ii.Amount, i.Min_Quentity,i.Current_Stock
+FROM InboundOrderItems ii ,Item i 
+WHERE ii.Stock_In_Id = " + StockInID + " AND ii.Item_ID = i.Item_ID", con);
+                itemsListAdupter.Fill(itemlistTable);
+
+
+                SqlCommand changeStockCommand = new SqlCommand();
+
+                foreach (DataRow dataRow in itemlistTable.Rows)
+                {
+                    //Update stock level & Stock Status
+
+                    int CurrentStock = (int)dataRow[3] - (int)dataRow[1];
+                    int Min_Quentity = (int)dataRow[2];
+                    int Stock_Status;
+
+                    if (CurrentStock <= 0)
+                    {
+                        Stock_Status = 0;
+                    }
+                    if (CurrentStock <= Min_Quentity)
+                    {
+                        Stock_Status = 1;
+                    }
+                    else
+                    {
+                        Stock_Status = 2;
+                    }
+                    changeStockCommand = new SqlCommand(@"UPDATE Item SET Current_Stock -= " + int.Parse(dataRow[1].ToString()) + ",Stock_Status = " + Stock_Status + "  WHERE Item_ID = " + int.Parse(dataRow[0].ToString()) + "", con);
+
+                    con.Open();
+                    changeStockCommand.ExecuteNonQuery();
+                    con.Close();
+                    //---------------------------------------------------------
+
+                }
+
+                //Delete InboundOrderInItems Records
+                SqlCommand DeleteItemsCommand = new SqlCommand(@"DELETE FROM InboundOrderItems WHERE Stock_In_Id = " + int.Parse(this.BatchIDTextBox.Text) + "", con);
+                con.Open();
+                DeleteItemsCommand.ExecuteNonQuery();
+                con.Close();
+                //-----------------------
+
+                //Delete InboundOrder record
+                SqlCommand DeleteInboundOrderCommand = new SqlCommand(@"DELETE FROM InboundOrderIn WHERE Stock_In_Id = " + int.Parse(this.BatchIDTextBox.Text) + "", con);
+                con.Open();
+                DeleteInboundOrderCommand.ExecuteNonQuery();
+                con.Close();
+                //--------------------
+
+                //Delete stockIn record
+                SqlCommand DeleteStockInCommand = new SqlCommand(@"DELETE FROM StockInTable WHERE Stock_In_Id = " + int.Parse(this.BatchIDTextBox.Text) + "", con);
+                con.Open();
+                DeleteStockInCommand.ExecuteNonQuery();
+                con.Close();
+                //---------------------
+
+                MessageBox.Show("Record Deleted");
+                setInitials();
+            }
+        }
+
+        private void AddNewInboundOrderButton_Click(object sender, EventArgs e)
+        {
+
+            //Auto generate ID
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT ISNULL(MAX(cast (Stock_In_ID as int)),0)+1 FROM StockInTable", con);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            this.BatchIDTextBox.Text = dt.Rows[0][0].ToString();
+            //--------------------
+            this.DateInDateTimePicker.Enabled = true;
+            this.DateInDateTimePicker.Value = DateTime.Today;
+
+            this.SupplierComboBox.Enabled = true;
+            this.SupplierComboBox.SelectedIndex = 1;
+            this.SupplierComboBox.SelectedIndex = 0;
+
+            //set items table
+            InboundOrderInItems.Columns.Clear();
+            InboundOrderInItems.Clear();
+            InboundOrderInItems.Columns.Add("Stock_In_Id", typeof(int));
+            InboundOrderInItems.Columns.Add("Item_ID", typeof(int));
+            InboundOrderInItems.Columns.Add("amount", typeof(int));
+            InboundOrderInItems.Columns.Add("unit_Cost", typeof(float));
+            InboundOrderInItems.Columns.Add("Total_Cost", typeof(float));
+            //-------------------
+
+            //set item datagrid
+            InboundOrderItemsDataGridView.DataSource = null;
+            InboundOrderItemsDataGridView.Columns.Clear();
+            InboundOrderItemsDataGridView.Rows.Clear();
+            InboundOrderItemsDataGridView.Columns.Add("Item","Item");
+            InboundOrderItemsDataGridView.Columns.Add("Quantity", "Quantity");
+            InboundOrderItemsDataGridView.Columns.Add("Unit_Cost", "Unit_Cost");
+            InboundOrderItemsDataGridView.Columns.Add("Total_Cost", "Total_Cost");
+            //---------------------
+
+
+            this.ItemLabel.Visible = true;
+            this.ItemNameComboBox.Enabled = true;
+            this.ItemNameComboBox.Visible = true;
+            this.ItemNameComboBox.SelectedIndex = 1;
+            this.ItemNameComboBox.SelectedIndex = 0;
+
+            this.QuantityLabel.Visible = true;
+            this.QuantityNumericUpDown.Enabled = true;
+            this.QuantityNumericUpDown.Visible = true;
+            this.QuantityNumericUpDown.Value = 0;
+            this.UnitLable.Visible = true;
+
+            this.UnitCostLabel.Visible = true;
+            this.UnitCostNumericUpDown.Enabled = true;
+            this.UnitCostNumericUpDown.Visible = true;
+            this.UnitCostNumericUpDown.Value = 0;
+
+            this.AddItemButton.Enabled = true;
+            this.AddItemButton.Visible = true;
+
+            this.TotalCostTextBox.Text = "";
+
+            this.PeidAmountNumericUpDown.Enabled = true;
+            this.PeidAmountNumericUpDown.Value = 0;
+
+            this.PeidAmountNumericUpDown.Value = 0;
+
+            this.DeleteInboundOrderButton.Enabled = false;
+            this.DeleteInboundOrderButton.Visible = false;
+
+            this.ReturntoSupplierButton.Enabled = false;
+            this.ReturntoSupplierButton.Visible = false;
+
+            this.InboundOrderDataGridView.Enabled = false;
+
+            this.SaveNewInboundOrderButton.Enabled = true;
+            this.SaveNewInboundOrderButton.Visible = true;
+
+            this.ResetButton.Enabled = true;
+            this.ResetButton.Visible = true;
+
+
+        }
+
+        private void AddItemButton_Click(object sender, EventArgs e)
+        {
+            //Validate same item repitition
+            int repeat = -1;
+
+            if (InboundOrderItemsDataGridView.Rows.Count > 0)
+            {
+                string searchItem = this.ItemNameComboBox.Text;
+
+                foreach (DataGridViewRow row in InboundOrderItemsDataGridView.Rows)
+                {
+                    if (row.Cells[0].Value != null)
+                    {
+
+                        if (row.Cells[0].Value.ToString().Equals(searchItem))
+                        {
+                            MessageBox.Show("Same Item Repeating !");
+                            repeat = 1;
+                        }
+
+                    }
+                }
+
+            }
+
+
+
+
+            //validate amount is>0
+            if ((QuantityNumericUpDown.Value > 0) && (repeat == -1))
+            {
+                float total_Item_Cost = (float.Parse(this.UnitCostNumericUpDown.Text)) * (float.Parse(this.QuantityNumericUpDown.Text));
+                this.InboundOrderItemsDataGridView.Rows.Add(this.ItemNameComboBox.Text, this.QuantityNumericUpDown.Text, this.UnitCostNumericUpDown.Text, total_Item_Cost.ToString("0.00"));
+                TotalCost += total_Item_Cost;
+                TotalCostTextBox.Text = TotalCost.ToString("0.00");
+                pendingPaynemts = TotalCost - (float)this.PeidAmountNumericUpDown.Value;
+                PendingPaymentsTextBox.Text = pendingPaynemts.ToString("0.00");
+
+                //Add data to table
+                InboundOrderInItems.Rows.Add(new object[] { int.Parse(BatchIDTextBox.Text), ItemNameComboBox.SelectedValue, QuantityNumericUpDown.Value, (float)UnitCostNumericUpDown.Value, total_Item_Cost });
+
+                //---------------------------
+
+                //clear add item data input options
+                this.ItemNameComboBox.SelectedIndex = 0;
+                this.QuantityNumericUpDown.Value = 0;
+                this.UnitCostNumericUpDown.Value = 0;
+                //-------------
+
+
+            }
+
+            else if ((QuantityNumericUpDown.Value <= 0) && (repeat == -1))
+            {
+                MessageBox.Show("Please Enter Amount");
+            }
+
+        }
+
+
+        private void SaveNewInboundOrderButton_Click(object sender, EventArgs e)
+        {
+            //set payment status
+            int paymrntStatus = 4;
+            if (TotalCost == 0)
+            {
+                paymrntStatus = 3;
+            }
+            else if ((pendingPaynemts == 0) && (TotalCost != 0))
+            {
+                paymrntStatus = 0;
+            }
+            else if ((pendingPaynemts == TotalCost) && (TotalCost != 0))
+            {
+                paymrntStatus = 1;
+            }
+            else if (pendingPaynemts < TotalCost)
+            {
+                paymrntStatus = 2;
+            }
+            //---------------------------------------------------------------
+
+            //save new inbound order to database
+
+            //validate items added
+            if (InboundOrderInItems.Rows.Count > 0)
+            {
+                SqlCommand command;
+
+                //Save to StockIn table
+                SqlDataAdapter stockInDataAdupter = new SqlDataAdapter();
+                command = new SqlCommand(@"INSERT INTO StockInTable
+VALUES(" + int.Parse(this.BatchIDTextBox.Text) + ", 1, '" + this.DateInDateTimePicker.Value + "')", con);
+                stockInDataAdupter.InsertCommand = command;
+                con.Open();
+                stockInDataAdupter.InsertCommand.ExecuteNonQuery();
+                con.Close();
+
+                //-----------------
+
+                //Save to inboundOrderIn table
+                SqlDataAdapter InboundOrderInDataAdupter = new SqlDataAdapter();
+                command = new SqlCommand(@"INSERT INTO InboundOrderIn (Stock_In_Id,Supplier_ID,Payment_Status,Cost,Paid_Amount,Pending_Payment)
+VALUES(" + int.Parse(this.BatchIDTextBox.Text) + "," + this.SupplierComboBox.SelectedValue + "," + paymrntStatus + "," + float.Parse(this.TotalCostTextBox.Text) + "," + (float)this.PeidAmountNumericUpDown.Value + "," + float.Parse(this.PendingPaymentsTextBox.Text) + ")", con);
+                InboundOrderInDataAdupter.InsertCommand = command;
+                con.Open();
+                InboundOrderInDataAdupter.InsertCommand.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("New Inbound Order Added");
+                //----------------------------
+
+                //Save to inboundOrderInItems table & Update Item current stock
+                SqlDataAdapter InboundOrderItemsAdupter = new SqlDataAdapter();
+
+                for (int i = 0; i < InboundOrderInItems.Rows.Count; i++)
+                {
+                    //update inboundOrderInItems table
+                    int StockInId = (int)InboundOrderInItems.Rows[i][0];
+                    int ItemID = (int)InboundOrderInItems.Rows[i][1];
+                    int amount = (int)InboundOrderInItems.Rows[i][2];
+                    float unit_Cost = (float)InboundOrderInItems.Rows[i][3];
+                    float Total_Cost = (float)InboundOrderInItems.Rows[i][4];
+
+                    command = new SqlCommand(@"INSERT INTO InboundOrderItems(Stock_In_Id,Item_ID,amount,unit_Cost,Total_Cost)
+VALUES (" + StockInId + "," + ItemID + "," + amount + "," + unit_Cost + "," + Total_Cost + ")", con);
+                    InboundOrderItemsAdupter.InsertCommand = command;
+                    con.Open();
+                    InboundOrderItemsAdupter.InsertCommand.ExecuteNonQuery();
+                    con.Close();
+                    //-------------------------
+
+                    //update item table current stock & stock satatus
+                    SqlDataAdapter ItemAdupter = new SqlDataAdapter(@"SELECT Current_Stock,Min_Quentity FROM[Item] WHERE Item_ID = " + ItemID + ";", con);
+                    DataTable dataTable = new DataTable();
+                    dataTable.Clear();
+
+                    ItemAdupter.Fill(dataTable);
+                    int CurrentStock = (int)dataTable.Rows[0][0] + amount;
+                    int Min_Quentity = (int)dataTable.Rows[0][1];
+                    int Stock_Status;
+
+                    if (CurrentStock > Min_Quentity)
+                    {
+                        Stock_Status = 2;
+                    }
+                    else
+                    {
+                        Stock_Status = 1;
+                    }
+
+
+                    SqlCommand com = new SqlCommand(@"UPDATE Item SET Current_Stock = " + CurrentStock + ", Stock_Status = " + Stock_Status + " WHERE Item_ID = " + ItemID + "; ", con);
+                    con.Open();
+                    com.ExecuteNonQuery();
+                    con.Close();
+                    //-----------------------------------------
+
+
+
+                }
+
+                //------------------------------------
+
+
+
+
+                setInitials();
+
+            }
+            else
+            {
+                MessageBox.Show("Please add items !");
+            }
+            //----------------------------------
+
+        }
+
+        private void ItemNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Show Relevent Measuring Unit
+            if (ItemNameComboBox.SelectedValue != null)
+            {
+                SqlCommand unitCommand = new SqlCommand(@"SELECT i.Mesuring_Unit
+FROM Item i
+WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + "", con);
+                if(con.State==ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                
+                this.UnitLable.Text = unitCommand.ExecuteScalar().ToString();
+                con.Close();
+                
+            }
+            //-----------------------------------
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

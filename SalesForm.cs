@@ -217,7 +217,7 @@ WHERE si.Item_ID = i.Item_ID AND si.Stock_Out_Id = "+ this.SalesDataGridView.Row
             this.BatchIDTextBox.Text = idCommand.ExecuteScalar().ToString();
             con.Close();
             //-----------------
-
+            this.SalesDateTimePicker.Enabled = true;
             this.SalesDateTimePicker.Value = DateTime.Today;
 
             this.FromStockTypeComboBox.Enabled = true;
@@ -256,10 +256,6 @@ WHERE si.Item_ID = i.Item_ID AND si.Stock_Out_Id = "+ this.SalesDataGridView.Row
 
             this.NetSalesTextBox.Text = "";
 
-            this.DeleteSelectedSalesRecordButton.Enabled = false;
-            this.DeleteSelectedSalesRecordButton.Visible = false;
-            this.CustomerReturnButton.Enabled = false;
-            this.CustomerReturnButton.Visible = false;
 
             this.DeleteSelectedSalesRecordButton.Enabled = false;
             this.DeleteSelectedSalesRecordButton.Visible = false;
@@ -272,7 +268,7 @@ WHERE si.Item_ID = i.Item_ID AND si.Stock_Out_Id = "+ this.SalesDataGridView.Row
             this.SaveButton.Enabled = true;
             this.SaveButton.Visible = true;
 
-            this.SalesDateTimePicker.Enabled = true;
+            
 
 
 
@@ -332,7 +328,7 @@ WHERE si.Stock_Out_Id =" + int.Parse(this.BatchIDTextBox.Text) + " AND si.Item_I
                         int Min_Quentity = (int)dataRow[2];
                         int Stock_Status;
 
-                        if (CurrentStock > Min_Quentity)
+                        if (CurrentStock <= Min_Quentity)
                         {
                             Stock_Status = 2;
                         }
