@@ -174,6 +174,14 @@ VALUES (" + StockInId + "," + ItemID + "," + amount + ")", con);
                     command.ExecuteNonQuery();
                     con.Close();
                     //-------------------------
+
+                    //update items table
+                    command = new SqlCommand(@"UPDATE Item SET Customer_Return_Stock += "+amount+" WHERE Item_ID = " + Item_ID + "", con);
+
+                    con.Open();
+                    command.ExecuteNonQuery();
+                    con.Close();
+                    //--------------------
                 }
 
                 MessageBox.Show("Customer return record saved");

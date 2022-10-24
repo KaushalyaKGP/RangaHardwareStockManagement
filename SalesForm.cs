@@ -535,33 +535,46 @@ VALUES ("+Stock_out_Id+","+Item_ID+","+Amount+","+Total_Price+")", con);
                     //------------------------------
 
                     //Update stock level & stock status In item table
-                    SqlDataAdapter ItemAdupter = new SqlDataAdapter(@"SELECT Current_Stock,Min_Quentity FROM[Item] WHERE Item_ID = " + Item_ID + ";", con);
-                    DataTable dataTable = new DataTable();
-                    dataTable.Clear();
-
-                    ItemAdupter.Fill(dataTable);
-                    int CurrentStock = (int)dataTable.Rows[0][0] - Amount;
-                    int Min_Quentity = (int)dataTable.Rows[0][1];
-                    int Stock_Status;
-
-                    if(CurrentStock==0)
+                    if(this.FromStockTypeComboBox.Text == "CurrentStock")
                     {
-                        Stock_Status = 0;
+                        SqlDataAdapter ItemAdupter = new SqlDataAdapter(@"SELECT Current_Stock,Min_Quentity FROM[Item] WHERE Item_ID = " + Item_ID + ";", con);
+                        DataTable dataTable = new DataTable();
+                        dataTable.Clear();
+
+                        ItemAdupter.Fill(dataTable);
+                        int CurrentStock = (int)dataTable.Rows[0][0] - Amount;
+                        int Min_Quentity = (int)dataTable.Rows[0][1];
+                        int Stock_Status;
+
+                        if (CurrentStock == 0)
+                        {
+                            Stock_Status = 0;
+                        }
+                        else if (CurrentStock < Min_Quentity)
+                        {
+                            Stock_Status = 1;
+                        }
+                        else
+                        {
+                            Stock_Status = 2;
+                        }
+
+                        SqlCommand itemTableUpdateCommand = new SqlCommand(@"UPDATE Item SET Current_Stock = " + CurrentStock + ", Stock_Status = " + Stock_Status + " WHERE Item_ID = " + Item_ID + "; ", con);
+                        con.Open();
+                        itemTableUpdateCommand.ExecuteNonQuery();
+                        con.Close();
+                        //----------------------------------------------------
                     }
-                    else if(CurrentStock < Min_Quentity)
+                    else if (this.FromStockTypeComboBox.Text == "Customer Return Stock")
                     {
-                        Stock_Status = 1;
-                    }
-                    else
-                    {
-                        Stock_Status = 2;
+                       SqlCommand itemTableUpdateCommand = new SqlCommand(@"UPDATE Item SET Customer_Return_Stock -= " + Amount+ " WHERE Item_ID = " + Item_ID + "", con);
+
+                        con.Open();
+                        itemTableUpdateCommand.ExecuteNonQuery();
+                        con.Close();
                     }
 
-                    SqlCommand itemTableUpdateCommand = new SqlCommand(@"UPDATE Item SET Current_Stock = " + CurrentStock + ", Stock_Status = " + Stock_Status + " WHERE Item_ID = " + Item_ID + "; ", con);
-                    con.Open();
-                    itemTableUpdateCommand.ExecuteNonQuery();
-                    con.Close();
-                    //----------------------------------------------------
+
                 }
 
                 //-------------------------------

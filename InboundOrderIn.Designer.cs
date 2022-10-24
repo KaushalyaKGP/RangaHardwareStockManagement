@@ -377,6 +377,7 @@ namespace RangaHardwareStock
             this.ReturntoSupplierButton.TabIndex = 116;
             this.ReturntoSupplierButton.Text = "Return to Supplier";
             this.ReturntoSupplierButton.UseVisualStyleBackColor = false;
+            this.ReturntoSupplierButton.Click += new System.EventHandler(this.ReturntoSupplierButton_Click);
             // 
             // DeleteInboundOrderButton
             // 

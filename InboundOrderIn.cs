@@ -13,7 +13,31 @@ namespace RangaHardwareStock
 {
     public partial class InboundOrderForm : Form
     {
-        int StockInID;
+
+        private static InboundOrderForm _inboundOrderForm = new InboundOrderForm();
+
+        public static void ShowForm()
+        {
+
+            if (_inboundOrderForm.IsDisposed)
+            {
+                _inboundOrderForm = new InboundOrderForm();
+            }
+            _inboundOrderForm.Show();
+            _inboundOrderForm.setInitials();
+
+        }
+
+        public static void HideForm()
+        {
+            _inboundOrderForm.Hide();
+        }
+
+
+
+
+
+        public static int StockInID;
         float TotalCost = 0;
         float pendingPaynemts;
         SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\3rd Year Project\DEVELOPMENT PROJECT  - software\RangaHardwareStock\Ranga hardware.mdf; Integrated Security = True");
@@ -595,6 +619,13 @@ WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + "", con);
         private void BackButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ReturntoSupplierButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ReturnToSupplierForm.ShowForm();
+
         }
     }
 }

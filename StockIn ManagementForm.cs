@@ -19,7 +19,7 @@ namespace RangaHardwareStock
         public static void ShowForm()
         {
 
-            if (StockIn_ManagementForm.ActiveForm == null)
+            if (_stockIn_ManagementForm.IsDisposed)
             {
                 _stockIn_ManagementForm = new StockIn_ManagementForm();
             }
@@ -503,9 +503,9 @@ ON PS.Id = IB.Payment_Status", con);
         //direct to stock in form
         private void NewInboundOrderButton_Click(object sender, EventArgs e)
         {
-            InboundOrderForm inboundOrder = new InboundOrderForm();
+            InboundOrderForm.ShowForm();
             this.Hide();
-            inboundOrder.Show();
+            
         }
 
         private void NewCustomerReturnButton_Click(object sender, EventArgs e)

@@ -428,5 +428,11 @@ WHERE so.Out_Date>='" + DateOutFromDateTimePicker.Value + "' AND so.Out_Date<='"
 
             SalesForm.ShowForm();
         }
+
+        private void ReturnToSupplierButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            InboundOrderForm.ShowForm();
+        }
     }
 }
