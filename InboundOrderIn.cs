@@ -15,6 +15,7 @@ namespace RangaHardwareStock
     {
 
         private static InboundOrderForm _inboundOrderForm = new InboundOrderForm();
+        bool returnFlag = false;
 
         public static void ShowForm()
         {
@@ -241,11 +242,18 @@ WHERE Supplier_ID = " + this.SupplierComboBox.SelectedValue + "", con);
 
         private void InboundOrderDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            returnFlag = false;
+
             StockInID = (int)this.InboundOrderDataGridView.Rows[e.RowIndex].Cells[0].Value;
             this.InboundOrderDataGridView.CurrentRow.Selected = true;
             this.BatchIDTextBox.Text = this.InboundOrderDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
             this.DateInDateTimePicker.Value = DateTime.Parse(this.InboundOrderDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
             this.SupplierComboBox.Text = this.InboundOrderDataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+            if(this.InboundOrderDataGridView.Rows[e.RowIndex].Cells[8].Value.ToString()!="")
+            {
+                returnFlag = true;
+            }
 
             SqlDataAdapter items = new SqlDataAdapter(@"SELECT i.Item_Name as Item, ii.amount as Quantity,ii.unit_Cost,ii.Total_Cost
 FROM InboundOrderItems ii, Item i
@@ -623,8 +631,20 @@ WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + "", con);
 
         private void ReturntoSupplierButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            ReturnToSupplierForm.ShowForm();
+            //check if selected inboundorder already had a return
+            
+            if (returnFlag ==false)
+            {
+                
+                this.Hide();
+                ReturnToSupplierForm.ShowForm();
+            }
+            else
+            {
+              
+                MessageBox.Show("Selectes inbound Order alrady has a return record !");
+            }
+
 
         }
     }

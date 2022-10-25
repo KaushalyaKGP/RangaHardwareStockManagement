@@ -433,6 +433,7 @@ WHERE so.Out_Date>='" + DateOutFromDateTimePicker.Value + "' AND so.Out_Date<='"
         {
             this.Hide();
             InboundOrderForm.ShowForm();
+            MessageBox.Show("Select relevent inbound order");
         }
     }
 }
