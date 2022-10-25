@@ -56,7 +56,7 @@ namespace RangaHardwareStock
 
             //Get Item List
             
-            SqlDataAdapter itemListAdupter = new SqlDataAdapter(@"SELECT i.Item_Name,i.Item_ID,i.Mesuring_Unit,ioi.Amount,i.Current_Stock,i.Customer_Return_Stock
+            SqlDataAdapter itemListAdupter = new SqlDataAdapter(@"SELECT i.Item_Name,i.Item_ID,i.Mesuring_Unit,ioi.Amount,i.Current_Stock,i.Customer_Return_Stock,i.Min_Quentity
 FROM Item i,InboundOrderItems ioi
 WHERE ioi.Item_ID= i.Item_ID AND ioi.Stock_In_Id = " + StockInID + "", con);
 
@@ -203,7 +203,7 @@ WHERE ioi.Item_ID= i.Item_ID AND ioi.Stock_In_Id = " + StockInID + "", con);
 
                 //Save to StockOut table
                 command = new SqlCommand(@"INSERT INTO StockOut(Stock_Out_ID,Type,Out_Date,From_Stock_Type)
-VALUES("+int.Parse(this.ReturnIDTextBox.Text)+",2,"+this.SRDateTimePicker.Value+","+this.FromStockTypeComboBox.SelectedValue+")", con);
+VALUES("+int.Parse(this.ReturnIDTextBox.Text)+",2,'"+this.SRDateTimePicker.Value+"',"+this.FromStockTypeComboBox.SelectedValue+")", con);
 
                 con.Open();
                 command.ExecuteNonQuery();
@@ -212,7 +212,7 @@ VALUES("+int.Parse(this.ReturnIDTextBox.Text)+",2,"+this.SRDateTimePicker.Value+
 
                 //Save to return to supplier tabale
                 command = new SqlCommand(@"INSERT INTO ReturnToSupplier(Stock_Out_ID,Stock_In_ID,Reason,Comment)
-VALUES(" + int.Parse(this.ReturnIDTextBox.Text) + ","+StockInID+","+this.ReasonComboBox.SelectedValue+","+this.DiscriptionRichTextBox.Text+")", con);
+VALUES(" + int.Parse(this.ReturnIDTextBox.Text) + ","+StockInID+","+this.ReasonComboBox.SelectedValue+",'"+this.DiscriptionRichTextBox.Text+"')", con);
 
                 con.Open();
                 command.ExecuteNonQuery();
@@ -235,33 +235,63 @@ VALUES (" + StockOutId + "," + ItemID + "," + amount + ")", con);
                     con.Close();
                     //-------------------------
 
-                    //Update stock level & stock status In item table********************************
-
+                    //Update stock level & stock status In item table
+                    SqlCommand itemTableUpdateCommand;
                     if (this.FromStockTypeComboBox.Text == "CurrentStock")
                     {
-                        int CurrentStock = (int)itemList.Rows[i][0] - Amount;
-                        int Min_Quentity = (int)dataTable.Rows[0][1];
-                        int Stock_Status;
+                        int CurrentStock = -1;
+                        int Min_Quentity;
+                        int Stock_Status = 3;
 
-                        if (CurrentStock == 0)
+                        
+
+                        foreach (DataRow row in itemList.Rows)
                         {
-                            Stock_Status = 0;
-                        }
-                        else if (CurrentStock < Min_Quentity)
-                        {
-                            Stock_Status = 1;
-                        }
-                        else
-                        {
-                            Stock_Status = 2;
+                            if (row[0] != null)
+                            {
+
+                                if (((int)row[1]).Equals(ItemID))
+                                {
+                                    CurrentStock = (int)row[4] - amount;
+                                    Min_Quentity = (int)row[6];
+
+                                    if (CurrentStock == 0)
+                                    {
+                                        Stock_Status = 0;
+                                    }
+                                    else if (CurrentStock < Min_Quentity)
+                                    {
+                                        Stock_Status = 1;
+                                    }
+                                    else
+                                    {
+                                        Stock_Status = 2;
+                                    }
+                                }
+
+                            }
                         }
 
-                        SqlCommand itemTableUpdateCommand = new SqlCommand(@"UPDATE Item SET Current_Stock = " + CurrentStock + ", Stock_Status = " + Stock_Status + " WHERE Item_ID = " + Item_ID + "; ", con);
+                        itemTableUpdateCommand = new SqlCommand("UPDATE Item SET Current_Stock = "+CurrentStock+", Stock_Status = "+Stock_Status+" WHERE Item_ID = "+ItemID+"", con);
                         con.Open();
                         itemTableUpdateCommand.ExecuteNonQuery();
                         con.Close();
-                        //----------------------------------------------------
+                        
+
                     }
+
+                    if (this.FromStockTypeComboBox.Text == "Customer Return Stock")
+                    {
+                        
+                            itemTableUpdateCommand = new SqlCommand("UPDATE Item SET Customer_Return_Stock -= "+amount+" WHERE Item_ID = "+ItemID+"", con);
+
+                            con.Open();
+                            itemTableUpdateCommand.ExecuteNonQuery();
+                            con.Close();
+                        
+                    }
+                    //----------------------------------------------------
+
                 }
 
                 MessageBox.Show("Customer return record saved");
