@@ -435,5 +435,11 @@ WHERE so.Out_Date>='" + DateOutFromDateTimePicker.Value + "' AND so.Out_Date<='"
             InboundOrderForm.ShowForm();
             MessageBox.Show("Select relevent inbound order");
         }
+
+        private void LostDamagedButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LostAndDamageForm.ShowForm();
+        }
     }
 }

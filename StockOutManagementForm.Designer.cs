@@ -322,6 +322,7 @@ namespace RangaHardwareStock
             this.LostDamagedButton.TabIndex = 68;
             this.LostDamagedButton.Text = "Lost / Damaged";
             this.LostDamagedButton.UseVisualStyleBackColor = false;
+            this.LostDamagedButton.Click += new System.EventHandler(this.LostDamagedButton_Click);
             // 
             // OtherStockOutButton
             // 
