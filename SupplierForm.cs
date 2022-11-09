@@ -13,19 +13,63 @@ namespace RangaHardwareStock
 {
     public partial class SupplierForm : Form
     {
+        private static SupplierForm _supplierFoem = new SupplierForm();
+
+        public static void ShowForm()
+        {
+
+            if (_supplierFoem.IsDisposed)
+            {
+                _supplierFoem = new SupplierForm();
+            }
+            _supplierFoem.Show();
+            // _supplierFoem.SetInitioalStage();
+
+        }
+
+        public static void HideForm()
+        {
+            _supplierFoem.Hide();
+        }
+
         public SupplierForm()
         {
             InitializeComponent();
         }
 
-        private void validateMobileNumber(string m)
+        private void validateMobileNumber(string m,TextBox textbox)
         {
             string mobile = m;
-            string mobileRegex = @"(^[0][]0-9]{9}$";
-            Regex Regex = new Regex(mobileRegex);
+            mobile = mobile.Replace(" ",string.Empty);
+            string[] pattern = { "^[0][0-9]{9}$", "^[0-9]{9}$", "^[+][0-9]{11}$" };
+            Regex regex;
+            bool match = false;
+            for (int i = 0; i < pattern.Length; i++)
+            {
+                regex = new Regex(pattern[i]);
+                if (regex.IsMatch(mobile))
+                {
+                    match = true;
+
+                }
+            }
+
+            if (match != true)
+            {
+                MessageBox.Show("Invalid Mobile Number!");
+                textbox.Text = "";
+            }
         }
 
+        private void ContactNoTextBox_Leave(object sender, EventArgs e)
+        {
+            validateMobileNumber(ContactNoTextBox.Text,ContactNoTextBox);
 
-     
+        }
+
+        private void ContactablePersonTPNTextBox_Leave(object sender, EventArgs e)
+        {
+            validateMobileNumber(ContactablePersonTPNTextBox.Text, ContactablePersonTPNTextBox);
+        }
     }
 }

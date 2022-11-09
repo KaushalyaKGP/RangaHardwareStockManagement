@@ -148,6 +148,7 @@ namespace RangaHardwareStock
             this.supplierManagementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.supplierManagementToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
             this.supplierManagementToolStripMenuItem.Text = "Supplier Management";
+            this.supplierManagementToolStripMenuItem.Click += new System.EventHandler(this.supplierManagementToolStripMenuItem_Click);
             // 
             // itemManagementToolStripMenuItem
             // 

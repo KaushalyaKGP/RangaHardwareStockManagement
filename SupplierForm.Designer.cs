@@ -45,7 +45,7 @@ namespace RangaHardwareStock
             this.Titlelabel = new System.Windows.Forms.Label();
             this.CompanyTextBox = new System.Windows.Forms.TextBox();
             this.AddressRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.ContactNoTextBox = new System.Windows.Forms.TextBox();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.ContactablePersonNameTextBox = new System.Windows.Forms.TextBox();
             this.ContactablePersonTPNTextBox = new System.Windows.Forms.TextBox();
@@ -230,7 +230,7 @@ namespace RangaHardwareStock
             // 
             // CompanyTextBox
             // 
-            this.CompanyTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CompanyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.CompanyTextBox.Location = new System.Drawing.Point(656, 141);
             this.CompanyTextBox.Name = "CompanyTextBox";
             this.CompanyTextBox.Size = new System.Drawing.Size(702, 22);
@@ -238,24 +238,26 @@ namespace RangaHardwareStock
             // 
             // AddressRichTextBox
             // 
-            this.AddressRichTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AddressRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.AddressRichTextBox.Location = new System.Drawing.Point(160, 189);
             this.AddressRichTextBox.Name = "AddressRichTextBox";
             this.AddressRichTextBox.Size = new System.Drawing.Size(1198, 29);
             this.AddressRichTextBox.TabIndex = 174;
             this.AddressRichTextBox.Text = "";
             // 
-            // textBox2
+            // ContactNoTextBox
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox2.Location = new System.Drawing.Point(160, 243);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(353, 22);
-            this.textBox2.TabIndex = 175;
+            this.ContactNoTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ContactNoTextBox.Location = new System.Drawing.Point(160, 243);
+            this.ContactNoTextBox.MaxLength = 12;
+            this.ContactNoTextBox.Name = "ContactNoTextBox";
+            this.ContactNoTextBox.Size = new System.Drawing.Size(353, 22);
+            this.ContactNoTextBox.TabIndex = 175;
+            this.ContactNoTextBox.Leave += new System.EventHandler(this.ContactNoTextBox_Leave);
             // 
             // EmailTextBox
             // 
-            this.EmailTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.EmailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.EmailTextBox.Location = new System.Drawing.Point(656, 243);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(702, 22);
@@ -263,8 +265,8 @@ namespace RangaHardwareStock
             // 
             // ContactablePersonNameTextBox
             // 
-            this.ContactablePersonNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ContactablePersonNameTextBox.Location = new System.Drawing.Point(292, 294);
+            this.ContactablePersonNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContactablePersonNameTextBox.Location = new System.Drawing.Point(311, 294);
             this.ContactablePersonNameTextBox.Name = "ContactablePersonNameTextBox";
             this.ContactablePersonNameTextBox.Size = new System.Drawing.Size(601, 22);
             this.ContactablePersonNameTextBox.TabIndex = 179;
@@ -272,10 +274,11 @@ namespace RangaHardwareStock
             // ContactablePersonTPNTextBox
             // 
             this.ContactablePersonTPNTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ContactablePersonTPNTextBox.Location = new System.Drawing.Point(292, 345);
+            this.ContactablePersonTPNTextBox.Location = new System.Drawing.Point(311, 345);
             this.ContactablePersonTPNTextBox.Name = "ContactablePersonTPNTextBox";
             this.ContactablePersonTPNTextBox.Size = new System.Drawing.Size(353, 22);
             this.ContactablePersonTPNTextBox.TabIndex = 181;
+            this.ContactablePersonTPNTextBox.Leave += new System.EventHandler(this.ContactablePersonTPNTextBox_Leave);
             // 
             // pictureBox2
             // 
@@ -289,7 +292,7 @@ namespace RangaHardwareStock
             // 
             // SaveButton
             // 
-            this.SaveButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.SaveButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.SaveButton.BackColor = System.Drawing.Color.LightSeaGreen;
             this.SaveButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ForeColor = System.Drawing.Color.White;
@@ -312,7 +315,7 @@ namespace RangaHardwareStock
             this.Controls.Add(ContactablePersonLabel);
             this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(EmailLabel);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.ContactNoTextBox);
             this.Controls.Add(this.AddressRichTextBox);
             this.Controls.Add(this.CompanyTextBox);
             this.Controls.Add(this.ResetButton);
@@ -350,7 +353,7 @@ namespace RangaHardwareStock
         private System.Windows.Forms.Label Titlelabel;
         private System.Windows.Forms.TextBox CompanyTextBox;
         private System.Windows.Forms.RichTextBox AddressRichTextBox;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox ContactNoTextBox;
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.TextBox ContactablePersonNameTextBox;
         private System.Windows.Forms.TextBox ContactablePersonTPNTextBox;
