@@ -17,7 +17,7 @@ namespace RangaHardwareStock
     public partial class SupplierForm : Form
     {
         SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\3rd Year Project\DEVELOPMENT PROJECT  - software\RangaHardwareStock\Ranga hardware.mdf; Integrated Security = True");
-
+        int supplerID = -1;
         private static SupplierForm _supplierFoem = new SupplierForm();
 
         public static void ShowForm()
@@ -70,6 +70,12 @@ namespace RangaHardwareStock
 
             this.DeleteSelectedRecordButton.Visible = false;
             this.DeleteSelectedRecordButton.Enabled = false;
+
+            this.SaveUpdateButton.Visible = false;
+            this.SaveUpdateButton.Enabled = false;
+
+            this.UpdateButton.Visible = false;
+            this.UpdateButton.Enabled = false;
 
             this.SupplierDataGridView.Enabled = true;
 
@@ -141,8 +147,10 @@ ON items.Supplier_ID = s.Supplier_ID",con);
 
             this.DeleteSelectedRecordButton.Visible = false;
             this.DeleteSelectedRecordButton.Enabled = false;
+            this.UpdateButton.Enabled = false;
+            this.UpdateButton.Visible = false;
 
-            this.SupplierDataGridView.Enabled = false;
+            this.SupplierDataGridView.Enabled = false;              
 
 
         }
@@ -159,6 +167,7 @@ VALUES("+int.Parse(this.SupplierIDTextBox.Text)+",'"+this.NameTextBox.Text+"','"
                 supplierTableInsertCommand.ExecuteNonQuery();
                 con.Close();
                 //----------------------
+                SetInitioalStage();
             }
             else
             {
@@ -169,6 +178,98 @@ VALUES("+int.Parse(this.SupplierIDTextBox.Text)+",'"+this.NameTextBox.Text+"','"
         private void SupplierForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             HomeForm.showForm();
+        }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            SetInitioalStage();
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void SupplierDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //fill form
+            supplerID = (int)this.SupplierDataGridView.Rows[e.RowIndex].Cells[0].Value;
+            this.SupplierDataGridView.CurrentRow.Selected = true;
+            this.SupplierIDTextBox.Text = this.SupplierDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+            this.NameTextBox.Text = this.SupplierDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
+            this.CompanyTextBox.Text = this.SupplierDataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+            this.AddressRichTextBox.Text = this.SupplierDataGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
+            this.ContactNoTextBox.Text = this.SupplierDataGridView.Rows[e.RowIndex].Cells[4].Value.ToString();
+            this.EmailTextBox.Text = this.SupplierDataGridView.Rows[e.RowIndex].Cells[5].Value.ToString();
+            this.ContactablePersonNameTextBox.Text = this.SupplierDataGridView.Rows[e.RowIndex].Cells[6].Value.ToString();
+            this.ContactablePersonTPNTextBox.Text = this.SupplierDataGridView.Rows[e.RowIndex].Cells[7].Value.ToString();
+            //---------------------
+
+            //show delete button & Updtade Button
+            this.DeleteSelectedRecordButton.Enabled = true;
+            this.DeleteSelectedRecordButton.Visible = true;
+            this.UpdateButton.Enabled = true;
+            this.UpdateButton.Visible = true;
+            //---------
+        }
+
+        private void DeleteSelectedRecordButton_Click(object sender, EventArgs e)
+        {
+            //check id user realy want to delete
+            DialogResult result = MessageBox.Show("Do you realy want to delete the record? \ndeleted records will not be abeled to recovered!", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                //Update items belongs to supplier
+                SqlCommand UpdateItemsCommand = new SqlCommand(@"UPDATE Item SET Supplier_ID = '' WHERE Supplier_ID = "+this.supplerID+"", con);
+                con.Open();
+                UpdateItemsCommand.ExecuteNonQuery();
+                con.Close();
+                //------------------------------
+
+                //Delete supplier
+                SqlCommand DeleteSupplierCommand = new SqlCommand(@"DELETE FROM Supplier WHERE Supplier_ID = " + this.supplerID + "", con);
+                con.Open();
+                DeleteSupplierCommand.ExecuteNonQuery();
+                con.Close();
+                //-----------------------
+
+                MessageBox.Show("Record Deleted");
+                SetInitioalStage();
+            }
+        }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            //enable conteollers
+            
+            this.NameTextBox.Enabled = true;
+            this.CompanyTextBox.Enabled = true;
+            this.AddressRichTextBox.Enabled = true;
+            this.ContactNoTextBox.Enabled = true;
+            this.EmailTextBox.Enabled = true;
+            this.ContactablePersonNameTextBox.Enabled = true;
+            this.ContactablePersonTPNTextBox.Enabled = true;
+
+            this.DeleteSelectedRecordButton.Visible = false;
+            this.DeleteSelectedRecordButton.Enabled = false;
+
+            this.SupplierDataGridView.Enabled = false;
+            this.SaveUpdateButton.Visible = true;
+            this.SaveUpdateButton.Enabled = true;
+        }
+
+        private void SaveUpdateButton_Click(object sender, EventArgs e)
+        {
+            //Update supplier
+            SqlCommand UpdateCommand = new SqlCommand(@"UPDATE Supplier 
+SET Name = '"+this.NameTextBox.Text+"',Company = '"+this.CompanyTextBox.Text+"',Address = '"+this.AddressRichTextBox.Text+"', [Contact No]= '"+this.ContactNoTextBox.Text+"', Email_Address = '"+this.EmailTextBox.Text+"' ,Contactable_Person_Name = '"+this.ContactablePersonNameTextBox.Text+"',Contactable_Person_Mobile ='"+this.ContactablePersonTPNTextBox.Text+"' WHERE Supplier_ID = " + this.supplerID + "", con);
+            con.Open();
+            UpdateCommand.ExecuteNonQuery();
+            con.Close();
+            //------------------------------
+
+            MessageBox.Show("Updated record");
+            SetInitioalStage();
         }
     }
 }

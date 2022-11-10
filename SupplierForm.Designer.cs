@@ -53,6 +53,8 @@ namespace RangaHardwareStock
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.CompanyTextBox = new System.Windows.Forms.TextBox();
+            this.UpdateButton = new System.Windows.Forms.Button();
+            this.SaveUpdateButton = new System.Windows.Forms.Button();
             SupplierCustomerLabel = new System.Windows.Forms.Label();
             SupplierIDLabel = new System.Windows.Forms.Label();
             NameLabel = new System.Windows.Forms.Label();
@@ -142,6 +144,7 @@ namespace RangaHardwareStock
             this.ResetButton.TabIndex = 172;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = false;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // ContactLabel
             // 
@@ -160,12 +163,13 @@ namespace RangaHardwareStock
             this.DeleteSelectedRecordButton.BackColor = System.Drawing.Color.LightCoral;
             this.DeleteSelectedRecordButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteSelectedRecordButton.ForeColor = System.Drawing.Color.Black;
-            this.DeleteSelectedRecordButton.Location = new System.Drawing.Point(359, 432);
+            this.DeleteSelectedRecordButton.Location = new System.Drawing.Point(621, 432);
             this.DeleteSelectedRecordButton.Name = "DeleteSelectedRecordButton";
             this.DeleteSelectedRecordButton.Size = new System.Drawing.Size(270, 80);
             this.DeleteSelectedRecordButton.TabIndex = 163;
             this.DeleteSelectedRecordButton.Text = "Delete Selected Record";
             this.DeleteSelectedRecordButton.UseVisualStyleBackColor = false;
+            this.DeleteSelectedRecordButton.Click += new System.EventHandler(this.DeleteSelectedRecordButton_Click);
             // 
             // AddNew
             // 
@@ -204,6 +208,7 @@ namespace RangaHardwareStock
             this.SupplierDataGridView.RowTemplate.Height = 24;
             this.SupplierDataGridView.Size = new System.Drawing.Size(1317, 318);
             this.SupplierDataGridView.TabIndex = 150;
+            this.SupplierDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SupplierDataGridView_CellClick);
             // 
             // BackButton
             // 
@@ -217,6 +222,7 @@ namespace RangaHardwareStock
             this.BackButton.TabIndex = 149;
             this.BackButton.Text = "Back";
             this.BackButton.UseVisualStyleBackColor = false;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
             // Titlelabel
             // 
@@ -301,9 +307,9 @@ namespace RangaHardwareStock
             this.SaveButton.BackColor = System.Drawing.Color.LightSeaGreen;
             this.SaveButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ForeColor = System.Drawing.Color.White;
-            this.SaveButton.Location = new System.Drawing.Point(1142, 346);
+            this.SaveButton.Location = new System.Drawing.Point(1196, 346);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(216, 47);
+            this.SaveButton.Size = new System.Drawing.Size(162, 47);
             this.SaveButton.TabIndex = 182;
             this.SaveButton.Text = "Save  Supplier";
             this.SaveButton.UseVisualStyleBackColor = false;
@@ -328,11 +334,41 @@ namespace RangaHardwareStock
             CompanyLabel.TabIndex = 183;
             CompanyLabel.Text = "Company :";
             // 
+            // UpdateButton
+            // 
+            this.UpdateButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.UpdateButton.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.UpdateButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateButton.ForeColor = System.Drawing.Color.Black;
+            this.UpdateButton.Location = new System.Drawing.Point(330, 432);
+            this.UpdateButton.Name = "UpdateButton";
+            this.UpdateButton.Size = new System.Drawing.Size(270, 80);
+            this.UpdateButton.TabIndex = 185;
+            this.UpdateButton.Text = "Update Selected Record";
+            this.UpdateButton.UseVisualStyleBackColor = false;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            // 
+            // SaveUpdateButton
+            // 
+            this.SaveUpdateButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.SaveUpdateButton.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.SaveUpdateButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveUpdateButton.ForeColor = System.Drawing.Color.White;
+            this.SaveUpdateButton.Location = new System.Drawing.Point(983, 346);
+            this.SaveUpdateButton.Name = "SaveUpdateButton";
+            this.SaveUpdateButton.Size = new System.Drawing.Size(197, 47);
+            this.SaveUpdateButton.TabIndex = 186;
+            this.SaveUpdateButton.Text = "Update Supplier";
+            this.SaveUpdateButton.UseVisualStyleBackColor = false;
+            this.SaveUpdateButton.Click += new System.EventHandler(this.SaveUpdateButton_Click);
+            // 
             // SupplierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1404, 904);
+            this.Controls.Add(this.SaveUpdateButton);
+            this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.CompanyTextBox);
             this.Controls.Add(CompanyLabel);
             this.Controls.Add(this.SaveButton);
@@ -387,5 +423,7 @@ namespace RangaHardwareStock
         private System.Windows.Forms.TextBox ContactablePersonTPNTextBox;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.TextBox CompanyTextBox;
+        private System.Windows.Forms.Button UpdateButton;
+        private System.Windows.Forms.Button SaveUpdateButton;
     }
 }
