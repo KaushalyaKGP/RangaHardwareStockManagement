@@ -307,6 +307,7 @@ namespace RangaHardwareStock
             this.SaveButton.TabIndex = 182;
             this.SaveButton.Text = "Save  Supplier";
             this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // CompanyTextBox
             // 
@@ -359,6 +360,7 @@ namespace RangaHardwareStock
             this.Name = "SupplierForm";
             this.Text = "SupplierForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SupplierForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.SupplierDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

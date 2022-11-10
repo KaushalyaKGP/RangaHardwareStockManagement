@@ -66,7 +66,7 @@ namespace RangaHardwareStock
             this.SaveButton.Enabled = false;
 
             this.AddNew.Visible = true;
-            this.SaveButton.Enabled = true;
+            this.AddNew.Enabled = true;
 
             this.DeleteSelectedRecordButton.Visible = false;
             this.DeleteSelectedRecordButton.Enabled = false;
@@ -119,6 +119,56 @@ ON items.Supplier_ID = s.Supplier_ID",con);
             this.SupplierIDTextBox.Text = idCommand.ExecuteScalar().ToString();
             con.Close();
             //-----------------
+
+            //enable conteollers
+            this.NameTextBox.Text = "";
+            this.NameTextBox.Enabled = true;
+            this.CompanyTextBox.Text = "";
+            this.CompanyTextBox.Enabled = true;
+            this.AddressRichTextBox.Text = "";
+            this.AddressRichTextBox.Enabled = true;
+            this.ContactNoTextBox.Text = "";
+            this.ContactNoTextBox.Enabled = true;
+            this.EmailTextBox.Text = "";
+            this.EmailTextBox.Enabled = true;
+            this.ContactablePersonNameTextBox.Text = "";
+            this.ContactablePersonNameTextBox.Enabled = true;
+            this.ContactablePersonTPNTextBox.Text = "";
+            this.ContactablePersonTPNTextBox.Enabled = true;
+
+            this.SaveButton.Visible = true;
+            this.SaveButton.Enabled = true;
+
+            this.DeleteSelectedRecordButton.Visible = false;
+            this.DeleteSelectedRecordButton.Enabled = false;
+
+            this.SupplierDataGridView.Enabled = false;
+
+
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            if(NameTextBox.Text!="")
+            {
+                //Save to supplier table
+                SqlCommand supplierTableInsertCommand = new SqlCommand(@"INSERT INTO Supplier (Supplier_ID,Name,Company,Address,[Contact No],Email_Address,Contactable_Person_Name,Contactable_Person_Mobile)
+VALUES("+int.Parse(this.SupplierIDTextBox.Text)+",'"+this.NameTextBox.Text+"','"+this.CompanyTextBox.Text+"','"+this.AddressRichTextBox.Text+"','"+this.ContactNoTextBox.Text+"','"+this.EmailTextBox.Text+"','"+this.ContactablePersonNameTextBox.Text+"','"+this.ContactablePersonTPNTextBox.Text+"')", con);
+
+                con.Open();
+                supplierTableInsertCommand.ExecuteNonQuery();
+                con.Close();
+                //----------------------
+            }
+            else
+            {
+                MessageBox.Show("Please Enter Supplier Name !");
+            }
+        }
+
+        private void SupplierForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            HomeForm.showForm();
         }
     }
 }
