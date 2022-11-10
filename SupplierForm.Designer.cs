@@ -31,10 +31,11 @@ namespace RangaHardwareStock
         {
             System.Windows.Forms.Label SupplierCustomerLabel;
             System.Windows.Forms.Label SupplierIDLabel;
-            System.Windows.Forms.Label CompanyLabel;
+            System.Windows.Forms.Label NameLabel;
             System.Windows.Forms.Label EmailLabel;
             System.Windows.Forms.Label ContactablePersonLabel;
             System.Windows.Forms.Label ContactablePersonTPNLabel;
+            System.Windows.Forms.Label CompanyLabel;
             this.ResetButton = new System.Windows.Forms.Button();
             this.ContactLabel = new System.Windows.Forms.Label();
             this.DeleteSelectedRecordButton = new System.Windows.Forms.Button();
@@ -43,7 +44,7 @@ namespace RangaHardwareStock
             this.SupplierDataGridView = new System.Windows.Forms.DataGridView();
             this.BackButton = new System.Windows.Forms.Button();
             this.Titlelabel = new System.Windows.Forms.Label();
-            this.CompanyTextBox = new System.Windows.Forms.TextBox();
+            this.NameTextBox = new System.Windows.Forms.TextBox();
             this.AddressRichTextBox = new System.Windows.Forms.RichTextBox();
             this.ContactNoTextBox = new System.Windows.Forms.TextBox();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
@@ -51,12 +52,14 @@ namespace RangaHardwareStock
             this.ContactablePersonTPNTextBox = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.SaveButton = new System.Windows.Forms.Button();
+            this.CompanyTextBox = new System.Windows.Forms.TextBox();
             SupplierCustomerLabel = new System.Windows.Forms.Label();
             SupplierIDLabel = new System.Windows.Forms.Label();
-            CompanyLabel = new System.Windows.Forms.Label();
+            NameLabel = new System.Windows.Forms.Label();
             EmailLabel = new System.Windows.Forms.Label();
             ContactablePersonLabel = new System.Windows.Forms.Label();
             ContactablePersonTPNLabel = new System.Windows.Forms.Label();
+            CompanyLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SupplierDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -66,7 +69,7 @@ namespace RangaHardwareStock
             SupplierCustomerLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             SupplierCustomerLabel.AutoSize = true;
             SupplierCustomerLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            SupplierCustomerLabel.Location = new System.Drawing.Point(41, 193);
+            SupplierCustomerLabel.Location = new System.Drawing.Point(41, 219);
             SupplierCustomerLabel.Name = "SupplierCustomerLabel";
             SupplierCustomerLabel.Size = new System.Drawing.Size(87, 20);
             SupplierCustomerLabel.TabIndex = 154;
@@ -83,23 +86,23 @@ namespace RangaHardwareStock
             SupplierIDLabel.TabIndex = 151;
             SupplierIDLabel.Text = "Supplier ID :";
             // 
-            // CompanyLabel
+            // NameLabel
             // 
-            CompanyLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            CompanyLabel.AutoSize = true;
-            CompanyLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            CompanyLabel.Location = new System.Drawing.Point(551, 142);
-            CompanyLabel.Name = "CompanyLabel";
-            CompanyLabel.Size = new System.Drawing.Size(96, 20);
-            CompanyLabel.TabIndex = 152;
-            CompanyLabel.Text = "Company :";
+            NameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            NameLabel.AutoSize = true;
+            NameLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            NameLabel.Location = new System.Drawing.Point(366, 142);
+            NameLabel.Name = "NameLabel";
+            NameLabel.Size = new System.Drawing.Size(66, 20);
+            NameLabel.TabIndex = 152;
+            NameLabel.Text = "Name :";
             // 
             // EmailLabel
             // 
             EmailLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             EmailLabel.AutoSize = true;
             EmailLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            EmailLabel.Location = new System.Drawing.Point(551, 244);
+            EmailLabel.Location = new System.Drawing.Point(551, 270);
             EmailLabel.Name = "EmailLabel";
             EmailLabel.Size = new System.Drawing.Size(64, 20);
             EmailLabel.TabIndex = 176;
@@ -110,7 +113,7 @@ namespace RangaHardwareStock
             ContactablePersonLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             ContactablePersonLabel.AutoSize = true;
             ContactablePersonLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            ContactablePersonLabel.Location = new System.Drawing.Point(41, 295);
+            ContactablePersonLabel.Location = new System.Drawing.Point(41, 321);
             ContactablePersonLabel.Name = "ContactablePersonLabel";
             ContactablePersonLabel.Size = new System.Drawing.Size(232, 20);
             ContactablePersonLabel.TabIndex = 178;
@@ -121,7 +124,7 @@ namespace RangaHardwareStock
             ContactablePersonTPNLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             ContactablePersonTPNLabel.AutoSize = true;
             ContactablePersonTPNLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            ContactablePersonTPNLabel.Location = new System.Drawing.Point(41, 346);
+            ContactablePersonTPNLabel.Location = new System.Drawing.Point(41, 372);
             ContactablePersonTPNLabel.Name = "ContactablePersonTPNLabel";
             ContactablePersonTPNLabel.Size = new System.Drawing.Size(239, 20);
             ContactablePersonTPNLabel.TabIndex = 180;
@@ -145,7 +148,7 @@ namespace RangaHardwareStock
             this.ContactLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ContactLabel.AutoSize = true;
             this.ContactLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ContactLabel.Location = new System.Drawing.Point(41, 244);
+            this.ContactLabel.Location = new System.Drawing.Point(41, 270);
             this.ContactLabel.Name = "ContactLabel";
             this.ContactLabel.Size = new System.Drawing.Size(110, 20);
             this.ContactLabel.TabIndex = 165;
@@ -176,6 +179,7 @@ namespace RangaHardwareStock
             this.AddNew.TabIndex = 162;
             this.AddNew.Text = "Add New";
             this.AddNew.UseVisualStyleBackColor = false;
+            this.AddNew.Click += new System.EventHandler(this.AddNew_Click);
             // 
             // SupplierIDTextBox
             // 
@@ -183,7 +187,7 @@ namespace RangaHardwareStock
             this.SupplierIDTextBox.Location = new System.Drawing.Point(160, 141);
             this.SupplierIDTextBox.Name = "SupplierIDTextBox";
             this.SupplierIDTextBox.ReadOnly = true;
-            this.SupplierIDTextBox.Size = new System.Drawing.Size(353, 22);
+            this.SupplierIDTextBox.Size = new System.Drawing.Size(183, 22);
             this.SupplierIDTextBox.TabIndex = 158;
             // 
             // SupplierDataGridView
@@ -228,18 +232,18 @@ namespace RangaHardwareStock
             this.Titlelabel.Text = "Supplier";
             this.Titlelabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // CompanyTextBox
+            // NameTextBox
             // 
-            this.CompanyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.CompanyTextBox.Location = new System.Drawing.Point(656, 141);
-            this.CompanyTextBox.Name = "CompanyTextBox";
-            this.CompanyTextBox.Size = new System.Drawing.Size(702, 22);
-            this.CompanyTextBox.TabIndex = 173;
+            this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.NameTextBox.Location = new System.Drawing.Point(438, 141);
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.Size = new System.Drawing.Size(920, 22);
+            this.NameTextBox.TabIndex = 173;
             // 
             // AddressRichTextBox
             // 
             this.AddressRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddressRichTextBox.Location = new System.Drawing.Point(160, 189);
+            this.AddressRichTextBox.Location = new System.Drawing.Point(160, 215);
             this.AddressRichTextBox.Name = "AddressRichTextBox";
             this.AddressRichTextBox.Size = new System.Drawing.Size(1198, 29);
             this.AddressRichTextBox.TabIndex = 174;
@@ -248,7 +252,7 @@ namespace RangaHardwareStock
             // ContactNoTextBox
             // 
             this.ContactNoTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ContactNoTextBox.Location = new System.Drawing.Point(160, 243);
+            this.ContactNoTextBox.Location = new System.Drawing.Point(160, 269);
             this.ContactNoTextBox.MaxLength = 12;
             this.ContactNoTextBox.Name = "ContactNoTextBox";
             this.ContactNoTextBox.Size = new System.Drawing.Size(353, 22);
@@ -258,7 +262,7 @@ namespace RangaHardwareStock
             // EmailTextBox
             // 
             this.EmailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.EmailTextBox.Location = new System.Drawing.Point(656, 243);
+            this.EmailTextBox.Location = new System.Drawing.Point(656, 269);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(702, 22);
             this.EmailTextBox.TabIndex = 177;
@@ -267,7 +271,7 @@ namespace RangaHardwareStock
             // ContactablePersonNameTextBox
             // 
             this.ContactablePersonNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.ContactablePersonNameTextBox.Location = new System.Drawing.Point(311, 294);
+            this.ContactablePersonNameTextBox.Location = new System.Drawing.Point(311, 320);
             this.ContactablePersonNameTextBox.Name = "ContactablePersonNameTextBox";
             this.ContactablePersonNameTextBox.Size = new System.Drawing.Size(601, 22);
             this.ContactablePersonNameTextBox.TabIndex = 179;
@@ -275,7 +279,7 @@ namespace RangaHardwareStock
             // ContactablePersonTPNTextBox
             // 
             this.ContactablePersonTPNTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ContactablePersonTPNTextBox.Location = new System.Drawing.Point(311, 345);
+            this.ContactablePersonTPNTextBox.Location = new System.Drawing.Point(311, 371);
             this.ContactablePersonTPNTextBox.Name = "ContactablePersonTPNTextBox";
             this.ContactablePersonTPNTextBox.Size = new System.Drawing.Size(353, 22);
             this.ContactablePersonTPNTextBox.TabIndex = 181;
@@ -285,7 +289,7 @@ namespace RangaHardwareStock
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 277);
+            this.pictureBox2.Location = new System.Drawing.Point(12, 303);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(1380, 5);
             this.pictureBox2.TabIndex = 160;
@@ -304,11 +308,32 @@ namespace RangaHardwareStock
             this.SaveButton.Text = "Save  Supplier";
             this.SaveButton.UseVisualStyleBackColor = false;
             // 
+            // CompanyTextBox
+            // 
+            this.CompanyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CompanyTextBox.Location = new System.Drawing.Point(160, 178);
+            this.CompanyTextBox.Name = "CompanyTextBox";
+            this.CompanyTextBox.Size = new System.Drawing.Size(702, 22);
+            this.CompanyTextBox.TabIndex = 184;
+            // 
+            // CompanyLabel
+            // 
+            CompanyLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            CompanyLabel.AutoSize = true;
+            CompanyLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            CompanyLabel.Location = new System.Drawing.Point(41, 179);
+            CompanyLabel.Name = "CompanyLabel";
+            CompanyLabel.Size = new System.Drawing.Size(96, 20);
+            CompanyLabel.TabIndex = 183;
+            CompanyLabel.Text = "Company :";
+            // 
             // SupplierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1404, 904);
+            this.Controls.Add(this.CompanyTextBox);
+            this.Controls.Add(CompanyLabel);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.ContactablePersonTPNTextBox);
             this.Controls.Add(ContactablePersonTPNLabel);
@@ -318,7 +343,7 @@ namespace RangaHardwareStock
             this.Controls.Add(EmailLabel);
             this.Controls.Add(this.ContactNoTextBox);
             this.Controls.Add(this.AddressRichTextBox);
-            this.Controls.Add(this.CompanyTextBox);
+            this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.ContactLabel);
             this.Controls.Add(this.DeleteSelectedRecordButton);
@@ -326,7 +351,7 @@ namespace RangaHardwareStock
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.SupplierIDTextBox);
             this.Controls.Add(SupplierCustomerLabel);
-            this.Controls.Add(CompanyLabel);
+            this.Controls.Add(NameLabel);
             this.Controls.Add(SupplierIDLabel);
             this.Controls.Add(this.SupplierDataGridView);
             this.Controls.Add(this.BackButton);
@@ -352,12 +377,13 @@ namespace RangaHardwareStock
         private System.Windows.Forms.DataGridView SupplierDataGridView;
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Label Titlelabel;
-        private System.Windows.Forms.TextBox CompanyTextBox;
+        private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.RichTextBox AddressRichTextBox;
         private System.Windows.Forms.TextBox ContactNoTextBox;
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.TextBox ContactablePersonNameTextBox;
         private System.Windows.Forms.TextBox ContactablePersonTPNTextBox;
         private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.TextBox CompanyTextBox;
     }
 }

@@ -47,8 +47,10 @@ namespace RangaHardwareStock
         private void SetInitioalStage()
         {
             this.SupplierIDTextBox.Text = "";
+            this.NameTextBox.Text = "";
+            this.NameTextBox.Enabled =false;
             this.CompanyTextBox.Text = "";
-            this.CompanyTextBox.Enabled =false;
+            this.CompanyTextBox.Enabled = false;
             this.AddressRichTextBox.Text = "";
             this.AddressRichTextBox.Enabled = false;
             this.ContactNoTextBox.Text = "";
@@ -107,6 +109,16 @@ ON items.Supplier_ID = s.Supplier_ID",con);
         {
             
             Globles.validateEmail(EmailTextBox.Text, EmailTextBox);
+        }
+
+        private void AddNew_Click(object sender, EventArgs e)
+        {
+            //Set Supplier ID
+            SqlCommand idCommand = new SqlCommand("SELECT ISNULL(MAX(cast (Supplier_ID as int)),0)+1 FROM Supplier", con);
+            con.Open();
+            this.SupplierIDTextBox.Text = idCommand.ExecuteScalar().ToString();
+            con.Close();
+            //-----------------
         }
     }
 }
