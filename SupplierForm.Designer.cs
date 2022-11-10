@@ -262,6 +262,7 @@ namespace RangaHardwareStock
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(702, 22);
             this.EmailTextBox.TabIndex = 177;
+            this.EmailTextBox.Leave += new System.EventHandler(this.EmailTextBox_Leave);
             // 
             // ContactablePersonNameTextBox
             // 
