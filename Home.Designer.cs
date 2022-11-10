@@ -44,6 +44,7 @@ namespace RangaHardwareStock
             this.CurrentStockButton = new System.Windows.Forms.Button();
             this.Title2label = new System.Windows.Forms.Label();
             this.Title1label = new System.Windows.Forms.Label();
+            this.customerManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuPanel.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -75,11 +76,12 @@ namespace RangaHardwareStock
             this.stockOutManahementToolStripMenuItem,
             this.toolStripMenuItem3,
             this.supplierManagementToolStripMenuItem,
+            this.customerManagementToolStripMenuItem,
             this.itemManagementToolStripMenuItem});
             this.menuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(363, 460);
+            this.menuStrip.Size = new System.Drawing.Size(363, 488);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -212,6 +214,14 @@ namespace RangaHardwareStock
             this.Title1label.Text = "Welcome !";
             this.Title1label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // customerManagementToolStripMenuItem
+            // 
+            this.customerManagementToolStripMenuItem.BackColor = System.Drawing.Color.White;
+            this.customerManagementToolStripMenuItem.Name = "customerManagementToolStripMenuItem";
+            this.customerManagementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.customerManagementToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
+            this.customerManagementToolStripMenuItem.Text = "Customer Management";
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -253,5 +263,6 @@ namespace RangaHardwareStock
         private System.Windows.Forms.Button CurrentStockButton;
         private System.Windows.Forms.Label Title2label;
         private System.Windows.Forms.Label Title1label;
+        private System.Windows.Forms.ToolStripMenuItem customerManagementToolStripMenuItem;
     }
 }
