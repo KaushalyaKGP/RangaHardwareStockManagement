@@ -109,7 +109,7 @@ namespace RangaHardwareStock
             this.SaveUpdateButton.Name = "SaveUpdateButton";
             this.SaveUpdateButton.Size = new System.Drawing.Size(197, 47);
             this.SaveUpdateButton.TabIndex = 212;
-            this.SaveUpdateButton.Text = "Update Supplier";
+            this.SaveUpdateButton.Text = "Update Customer";
             this.SaveUpdateButton.UseVisualStyleBackColor = false;
             this.SaveUpdateButton.Click += new System.EventHandler(this.SaveUpdateButton_Click);
             // 
@@ -137,7 +137,7 @@ namespace RangaHardwareStock
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(188, 47);
             this.SaveButton.TabIndex = 208;
-            this.SaveButton.Text = "Save  Supplier";
+            this.SaveButton.Text = "Save  Customer";
             this.SaveButton.UseVisualStyleBackColor = false;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
