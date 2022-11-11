@@ -46,6 +46,7 @@ namespace RangaHardwareStock
         //Set Initioal Stage
         private void SetInitioalStage()
         {
+            supplerID = -1;
             this.SupplierIDTextBox.Text = "";
             this.NameTextBox.Text = "";
             this.NameTextBox.Enabled =false;
@@ -219,12 +220,7 @@ VALUES("+int.Parse(this.SupplierIDTextBox.Text)+",'"+this.NameTextBox.Text+"','"
             DialogResult result = MessageBox.Show("Do you realy want to delete the record? \ndeleted records will not be abeled to recovered!", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                //Update items belongs to supplier
-                SqlCommand UpdateItemsCommand = new SqlCommand(@"UPDATE Item SET Supplier_ID = '' WHERE Supplier_ID = "+this.supplerID+"", con);
-                con.Open();
-                UpdateItemsCommand.ExecuteNonQuery();
-                con.Close();
-                //------------------------------
+
 
                 //Delete supplier
                 SqlCommand DeleteSupplierCommand = new SqlCommand(@"DELETE FROM Supplier WHERE Supplier_ID = " + this.supplerID + "", con);

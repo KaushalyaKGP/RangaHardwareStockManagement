@@ -55,53 +55,6 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.CustomerDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // SaveUpdateButton
-            // 
-            this.SaveUpdateButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.SaveUpdateButton.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.SaveUpdateButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SaveUpdateButton.ForeColor = System.Drawing.Color.White;
-            this.SaveUpdateButton.Location = new System.Drawing.Point(983, 346);
-            this.SaveUpdateButton.Name = "SaveUpdateButton";
-            this.SaveUpdateButton.Size = new System.Drawing.Size(197, 47);
-            this.SaveUpdateButton.TabIndex = 212;
-            this.SaveUpdateButton.Text = "Update Supplier";
-            this.SaveUpdateButton.UseVisualStyleBackColor = false;
-            // 
-            // UpdateButton
-            // 
-            this.UpdateButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.UpdateButton.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.UpdateButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateButton.ForeColor = System.Drawing.Color.Black;
-            this.UpdateButton.Location = new System.Drawing.Point(330, 432);
-            this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(270, 80);
-            this.UpdateButton.TabIndex = 211;
-            this.UpdateButton.Text = "Update Selected Record";
-            this.UpdateButton.UseVisualStyleBackColor = false;
-            // 
-            // SaveButton
-            // 
-            this.SaveButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.SaveButton.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.SaveButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SaveButton.ForeColor = System.Drawing.Color.White;
-            this.SaveButton.Location = new System.Drawing.Point(1196, 346);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(162, 47);
-            this.SaveButton.TabIndex = 208;
-            this.SaveButton.Text = "Save  Supplier";
-            this.SaveButton.UseVisualStyleBackColor = false;
-            // 
-            // EmailTextBox
-            // 
-            this.EmailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.EmailTextBox.Location = new System.Drawing.Point(656, 269);
-            this.EmailTextBox.Name = "EmailTextBox";
-            this.EmailTextBox.Size = new System.Drawing.Size(702, 22);
-            this.EmailTextBox.TabIndex = 203;
-            // 
             // EmailLabel
             // 
             EmailLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -112,91 +65,6 @@ namespace RangaHardwareStock
             EmailLabel.Size = new System.Drawing.Size(64, 20);
             EmailLabel.TabIndex = 202;
             EmailLabel.Text = "Email :";
-            // 
-            // ContactNoTextBox
-            // 
-            this.ContactNoTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ContactNoTextBox.Location = new System.Drawing.Point(160, 269);
-            this.ContactNoTextBox.MaxLength = 12;
-            this.ContactNoTextBox.Name = "ContactNoTextBox";
-            this.ContactNoTextBox.Size = new System.Drawing.Size(353, 22);
-            this.ContactNoTextBox.TabIndex = 201;
-            // 
-            // AddressRichTextBox
-            // 
-            this.AddressRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddressRichTextBox.Location = new System.Drawing.Point(160, 203);
-            this.AddressRichTextBox.Name = "AddressRichTextBox";
-            this.AddressRichTextBox.Size = new System.Drawing.Size(1198, 29);
-            this.AddressRichTextBox.TabIndex = 200;
-            this.AddressRichTextBox.Text = "";
-            // 
-            // NameTextBox
-            // 
-            this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.NameTextBox.Location = new System.Drawing.Point(438, 141);
-            this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(920, 22);
-            this.NameTextBox.TabIndex = 199;
-            // 
-            // ResetButton
-            // 
-            this.ResetButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.ResetButton.BackColor = System.Drawing.Color.Maroon;
-            this.ResetButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ResetButton.ForeColor = System.Drawing.Color.White;
-            this.ResetButton.Location = new System.Drawing.Point(1002, 857);
-            this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(156, 47);
-            this.ResetButton.TabIndex = 198;
-            this.ResetButton.Text = "Reset";
-            this.ResetButton.UseVisualStyleBackColor = false;
-            // 
-            // ContactLabel
-            // 
-            this.ContactLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ContactLabel.AutoSize = true;
-            this.ContactLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ContactLabel.Location = new System.Drawing.Point(41, 270);
-            this.ContactLabel.Name = "ContactLabel";
-            this.ContactLabel.Size = new System.Drawing.Size(110, 20);
-            this.ContactLabel.TabIndex = 197;
-            this.ContactLabel.Text = "Contact No :";
-            // 
-            // DeleteSelectedRecordButton
-            // 
-            this.DeleteSelectedRecordButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.DeleteSelectedRecordButton.BackColor = System.Drawing.Color.LightCoral;
-            this.DeleteSelectedRecordButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteSelectedRecordButton.ForeColor = System.Drawing.Color.Black;
-            this.DeleteSelectedRecordButton.Location = new System.Drawing.Point(621, 432);
-            this.DeleteSelectedRecordButton.Name = "DeleteSelectedRecordButton";
-            this.DeleteSelectedRecordButton.Size = new System.Drawing.Size(270, 80);
-            this.DeleteSelectedRecordButton.TabIndex = 196;
-            this.DeleteSelectedRecordButton.Text = "Delete Selected Record";
-            this.DeleteSelectedRecordButton.UseVisualStyleBackColor = false;
-            // 
-            // AddNew
-            // 
-            this.AddNew.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.AddNew.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.AddNew.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddNew.ForeColor = System.Drawing.Color.Black;
-            this.AddNew.Location = new System.Drawing.Point(41, 432);
-            this.AddNew.Name = "AddNew";
-            this.AddNew.Size = new System.Drawing.Size(270, 80);
-            this.AddNew.TabIndex = 195;
-            this.AddNew.Text = "Add New";
-            this.AddNew.UseVisualStyleBackColor = false;
-            // 
-            // CustomerIDTextBox
-            // 
-            this.CustomerIDTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.CustomerIDTextBox.Location = new System.Drawing.Point(171, 141);
-            this.CustomerIDTextBox.Name = "CustomerIDTextBox";
-            this.CustomerIDTextBox.ReadOnly = true;
-            this.CustomerIDTextBox.Size = new System.Drawing.Size(183, 22);
-            this.CustomerIDTextBox.TabIndex = 193;
             // 
             // SupplierCustomerLabel
             // 
@@ -231,6 +99,146 @@ namespace RangaHardwareStock
             CustomerIDLabel.TabIndex = 190;
             CustomerIDLabel.Text = "Customer ID :";
             // 
+            // SaveUpdateButton
+            // 
+            this.SaveUpdateButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.SaveUpdateButton.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.SaveUpdateButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveUpdateButton.ForeColor = System.Drawing.Color.White;
+            this.SaveUpdateButton.Location = new System.Drawing.Point(967, 346);
+            this.SaveUpdateButton.Name = "SaveUpdateButton";
+            this.SaveUpdateButton.Size = new System.Drawing.Size(197, 47);
+            this.SaveUpdateButton.TabIndex = 212;
+            this.SaveUpdateButton.Text = "Update Supplier";
+            this.SaveUpdateButton.UseVisualStyleBackColor = false;
+            this.SaveUpdateButton.Click += new System.EventHandler(this.SaveUpdateButton_Click);
+            // 
+            // UpdateButton
+            // 
+            this.UpdateButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.UpdateButton.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.UpdateButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateButton.ForeColor = System.Drawing.Color.Black;
+            this.UpdateButton.Location = new System.Drawing.Point(330, 432);
+            this.UpdateButton.Name = "UpdateButton";
+            this.UpdateButton.Size = new System.Drawing.Size(270, 80);
+            this.UpdateButton.TabIndex = 211;
+            this.UpdateButton.Text = "Update Selected Record";
+            this.UpdateButton.UseVisualStyleBackColor = false;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.SaveButton.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.SaveButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveButton.ForeColor = System.Drawing.Color.White;
+            this.SaveButton.Location = new System.Drawing.Point(1170, 346);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(188, 47);
+            this.SaveButton.TabIndex = 208;
+            this.SaveButton.Text = "Save  Supplier";
+            this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // EmailTextBox
+            // 
+            this.EmailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.EmailTextBox.Location = new System.Drawing.Point(656, 269);
+            this.EmailTextBox.Name = "EmailTextBox";
+            this.EmailTextBox.Size = new System.Drawing.Size(702, 22);
+            this.EmailTextBox.TabIndex = 203;
+            this.EmailTextBox.Leave += new System.EventHandler(this.EmailTextBox_Leave);
+            // 
+            // ContactNoTextBox
+            // 
+            this.ContactNoTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ContactNoTextBox.Location = new System.Drawing.Point(160, 269);
+            this.ContactNoTextBox.MaxLength = 12;
+            this.ContactNoTextBox.Name = "ContactNoTextBox";
+            this.ContactNoTextBox.Size = new System.Drawing.Size(353, 22);
+            this.ContactNoTextBox.TabIndex = 201;
+            this.ContactNoTextBox.Leave += new System.EventHandler(this.ContactNoTextBox_Leave);
+            // 
+            // AddressRichTextBox
+            // 
+            this.AddressRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddressRichTextBox.Location = new System.Drawing.Point(160, 203);
+            this.AddressRichTextBox.Name = "AddressRichTextBox";
+            this.AddressRichTextBox.Size = new System.Drawing.Size(1198, 29);
+            this.AddressRichTextBox.TabIndex = 200;
+            this.AddressRichTextBox.Text = "";
+            // 
+            // NameTextBox
+            // 
+            this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.NameTextBox.Location = new System.Drawing.Point(438, 141);
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.Size = new System.Drawing.Size(920, 22);
+            this.NameTextBox.TabIndex = 199;
+            // 
+            // ResetButton
+            // 
+            this.ResetButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ResetButton.BackColor = System.Drawing.Color.Maroon;
+            this.ResetButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResetButton.ForeColor = System.Drawing.Color.White;
+            this.ResetButton.Location = new System.Drawing.Point(1002, 857);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(156, 47);
+            this.ResetButton.TabIndex = 198;
+            this.ResetButton.Text = "Reset";
+            this.ResetButton.UseVisualStyleBackColor = false;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
+            // ContactLabel
+            // 
+            this.ContactLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ContactLabel.AutoSize = true;
+            this.ContactLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ContactLabel.Location = new System.Drawing.Point(41, 270);
+            this.ContactLabel.Name = "ContactLabel";
+            this.ContactLabel.Size = new System.Drawing.Size(110, 20);
+            this.ContactLabel.TabIndex = 197;
+            this.ContactLabel.Text = "Contact No :";
+            // 
+            // DeleteSelectedRecordButton
+            // 
+            this.DeleteSelectedRecordButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.DeleteSelectedRecordButton.BackColor = System.Drawing.Color.LightCoral;
+            this.DeleteSelectedRecordButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteSelectedRecordButton.ForeColor = System.Drawing.Color.Black;
+            this.DeleteSelectedRecordButton.Location = new System.Drawing.Point(621, 432);
+            this.DeleteSelectedRecordButton.Name = "DeleteSelectedRecordButton";
+            this.DeleteSelectedRecordButton.Size = new System.Drawing.Size(270, 80);
+            this.DeleteSelectedRecordButton.TabIndex = 196;
+            this.DeleteSelectedRecordButton.Text = "Delete Selected Record";
+            this.DeleteSelectedRecordButton.UseVisualStyleBackColor = false;
+            this.DeleteSelectedRecordButton.Click += new System.EventHandler(this.DeleteSelectedRecordButton_Click);
+            // 
+            // AddNew
+            // 
+            this.AddNew.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AddNew.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.AddNew.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddNew.ForeColor = System.Drawing.Color.Black;
+            this.AddNew.Location = new System.Drawing.Point(41, 432);
+            this.AddNew.Name = "AddNew";
+            this.AddNew.Size = new System.Drawing.Size(270, 80);
+            this.AddNew.TabIndex = 195;
+            this.AddNew.Text = "Add New";
+            this.AddNew.UseVisualStyleBackColor = false;
+            this.AddNew.Click += new System.EventHandler(this.AddNew_Click);
+            // 
+            // CustomerIDTextBox
+            // 
+            this.CustomerIDTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CustomerIDTextBox.Location = new System.Drawing.Point(171, 141);
+            this.CustomerIDTextBox.Name = "CustomerIDTextBox";
+            this.CustomerIDTextBox.ReadOnly = true;
+            this.CustomerIDTextBox.Size = new System.Drawing.Size(183, 22);
+            this.CustomerIDTextBox.TabIndex = 193;
+            // 
             // CustomerDataGridView
             // 
             this.CustomerDataGridView.AllowUserToAddRows = false;
@@ -245,6 +253,7 @@ namespace RangaHardwareStock
             this.CustomerDataGridView.RowTemplate.Height = 24;
             this.CustomerDataGridView.Size = new System.Drawing.Size(1317, 318);
             this.CustomerDataGridView.TabIndex = 189;
+            this.CustomerDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CustomerDataGridView_CellClick);
             // 
             // BackButton
             // 
@@ -258,6 +267,7 @@ namespace RangaHardwareStock
             this.BackButton.TabIndex = 188;
             this.BackButton.Text = "Back";
             this.BackButton.UseVisualStyleBackColor = false;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
             // Titlelabel
             // 
@@ -300,6 +310,7 @@ namespace RangaHardwareStock
             this.Name = "CustomerForm";
             this.Text = "CustomerForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CustomerForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.CustomerDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

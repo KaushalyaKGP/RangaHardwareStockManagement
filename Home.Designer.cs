@@ -40,11 +40,11 @@ namespace RangaHardwareStock
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.supplierManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customerManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CurrentStockButton = new System.Windows.Forms.Button();
             this.Title2label = new System.Windows.Forms.Label();
             this.Title1label = new System.Windows.Forms.Label();
-            this.customerManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuPanel.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -81,7 +81,7 @@ namespace RangaHardwareStock
             this.menuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(363, 488);
+            this.menuStrip.Size = new System.Drawing.Size(363, 512);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -160,6 +160,15 @@ namespace RangaHardwareStock
             this.itemManagementToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
             this.itemManagementToolStripMenuItem.Text = "Item Management";
             // 
+            // customerManagementToolStripMenuItem
+            // 
+            this.customerManagementToolStripMenuItem.BackColor = System.Drawing.Color.White;
+            this.customerManagementToolStripMenuItem.Name = "customerManagementToolStripMenuItem";
+            this.customerManagementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.customerManagementToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
+            this.customerManagementToolStripMenuItem.Text = "Customer Management";
+            this.customerManagementToolStripMenuItem.Click += new System.EventHandler(this.customerManagementToolStripMenuItem_Click);
+            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -213,14 +222,6 @@ namespace RangaHardwareStock
             this.Title1label.TabIndex = 3;
             this.Title1label.Text = "Welcome !";
             this.Title1label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // customerManagementToolStripMenuItem
-            // 
-            this.customerManagementToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.customerManagementToolStripMenuItem.Name = "customerManagementToolStripMenuItem";
-            this.customerManagementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.customerManagementToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
-            this.customerManagementToolStripMenuItem.Text = "Customer Management";
             // 
             // HomeForm
             // 
