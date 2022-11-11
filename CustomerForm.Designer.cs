@@ -105,9 +105,9 @@ namespace RangaHardwareStock
             this.SaveUpdateButton.BackColor = System.Drawing.Color.LightSeaGreen;
             this.SaveUpdateButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveUpdateButton.ForeColor = System.Drawing.Color.White;
-            this.SaveUpdateButton.Location = new System.Drawing.Point(967, 346);
+            this.SaveUpdateButton.Location = new System.Drawing.Point(945, 346);
             this.SaveUpdateButton.Name = "SaveUpdateButton";
-            this.SaveUpdateButton.Size = new System.Drawing.Size(197, 47);
+            this.SaveUpdateButton.Size = new System.Drawing.Size(219, 47);
             this.SaveUpdateButton.TabIndex = 212;
             this.SaveUpdateButton.Text = "Update Customer";
             this.SaveUpdateButton.UseVisualStyleBackColor = false;
