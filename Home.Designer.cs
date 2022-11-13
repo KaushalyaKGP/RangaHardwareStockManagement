@@ -39,8 +39,8 @@ namespace RangaHardwareStock
             this.stockOutManahementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.supplierManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CurrentStockButton = new System.Windows.Forms.Button();
             this.Title2label = new System.Windows.Forms.Label();
@@ -152,14 +152,6 @@ namespace RangaHardwareStock
             this.supplierManagementToolStripMenuItem.Text = "Supplier Management";
             this.supplierManagementToolStripMenuItem.Click += new System.EventHandler(this.supplierManagementToolStripMenuItem_Click);
             // 
-            // itemManagementToolStripMenuItem
-            // 
-            this.itemManagementToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.itemManagementToolStripMenuItem.Name = "itemManagementToolStripMenuItem";
-            this.itemManagementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.itemManagementToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
-            this.itemManagementToolStripMenuItem.Text = "Item Management";
-            // 
             // customerManagementToolStripMenuItem
             // 
             this.customerManagementToolStripMenuItem.BackColor = System.Drawing.Color.White;
@@ -168,6 +160,15 @@ namespace RangaHardwareStock
             this.customerManagementToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
             this.customerManagementToolStripMenuItem.Text = "Customer Management";
             this.customerManagementToolStripMenuItem.Click += new System.EventHandler(this.customerManagementToolStripMenuItem_Click);
+            // 
+            // itemManagementToolStripMenuItem
+            // 
+            this.itemManagementToolStripMenuItem.BackColor = System.Drawing.Color.White;
+            this.itemManagementToolStripMenuItem.Name = "itemManagementToolStripMenuItem";
+            this.itemManagementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.itemManagementToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
+            this.itemManagementToolStripMenuItem.Text = "Item Management";
+            this.itemManagementToolStripMenuItem.Click += new System.EventHandler(this.itemManagementToolStripMenuItem_Click);
             // 
             // panel1
             // 

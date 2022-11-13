@@ -79,5 +79,11 @@ namespace RangaHardwareStock
             this.Hide();
             CustomerForm.ShowForm();
         }
+
+        private void itemManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ItemForm.ShowForm();
+        }
     }
 }

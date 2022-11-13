@@ -29,8 +29,8 @@
     <Shape ID="DesignTable:StockOutType" ZOrder="29" X="7490" Y="70" Height="135" Width="268" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="76" />
     <Shape ID="DesignTable:StockType" ZOrder="28" X="7828" Y="70" Height="135" Width="240" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="76" />
     <Shape ID="DesignTable:Supplier" ZOrder="27" X="8138" Y="70" Height="273" Width="225" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="214" />
-    <Shape ID="DesignTable:Item" ZOrder="10" X="8433" Y="70" Height="296" Width="198" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="237" />
-    <Shape ID="DesignTable:Sales" ZOrder="3" X="8701" Y="70" Height="158" Width="202" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="99" />
+    <Shape ID="DesignTable:Sales" ZOrder="10" X="8701" Y="70" Height="158" Width="202" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="99" />
+    <Shape ID="DesignTable:Item" ZOrder="7" X="8973" Y="70" Height="319" Width="198" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="260" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:FK_CustomerReturn_CustomerReturnReason" ZOrder="26" LineWidth="11">
@@ -269,10 +269,50 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_CustomerReturnItems_Item" ZOrder="9" LineWidth="11">
+    <Connector ID="DesignRelation:FK_SalesItems_Sales" ZOrder="9" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>8433</X>
+          <X>8709</X>
+          <Y>70</Y>
+        </Point>
+        <Point>
+          <X>8709</X>
+          <Y>24</Y>
+        </Point>
+        <Point>
+          <X>6143</X>
+          <Y>24</Y>
+        </Point>
+        <Point>
+          <X>6143</X>
+          <Y>70</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:FK_InboundOrderIn_StockOut" ZOrder="8" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>7396</X>
+          <Y>70</Y>
+        </Point>
+        <Point>
+          <X>7396</X>
+          <Y>-16</Y>
+        </Point>
+        <Point>
+          <X>8717</X>
+          <Y>-16</Y>
+        </Point>
+        <Point>
+          <X>8717</X>
+          <Y>70</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:FK_CustomerReturnItems_Item" ZOrder="6" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>8973</X>
           <Y>97</Y>
         </Point>
         <Point>
@@ -281,10 +321,10 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_InboundOrderItems_Item" ZOrder="8" LineWidth="11">
+    <Connector ID="DesignRelation:FK_InboundOrderItems_Item" ZOrder="5" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>8433</X>
+          <X>8973</X>
           <Y>164</Y>
         </Point>
         <Point>
@@ -293,10 +333,10 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_LostDamageStockOut_Item" ZOrder="7" LineWidth="11">
+    <Connector ID="DesignRelation:FK_LostDamageStockOut_Item" ZOrder="4" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>8433</X>
+          <X>8973</X>
           <Y>199</Y>
         </Point>
         <Point>
@@ -305,10 +345,10 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_ReturnToSupplierItems_Item" ZOrder="6" LineWidth="11">
+    <Connector ID="DesignRelation:FK_ReturnToSupplierItems_Item" ZOrder="3" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>8433</X>
+          <X>8973</X>
           <Y>207</Y>
         </Point>
         <Point>
@@ -317,10 +357,10 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_SalesItems_Item" ZOrder="5" LineWidth="11">
+    <Connector ID="DesignRelation:FK_SalesItems_Item" ZOrder="2" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>8433</X>
+          <X>8973</X>
           <Y>238</Y>
         </Point>
         <Point>
@@ -329,7 +369,7 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_Item_StockLevel" ZOrder="4" LineWidth="11">
+    <Connector ID="DesignRelation:FK_Item_StockLevel" ZOrder="1" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>7101</X>
@@ -337,51 +377,11 @@
         </Point>
         <Point>
           <X>7101</X>
-          <Y>261</Y>
+          <Y>246</Y>
         </Point>
         <Point>
-          <X>8433</X>
-          <Y>261</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
-    <Connector ID="DesignRelation:FK_SalesItems_Sales" ZOrder="2" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>8709</X>
-          <Y>70</Y>
-        </Point>
-        <Point>
-          <X>8709</X>
-          <Y>24</Y>
-        </Point>
-        <Point>
-          <X>6143</X>
-          <Y>24</Y>
-        </Point>
-        <Point>
-          <X>6143</X>
-          <Y>70</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
-    <Connector ID="DesignRelation:FK_InboundOrderIn_StockOut" ZOrder="1" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>7396</X>
-          <Y>70</Y>
-        </Point>
-        <Point>
-          <X>7396</X>
-          <Y>-16</Y>
-        </Point>
-        <Point>
-          <X>8717</X>
-          <Y>-16</Y>
-        </Point>
-        <Point>
-          <X>8717</X>
-          <Y>70</Y>
+          <X>8973</X>
+          <Y>246</Y>
         </Point>
       </RoutePoints>
     </Connector>
