@@ -56,6 +56,7 @@ namespace RangaHardwareStock
             this.stockOutTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockOutTableAdapter();
             this.stockOutTypeTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockOutTypeTableAdapter();
             this.itemTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.ItemTableAdapter();
+            this.ExitButton = new System.Windows.Forms.Button();
             TypeLabel = new System.Windows.Forms.Label();
             ItemLabel = new System.Windows.Forms.Label();
             DateOutToLabel = new System.Windows.Forms.Label();
@@ -335,6 +336,20 @@ namespace RangaHardwareStock
             // 
             this.itemTableAdapter.ClearBeforeFill = true;
             // 
+            // ExitButton
+            // 
+            this.ExitButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.ExitButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitButton.ForeColor = System.Drawing.Color.White;
+            this.ExitButton.Location = new System.Drawing.Point(1259, 12);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(133, 47);
+            this.ExitButton.TabIndex = 257;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = false;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
             // StockOutManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -342,6 +357,7 @@ namespace RangaHardwareStock
             this.BackgroundImage = global::RangaHardwareStock.Properties.Resources.hardware_tools_isolated_on_white_background_E9HYP9_1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1404, 904);
+            this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.LostDamagedButton);
             this.Controls.Add(TypeLabel);
             this.Controls.Add(this.TypeComboBox);
@@ -398,5 +414,6 @@ namespace RangaHardwareStock
         private Ranga_hardwareDataSetTableAdapters.StockOutTypeTableAdapter stockOutTypeTableAdapter;
         private System.Windows.Forms.BindingSource itemBindingSource;
         private Ranga_hardwareDataSetTableAdapters.ItemTableAdapter itemTableAdapter;
+        private System.Windows.Forms.Button ExitButton;
     }
 }

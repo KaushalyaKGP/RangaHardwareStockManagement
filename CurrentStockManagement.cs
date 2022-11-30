@@ -178,5 +178,15 @@ ORDER BY i.Item_Name", con);
         {
             CurrentStockManagementForm.ActiveForm.Close();
         }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you realy want to Exit? \nChangers may not be saved!", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            
+        }
     }
 }

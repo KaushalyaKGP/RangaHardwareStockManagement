@@ -55,6 +55,7 @@ namespace RangaHardwareStock
             this.CompanyTextBox = new System.Windows.Forms.TextBox();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.SaveUpdateButton = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
             SupplierCustomerLabel = new System.Windows.Forms.Label();
             SupplierIDLabel = new System.Windows.Forms.Label();
             NameLabel = new System.Windows.Forms.Label();
@@ -131,6 +132,17 @@ namespace RangaHardwareStock
             ContactablePersonTPNLabel.Size = new System.Drawing.Size(239, 20);
             ContactablePersonTPNLabel.TabIndex = 180;
             ContactablePersonTPNLabel.Text = "Contactable Person Mobile :";
+            // 
+            // CompanyLabel
+            // 
+            CompanyLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            CompanyLabel.AutoSize = true;
+            CompanyLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            CompanyLabel.Location = new System.Drawing.Point(41, 179);
+            CompanyLabel.Name = "CompanyLabel";
+            CompanyLabel.Size = new System.Drawing.Size(96, 20);
+            CompanyLabel.TabIndex = 183;
+            CompanyLabel.Text = "Company :";
             // 
             // ResetButton
             // 
@@ -323,17 +335,6 @@ namespace RangaHardwareStock
             this.CompanyTextBox.Size = new System.Drawing.Size(702, 22);
             this.CompanyTextBox.TabIndex = 184;
             // 
-            // CompanyLabel
-            // 
-            CompanyLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            CompanyLabel.AutoSize = true;
-            CompanyLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            CompanyLabel.Location = new System.Drawing.Point(41, 179);
-            CompanyLabel.Name = "CompanyLabel";
-            CompanyLabel.Size = new System.Drawing.Size(96, 20);
-            CompanyLabel.TabIndex = 183;
-            CompanyLabel.Text = "Company :";
-            // 
             // UpdateButton
             // 
             this.UpdateButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -362,11 +363,26 @@ namespace RangaHardwareStock
             this.SaveUpdateButton.UseVisualStyleBackColor = false;
             this.SaveUpdateButton.Click += new System.EventHandler(this.SaveUpdateButton_Click);
             // 
+            // ExitButton
+            // 
+            this.ExitButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.ExitButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitButton.ForeColor = System.Drawing.Color.White;
+            this.ExitButton.Location = new System.Drawing.Point(1259, 12);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(133, 47);
+            this.ExitButton.TabIndex = 258;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = false;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
             // SupplierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1404, 904);
+            this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.SaveUpdateButton);
             this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.CompanyTextBox);
@@ -425,5 +441,6 @@ namespace RangaHardwareStock
         private System.Windows.Forms.TextBox CompanyTextBox;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button SaveUpdateButton;
+        private System.Windows.Forms.Button ExitButton;
     }
 }

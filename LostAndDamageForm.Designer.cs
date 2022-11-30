@@ -60,6 +60,7 @@ namespace RangaHardwareStock
             this.itemTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.ItemTableAdapter();
             this.Unit2Label = new System.Windows.Forms.Label();
             this.ResetButton = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
             SupplierCustomerLabel = new System.Windows.Forms.Label();
             DataLabel = new System.Windows.Forms.Label();
             BatchIDLabel = new System.Windows.Forms.Label();
@@ -393,11 +394,26 @@ namespace RangaHardwareStock
             this.ResetButton.UseVisualStyleBackColor = false;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
+            // ExitButton
+            // 
+            this.ExitButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.ExitButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitButton.ForeColor = System.Drawing.Color.White;
+            this.ExitButton.Location = new System.Drawing.Point(1259, 12);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(133, 47);
+            this.ExitButton.TabIndex = 252;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = false;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
             // LostAndDamageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1404, 904);
+            this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.Unit2Label);
             this.Controls.Add(this.CommentRichTextBox);
@@ -469,5 +485,6 @@ namespace RangaHardwareStock
         private Ranga_hardwareDataSetTableAdapters.ItemTableAdapter itemTableAdapter;
         private System.Windows.Forms.Label Unit2Label;
         private System.Windows.Forms.Button ResetButton;
+        private System.Windows.Forms.Button ExitButton;
     }
 }

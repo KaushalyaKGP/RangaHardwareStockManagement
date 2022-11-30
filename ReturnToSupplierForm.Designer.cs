@@ -61,6 +61,7 @@ namespace RangaHardwareStock
             this.returnToSupplierReasonsTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.ReturnToSupplierReasonsTableAdapter();
             this.AvailableQuantityLabel = new System.Windows.Forms.Label();
             this.AvailableStockLabel = new System.Windows.Forms.Label();
+            this.ExitButton = new System.Windows.Forms.Button();
             label1 = new System.Windows.Forms.Label();
             ReasonLabel = new System.Windows.Forms.Label();
             DataLabel = new System.Windows.Forms.Label();
@@ -397,11 +398,26 @@ namespace RangaHardwareStock
             this.AvailableStockLabel.TabIndex = 164;
             this.AvailableStockLabel.Text = "Available Stock : ";
             // 
+            // ExitButton
+            // 
+            this.ExitButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.ExitButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitButton.ForeColor = System.Drawing.Color.White;
+            this.ExitButton.Location = new System.Drawing.Point(1259, 12);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(133, 47);
+            this.ExitButton.TabIndex = 254;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = false;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
             // ReturnToSupplierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1404, 904);
+            this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.AvailableQuantityLabel);
             this.Controls.Add(this.AvailableStockLabel);
             this.Controls.Add(FromStockTypeLabel);
@@ -470,5 +486,6 @@ namespace RangaHardwareStock
         private Ranga_hardwareDataSetTableAdapters.ReturnToSupplierReasonsTableAdapter returnToSupplierReasonsTableAdapter;
         private System.Windows.Forms.Label AvailableQuantityLabel;
         private System.Windows.Forms.Label AvailableStockLabel;
+        private System.Windows.Forms.Button ExitButton;
     }
 }

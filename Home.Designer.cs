@@ -45,6 +45,7 @@ namespace RangaHardwareStock
             this.CurrentStockButton = new System.Windows.Forms.Button();
             this.Title2label = new System.Windows.Forms.Label();
             this.Title1label = new System.Windows.Forms.Label();
+            this.ExitButton = new System.Windows.Forms.Button();
             this.MenuPanel.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -81,7 +82,7 @@ namespace RangaHardwareStock
             this.menuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(363, 512);
+            this.menuStrip.Size = new System.Drawing.Size(363, 488);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -177,6 +178,7 @@ namespace RangaHardwareStock
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackgroundImage = global::RangaHardwareStock.Properties.Resources.hardware_tools_isolated_on_white_background_E9HYP9_1;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.ExitButton);
             this.panel1.Controls.Add(this.CurrentStockButton);
             this.panel1.Controls.Add(this.Title2label);
             this.panel1.Controls.Add(this.Title1label);
@@ -224,6 +226,20 @@ namespace RangaHardwareStock
             this.Title1label.Text = "Welcome !";
             this.Title1label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // ExitButton
+            // 
+            this.ExitButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.ExitButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitButton.ForeColor = System.Drawing.Color.White;
+            this.ExitButton.Location = new System.Drawing.Point(1400, 12);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(133, 47);
+            this.ExitButton.TabIndex = 248;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = false;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -266,5 +282,6 @@ namespace RangaHardwareStock
         private System.Windows.Forms.Label Title2label;
         private System.Windows.Forms.Label Title1label;
         private System.Windows.Forms.ToolStripMenuItem customerManagementToolStripMenuItem;
+        private System.Windows.Forms.Button ExitButton;
     }
 }

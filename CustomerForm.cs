@@ -228,5 +228,14 @@ SET Name = '" + this.NameTextBox.Text + "',Address = '" + this.AddressRichTextBo
                 SetInitioalStage();
             }
         }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you realy want to Exit? \nChangers may not be saved!", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
 }
