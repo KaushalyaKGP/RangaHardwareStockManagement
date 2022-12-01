@@ -15,8 +15,7 @@ namespace RangaHardwareStock
     public partial class LoginForm : Form
 
     {
-        //private string username = "admin";
-        //private string password = "admin";
+        
 
         private static LoginForm loginForm = new LoginForm();
 
