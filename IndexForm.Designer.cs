@@ -103,6 +103,7 @@ namespace RangaHardwareStock
             this.Controls.Add(this.Title2label);
             this.Controls.Add(this.Title1label);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "IndexForm";
             this.ShowIcon = false;
