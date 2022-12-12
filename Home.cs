@@ -94,5 +94,11 @@ namespace RangaHardwareStock
                 Application.Exit();
             }
         }
+
+        private void aBCAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ABC_Analysis.showForm();
+        }
     }
 }

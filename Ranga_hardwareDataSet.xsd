@@ -1423,6 +1423,65 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ABC_AnalysisTableAdapter" GeneratorDataComponentClassName="ABC_AnalysisTableAdapter" Name="ABC_Analysis" UserDataComponentName="ABC_AnalysisTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Ranga_hardwareConnectionString (Settings)" DbObjectName="dbo.ABC_Analysis" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Item_ID, Item_Name, Sales, CumulativeSales, TotalSales, CumulativePercentage, Class FROM dbo.ABC_Analysis</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Item_ID" DataSetColumn="Item_ID" />
+              <Mapping SourceColumn="Item_Name" DataSetColumn="Item_Name" />
+              <Mapping SourceColumn="Sales" DataSetColumn="Sales" />
+              <Mapping SourceColumn="CumulativeSales" DataSetColumn="CumulativeSales" />
+              <Mapping SourceColumn="TotalSales" DataSetColumn="TotalSales" />
+              <Mapping SourceColumn="CumulativePercentage" DataSetColumn="CumulativePercentage" />
+              <Mapping SourceColumn="Class" DataSetColumn="Class" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Sales_by_Item_CatagoryTableAdapter" GeneratorDataComponentClassName="Sales_by_Item_CatagoryTableAdapter" Name="Sales_by_Item_Catagory" UserDataComponentName="Sales_by_Item_CatagoryTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Ranga_hardwareConnectionString (Settings)" DbObjectName="dbo.Sales_by_Item_Catagory" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Item_ID, Item_Name, Sales FROM dbo.Sales_by_Item_Catagory</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Item_ID" DataSetColumn="Item_ID" />
+              <Mapping SourceColumn="Item_Name" DataSetColumn="Item_Name" />
+              <Mapping SourceColumn="Sales" DataSetColumn="Sales" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ABC_ClassTableAdapter" GeneratorDataComponentClassName="ABC_ClassTableAdapter" Name="ABC_Class" UserDataComponentName="ABC_ClassTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Ranga_hardwareConnectionString (Settings)" DbObjectName="dbo.ABC_Class" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Class, TotalSales, Sales, Percentage FROM dbo.ABC_Class</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Class" DataSetColumn="Class" />
+              <Mapping SourceColumn="TotalSales" DataSetColumn="TotalSales" />
+              <Mapping SourceColumn="Sales" DataSetColumn="Sales" />
+              <Mapping SourceColumn="Percentage" DataSetColumn="Percentage" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -1838,6 +1897,62 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="ABC_Analysis" msprop:Generator_TableClassName="ABC_AnalysisDataTable" msprop:Generator_TableVarName="tableABC_Analysis" msprop:Generator_RowChangedName="ABC_AnalysisRowChanged" msprop:Generator_TablePropName="ABC_Analysis" msprop:Generator_RowDeletingName="ABC_AnalysisRowDeleting" msprop:Generator_RowChangingName="ABC_AnalysisRowChanging" msprop:Generator_RowEvHandlerName="ABC_AnalysisRowChangeEventHandler" msprop:Generator_RowDeletedName="ABC_AnalysisRowDeleted" msprop:Generator_RowClassName="ABC_AnalysisRow" msprop:Generator_UserTableName="ABC_Analysis" msprop:Generator_RowEvArgName="ABC_AnalysisRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Item_ID" msprop:Generator_ColumnVarNameInTable="columnItem_ID" msprop:Generator_ColumnPropNameInRow="Item_ID" msprop:Generator_ColumnPropNameInTable="Item_IDColumn" msprop:Generator_UserColumnName="Item_ID" type="xs:int" />
+              <xs:element name="Item_Name" msprop:Generator_ColumnVarNameInTable="columnItem_Name" msprop:Generator_ColumnPropNameInRow="Item_Name" msprop:Generator_ColumnPropNameInTable="Item_NameColumn" msprop:Generator_UserColumnName="Item_Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Sales" msprop:Generator_ColumnVarNameInTable="columnSales" msprop:Generator_ColumnPropNameInRow="Sales" msprop:Generator_ColumnPropNameInTable="SalesColumn" msprop:Generator_UserColumnName="Sales" type="xs:double" minOccurs="0" />
+              <xs:element name="CumulativeSales" msprop:Generator_ColumnVarNameInTable="columnCumulativeSales" msprop:Generator_ColumnPropNameInRow="CumulativeSales" msprop:Generator_ColumnPropNameInTable="CumulativeSalesColumn" msprop:Generator_UserColumnName="CumulativeSales" type="xs:double" minOccurs="0" />
+              <xs:element name="TotalSales" msprop:Generator_ColumnVarNameInTable="columnTotalSales" msprop:Generator_ColumnPropNameInRow="TotalSales" msprop:Generator_ColumnPropNameInTable="TotalSalesColumn" msprop:Generator_UserColumnName="TotalSales" type="xs:double" minOccurs="0" />
+              <xs:element name="CumulativePercentage" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCumulativePercentage" msprop:Generator_ColumnPropNameInRow="CumulativePercentage" msprop:Generator_ColumnPropNameInTable="CumulativePercentageColumn" msprop:Generator_UserColumnName="CumulativePercentage" type="xs:double" minOccurs="0" />
+              <xs:element name="Class" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnClass" msprop:Generator_ColumnPropNameInRow="Class" msprop:Generator_ColumnPropNameInTable="ClassColumn" msprop:Generator_UserColumnName="Class" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Sales_by_Item_Catagory" msprop:Generator_TableClassName="Sales_by_Item_CatagoryDataTable" msprop:Generator_TableVarName="tableSales_by_Item_Catagory" msprop:Generator_RowChangedName="Sales_by_Item_CatagoryRowChanged" msprop:Generator_TablePropName="Sales_by_Item_Catagory" msprop:Generator_RowDeletingName="Sales_by_Item_CatagoryRowDeleting" msprop:Generator_RowChangingName="Sales_by_Item_CatagoryRowChanging" msprop:Generator_RowEvHandlerName="Sales_by_Item_CatagoryRowChangeEventHandler" msprop:Generator_RowDeletedName="Sales_by_Item_CatagoryRowDeleted" msprop:Generator_RowClassName="Sales_by_Item_CatagoryRow" msprop:Generator_UserTableName="Sales_by_Item_Catagory" msprop:Generator_RowEvArgName="Sales_by_Item_CatagoryRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Item_ID" msprop:Generator_ColumnVarNameInTable="columnItem_ID" msprop:Generator_ColumnPropNameInRow="Item_ID" msprop:Generator_ColumnPropNameInTable="Item_IDColumn" msprop:Generator_UserColumnName="Item_ID" type="xs:int" />
+              <xs:element name="Item_Name" msprop:Generator_ColumnVarNameInTable="columnItem_Name" msprop:Generator_ColumnPropNameInRow="Item_Name" msprop:Generator_ColumnPropNameInTable="Item_NameColumn" msprop:Generator_UserColumnName="Item_Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Sales" msprop:Generator_ColumnVarNameInTable="columnSales" msprop:Generator_ColumnPropNameInRow="Sales" msprop:Generator_ColumnPropNameInTable="SalesColumn" msprop:Generator_UserColumnName="Sales" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ABC_Class" msprop:Generator_TableClassName="ABC_ClassDataTable" msprop:Generator_TableVarName="tableABC_Class" msprop:Generator_TablePropName="ABC_Class" msprop:Generator_RowDeletingName="ABC_ClassRowDeleting" msprop:Generator_RowChangingName="ABC_ClassRowChanging" msprop:Generator_RowEvHandlerName="ABC_ClassRowChangeEventHandler" msprop:Generator_RowDeletedName="ABC_ClassRowDeleted" msprop:Generator_UserTableName="ABC_Class" msprop:Generator_RowChangedName="ABC_ClassRowChanged" msprop:Generator_RowEvArgName="ABC_ClassRowChangeEvent" msprop:Generator_RowClassName="ABC_ClassRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Class" msprop:Generator_ColumnVarNameInTable="columnClass" msprop:Generator_ColumnPropNameInRow="Class" msprop:Generator_ColumnPropNameInTable="ClassColumn" msprop:Generator_UserColumnName="Class">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TotalSales" msprop:Generator_ColumnVarNameInTable="columnTotalSales" msprop:Generator_ColumnPropNameInRow="TotalSales" msprop:Generator_ColumnPropNameInTable="TotalSalesColumn" msprop:Generator_UserColumnName="TotalSales" type="xs:double" minOccurs="0" />
+              <xs:element name="Sales" msprop:Generator_ColumnVarNameInTable="columnSales" msprop:Generator_ColumnPropNameInRow="Sales" msprop:Generator_ColumnPropNameInTable="SalesColumn" msprop:Generator_UserColumnName="Sales" type="xs:double" minOccurs="0" />
+              <xs:element name="Percentage" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPercentage" msprop:Generator_ColumnPropNameInRow="Percentage" msprop:Generator_ColumnPropNameInTable="PercentageColumn" msprop:Generator_UserColumnName="Percentage" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -1940,6 +2055,14 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
     </xs:unique>
     <xs:unique name="Item_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Item" />
+      <xs:field xpath="mstns:Item_ID" />
+    </xs:unique>
+    <xs:unique name="ABC_Analysis_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ABC_Analysis" />
+      <xs:field xpath="mstns:Item_ID" />
+    </xs:unique>
+    <xs:unique name="Sales_by_Item_Catagory_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Sales_by_Item_Catagory" />
       <xs:field xpath="mstns:Item_ID" />
     </xs:unique>
   </xs:element>
