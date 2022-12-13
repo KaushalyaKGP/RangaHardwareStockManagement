@@ -62,6 +62,10 @@ namespace RangaHardwareStock
             this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
             this.supplierTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.SupplierTableAdapter();
             this.ExitButton = new System.Windows.Forms.Button();
+            this.OrderCostNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.OrderCostLabel = new System.Windows.Forms.Label();
+            this.HoldingCostNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.HoldingCostLabel = new System.Windows.Forms.Label();
             SupplierCustomerLabel = new System.Windows.Forms.Label();
             NameLabel = new System.Windows.Forms.Label();
             ItemIDLabel = new System.Windows.Forms.Label();
@@ -70,6 +74,8 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.UnitPriceNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrderCostNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HoldingCostNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // SupplierCustomerLabel
@@ -111,7 +117,7 @@ namespace RangaHardwareStock
             this.SaveUpdateButton.BackColor = System.Drawing.Color.LightSeaGreen;
             this.SaveUpdateButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveUpdateButton.ForeColor = System.Drawing.Color.White;
-            this.SaveUpdateButton.Location = new System.Drawing.Point(948, 346);
+            this.SaveUpdateButton.Location = new System.Drawing.Point(948, 371);
             this.SaveUpdateButton.Name = "SaveUpdateButton";
             this.SaveUpdateButton.Size = new System.Drawing.Size(219, 47);
             this.SaveUpdateButton.TabIndex = 231;
@@ -139,7 +145,7 @@ namespace RangaHardwareStock
             this.SaveButton.BackColor = System.Drawing.Color.LightSeaGreen;
             this.SaveButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ForeColor = System.Drawing.Color.White;
-            this.SaveButton.Location = new System.Drawing.Point(1173, 346);
+            this.SaveButton.Location = new System.Drawing.Point(1173, 371);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(188, 47);
             this.SaveButton.TabIndex = 229;
@@ -430,11 +436,65 @@ namespace RangaHardwareStock
             this.ExitButton.UseVisualStyleBackColor = false;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
+            // OrderCostNumericUpDown
+            // 
+            this.OrderCostNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.OrderCostNumericUpDown.DecimalPlaces = 2;
+            this.OrderCostNumericUpDown.Location = new System.Drawing.Point(303, 321);
+            this.OrderCostNumericUpDown.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.OrderCostNumericUpDown.Name = "OrderCostNumericUpDown";
+            this.OrderCostNumericUpDown.Size = new System.Drawing.Size(251, 22);
+            this.OrderCostNumericUpDown.TabIndex = 252;
+            // 
+            // OrderCostLabel
+            // 
+            this.OrderCostLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.OrderCostLabel.AutoSize = true;
+            this.OrderCostLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OrderCostLabel.Location = new System.Drawing.Point(43, 322);
+            this.OrderCostLabel.Name = "OrderCostLabel";
+            this.OrderCostLabel.Size = new System.Drawing.Size(234, 20);
+            this.OrderCostLabel.TabIndex = 251;
+            this.OrderCostLabel.Text = "Order Cost Pre Order (Rs.) :";
+            // 
+            // HoldingCostNumericUpDown
+            // 
+            this.HoldingCostNumericUpDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.HoldingCostNumericUpDown.DecimalPlaces = 2;
+            this.HoldingCostNumericUpDown.Location = new System.Drawing.Point(303, 349);
+            this.HoldingCostNumericUpDown.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.HoldingCostNumericUpDown.Name = "HoldingCostNumericUpDown";
+            this.HoldingCostNumericUpDown.Size = new System.Drawing.Size(251, 22);
+            this.HoldingCostNumericUpDown.TabIndex = 254;
+            // 
+            // HoldingCostLabel
+            // 
+            this.HoldingCostLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.HoldingCostLabel.AutoSize = true;
+            this.HoldingCostLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HoldingCostLabel.Location = new System.Drawing.Point(43, 350);
+            this.HoldingCostLabel.Name = "HoldingCostLabel";
+            this.HoldingCostLabel.Size = new System.Drawing.Size(237, 20);
+            this.HoldingCostLabel.TabIndex = 253;
+            this.HoldingCostLabel.Text = "Holding Cost Pre Unit (Rs.) :";
+            // 
             // ItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1404, 904);
+            this.Controls.Add(this.HoldingCostNumericUpDown);
+            this.Controls.Add(this.HoldingCostLabel);
+            this.Controls.Add(this.OrderCostNumericUpDown);
+            this.Controls.Add(this.OrderCostLabel);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.SupplierComboBox);
             this.Controls.Add(this.label1);
@@ -474,6 +534,8 @@ namespace RangaHardwareStock
             ((System.ComponentModel.ISupportInitialize)(this.UnitPriceNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrderCostNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HoldingCostNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -510,5 +572,9 @@ namespace RangaHardwareStock
         private System.Windows.Forms.BindingSource supplierBindingSource;
         private Ranga_hardwareDataSetTableAdapters.SupplierTableAdapter supplierTableAdapter;
         private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.NumericUpDown OrderCostNumericUpDown;
+        private System.Windows.Forms.Label OrderCostLabel;
+        private System.Windows.Forms.NumericUpDown HoldingCostNumericUpDown;
+        private System.Windows.Forms.Label HoldingCostLabel;
     }
 }

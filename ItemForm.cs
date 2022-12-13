@@ -64,6 +64,10 @@ namespace RangaHardwareStock
             this.UnitPriceNumericUpDown.Enabled = false;
             this.SupplierComboBox.Text = "";
             this.SupplierComboBox.Enabled = false;
+            this.OrderCostNumericUpDown.Value = 0;
+            this.OrderCostNumericUpDown.Enabled = false;
+            this.HoldingCostNumericUpDown.Value = 0;
+            this.HoldingCostNumericUpDown.Enabled = false;
 
             this.SaveButton.Visible = false;
             this.SaveButton.Enabled = false;
@@ -81,7 +85,7 @@ namespace RangaHardwareStock
 
             //fill data grid
             DataTable supplierData = new DataTable();
-            SqlDataAdapter supplierAdupter = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,i.Discription,sl.Value AS [Stock Status], i.Current_Stock,i.Customer_Return_Stock,i.Min_Quentity AS [Min Requred Quantity],i.Mesuring_Unit,i.Unit_Price,s.Name
+            SqlDataAdapter supplierAdupter = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,i.Discription,sl.Value AS [Stock Status], i.Current_Stock,i.Customer_Return_Stock,i.Min_Quentity AS [Min Requred Quantity],i.Mesuring_Unit,i.Unit_Price,s.Name,i.[Order Cost Per Order (Rs.)],i.[Holding Cost Per Unit (Rs.)]
 From Item i
 LEFT JOIN StockLevel sl
 ON i.Stock_Status = sl.LevelCode
@@ -147,6 +151,8 @@ ON i.Supplier_ID = s.Supplier_ID ", con);
             this.MeasuringUnitTextBox.Text = this.ItemDataGridView.Rows[e.RowIndex].Cells[7].Value.ToString();
             this.UnitPriceNumericUpDown.Value = int.Parse(this.ItemDataGridView.Rows[e.RowIndex].Cells[8].Value.ToString());
             this.SupplierComboBox.Text = this.ItemDataGridView.Rows[e.RowIndex].Cells[9].Value.ToString();
+            this.OrderCostNumericUpDown.Value = int.Parse(this.ItemDataGridView.Rows[e.RowIndex].Cells[10].Value.ToString());
+            this.HoldingCostNumericUpDown.Value = int.Parse(this.ItemDataGridView.Rows[e.RowIndex].Cells[11].Value.ToString());
             //---------------------
 
             //show delete button & Updtade Button
@@ -189,6 +195,10 @@ ON i.Supplier_ID = s.Supplier_ID ", con);
             this.UnitPriceNumericUpDown.Enabled = true;
             this.SupplierComboBox.SelectedIndex = 0;
             this.SupplierComboBox.Enabled = true;
+            this.OrderCostNumericUpDown.Value = 0;
+            this.HoldingCostNumericUpDown.Value = 0;
+            this.OrderCostNumericUpDown.Enabled = true;
+            this.HoldingCostNumericUpDown.Enabled = true;
 
             this.SaveButton.Visible = true;
             this.SaveButton.Enabled = true;
@@ -206,8 +216,8 @@ ON i.Supplier_ID = s.Supplier_ID ", con);
             if (NameTextBox.Text != "")
             {
                 //Save to Item table
-                SqlCommand ItemTableInsertCommand = new SqlCommand(@"INSERT INTO Item (Item_ID,Item_Name,Discription,Stock_Status,Current_Stock,Customer_Return_Stock,Min_Quentity,Mesuring_Unit,Unit_Price,Supplier_ID)
-VALUES("+int.Parse(this.ItemIDTextBox.Text)+",'"+this.NameTextBox.Text+"','"+this.DiscriptionRichTextBox.Text+"',0,0,0,"+this.MinQuantityNumericUpDown.Value+",'"+this.MeasuringUnitTextBox.Text+"',"+this.UnitPriceNumericUpDown.Value+","+this.SupplierComboBox.SelectedValue+")", con);
+                SqlCommand ItemTableInsertCommand = new SqlCommand(@"INSERT INTO Item (Item_ID,Item_Name,Discription,Stock_Status,Current_Stock,Customer_Return_Stock,Min_Quentity,Mesuring_Unit,Unit_Price,Supplier_ID,[Order Cost Per Order (Rs.)],[Holding Cost Per Unit (Rs.)])
+VALUES(" + int.Parse(this.ItemIDTextBox.Text)+",'"+this.NameTextBox.Text+"','"+this.DiscriptionRichTextBox.Text+"',0,0,0,"+this.MinQuantityNumericUpDown.Value+",'"+this.MeasuringUnitTextBox.Text+"',"+this.UnitPriceNumericUpDown.Value+","+this.SupplierComboBox.SelectedValue+ "," + this.OrderCostNumericUpDown.Value + "," + this.HoldingCostNumericUpDown.Value + ")", con);
 
                 con.Open();
                 ItemTableInsertCommand.ExecuteNonQuery();
@@ -229,6 +239,8 @@ VALUES("+int.Parse(this.ItemIDTextBox.Text)+",'"+this.NameTextBox.Text+"','"+thi
             this.MeasuringUnitTextBox.Enabled = true;
             this.UnitPriceNumericUpDown.Enabled = true;
             this.SupplierComboBox.Enabled = true;
+            this.OrderCostNumericUpDown.Enabled = true;
+            this.HoldingCostNumericUpDown.Enabled = true;
 
             this.AddNew.Visible = false;
             this.AddNew.Enabled = false;
@@ -243,7 +255,7 @@ VALUES("+int.Parse(this.ItemIDTextBox.Text)+",'"+this.NameTextBox.Text+"','"+thi
         {
             //Update ITEM
             SqlCommand UpdateCommand = new SqlCommand(@"UPDATE Item 
-SET Item_Name = '"+this.NameTextBox.Text+"',Discription = '"+this.DiscriptionRichTextBox.Text+"',Stock_Status = "+this.StockStatus+",Min_Quentity = "+this.MinQuantityNumericUpDown.Value+",Mesuring_Unit='"+this.MeasuringUnitTextBox.Text+"',Unit_Price = "+this.UnitPriceNumericUpDown.Value+",Supplier_ID = "+this.SupplierComboBox.SelectedValue+" WHERE Item_ID = "+int.Parse(this.ItemIDTextBox.Text)+"", con);
+SET Item_Name = '"+this.NameTextBox.Text+"',Discription = '"+this.DiscriptionRichTextBox.Text+"',Stock_Status = "+this.StockStatus+",Min_Quentity = "+this.MinQuantityNumericUpDown.Value+",Mesuring_Unit='"+this.MeasuringUnitTextBox.Text+"',Unit_Price = "+this.UnitPriceNumericUpDown.Value+",Supplier_ID = "+this.SupplierComboBox.SelectedValue+ ",[Order Cost Per Order (Rs.)]=" + this.OrderCostNumericUpDown.Value + ",[Holding Cost Per Unit (Rs.)]=" + this.HoldingCostNumericUpDown.Value + " WHERE Item_ID = " + int.Parse(this.ItemIDTextBox.Text)+"", con);
             con.Open();
             UpdateCommand.ExecuteNonQuery();
             con.Close();
