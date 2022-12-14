@@ -1464,7 +1464,7 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
               <DbSource ConnectionRef="Ranga_hardwareConnectionString (Settings)" DbObjectName="dbo.Sales_by_Item_Catagory" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT Item_ID, Item_Name, Sales FROM dbo.Sales_by_Item_Catagory</CommandText>
+                    <CommandText>SELECT Item_ID, Item_Name, Sales, AnualSalesQuantity FROM Sales_by_Item_Catagory</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -1474,6 +1474,7 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
               <Mapping SourceColumn="Item_ID" DataSetColumn="Item_ID" />
               <Mapping SourceColumn="Item_Name" DataSetColumn="Item_Name" />
               <Mapping SourceColumn="Sales" DataSetColumn="Sales" />
+              <Mapping SourceColumn="AnualSalesQuantity" DataSetColumn="AnualSalesQuantity" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1493,6 +1494,28 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
               <Mapping SourceColumn="TotalSales" DataSetColumn="TotalSales" />
               <Mapping SourceColumn="Sales" DataSetColumn="Sales" />
               <Mapping SourceColumn="Percentage" DataSetColumn="Percentage" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Optimal Order Quantity AnalysisTableAdapter" GeneratorDataComponentClassName="Optimal_Order_Quantity_AnalysisTableAdapter" Name="Optimal Order Quantity Analysis" UserDataComponentName="Optimal Order Quantity AnalysisTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Ranga_hardwareConnectionString (Settings)" DbObjectName="dbo.[Optimal Order Quantity Analysis]" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Item_ID, Item_Name, AnualSalesQuantity, [Stock Status], [Order Cost Per Order (Rs.)], [Holding Cost Per Unit (Rs.)], [Optimal Order Quantity] FROM dbo.[Optimal Order Quantity Analysis]</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Item_ID" DataSetColumn="Item_ID" />
+              <Mapping SourceColumn="Item_Name" DataSetColumn="Item_Name" />
+              <Mapping SourceColumn="AnualSalesQuantity" DataSetColumn="AnualSalesQuantity" />
+              <Mapping SourceColumn="Stock Status" DataSetColumn="Stock Status" />
+              <Mapping SourceColumn="Order Cost Per Order (Rs.)" DataSetColumn="Order Cost Per Order (Rs_)" />
+              <Mapping SourceColumn="Holding Cost Per Unit (Rs.)" DataSetColumn="Holding Cost Per Unit (Rs_)" />
+              <Mapping SourceColumn="Optimal Order Quantity" DataSetColumn="Optimal Order Quantity" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1950,6 +1973,7 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Sales" msprop:Generator_ColumnVarNameInTable="columnSales" msprop:Generator_ColumnPropNameInRow="Sales" msprop:Generator_ColumnPropNameInTable="SalesColumn" msprop:Generator_UserColumnName="Sales" type="xs:double" minOccurs="0" />
+              <xs:element name="AnualSalesQuantity" msprop:Generator_ColumnVarNameInTable="columnAnualSalesQuantity" msprop:Generator_ColumnPropNameInRow="AnualSalesQuantity" msprop:Generator_ColumnPropNameInTable="AnualSalesQuantityColumn" msprop:Generator_UserColumnName="AnualSalesQuantity" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1966,6 +1990,31 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
               <xs:element name="TotalSales" msprop:Generator_ColumnVarNameInTable="columnTotalSales" msprop:Generator_ColumnPropNameInRow="TotalSales" msprop:Generator_ColumnPropNameInTable="TotalSalesColumn" msprop:Generator_UserColumnName="TotalSales" type="xs:double" minOccurs="0" />
               <xs:element name="Sales" msprop:Generator_ColumnVarNameInTable="columnSales" msprop:Generator_ColumnPropNameInRow="Sales" msprop:Generator_ColumnPropNameInTable="SalesColumn" msprop:Generator_UserColumnName="Sales" type="xs:double" minOccurs="0" />
               <xs:element name="Percentage" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPercentage" msprop:Generator_ColumnPropNameInRow="Percentage" msprop:Generator_ColumnPropNameInTable="PercentageColumn" msprop:Generator_UserColumnName="Percentage" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Optimal_x0020_Order_x0020_Quantity_x0020_Analysis" msprop:Generator_TableClassName="Optimal_Order_Quantity_AnalysisDataTable" msprop:Generator_TableVarName="tableOptimal_Order_Quantity_Analysis" msprop:Generator_TablePropName="Optimal_Order_Quantity_Analysis" msprop:Generator_RowDeletingName="Optimal_Order_Quantity_AnalysisRowDeleting" msprop:Generator_RowChangingName="Optimal_Order_Quantity_AnalysisRowChanging" msprop:Generator_RowEvHandlerName="Optimal_Order_Quantity_AnalysisRowChangeEventHandler" msprop:Generator_RowDeletedName="Optimal_Order_Quantity_AnalysisRowDeleted" msprop:Generator_UserTableName="Optimal Order Quantity Analysis" msprop:Generator_RowChangedName="Optimal_Order_Quantity_AnalysisRowChanged" msprop:Generator_RowEvArgName="Optimal_Order_Quantity_AnalysisRowChangeEvent" msprop:Generator_RowClassName="Optimal_Order_Quantity_AnalysisRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Item_ID" msprop:Generator_ColumnVarNameInTable="columnItem_ID" msprop:Generator_ColumnPropNameInRow="Item_ID" msprop:Generator_ColumnPropNameInTable="Item_IDColumn" msprop:Generator_UserColumnName="Item_ID" type="xs:int" />
+              <xs:element name="Item_Name" msprop:Generator_ColumnVarNameInTable="columnItem_Name" msprop:Generator_ColumnPropNameInRow="Item_Name" msprop:Generator_ColumnPropNameInTable="Item_NameColumn" msprop:Generator_UserColumnName="Item_Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AnualSalesQuantity" msprop:Generator_ColumnVarNameInTable="columnAnualSalesQuantity" msprop:Generator_ColumnPropNameInRow="AnualSalesQuantity" msprop:Generator_ColumnPropNameInTable="AnualSalesQuantityColumn" msprop:Generator_UserColumnName="AnualSalesQuantity" type="xs:int" minOccurs="0" />
+              <xs:element name="Stock_x0020_Status" msprop:Generator_ColumnVarNameInTable="columnStock_Status" msprop:Generator_ColumnPropNameInRow="Stock_Status" msprop:Generator_ColumnPropNameInTable="Stock_StatusColumn" msprop:Generator_UserColumnName="Stock Status">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Order_x0020_Cost_x0020_Per_x0020_Order_x0020__x0028_Rs__x0029_" msprop:Generator_ColumnVarNameInTable="_columnOrder_Cost_Per_Order__Rs__" msprop:Generator_ColumnPropNameInRow="_Order_Cost_Per_Order__Rs__" msprop:Generator_ColumnPropNameInTable="_Order_Cost_Per_Order__Rs__Column" msprop:Generator_UserColumnName="Order Cost Per Order (Rs_)" type="xs:double" minOccurs="0" />
+              <xs:element name="Holding_x0020_Cost_x0020_Per_x0020_Unit_x0020__x0028_Rs__x0029_" msprop:Generator_ColumnVarNameInTable="_columnHolding_Cost_Per_Unit__Rs__" msprop:Generator_ColumnPropNameInRow="_Holding_Cost_Per_Unit__Rs__" msprop:Generator_ColumnPropNameInTable="_Holding_Cost_Per_Unit__Rs__Column" msprop:Generator_UserColumnName="Holding Cost Per Unit (Rs_)" type="xs:double" minOccurs="0" />
+              <xs:element name="Optimal_x0020_Order_x0020_Quantity" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnOptimal_Order_Quantity" msprop:Generator_ColumnPropNameInRow="Optimal_Order_Quantity" msprop:Generator_ColumnPropNameInTable="Optimal_Order_QuantityColumn" msprop:Generator_UserColumnName="Optimal Order Quantity" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

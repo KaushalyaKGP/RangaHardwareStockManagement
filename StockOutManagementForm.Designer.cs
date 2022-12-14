@@ -302,12 +302,12 @@ namespace RangaHardwareStock
             this.Titlelabel.BackColor = System.Drawing.SystemColors.Control;
             this.Titlelabel.Font = new System.Drawing.Font("Bernard MT Condensed", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titlelabel.ForeColor = System.Drawing.Color.Black;
-            this.Titlelabel.Location = new System.Drawing.Point(244, 33);
+            this.Titlelabel.Location = new System.Drawing.Point(180, 33);
             this.Titlelabel.Margin = new System.Windows.Forms.Padding(0);
             this.Titlelabel.Name = "Titlelabel";
-            this.Titlelabel.Size = new System.Drawing.Size(917, 108);
+            this.Titlelabel.Size = new System.Drawing.Size(1045, 108);
             this.Titlelabel.TabIndex = 48;
-            this.Titlelabel.Text = "Stock Out Management";
+            this.Titlelabel.Text = "Stock Moving Out Management";
             this.Titlelabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LostDamagedButton

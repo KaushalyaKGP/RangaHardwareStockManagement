@@ -80,6 +80,8 @@ namespace RangaHardwareStock {
         
         private ABC_ClassDataTable tableABC_Class;
         
+        private Optimal_Order_Quantity_AnalysisDataTable tableOptimal_Order_Quantity_Analysis;
+        
         private global::System.Data.DataRelation relationFK_CustomerReturn_CustomerReturnReason;
         
         private global::System.Data.DataRelation relationFK_CustomerReturn_StockInTable;
@@ -239,6 +241,9 @@ namespace RangaHardwareStock {
                 }
                 if ((ds.Tables["ABC_Class"] != null)) {
                     base.Tables.Add(new ABC_ClassDataTable(ds.Tables["ABC_Class"]));
+                }
+                if ((ds.Tables["Optimal Order Quantity Analysis"] != null)) {
+                    base.Tables.Add(new Optimal_Order_Quantity_AnalysisDataTable(ds.Tables["Optimal Order Quantity Analysis"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -540,6 +545,16 @@ namespace RangaHardwareStock {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public Optimal_Order_Quantity_AnalysisDataTable Optimal_Order_Quantity_Analysis {
+            get {
+                return this.tableOptimal_Order_Quantity_Analysis;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -688,6 +703,9 @@ namespace RangaHardwareStock {
                 }
                 if ((ds.Tables["ABC_Class"] != null)) {
                     base.Tables.Add(new ABC_ClassDataTable(ds.Tables["ABC_Class"]));
+                }
+                if ((ds.Tables["Optimal Order Quantity Analysis"] != null)) {
+                    base.Tables.Add(new Optimal_Order_Quantity_AnalysisDataTable(ds.Tables["Optimal Order Quantity Analysis"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -890,6 +908,12 @@ namespace RangaHardwareStock {
                     this.tableABC_Class.InitVars();
                 }
             }
+            this.tableOptimal_Order_Quantity_Analysis = ((Optimal_Order_Quantity_AnalysisDataTable)(base.Tables["Optimal Order Quantity Analysis"]));
+            if ((initTable == true)) {
+                if ((this.tableOptimal_Order_Quantity_Analysis != null)) {
+                    this.tableOptimal_Order_Quantity_Analysis.InitVars();
+                }
+            }
             this.relationFK_CustomerReturn_CustomerReturnReason = this.Relations["FK_CustomerReturn_CustomerReturnReason"];
             this.relationFK_CustomerReturn_StockInTable = this.Relations["FK_CustomerReturn_StockInTable"];
             this.relationFK_CustomerReturnItems_CustomerReturn = this.Relations["FK_CustomerReturnItems_CustomerReturn"];
@@ -980,6 +1004,8 @@ namespace RangaHardwareStock {
             base.Tables.Add(this.tableSales_by_Item_Catagory);
             this.tableABC_Class = new ABC_ClassDataTable();
             base.Tables.Add(this.tableABC_Class);
+            this.tableOptimal_Order_Quantity_Analysis = new Optimal_Order_Quantity_AnalysisDataTable();
+            base.Tables.Add(this.tableOptimal_Order_Quantity_Analysis);
             this.relationFK_CustomerReturn_CustomerReturnReason = new global::System.Data.DataRelation("FK_CustomerReturn_CustomerReturnReason", new global::System.Data.DataColumn[] {
                         this.tableCustomerReturnReason.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableCustomerReturn.ReasonColumn}, false);
@@ -1248,6 +1274,12 @@ namespace RangaHardwareStock {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeOptimal_Order_Quantity_Analysis() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -1384,6 +1416,9 @@ namespace RangaHardwareStock {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void ABC_ClassRowChangeEventHandler(object sender, ABC_ClassRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void Optimal_Order_Quantity_AnalysisRowChangeEventHandler(object sender, Optimal_Order_Quantity_AnalysisRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -9262,6 +9297,8 @@ namespace RangaHardwareStock {
             
             private global::System.Data.DataColumn columnSales;
             
+            private global::System.Data.DataColumn columnAnualSalesQuantity;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public Sales_by_Item_CatagoryDataTable() {
@@ -9321,6 +9358,14 @@ namespace RangaHardwareStock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn AnualSalesQuantityColumn {
+                get {
+                    return this.columnAnualSalesQuantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -9356,12 +9401,13 @@ namespace RangaHardwareStock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Sales_by_Item_CatagoryRow AddSales_by_Item_CatagoryRow(int Item_ID, string Item_Name, double Sales) {
+            public Sales_by_Item_CatagoryRow AddSales_by_Item_CatagoryRow(int Item_ID, string Item_Name, double Sales, int AnualSalesQuantity) {
                 Sales_by_Item_CatagoryRow rowSales_by_Item_CatagoryRow = ((Sales_by_Item_CatagoryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Item_ID,
                         Item_Name,
-                        Sales};
+                        Sales,
+                        AnualSalesQuantity};
                 rowSales_by_Item_CatagoryRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSales_by_Item_CatagoryRow);
                 return rowSales_by_Item_CatagoryRow;
@@ -9394,6 +9440,7 @@ namespace RangaHardwareStock {
                 this.columnItem_ID = base.Columns["Item_ID"];
                 this.columnItem_Name = base.Columns["Item_Name"];
                 this.columnSales = base.Columns["Sales"];
+                this.columnAnualSalesQuantity = base.Columns["AnualSalesQuantity"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9405,6 +9452,8 @@ namespace RangaHardwareStock {
                 base.Columns.Add(this.columnItem_Name);
                 this.columnSales = new global::System.Data.DataColumn("Sales", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSales);
+                this.columnAnualSalesQuantity = new global::System.Data.DataColumn("AnualSalesQuantity", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAnualSalesQuantity);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnItem_ID}, true));
                 this.columnItem_ID.AllowDBNull = false;
@@ -9789,6 +9838,351 @@ namespace RangaHardwareStock {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "ABC_ClassDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class Optimal_Order_Quantity_AnalysisDataTable : global::System.Data.TypedTableBase<Optimal_Order_Quantity_AnalysisRow> {
+            
+            private global::System.Data.DataColumn columnItem_ID;
+            
+            private global::System.Data.DataColumn columnItem_Name;
+            
+            private global::System.Data.DataColumn columnAnualSalesQuantity;
+            
+            private global::System.Data.DataColumn columnStock_Status;
+            
+            private global::System.Data.DataColumn _columnOrder_Cost_Per_Order__Rs__;
+            
+            private global::System.Data.DataColumn _columnHolding_Cost_Per_Unit__Rs__;
+            
+            private global::System.Data.DataColumn columnOptimal_Order_Quantity;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Optimal_Order_Quantity_AnalysisDataTable() {
+                this.TableName = "Optimal Order Quantity Analysis";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal Optimal_Order_Quantity_AnalysisDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected Optimal_Order_Quantity_AnalysisDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Item_IDColumn {
+                get {
+                    return this.columnItem_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Item_NameColumn {
+                get {
+                    return this.columnItem_Name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn AnualSalesQuantityColumn {
+                get {
+                    return this.columnAnualSalesQuantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Stock_StatusColumn {
+                get {
+                    return this.columnStock_Status;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn _Order_Cost_Per_Order__Rs__Column {
+                get {
+                    return this._columnOrder_Cost_Per_Order__Rs__;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn _Holding_Cost_Per_Unit__Rs__Column {
+                get {
+                    return this._columnHolding_Cost_Per_Unit__Rs__;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Optimal_Order_QuantityColumn {
+                get {
+                    return this.columnOptimal_Order_Quantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Optimal_Order_Quantity_AnalysisRow this[int index] {
+                get {
+                    return ((Optimal_Order_Quantity_AnalysisRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event Optimal_Order_Quantity_AnalysisRowChangeEventHandler Optimal_Order_Quantity_AnalysisRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event Optimal_Order_Quantity_AnalysisRowChangeEventHandler Optimal_Order_Quantity_AnalysisRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event Optimal_Order_Quantity_AnalysisRowChangeEventHandler Optimal_Order_Quantity_AnalysisRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event Optimal_Order_Quantity_AnalysisRowChangeEventHandler Optimal_Order_Quantity_AnalysisRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddOptimal_Order_Quantity_AnalysisRow(Optimal_Order_Quantity_AnalysisRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Optimal_Order_Quantity_AnalysisRow AddOptimal_Order_Quantity_AnalysisRow(int Item_ID, string Item_Name, int AnualSalesQuantity, string Stock_Status, double _Order_Cost_Per_Order__Rs__, double _Holding_Cost_Per_Unit__Rs__, double Optimal_Order_Quantity) {
+                Optimal_Order_Quantity_AnalysisRow rowOptimal_Order_Quantity_AnalysisRow = ((Optimal_Order_Quantity_AnalysisRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Item_ID,
+                        Item_Name,
+                        AnualSalesQuantity,
+                        Stock_Status,
+                        _Order_Cost_Per_Order__Rs__,
+                        _Holding_Cost_Per_Unit__Rs__,
+                        Optimal_Order_Quantity};
+                rowOptimal_Order_Quantity_AnalysisRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowOptimal_Order_Quantity_AnalysisRow);
+                return rowOptimal_Order_Quantity_AnalysisRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                Optimal_Order_Quantity_AnalysisDataTable cln = ((Optimal_Order_Quantity_AnalysisDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new Optimal_Order_Quantity_AnalysisDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnItem_ID = base.Columns["Item_ID"];
+                this.columnItem_Name = base.Columns["Item_Name"];
+                this.columnAnualSalesQuantity = base.Columns["AnualSalesQuantity"];
+                this.columnStock_Status = base.Columns["Stock Status"];
+                this._columnOrder_Cost_Per_Order__Rs__ = base.Columns["Order Cost Per Order (Rs_)"];
+                this._columnHolding_Cost_Per_Unit__Rs__ = base.Columns["Holding Cost Per Unit (Rs_)"];
+                this.columnOptimal_Order_Quantity = base.Columns["Optimal Order Quantity"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnItem_ID = new global::System.Data.DataColumn("Item_ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItem_ID);
+                this.columnItem_Name = new global::System.Data.DataColumn("Item_Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItem_Name);
+                this.columnAnualSalesQuantity = new global::System.Data.DataColumn("AnualSalesQuantity", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAnualSalesQuantity);
+                this.columnStock_Status = new global::System.Data.DataColumn("Stock Status", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnStock_Status.ExtendedProperties.Add("Generator_ColumnPropNameInRow", "Stock_Status");
+                this.columnStock_Status.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "Stock_StatusColumn");
+                this.columnStock_Status.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnStock_Status");
+                this.columnStock_Status.ExtendedProperties.Add("Generator_UserColumnName", "Stock Status");
+                base.Columns.Add(this.columnStock_Status);
+                this._columnOrder_Cost_Per_Order__Rs__ = new global::System.Data.DataColumn("Order Cost Per Order (Rs_)", typeof(double), null, global::System.Data.MappingType.Element);
+                this._columnOrder_Cost_Per_Order__Rs__.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnOrder_Cost_Per_Order__Rs__");
+                this._columnOrder_Cost_Per_Order__Rs__.ExtendedProperties.Add("Generator_UserColumnName", "Order Cost Per Order (Rs_)");
+                base.Columns.Add(this._columnOrder_Cost_Per_Order__Rs__);
+                this._columnHolding_Cost_Per_Unit__Rs__ = new global::System.Data.DataColumn("Holding Cost Per Unit (Rs_)", typeof(double), null, global::System.Data.MappingType.Element);
+                this._columnHolding_Cost_Per_Unit__Rs__.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnHolding_Cost_Per_Unit__Rs__");
+                this._columnHolding_Cost_Per_Unit__Rs__.ExtendedProperties.Add("Generator_UserColumnName", "Holding Cost Per Unit (Rs_)");
+                base.Columns.Add(this._columnHolding_Cost_Per_Unit__Rs__);
+                this.columnOptimal_Order_Quantity = new global::System.Data.DataColumn("Optimal Order Quantity", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOptimal_Order_Quantity);
+                this.columnItem_ID.AllowDBNull = false;
+                this.columnItem_Name.AllowDBNull = false;
+                this.columnItem_Name.MaxLength = 50;
+                this.columnStock_Status.AllowDBNull = false;
+                this.columnStock_Status.MaxLength = 25;
+                this.columnOptimal_Order_Quantity.ReadOnly = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Optimal_Order_Quantity_AnalysisRow NewOptimal_Order_Quantity_AnalysisRow() {
+                return ((Optimal_Order_Quantity_AnalysisRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new Optimal_Order_Quantity_AnalysisRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(Optimal_Order_Quantity_AnalysisRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.Optimal_Order_Quantity_AnalysisRowChanged != null)) {
+                    this.Optimal_Order_Quantity_AnalysisRowChanged(this, new Optimal_Order_Quantity_AnalysisRowChangeEvent(((Optimal_Order_Quantity_AnalysisRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.Optimal_Order_Quantity_AnalysisRowChanging != null)) {
+                    this.Optimal_Order_Quantity_AnalysisRowChanging(this, new Optimal_Order_Quantity_AnalysisRowChangeEvent(((Optimal_Order_Quantity_AnalysisRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.Optimal_Order_Quantity_AnalysisRowDeleted != null)) {
+                    this.Optimal_Order_Quantity_AnalysisRowDeleted(this, new Optimal_Order_Quantity_AnalysisRowChangeEvent(((Optimal_Order_Quantity_AnalysisRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.Optimal_Order_Quantity_AnalysisRowDeleting != null)) {
+                    this.Optimal_Order_Quantity_AnalysisRowDeleting(this, new Optimal_Order_Quantity_AnalysisRowChangeEvent(((Optimal_Order_Quantity_AnalysisRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveOptimal_Order_Quantity_AnalysisRow(Optimal_Order_Quantity_AnalysisRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                Ranga_hardwareDataSet ds = new Ranga_hardwareDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "Optimal_Order_Quantity_AnalysisDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -12508,6 +12902,23 @@ namespace RangaHardwareStock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int AnualSalesQuantity {
+                get {
+                    try {
+                        return ((int)(this[this.tableSales_by_Item_Catagory.AnualSalesQuantityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AnualSalesQuantity\' in table \'Sales_by_Item_Catagory\' is DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableSales_by_Item_Catagory.AnualSalesQuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsSalesNull() {
                 return this.IsNull(this.tableSales_by_Item_Catagory.SalesColumn);
             }
@@ -12516,6 +12927,18 @@ namespace RangaHardwareStock {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetSalesNull() {
                 this[this.tableSales_by_Item_Catagory.SalesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsAnualSalesQuantityNull() {
+                return this.IsNull(this.tableSales_by_Item_Catagory.AnualSalesQuantityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetAnualSalesQuantityNull() {
+                this[this.tableSales_by_Item_Catagory.AnualSalesQuantityColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -12626,6 +13049,170 @@ namespace RangaHardwareStock {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetPercentageNull() {
                 this[this.tableABC_Class.PercentageColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class Optimal_Order_Quantity_AnalysisRow : global::System.Data.DataRow {
+            
+            private Optimal_Order_Quantity_AnalysisDataTable tableOptimal_Order_Quantity_Analysis;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal Optimal_Order_Quantity_AnalysisRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableOptimal_Order_Quantity_Analysis = ((Optimal_Order_Quantity_AnalysisDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Item_ID {
+                get {
+                    return ((int)(this[this.tableOptimal_Order_Quantity_Analysis.Item_IDColumn]));
+                }
+                set {
+                    this[this.tableOptimal_Order_Quantity_Analysis.Item_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Item_Name {
+                get {
+                    return ((string)(this[this.tableOptimal_Order_Quantity_Analysis.Item_NameColumn]));
+                }
+                set {
+                    this[this.tableOptimal_Order_Quantity_Analysis.Item_NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int AnualSalesQuantity {
+                get {
+                    try {
+                        return ((int)(this[this.tableOptimal_Order_Quantity_Analysis.AnualSalesQuantityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AnualSalesQuantity\' in table \'Optimal Order Quantity Analys" +
+                                "is\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOptimal_Order_Quantity_Analysis.AnualSalesQuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Stock_Status {
+                get {
+                    return ((string)(this[this.tableOptimal_Order_Quantity_Analysis.Stock_StatusColumn]));
+                }
+                set {
+                    this[this.tableOptimal_Order_Quantity_Analysis.Stock_StatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double _Order_Cost_Per_Order__Rs__ {
+                get {
+                    try {
+                        return ((double)(this[this.tableOptimal_Order_Quantity_Analysis._Order_Cost_Per_Order__Rs__Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Order Cost Per Order (Rs_)\' in table \'Optimal Order Quantit" +
+                                "y Analysis\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOptimal_Order_Quantity_Analysis._Order_Cost_Per_Order__Rs__Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double _Holding_Cost_Per_Unit__Rs__ {
+                get {
+                    try {
+                        return ((double)(this[this.tableOptimal_Order_Quantity_Analysis._Holding_Cost_Per_Unit__Rs__Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Holding Cost Per Unit (Rs_)\' in table \'Optimal Order Quanti" +
+                                "ty Analysis\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOptimal_Order_Quantity_Analysis._Holding_Cost_Per_Unit__Rs__Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double Optimal_Order_Quantity {
+                get {
+                    try {
+                        return ((double)(this[this.tableOptimal_Order_Quantity_Analysis.Optimal_Order_QuantityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Optimal Order Quantity\' in table \'Optimal Order Quantity An" +
+                                "alysis\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOptimal_Order_Quantity_Analysis.Optimal_Order_QuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsAnualSalesQuantityNull() {
+                return this.IsNull(this.tableOptimal_Order_Quantity_Analysis.AnualSalesQuantityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetAnualSalesQuantityNull() {
+                this[this.tableOptimal_Order_Quantity_Analysis.AnualSalesQuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is_Order_Cost_Per_Order__Rs__Null() {
+                return this.IsNull(this.tableOptimal_Order_Quantity_Analysis._Order_Cost_Per_Order__Rs__Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set_Order_Cost_Per_Order__Rs__Null() {
+                this[this.tableOptimal_Order_Quantity_Analysis._Order_Cost_Per_Order__Rs__Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is_Holding_Cost_Per_Unit__Rs__Null() {
+                return this.IsNull(this.tableOptimal_Order_Quantity_Analysis._Holding_Cost_Per_Unit__Rs__Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set_Holding_Cost_Per_Unit__Rs__Null() {
+                this[this.tableOptimal_Order_Quantity_Analysis._Holding_Cost_Per_Unit__Rs__Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsOptimal_Order_QuantityNull() {
+                return this.IsNull(this.tableOptimal_Order_Quantity_Analysis.Optimal_Order_QuantityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetOptimal_Order_QuantityNull() {
+                this[this.tableOptimal_Order_Quantity_Analysis.Optimal_Order_QuantityColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -13567,6 +14154,40 @@ namespace RangaHardwareStock {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ABC_ClassRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class Optimal_Order_Quantity_AnalysisRowChangeEvent : global::System.EventArgs {
+            
+            private Optimal_Order_Quantity_AnalysisRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Optimal_Order_Quantity_AnalysisRowChangeEvent(Optimal_Order_Quantity_AnalysisRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Optimal_Order_Quantity_AnalysisRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -22731,6 +23352,7 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
             tableMapping.ColumnMappings.Add("Item_ID", "Item_ID");
             tableMapping.ColumnMappings.Add("Item_Name", "Item_Name");
             tableMapping.ColumnMappings.Add("Sales", "Sales");
+            tableMapping.ColumnMappings.Add("AnualSalesQuantity", "AnualSalesQuantity");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -22747,7 +23369,7 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Item_ID, Item_Name, Sales FROM dbo.Sales_by_Item_Catagory";
+            this._commandCollection[0].CommandText = "SELECT Item_ID, Item_Name, Sales, AnualSalesQuantity FROM Sales_by_Item_Catagory";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -22941,6 +23563,181 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
         public virtual Ranga_hardwareDataSet.ABC_ClassDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             Ranga_hardwareDataSet.ABC_ClassDataTable dataTable = new Ranga_hardwareDataSet.ABC_ClassDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class Optimal_Order_Quantity_AnalysisTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public Optimal_Order_Quantity_AnalysisTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Optimal Order Quantity Analysis";
+            tableMapping.ColumnMappings.Add("Item_ID", "Item_ID");
+            tableMapping.ColumnMappings.Add("Item_Name", "Item_Name");
+            tableMapping.ColumnMappings.Add("AnualSalesQuantity", "AnualSalesQuantity");
+            tableMapping.ColumnMappings.Add("Stock Status", "Stock Status");
+            tableMapping.ColumnMappings.Add("Order Cost Per Order (Rs.)", "Order Cost Per Order (Rs_)");
+            tableMapping.ColumnMappings.Add("Holding Cost Per Unit (Rs.)", "Holding Cost Per Unit (Rs_)");
+            tableMapping.ColumnMappings.Add("Optimal Order Quantity", "Optimal Order Quantity");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::RangaHardwareStock.Properties.Settings.Default.Ranga_hardwareConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Item_ID, Item_Name, AnualSalesQuantity, [Stock Status], [Order Cost Per Or" +
+                "der (Rs.)], [Holding Cost Per Unit (Rs.)], [Optimal Order Quantity] FROM dbo.[Op" +
+                "timal Order Quantity Analysis]";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(Ranga_hardwareDataSet.Optimal_Order_Quantity_AnalysisDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual Ranga_hardwareDataSet.Optimal_Order_Quantity_AnalysisDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            Ranga_hardwareDataSet.Optimal_Order_Quantity_AnalysisDataTable dataTable = new Ranga_hardwareDataSet.Optimal_Order_Quantity_AnalysisDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -23568,21 +24365,21 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateUpdatedRows(Ranga_hardwareDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._stockTypeTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.StockType.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._stockTypeTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._stockOutTypeTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.StockOutType.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._stockOutTypeTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._stockTypeTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.StockType.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._stockTypeTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -23613,15 +24410,6 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._paymentStatusTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.PaymentStatus.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._paymentStatusTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._stockOutTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.StockOut.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -23631,21 +24419,12 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._stockInTableTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.StockInTable.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._paymentStatusTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PaymentStatus.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._stockInTableTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._customerReturnReasonTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.CustomerReturnReason.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._customerReturnReasonTableAdapter.Update(updatedRows));
+                    result = (result + this._paymentStatusTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -23658,21 +24437,21 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._salesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Sales.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._customerReturnReasonTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.CustomerReturnReason.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._salesTableAdapter.Update(updatedRows));
+                    result = (result + this._customerReturnReasonTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._inboundOrderInTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.InboundOrderIn.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._stockInTableTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.StockInTable.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._inboundOrderInTableAdapter.Update(updatedRows));
+                    result = (result + this._stockInTableTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -23682,6 +24461,15 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._itemTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._inboundOrderInTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.InboundOrderIn.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._inboundOrderInTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -23700,6 +24488,15 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._customerReturnTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._salesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Sales.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._salesTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -23794,19 +24591,19 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateInsertedRows(Ranga_hardwareDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._stockTypeTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.StockType.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._stockTypeTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._stockOutTypeTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.StockOutType.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._stockOutTypeTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._stockTypeTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.StockType.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._stockTypeTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -23834,14 +24631,6 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._paymentStatusTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.PaymentStatus.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._paymentStatusTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._stockOutTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.StockOut.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -23850,19 +24639,11 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._stockInTableTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.StockInTable.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._paymentStatusTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PaymentStatus.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._stockInTableTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._customerReturnReasonTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.CustomerReturnReason.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._customerReturnReasonTableAdapter.Update(addedRows));
+                    result = (result + this._paymentStatusTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -23874,19 +24655,19 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._salesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Sales.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._customerReturnReasonTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.CustomerReturnReason.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._salesTableAdapter.Update(addedRows));
+                    result = (result + this._customerReturnReasonTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._inboundOrderInTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.InboundOrderIn.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._stockInTableTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.StockInTable.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._inboundOrderInTableAdapter.Update(addedRows));
+                    result = (result + this._stockInTableTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -23895,6 +24676,14 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._itemTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._inboundOrderInTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.InboundOrderIn.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._inboundOrderInTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -23911,6 +24700,14 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._customerReturnTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._salesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Sales.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._salesTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -24068,6 +24865,14 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._salesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Sales.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._salesTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._customerReturnTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.CustomerReturn.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -24084,14 +24889,6 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._itemTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._itemTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._inboundOrderInTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.InboundOrderIn.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -24100,27 +24897,11 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._salesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Sales.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._itemTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._salesTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._supplierTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Supplier.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._supplierTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._customerReturnReasonTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.CustomerReturnReason.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._customerReturnReasonTableAdapter.Update(deletedRows));
+                    result = (result + this._itemTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -24132,11 +24913,19 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._stockOutTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.StockOut.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._customerReturnReasonTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.CustomerReturnReason.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._stockOutTableAdapter.Update(deletedRows));
+                    result = (result + this._customerReturnReasonTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._supplierTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Supplier.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._supplierTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -24145,6 +24934,14 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._paymentStatusTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._stockOutTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.StockOut.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._stockOutTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -24172,19 +24969,19 @@ SELECT Item_ID, Item_Name, Discription, Stock_Status, Current_Stock, Customer_Re
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._stockOutTypeTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.StockOutType.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._stockOutTypeTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._stockTypeTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.StockType.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._stockTypeTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._stockOutTypeTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.StockOutType.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._stockOutTypeTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

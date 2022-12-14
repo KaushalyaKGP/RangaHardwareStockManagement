@@ -75,7 +75,7 @@ WHERE Class = 'C'", con);
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void BackButton_Click(object sender, EventArgs e)

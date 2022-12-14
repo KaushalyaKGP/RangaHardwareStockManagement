@@ -42,8 +42,8 @@ namespace RangaHardwareStock
             this.customerManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aBCAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ABCAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stockLowItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ExitButton = new System.Windows.Forms.Button();
             this.CurrentStockButton = new System.Windows.Forms.Button();
@@ -83,11 +83,12 @@ namespace RangaHardwareStock
             this.customerManagementToolStripMenuItem,
             this.itemManagementToolStripMenuItem,
             this.toolStripMenuItem4,
-            this.reportsToolStripMenuItem});
+            this.ABCAnalysisToolStripMenuItem,
+            this.stockLowItemsToolStripMenuItem});
             this.menuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(363, 552);
+            this.menuStrip.Size = new System.Drawing.Size(363, 608);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -138,7 +139,7 @@ namespace RangaHardwareStock
             this.stockOutManahementToolStripMenuItem.Name = "stockOutManahementToolStripMenuItem";
             this.stockOutManahementToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.stockOutManahementToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
-            this.stockOutManahementToolStripMenuItem.Text = "Stock Movement Management";
+            this.stockOutManahementToolStripMenuItem.Text = "Stock Moving Out Management";
             this.stockOutManahementToolStripMenuItem.Click += new System.EventHandler(this.stockOutManahementToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
@@ -183,22 +184,21 @@ namespace RangaHardwareStock
             this.toolStripMenuItem4.Size = new System.Drawing.Size(359, 32);
             this.toolStripMenuItem4.Text = "------------------------------------------------";
             // 
-            // reportsToolStripMenuItem
+            // ABCAnalysisToolStripMenuItem
             // 
-            this.reportsToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aBCAnalysisToolStripMenuItem});
-            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(359, 32);
-            this.reportsToolStripMenuItem.Text = "Reports";
+            this.ABCAnalysisToolStripMenuItem.BackColor = System.Drawing.Color.White;
+            this.ABCAnalysisToolStripMenuItem.Name = "ABCAnalysisToolStripMenuItem";
+            this.ABCAnalysisToolStripMenuItem.Size = new System.Drawing.Size(359, 32);
+            this.ABCAnalysisToolStripMenuItem.Text = "ABC Analysis";
+            this.ABCAnalysisToolStripMenuItem.Click += new System.EventHandler(this.ABCAnalysisToolStripMenuItem_Click_1);
             // 
-            // aBCAnalysisToolStripMenuItem
+            // stockLowItemsToolStripMenuItem
             // 
-            this.aBCAnalysisToolStripMenuItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aBCAnalysisToolStripMenuItem.Name = "aBCAnalysisToolStripMenuItem";
-            this.aBCAnalysisToolStripMenuItem.Size = new System.Drawing.Size(225, 28);
-            this.aBCAnalysisToolStripMenuItem.Text = "ABC Analysis";
-            this.aBCAnalysisToolStripMenuItem.Click += new System.EventHandler(this.aBCAnalysisToolStripMenuItem_Click);
+            this.stockLowItemsToolStripMenuItem.BackColor = System.Drawing.Color.White;
+            this.stockLowItemsToolStripMenuItem.Name = "stockLowItemsToolStripMenuItem";
+            this.stockLowItemsToolStripMenuItem.Size = new System.Drawing.Size(359, 32);
+            this.stockLowItemsToolStripMenuItem.Text = "Stock Low Items";
+            this.stockLowItemsToolStripMenuItem.Click += new System.EventHandler(this.stockLowItemsToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -313,7 +313,7 @@ namespace RangaHardwareStock
         private System.Windows.Forms.ToolStripMenuItem customerManagementToolStripMenuItem;
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aBCAnalysisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ABCAnalysisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stockLowItemsToolStripMenuItem;
     }
 }

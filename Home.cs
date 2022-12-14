@@ -95,10 +95,18 @@ namespace RangaHardwareStock
             }
         }
 
-        private void aBCAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void ABCAnalysisToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             this.Hide();
             ABC_Analysis.showForm();
+        }
+
+        private void stockLowItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LowSrockItemsForm lowSrockItemsForm = new LowSrockItemsForm();
+            lowSrockItemsForm.Show();
         }
     }
 }
