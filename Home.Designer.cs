@@ -88,7 +88,7 @@ namespace RangaHardwareStock
             this.menuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(363, 608);
+            this.menuStrip.Size = new System.Drawing.Size(363, 624);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -188,7 +188,8 @@ namespace RangaHardwareStock
             // 
             this.ABCAnalysisToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.ABCAnalysisToolStripMenuItem.Name = "ABCAnalysisToolStripMenuItem";
-            this.ABCAnalysisToolStripMenuItem.Size = new System.Drawing.Size(359, 32);
+            this.ABCAnalysisToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.ABCAnalysisToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
             this.ABCAnalysisToolStripMenuItem.Text = "ABC Analysis";
             this.ABCAnalysisToolStripMenuItem.Click += new System.EventHandler(this.ABCAnalysisToolStripMenuItem_Click_1);
             // 
@@ -196,7 +197,8 @@ namespace RangaHardwareStock
             // 
             this.stockLowItemsToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.stockLowItemsToolStripMenuItem.Name = "stockLowItemsToolStripMenuItem";
-            this.stockLowItemsToolStripMenuItem.Size = new System.Drawing.Size(359, 32);
+            this.stockLowItemsToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.stockLowItemsToolStripMenuItem.Size = new System.Drawing.Size(359, 52);
             this.stockLowItemsToolStripMenuItem.Text = "Stock Low Items";
             this.stockLowItemsToolStripMenuItem.Click += new System.EventHandler(this.stockLowItemsToolStripMenuItem_Click);
             // 

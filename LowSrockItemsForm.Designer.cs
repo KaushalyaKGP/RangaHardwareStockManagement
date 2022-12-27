@@ -32,8 +32,6 @@ namespace RangaHardwareStock
             this.components = new System.ComponentModel.Container();
             this.Titlelabel = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.ExitButton = new System.Windows.Forms.Button();
-            this.BackButton = new System.Windows.Forms.Button();
             this.itemIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.anualSalesQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +41,8 @@ namespace RangaHardwareStock
             this.optimalOrderQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.optimalOrderQuantityAnalysisBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
+            this.ExitButton = new System.Windows.Forms.Button();
+            this.BackButton = new System.Windows.Forms.Button();
             this.optimal_Order_Quantity_AnalysisTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.Optimal_Order_Quantity_AnalysisTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.optimalOrderQuantityAnalysisBindingSource)).BeginInit();
@@ -55,10 +55,10 @@ namespace RangaHardwareStock
             this.Titlelabel.BackColor = System.Drawing.SystemColors.Control;
             this.Titlelabel.Font = new System.Drawing.Font("Bernard MT Condensed", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titlelabel.ForeColor = System.Drawing.Color.Black;
-            this.Titlelabel.Location = new System.Drawing.Point(585, 5);
+            this.Titlelabel.Location = new System.Drawing.Point(585, 12);
             this.Titlelabel.Margin = new System.Windows.Forms.Padding(0);
             this.Titlelabel.Name = "Titlelabel";
-            this.Titlelabel.Size = new System.Drawing.Size(733, 108);
+            this.Titlelabel.Size = new System.Drawing.Size(733, 104);
             this.Titlelabel.TabIndex = 189;
             this.Titlelabel.Text = "Stock Low Items";
             this.Titlelabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -84,34 +84,6 @@ namespace RangaHardwareStock
             this.dataGridView.RowTemplate.Height = 24;
             this.dataGridView.Size = new System.Drawing.Size(1878, 797);
             this.dataGridView.TabIndex = 190;
-            // 
-            // ExitButton
-            // 
-            this.ExitButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.ExitButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitButton.ForeColor = System.Drawing.Color.White;
-            this.ExitButton.Location = new System.Drawing.Point(1753, 18);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(133, 47);
-            this.ExitButton.TabIndex = 254;
-            this.ExitButton.Text = "Exit";
-            this.ExitButton.UseVisualStyleBackColor = false;
-            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
-            // 
-            // BackButton
-            // 
-            this.BackButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.BackButton.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.BackButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackButton.ForeColor = System.Drawing.Color.Black;
-            this.BackButton.Location = new System.Drawing.Point(1731, 967);
-            this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(156, 47);
-            this.BackButton.TabIndex = 255;
-            this.BackButton.Text = "Back";
-            this.BackButton.UseVisualStyleBackColor = false;
-            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
             // itemIDDataGridViewTextBoxColumn
             // 
@@ -172,6 +144,34 @@ namespace RangaHardwareStock
             // 
             this.ranga_hardwareDataSet.DataSetName = "Ranga_hardwareDataSet";
             this.ranga_hardwareDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // ExitButton
+            // 
+            this.ExitButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.ExitButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitButton.ForeColor = System.Drawing.Color.White;
+            this.ExitButton.Location = new System.Drawing.Point(1752, 20);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(133, 47);
+            this.ExitButton.TabIndex = 254;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = false;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
+            // BackButton
+            // 
+            this.BackButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.BackButton.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.BackButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackButton.ForeColor = System.Drawing.Color.Black;
+            this.BackButton.Location = new System.Drawing.Point(1731, 962);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(156, 47);
+            this.BackButton.TabIndex = 255;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = false;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
             // optimal_Order_Quantity_AnalysisTableAdapter
             // 
