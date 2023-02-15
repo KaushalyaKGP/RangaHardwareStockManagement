@@ -13,6 +13,7 @@ namespace RangaHardwareStock
     public static class Globles
     {
         public static Boolean loginIndex = false;
+        public static Boolean ReturnToSupplierIndex = false;
 
         //Email Validation
         public static void validateEmail(string email, TextBox t)

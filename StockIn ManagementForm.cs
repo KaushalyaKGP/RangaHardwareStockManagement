@@ -512,6 +512,7 @@ ON PS.Id = IB.Payment_Status", con);
         {
             formCloseIndex = true;
             this.Close();
+            MessageBox.Show("Select relevent sales record");
             SalesForm.ShowForm();
         }
 
