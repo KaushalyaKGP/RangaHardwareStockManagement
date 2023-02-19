@@ -29,7 +29,6 @@ namespace RangaHardwareStock
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label SupplierCustomerLabel;
             System.Windows.Forms.Label DateInLabel;
             System.Windows.Forms.Label BatchIDLabel;
@@ -38,7 +37,6 @@ namespace RangaHardwareStock
             System.Windows.Forms.Label PendingPaymentsLabel;
             this.Titlelabel = new System.Windows.Forms.Label();
             this.SupplierComboBox = new System.Windows.Forms.ComboBox();
-            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
             this.DateInDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.InboundOrderItemsDataGridView = new System.Windows.Forms.DataGridView();
@@ -53,7 +51,6 @@ namespace RangaHardwareStock
             this.TotalCostTextBox = new System.Windows.Forms.TextBox();
             this.PendingPaymentsTextBox = new System.Windows.Forms.TextBox();
             this.BatchIDTextBox = new System.Windows.Forms.TextBox();
-            this.supplierTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.SupplierTableAdapter();
             this.PeidAmountNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ResetButton = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -75,7 +72,6 @@ namespace RangaHardwareStock
             TotalCostLabel = new System.Windows.Forms.Label();
             PaidAmountLabel = new System.Windows.Forms.Label();
             PendingPaymentsLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InboundOrderItemsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -169,20 +165,12 @@ namespace RangaHardwareStock
             // SupplierComboBox
             // 
             this.SupplierComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.SupplierComboBox.DataSource = this.supplierBindingSource;
-            this.SupplierComboBox.DisplayMember = "Name";
             this.SupplierComboBox.FormattingEnabled = true;
             this.SupplierComboBox.Location = new System.Drawing.Point(830, 109);
             this.SupplierComboBox.Name = "SupplierComboBox";
             this.SupplierComboBox.Size = new System.Drawing.Size(331, 24);
             this.SupplierComboBox.TabIndex = 58;
-            this.SupplierComboBox.ValueMember = "Supplier_ID";
             this.SupplierComboBox.TextChanged += new System.EventHandler(this.SupplierComboBox_TextChanged);
-            // 
-            // supplierBindingSource
-            // 
-            this.supplierBindingSource.DataMember = "Supplier";
-            this.supplierBindingSource.DataSource = this.ranga_hardwareDataSet;
             // 
             // ranga_hardwareDataSet
             // 
@@ -249,13 +237,12 @@ namespace RangaHardwareStock
             // ItemNameComboBox
             // 
             this.ItemNameComboBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.ItemNameComboBox.DisplayMember = "Supplier_ID";
+            this.ItemNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ItemNameComboBox.FormattingEnabled = true;
             this.ItemNameComboBox.Location = new System.Drawing.Point(1043, 160);
             this.ItemNameComboBox.Name = "ItemNameComboBox";
             this.ItemNameComboBox.Size = new System.Drawing.Size(318, 24);
             this.ItemNameComboBox.TabIndex = 64;
-            this.ItemNameComboBox.ValueMember = "Supplier_ID";
             this.ItemNameComboBox.SelectedIndexChanged += new System.EventHandler(this.ItemNameComboBox_SelectedIndexChanged);
             // 
             // pictureBox1
@@ -322,10 +309,6 @@ namespace RangaHardwareStock
             this.BatchIDTextBox.ReadOnly = true;
             this.BatchIDTextBox.Size = new System.Drawing.Size(115, 22);
             this.BatchIDTextBox.TabIndex = 78;
-            // 
-            // supplierTableAdapter
-            // 
-            this.supplierTableAdapter.ClearBeforeFill = true;
             // 
             // PeidAmountNumericUpDown
             // 
@@ -564,7 +547,6 @@ namespace RangaHardwareStock
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InboundOrderIn_FormClosing);
             this.Load += new System.EventHandler(this.InboundOrderIn_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InboundOrderItemsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -592,8 +574,6 @@ namespace RangaHardwareStock
         private System.Windows.Forms.TextBox PendingPaymentsTextBox;
         private Ranga_hardwareDataSet ranga_hardwareDataSet;
         private System.Windows.Forms.TextBox BatchIDTextBox;
-        private System.Windows.Forms.BindingSource supplierBindingSource;
-        private Ranga_hardwareDataSetTableAdapters.SupplierTableAdapter supplierTableAdapter;
         private System.Windows.Forms.NumericUpDown PeidAmountNumericUpDown;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.PictureBox pictureBox2;

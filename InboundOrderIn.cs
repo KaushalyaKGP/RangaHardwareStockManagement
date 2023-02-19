@@ -151,17 +151,26 @@ WHERE si.Type = 1", con);
 
         private void InboundOrderIn_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Supplier' table. You can move, or remove it, as needed.
-            this.supplierTableAdapter.Fill(this.ranga_hardwareDataSet.Supplier);
 
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Supplier' table. You can move, or remove it, as needed.
-            this.supplierTableAdapter.Fill(this.ranga_hardwareDataSet.Supplier);
-
-            
+            SqlDataAdapter sdaSupplier = new SqlDataAdapter(@"SELECT Name,Supplier_ID
+FROM Supplier", con);
+            DataTable dtSupplier = new DataTable();
             
 
 
+            this.SupplierComboBox.DataSource = null;
+            SupplierComboBox.Items.Clear();
+            try
+            {
+                sdaSupplier.Fill(dtSupplier);
+                this.SupplierComboBox.DataSource = dtSupplier;
+                this.SupplierComboBox.DisplayMember = dtSupplier.Columns["Name"].ColumnName;
+                this.SupplierComboBox.ValueMember = dtSupplier.Columns["Supplier_ID"].ColumnName;
+            }
+            catch
+            {
 
+            }
             //set date today
             this.DateInDateTimePicker.Value = DateTime.Today;
             //--------------
@@ -179,8 +188,10 @@ WHERE Supplier_ID = " + this.SupplierComboBox.SelectedValue + "", con);
 
 
             DataTable dt2 = new DataTable();
+            this.ItemNameComboBox.DataSource = null;
+            ItemNameComboBox.Items.Clear();
             try
-            {
+            { 
                 sda2.Fill(dt2);
                 this.ItemNameComboBox.DataSource = dt2;
                 this.ItemNameComboBox.DisplayMember = dt2.Columns["Item_Name"].ColumnName;
@@ -313,7 +324,10 @@ WHERE ii.Stock_In_Id = " + StockInID + " AND ii.Item_ID = i.Item_ID", con);
                     }
                     changeStockCommand = new SqlCommand(@"UPDATE Item SET Current_Stock -= " + int.Parse(dataRow[1].ToString()) + ",Stock_Status = " + Stock_Status + "  WHERE Item_ID = " + int.Parse(dataRow[0].ToString()) + "", con);
 
-                    con.Open();
+                    if(con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
                     changeStockCommand.ExecuteNonQuery();
                     con.Close();
                     //---------------------------------------------------------
@@ -616,8 +630,15 @@ WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + "", con);
                 {
                     con.Open();
                 }
+                try
+                {
+                    this.UnitLable.Text = unitCommand.ExecuteScalar().ToString();
+                }
+                catch
+                {
+                    this.UnitLable.Text = "";
+                }
                 
-                this.UnitLable.Text = unitCommand.ExecuteScalar().ToString();
                 con.Close();
                 
             }

@@ -97,8 +97,27 @@ ON i.Supplier_ID = s.Supplier_ID ", con);
 
         private void ItemForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Supplier' table. You can move, or remove it, as needed.
-            this.supplierTableAdapter.Fill(this.ranga_hardwareDataSet.Supplier);
+            SqlDataAdapter sdaSupplier = new SqlDataAdapter(@"SELECT Name,Supplier_ID
+FROM Supplier", con);
+            DataTable dtSupplier = new DataTable();
+
+
+
+            this.SupplierComboBox.DataSource = null;
+            SupplierComboBox.Items.Clear();
+            try
+            {
+                sdaSupplier.Fill(dtSupplier);
+                this.SupplierComboBox.DataSource = dtSupplier;
+                this.SupplierComboBox.DisplayMember = dtSupplier.Columns["Name"].ColumnName;
+                this.SupplierComboBox.ValueMember = dtSupplier.Columns["Supplier_ID"].ColumnName;
+            }
+            catch
+            {
+
+            }
+
+
 
         }
 

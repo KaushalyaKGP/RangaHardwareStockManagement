@@ -512,8 +512,8 @@ ON PS.Id = IB.Payment_Status", con);
         {
             formCloseIndex = true;
             this.Close();
-            MessageBox.Show("Select relevent sales record");
             SalesForm.ShowForm();
+            MessageBox.Show("Select relevent sales record");
         }
 
         private void ExitButton_Click(object sender, EventArgs e)

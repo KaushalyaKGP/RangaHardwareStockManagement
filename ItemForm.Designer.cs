@@ -398,8 +398,6 @@ namespace RangaHardwareStock
             // SupplierComboBox
             // 
             this.SupplierComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.SupplierComboBox.DataSource = this.supplierBindingSource;
-            this.SupplierComboBox.DisplayMember = "Name";
             this.SupplierComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SupplierComboBox.FormattingEnabled = true;
             this.SupplierComboBox.Location = new System.Drawing.Point(186, 291);
