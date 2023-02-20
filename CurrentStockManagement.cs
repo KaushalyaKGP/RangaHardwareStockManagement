@@ -42,7 +42,6 @@ namespace RangaHardwareStock
         private void SetInitioalStage()
         {
             this.item_NameComboBox.Text = "All";
-            this.item_IDComboBox.Text = "All";
             this.supplier_NameComboBox.Text = "All";
             this.StockLevelComboBox.Text = "All";
 
@@ -52,12 +51,45 @@ namespace RangaHardwareStock
 
         private void CurrentStockManagementForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockLevel' table. You can move, or remove it, as needed.
-            this.stockLevelTableAdapter.Fill(this.ranga_hardwareDataSet.StockLevel);
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Supplier' table. You can move, or remove it, as needed.
-            this.supplierTableAdapter.Fill(this.ranga_hardwareDataSet.Supplier);
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Item' table. You can move, or remove it, as needed.
-            this.itemTableAdapter.Fill(this.ranga_hardwareDataSet.Item);
+
+            SqlDataAdapter sdaitem = new SqlDataAdapter(@"SELECT Item_ID,Item_Name
+FROM Item", con);
+            DataTable dtitem = new DataTable();
+
+
+
+            this.item_NameComboBox.DataSource = null;
+            item_NameComboBox.Items.Clear();
+            try
+            {
+                sdaitem.Fill(dtitem);
+                this.item_NameComboBox.DataSource = dtitem;
+                this.item_NameComboBox.DisplayMember = dtitem.Columns["Item_Name"].ColumnName;
+                this.item_NameComboBox.ValueMember = dtitem.Columns["Item_ID"].ColumnName;
+            }
+            catch
+            {
+            }
+
+
+            SqlDataAdapter sdaSupplier = new SqlDataAdapter(@"SELECT Name,Supplier_ID
+FROM Supplier", con);
+            DataTable dtSupplier = new DataTable();
+
+
+
+            this.supplier_NameComboBox.DataSource = null;
+            supplier_NameComboBox.Items.Clear();
+            try
+            {
+                sdaSupplier.Fill(dtSupplier);
+                this.supplier_NameComboBox.DataSource = dtSupplier;
+                this.supplier_NameComboBox.DisplayMember = dtSupplier.Columns["Name"].ColumnName;
+                this.supplier_NameComboBox.ValueMember = dtSupplier.Columns["Supplier_ID"].ColumnName;
+            }
+            catch
+            {
+            }
 
             //fill data view
             SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l
@@ -81,91 +113,54 @@ ORDER BY i.Item_Name", con);
         private void SearchButton_Click(object sender, EventArgs e)
         {
             //check if initial stage changed
-            if(!(this.item_IDComboBox.Text == "All" && this.item_NameComboBox.Text == "All" && this.supplier_NameComboBox.Text == "All" && this.StockLevelComboBox.Text == "All"))
+            if(!(this.item_NameComboBox.Text == "All" && this.supplier_NameComboBox.Text == "All" && this.StockLevelComboBox.Text == "All"))
             { 
                 // give data matched to search
                 DataTable dtSearch = new DataTable();
                 
 
                 
-                if (this.item_IDComboBox.Text != "All" && this.item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text != "All" && this.StockLevelComboBox.Text != "All")
+                if (this.item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text != "All" && this.StockLevelComboBox.Text != "All")
                 {
-                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID, i.Item_Name, l.Value AS Stock_Status, i.Current_Stock,i.Customer_Return_Stock, i.Mesuring_Unit,i.Unit_Price, s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND i.Item_ID = '" + item_IDComboBox.Text + "' AND i.Item_Name = '" + item_NameComboBox.Text + "' AND s.Name = '" + supplier_NameComboBox.Text + "' AND l.Value = '" + StockLevelComboBox.Text + "'  ORDER BY i.Item_Name", con);
+                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID, i.Item_Name, l.Value AS Stock_Status, i.Current_Stock,i.Customer_Return_Stock, i.Mesuring_Unit,i.Unit_Price, s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND i.Item_Name = '" + item_NameComboBox.Text + "' AND s.Name = '" + supplier_NameComboBox.Text + "' AND l.Value = '" + StockLevelComboBox.Text + "'  ORDER BY i.Item_Name", con);
                     sda.Fill(dtSearch);
                 }
-                else if (this.item_IDComboBox.Text != "All" && this.item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text != "All" && this.StockLevelComboBox.Text == "All")
+                else if (item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text != "All" && this.StockLevelComboBox.Text == "All")
                 {
-                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND i.Item_ID = '" + item_IDComboBox.Text + "' AND i.Item_Name = '" + item_NameComboBox.Text + "' AND s.Name = '" + supplier_NameComboBox.Text + "'  ORDER BY i.Item_Name", con);
+                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND i.Item_Name = '" + item_NameComboBox.Text + "' AND s.Name = '" + supplier_NameComboBox.Text + "'  ORDER BY i.Item_Name", con);
                     sda.Fill(dtSearch);
                 }
-                else if (this.item_IDComboBox.Text != "All" && this.item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text == "All" && this.StockLevelComboBox.Text != "All")
+                else if (this.item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text == "All" && this.StockLevelComboBox.Text != "All")
                 {
-                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND i.Item_ID = '" + item_IDComboBox.Text + "' AND i.Item_Name = '" + item_NameComboBox.Text + "' AND l.Value = '" + StockLevelComboBox.Text + "'  ORDER BY i.Item_Name", con);
+                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND i.Item_Name = '" + item_NameComboBox.Text + "' AND l.Value = '" + StockLevelComboBox.Text + "'  ORDER BY i.Item_Name", con);
                     sda.Fill(dtSearch);
                 }
-                else if (this.item_IDComboBox.Text != "All" && this.item_NameComboBox.Text == "All" && this.supplier_NameComboBox.Text != "All" && this.StockLevelComboBox.Text != "All")
+                else if (this.item_NameComboBox.Text == "All" && this.supplier_NameComboBox.Text != "All" && this.StockLevelComboBox.Text != "All")
                 {
-                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND i.Item_ID = '" + item_IDComboBox.Text + "' AND s.Name = '" + supplier_NameComboBox.Text + "' AND l.Value = '" + StockLevelComboBox.Text + "'  ORDER BY i.Item_Name", con);
-                    sda.Fill(dtSearch);
-                }
-                else if (this.item_IDComboBox.Text == "All" && this.item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text != "All" && this.StockLevelComboBox.Text != "All")
-                {
-                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND i.Item_Name = '" + item_NameComboBox.Text + "' AND s.Name = '" + supplier_NameComboBox.Text + "' AND l.Value = '" + StockLevelComboBox.Text + "'  ORDER BY i.Item_Name", con);
+                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode  AND s.Name = '" + supplier_NameComboBox.Text + "' AND l.Value = '" + StockLevelComboBox.Text + "'  ORDER BY i.Item_Name", con);
                     sda.Fill(dtSearch);
                 }
 
-                else if (this.item_IDComboBox.Text != "All" && this.item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text == "All" && this.StockLevelComboBox.Text == "All")
+                else if (this.item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text == "All" && this.StockLevelComboBox.Text == "All")
                 {
-                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND i.Item_ID = '" + item_IDComboBox.Text + "' AND i.Item_Name = '" + item_NameComboBox.Text + "'   ORDER BY i.Item_Name", con);
+                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode  AND i.Item_Name = '" + item_NameComboBox.Text + "'   ORDER BY i.Item_Name", con);
                     sda.Fill(dtSearch);
                 }
-                else if (this.item_IDComboBox.Text != "All" && this.item_NameComboBox.Text == "All" && this.supplier_NameComboBox.Text == "All" && this.StockLevelComboBox.Text != "All")
+                else if (this.item_NameComboBox.Text == "All" && this.supplier_NameComboBox.Text == "All" && this.StockLevelComboBox.Text != "All")
                 {
-                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND i.Item_ID = '" + item_IDComboBox.Text + "'  AND l.Value = '" + StockLevelComboBox.Text + "'  ORDER BY i.Item_Name", con);
+                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode  AND l.Value = '" + StockLevelComboBox.Text + "'  ORDER BY i.Item_Name", con);
                     sda.Fill(dtSearch);
                 }
-                else if (this.item_IDComboBox.Text == "All" && this.item_NameComboBox.Text == "All" && this.supplier_NameComboBox.Text != "All" && this.StockLevelComboBox.Text != "All")
+                
+                else if (this.item_NameComboBox.Text == "All" && this.supplier_NameComboBox.Text != "All" && this.StockLevelComboBox.Text == "All")
                 {
-                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND  s.Name = '" + supplier_NameComboBox.Text + "' AND l.Value = '" + StockLevelComboBox.Text + "'  ORDER BY i.Item_Name", con);
-                    sda.Fill(dtSearch);
-                }
-
-                else if (this.item_IDComboBox.Text == "All" && this.item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text == "All" && this.StockLevelComboBox.Text != "All")
-                {
-                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND i.Item_Name = '" + item_NameComboBox.Text + "'  AND l.Value = '" + StockLevelComboBox.Text + "'  ORDER BY i.Item_Name", con);
-                    sda.Fill(dtSearch);
-                }
-                else if (this.item_IDComboBox.Text == "All" && this.item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text != "All" && this.StockLevelComboBox.Text == "All")
-                {
-                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode  AND i.Item_Name = '" + item_NameComboBox.Text + "' AND s.Name = '" + supplier_NameComboBox.Text + "'   ORDER BY i.Item_Name", con);
-                    sda.Fill(dtSearch);
-                }
-                else if (this.item_IDComboBox.Text != "All" && this.item_NameComboBox.Text == "All" && this.supplier_NameComboBox.Text != "All" && this.StockLevelComboBox.Text == "All")
-                {
-                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND i.Item_ID = '" + item_IDComboBox.Text + "'  AND s.Name = '" + supplier_NameComboBox.Text + "'   ORDER BY i.Item_Name", con);
+                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND s.Name = '" + supplier_NameComboBox.Text + "'   ORDER BY i.Item_Name", con);
                     sda.Fill(dtSearch);
                 }
 
-                else if (this.item_IDComboBox.Text != "All" && this.item_NameComboBox.Text == "All" && this.supplier_NameComboBox.Text == "All" && this.StockLevelComboBox.Text == "All")
-                {
-                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND i.Item_ID = '" + item_IDComboBox.Text + "' ORDER BY i.Item_Name", con);
-                    sda.Fill(dtSearch);
-                }
-                else if (this.item_IDComboBox.Text == "All" && this.item_NameComboBox.Text != "All" && this.supplier_NameComboBox.Text == "All" && this.StockLevelComboBox.Text == "All")
-                {
-                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode  AND i.Item_Name = '" + item_NameComboBox.Text + "'  ORDER BY i.Item_Name", con);
-                    sda.Fill(dtSearch);
-                }
-                else if (this.item_IDComboBox.Text == "All" && this.item_NameComboBox.Text == "All" && this.supplier_NameComboBox.Text != "All" && this.StockLevelComboBox.Text == "All")
-                {
-                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND s.Name = '" + supplier_NameComboBox.Text + "'  ORDER BY i.Item_Name", con);
-                    sda.Fill(dtSearch);
-                }
-                else if (this.item_IDComboBox.Text == "All" && this.item_NameComboBox.Text == "All" && this.supplier_NameComboBox.Text == "All" && this.StockLevelComboBox.Text != "All")
-                {
-                    SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode AND l.Value = '" + StockLevelComboBox.Text + "'  ORDER BY i.Item_Name", con);
-                    sda.Fill(dtSearch);
-                }
+                
+               
+               
 
                 
                 CurrentStockDataGridView.DataSource = dtSearch;
