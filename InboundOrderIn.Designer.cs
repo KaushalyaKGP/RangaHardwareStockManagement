@@ -66,6 +66,8 @@ namespace RangaHardwareStock
             this.QuantityLabel = new System.Windows.Forms.Label();
             this.UnitCostLabel = new System.Windows.Forms.Label();
             this.ExitButton = new System.Windows.Forms.Button();
+            this.EditPaymentButton = new System.Windows.Forms.Button();
+            this.UpdateButton = new System.Windows.Forms.Button();
             SupplierCustomerLabel = new System.Windows.Forms.Label();
             DateInLabel = new System.Windows.Forms.Label();
             BatchIDLabel = new System.Windows.Forms.Label();
@@ -275,7 +277,7 @@ namespace RangaHardwareStock
             this.SaveNewInboundOrderButton.BackColor = System.Drawing.Color.LightSeaGreen;
             this.SaveNewInboundOrderButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveNewInboundOrderButton.ForeColor = System.Drawing.Color.White;
-            this.SaveNewInboundOrderButton.Location = new System.Drawing.Point(802, 430);
+            this.SaveNewInboundOrderButton.Location = new System.Drawing.Point(860, 430);
             this.SaveNewInboundOrderButton.Name = "SaveNewInboundOrderButton";
             this.SaveNewInboundOrderButton.Size = new System.Drawing.Size(330, 47);
             this.SaveNewInboundOrderButton.TabIndex = 71;
@@ -355,7 +357,7 @@ namespace RangaHardwareStock
             this.ReturntoSupplierButton.BackColor = System.Drawing.Color.LightCoral;
             this.ReturntoSupplierButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReturntoSupplierButton.ForeColor = System.Drawing.Color.Black;
-            this.ReturntoSupplierButton.Location = new System.Drawing.Point(677, 498);
+            this.ReturntoSupplierButton.Location = new System.Drawing.Point(928, 498);
             this.ReturntoSupplierButton.Name = "ReturntoSupplierButton";
             this.ReturntoSupplierButton.Size = new System.Drawing.Size(270, 62);
             this.ReturntoSupplierButton.TabIndex = 116;
@@ -369,7 +371,7 @@ namespace RangaHardwareStock
             this.DeleteInboundOrderButton.BackColor = System.Drawing.Color.LightCoral;
             this.DeleteInboundOrderButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteInboundOrderButton.ForeColor = System.Drawing.Color.Black;
-            this.DeleteInboundOrderButton.Location = new System.Drawing.Point(360, 495);
+            this.DeleteInboundOrderButton.Location = new System.Drawing.Point(628, 495);
             this.DeleteInboundOrderButton.Name = "DeleteInboundOrderButton";
             this.DeleteInboundOrderButton.Size = new System.Drawing.Size(270, 65);
             this.DeleteInboundOrderButton.TabIndex = 115;
@@ -504,12 +506,42 @@ namespace RangaHardwareStock
             this.ExitButton.UseVisualStyleBackColor = false;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
+            // EditPaymentButton
+            // 
+            this.EditPaymentButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.EditPaymentButton.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.EditPaymentButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditPaymentButton.ForeColor = System.Drawing.Color.Black;
+            this.EditPaymentButton.Location = new System.Drawing.Point(335, 495);
+            this.EditPaymentButton.Name = "EditPaymentButton";
+            this.EditPaymentButton.Size = new System.Drawing.Size(270, 65);
+            this.EditPaymentButton.TabIndex = 250;
+            this.EditPaymentButton.Text = "Edit Payment";
+            this.EditPaymentButton.UseVisualStyleBackColor = false;
+            this.EditPaymentButton.Click += new System.EventHandler(this.EditPaymentButton_Click);
+            // 
+            // UpdateButton
+            // 
+            this.UpdateButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.UpdateButton.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.UpdateButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateButton.ForeColor = System.Drawing.Color.White;
+            this.UpdateButton.Location = new System.Drawing.Point(715, 429);
+            this.UpdateButton.Name = "UpdateButton";
+            this.UpdateButton.Size = new System.Drawing.Size(127, 47);
+            this.UpdateButton.TabIndex = 251;
+            this.UpdateButton.Text = "Save";
+            this.UpdateButton.UseVisualStyleBackColor = false;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            // 
             // InboundOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1404, 904);
+            this.Controls.Add(this.UpdateButton);
+            this.Controls.Add(this.EditPaymentButton);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.UnitCostLabel);
             this.Controls.Add(this.QuantityLabel);
@@ -593,5 +625,7 @@ namespace RangaHardwareStock
         private System.Windows.Forms.DataGridViewTextBoxColumn Total_Cost;
         private System.Windows.Forms.Label UnitCostLabel;
         private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button EditPaymentButton;
+        private System.Windows.Forms.Button UpdateButton;
     }
 }

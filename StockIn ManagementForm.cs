@@ -91,23 +91,46 @@ ON PS.Id = IB.Payment_Status", con);
         {
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.PaymentStatus' table. You can move, or remove it, as needed.
             this.paymentStatusTableAdapter.Fill(this.ranga_hardwareDataSet.PaymentStatus);
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.SupplierCustmerList' table. You can move, or remove it, as needed.
-            this.supplierCustmerListTableAdapter.Fill(this.ranga_hardwareDataSet.SupplierCustmerList);
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockInType' table. You can move, or remove it, as needed.
             this.stockInTypeTableAdapter.Fill(this.ranga_hardwareDataSet.StockInType);
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockInTable' table. You can move, or remove it, as needed.
-            this.stockInTableTableAdapter.Fill(this.ranga_hardwareDataSet.StockInTable);
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockInType' table. You can move, or remove it, as needed.
-            this.stockInTypeTableAdapter.Fill(this.ranga_hardwareDataSet.StockInType);
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.PaymentStatus' table. You can move, or remove it, as needed.
-            this.paymentStatusTableAdapter.Fill(this.ranga_hardwareDataSet.PaymentStatus);
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.SupplierCustmerList' table. You can move, or remove it, as needed.
-            this.supplierCustmerListTableAdapter.Fill(this.ranga_hardwareDataSet.SupplierCustmerList);
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Customer' table. You can move, or remove it, as needed.
-            this.stockInTableTableAdapter.Fill(this.ranga_hardwareDataSet.StockInTable);
             this.ActiveControl = this.SearchButton;
 
+            //set batch ID Combo box
+            SqlDataAdapter sdaBatchID = new SqlDataAdapter(@"SELECT Stock_In_ID
+FROM StockInTable", con);
+            DataTable dtBatchID = new DataTable();
 
+            this.BatchIDComboBox.DataSource = null;
+            BatchIDComboBox.Items.Clear();
+            try
+            {
+                sdaBatchID.Fill(dtBatchID);
+                this.BatchIDComboBox.DataSource = dtBatchID;
+                this.BatchIDComboBox.DisplayMember = dtBatchID.Columns["Stock_In_ID"].ColumnName;
+            }
+            catch
+            {
+            }
+            //-----------------------------------------------------
+
+            //Set Supplier Customer List Combo Box
+            SqlDataAdapter sdaSupplier_Customer = new SqlDataAdapter(@"SELECT Supplier_or_Customer_ID,Name
+FROM SupplierCustmerList", con);
+            DataTable dtSupplier_Customer = new DataTable();
+
+            this.SupplierComboBox.DataSource = null;
+            SupplierComboBox.Items.Clear();
+            try
+            {
+                sdaSupplier_Customer.Fill(dtSupplier_Customer);
+                this.SupplierComboBox.DataSource = dtSupplier_Customer;
+                this.SupplierComboBox.DisplayMember = dtSupplier_Customer.Columns["Name"].ColumnName;
+                this.SupplierComboBox.ValueMember = dtSupplier_Customer.Columns["Supplier_or_Customer_ID"].ColumnName;
+            }
+            catch
+            {
+            }
+            //----------------------------------------------------------
         }
 
         //Enable / desable payment stutus option based on type

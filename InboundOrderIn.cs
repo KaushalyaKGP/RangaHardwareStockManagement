@@ -146,6 +146,11 @@ WHERE si.Type = 1", con);
 
             this.ReturntoSupplierButton.Enabled = false;
             this.ReturntoSupplierButton.Visible = false;
+            this.EditPaymentButton.Enabled = false;
+            this.EditPaymentButton.Visible = false;
+
+            this.UpdateButton.Enabled = false;
+            this.UpdateButton.Visible = false;
 
         }
 
@@ -219,14 +224,14 @@ WHERE Supplier_ID = " + this.SupplierComboBox.SelectedValue + "", con);
         {
             if(PeidAmountNumericUpDown.Enabled==true)
             {
-                if ((float)PeidAmountNumericUpDown.Value > TotalCost)
+                if ((float)PeidAmountNumericUpDown.Value > float.Parse(TotalCostTextBox.Text))
                 {
                     MessageBox.Show("Invalid Paid Amount", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     PeidAmountNumericUpDown.Value = 0;
                 }
                 else
                 {
-                    pendingPaynemts = TotalCost - (float)this.PeidAmountNumericUpDown.Value;
+                    pendingPaynemts = float.Parse(TotalCostTextBox.Text) - (float)this.PeidAmountNumericUpDown.Value;
                     PendingPaymentsTextBox.Text = pendingPaynemts.ToString("0.00");
                 }
             }
@@ -284,6 +289,9 @@ WHERE ii.Item_ID = i.Item_ID AND ii.Stock_In_Id = " + StockInID + "", con);
 
             this.ReturntoSupplierButton.Enabled = true;
             this.ReturntoSupplierButton.Visible = true;
+
+            this.EditPaymentButton.Enabled = true;
+            this.EditPaymentButton.Visible = true;
 
         }
 
@@ -437,6 +445,9 @@ WHERE ii.Stock_In_Id = " + StockInID + " AND ii.Item_ID = i.Item_ID", con);
 
             this.ResetButton.Enabled = true;
             this.ResetButton.Visible = true;
+
+            this.AddNewInboundOrderButton.Enabled = false;
+            this.AddNewInboundOrderButton.Visible = false;
 
 
         }
@@ -676,6 +687,50 @@ WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + "", con);
             {
                 Application.Exit();
             }
+        }
+
+        private void EditPaymentButton_Click(object sender, EventArgs e)
+        {
+            this.PeidAmountNumericUpDown.Enabled = true;
+            this.UpdateButton.Enabled = true;
+            this.UpdateButton.Visible = true;
+            
+
+        }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            //set payment status
+            int paymentStatus = 4;
+            if (float.Parse(TotalCostTextBox.Text) == 0)
+            {
+                paymentStatus = 3;
+            }
+            else if ((pendingPaynemts == 0) && (float.Parse(TotalCostTextBox.Text) != 0))
+            {
+                paymentStatus = 0;
+            }
+            else if ((pendingPaynemts == float.Parse(TotalCostTextBox.Text)) && (float.Parse(TotalCostTextBox.Text) != 0))
+            {
+                paymentStatus = 1;
+            }
+            else if (pendingPaynemts < float.Parse(TotalCostTextBox.Text))
+            {
+                paymentStatus = 2;
+            }
+            //---------------------------------------------------------------
+
+            //update to inboundOrderIn table
+            SqlCommand UpdateCommand = new SqlCommand(@"UPDATE InboundOrderIn 
+SET Payment_Status = "+paymentStatus+" , Paid_Amount = "+ (float)this.PeidAmountNumericUpDown.Value +", Pending_Payment = "+ float.Parse(this.PendingPaymentsTextBox.Text) +" WHERE Stock_In_Id = 1", con);
+            con.Open();
+            UpdateCommand.ExecuteNonQuery();
+            con.Close();
+            //------------------------------
+
+            MessageBox.Show("Updated record");
+            setInitials();
+            //----------------------------
         }
     }
 }

@@ -85,19 +85,46 @@ GROUP BY so.Stock_Out_ID,sot.Type,so.Out_Date,st.Stock_Type",con);
 
         private void StockOutManagementForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Item' table. You can move, or remove it, as needed.
-            this.itemTableAdapter.Fill(this.ranga_hardwareDataSet.Item);
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockOutType' table. You can move, or remove it, as needed.
             this.stockOutTypeTableAdapter.Fill(this.ranga_hardwareDataSet.StockOutType);
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockOut' table. You can move, or remove it, as needed.
-            this.stockOutTableAdapter.Fill(this.ranga_hardwareDataSet.StockOut);
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Item' table. You can move, or remove it, as needed.
-            this.itemTableAdapter.Fill(this.ranga_hardwareDataSet.Item);
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockOutType' table. You can move, or remove it, as needed.
-            this.stockOutTypeTableAdapter.Fill(this.ranga_hardwareDataSet.StockOutType);
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockOut' table. You can move, or remove it, as needed.
-            this.stockOutTableAdapter.Fill(this.ranga_hardwareDataSet.StockOut);
 
+            //set batch ID Combo box
+            SqlDataAdapter sdaBatchID = new SqlDataAdapter(@"SELECT Stock_Out_ID
+FROM StockOut", con);
+            DataTable dtBatchID = new DataTable();
+
+            this.BatchIDComboBox.DataSource = null;
+            BatchIDComboBox.Items.Clear();
+            try
+            {
+                sdaBatchID.Fill(dtBatchID);
+                this.BatchIDComboBox.DataSource = dtBatchID;
+                this.BatchIDComboBox.DisplayMember = dtBatchID.Columns["Stock_Out_ID"].ColumnName;
+            }
+            catch
+            {
+            }
+            //-----------------------------------------------------
+
+            //set Item Combo box
+            SqlDataAdapter sdaItem = new SqlDataAdapter(@"SELECT Item_ID,Item_Name
+FROM Item", con);
+            DataTable dtItem = new DataTable();
+
+            this.ItemComboBox.DataSource = null;
+            ItemComboBox.Items.Clear();
+            try
+            {
+                sdaItem.Fill(dtItem);
+                this.ItemComboBox.DataSource = dtItem;
+                this.ItemComboBox.DisplayMember = dtItem.Columns["Item_Name"].ColumnName;
+                this.ItemComboBox.ValueMember = dtItem.Columns["Item_ID"].ColumnName;
+
+            }
+            catch
+            {
+            }
+            //-----------------------------------------------------
         }
 
 

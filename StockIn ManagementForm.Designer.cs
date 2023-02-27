@@ -254,8 +254,6 @@ namespace RangaHardwareStock
             // BatchIDComboBox
             // 
             this.BatchIDComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.BatchIDComboBox.DataSource = this.stockInTableBindingSource1;
-            this.BatchIDComboBox.DisplayMember = "Stock_In_ID";
             this.BatchIDComboBox.FormattingEnabled = true;
             this.BatchIDComboBox.Location = new System.Drawing.Point(152, 283);
             this.BatchIDComboBox.Name = "BatchIDComboBox";
@@ -311,14 +309,11 @@ namespace RangaHardwareStock
             // SupplierComboBox
             // 
             this.SupplierComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.SupplierComboBox.DataSource = this.supplierCustmerListBindingSource;
-            this.SupplierComboBox.DisplayMember = "Name";
             this.SupplierComboBox.FormattingEnabled = true;
             this.SupplierComboBox.Location = new System.Drawing.Point(253, 393);
             this.SupplierComboBox.Name = "SupplierComboBox";
             this.SupplierComboBox.Size = new System.Drawing.Size(265, 24);
             this.SupplierComboBox.TabIndex = 45;
-            this.SupplierComboBox.ValueMember = "Supplier_or_Customer_ID";
             // 
             // supplierCustmerListBindingSource
             // 
