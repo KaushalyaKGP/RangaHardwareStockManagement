@@ -297,74 +297,83 @@ WHERE ii.Item_ID = i.Item_ID AND ii.Stock_In_Id = " + StockInID + "", con);
 
         private void DeleteInboundOrderButton_Click(object sender, EventArgs e)
         {
-            //check iF user realy want to delete
-            DialogResult result = MessageBox.Show("Do you realy want to delete the record? \ndeleted records will not be abeled to recovered!", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            //Check if it has return to supplier
+            if (returnFlag == true)
             {
-                DataTable itemlistTable = new DataTable();
-                SqlDataAdapter itemsListAdupter = new SqlDataAdapter(@"SELECT ii.Item_Id, ii.Amount, i.Min_Quentity,i.Current_Stock
+                MessageBox.Show("This record cant be deleted! " +
+                    "This has a return record!");
+            }
+            else
+            {
+                //check iF user realy want to delete
+                DialogResult result = MessageBox.Show("Do you realy want to delete the record? \ndeleted records will not be abeled to recovered!", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    DataTable itemlistTable = new DataTable();
+                    SqlDataAdapter itemsListAdupter = new SqlDataAdapter(@"SELECT ii.Item_Id, ii.Amount, i.Min_Quentity,i.Current_Stock
 FROM InboundOrderItems ii ,Item i 
 WHERE ii.Stock_In_Id = " + StockInID + " AND ii.Item_ID = i.Item_ID", con);
-                itemsListAdupter.Fill(itemlistTable);
+                    itemsListAdupter.Fill(itemlistTable);
 
 
-                SqlCommand changeStockCommand = new SqlCommand();
+                    SqlCommand changeStockCommand = new SqlCommand();
 
-                foreach (DataRow dataRow in itemlistTable.Rows)
-                {
-                    //Update stock level & Stock Status
-
-                    int CurrentStock = (int)dataRow[3] - (int)dataRow[1];
-                    int Min_Quentity = (int)dataRow[2];
-                    int Stock_Status;
-
-                    if (CurrentStock <= 0)
+                    foreach (DataRow dataRow in itemlistTable.Rows)
                     {
-                        Stock_Status = 0;
-                    }
-                    if (CurrentStock <= Min_Quentity)
-                    {
-                        Stock_Status = 1;
-                    }
-                    else
-                    {
-                        Stock_Status = 2;
-                    }
-                    changeStockCommand = new SqlCommand(@"UPDATE Item SET Current_Stock -= " + int.Parse(dataRow[1].ToString()) + ",Stock_Status = " + Stock_Status + "  WHERE Item_ID = " + int.Parse(dataRow[0].ToString()) + "", con);
+                        //Update stock level & Stock Status
 
-                    if(con.State == ConnectionState.Closed)
-                    {
-                        con.Open();
+                        int CurrentStock = (int)dataRow[3] - (int)dataRow[1];
+                        int Min_Quentity = (int)dataRow[2];
+                        int Stock_Status;
+
+                        if (CurrentStock <= 0)
+                        {
+                            Stock_Status = 0;
+                        }
+                        if (CurrentStock <= Min_Quentity)
+                        {
+                            Stock_Status = 1;
+                        }
+                        else
+                        {
+                            Stock_Status = 2;
+                        }
+                        changeStockCommand = new SqlCommand(@"UPDATE Item SET Current_Stock -= " + int.Parse(dataRow[1].ToString()) + ",Stock_Status = " + Stock_Status + "  WHERE Item_ID = " + int.Parse(dataRow[0].ToString()) + "", con);
+
+                        if (con.State == ConnectionState.Closed)
+                        {
+                            con.Open();
+                        }
+                        changeStockCommand.ExecuteNonQuery();
+                        con.Close();
+                        //---------------------------------------------------------
+
                     }
-                    changeStockCommand.ExecuteNonQuery();
+
+                    //Delete InboundOrderInItems Records
+                    SqlCommand DeleteItemsCommand = new SqlCommand(@"DELETE FROM InboundOrderItems WHERE Stock_In_Id = " + int.Parse(this.BatchIDTextBox.Text) + "", con);
+                    con.Open();
+                    DeleteItemsCommand.ExecuteNonQuery();
                     con.Close();
-                    //---------------------------------------------------------
+                    //-----------------------
 
+                    //Delete InboundOrder record
+                    SqlCommand DeleteInboundOrderCommand = new SqlCommand(@"DELETE FROM InboundOrderIn WHERE Stock_In_Id = " + int.Parse(this.BatchIDTextBox.Text) + "", con);
+                    con.Open();
+                    DeleteInboundOrderCommand.ExecuteNonQuery();
+                    con.Close();
+                    //--------------------
+
+                    //Delete stockIn record
+                    SqlCommand DeleteStockInCommand = new SqlCommand(@"DELETE FROM StockInTable WHERE Stock_In_Id = " + int.Parse(this.BatchIDTextBox.Text) + "", con);
+                    con.Open();
+                    DeleteStockInCommand.ExecuteNonQuery();
+                    con.Close();
+                    //---------------------
+
+                    MessageBox.Show("Record Deleted");
+                    setInitials();
                 }
-
-                //Delete InboundOrderInItems Records
-                SqlCommand DeleteItemsCommand = new SqlCommand(@"DELETE FROM InboundOrderItems WHERE Stock_In_Id = " + int.Parse(this.BatchIDTextBox.Text) + "", con);
-                con.Open();
-                DeleteItemsCommand.ExecuteNonQuery();
-                con.Close();
-                //-----------------------
-
-                //Delete InboundOrder record
-                SqlCommand DeleteInboundOrderCommand = new SqlCommand(@"DELETE FROM InboundOrderIn WHERE Stock_In_Id = " + int.Parse(this.BatchIDTextBox.Text) + "", con);
-                con.Open();
-                DeleteInboundOrderCommand.ExecuteNonQuery();
-                con.Close();
-                //--------------------
-
-                //Delete stockIn record
-                SqlCommand DeleteStockInCommand = new SqlCommand(@"DELETE FROM StockInTable WHERE Stock_In_Id = " + int.Parse(this.BatchIDTextBox.Text) + "", con);
-                con.Open();
-                DeleteStockInCommand.ExecuteNonQuery();
-                con.Close();
-                //---------------------
-
-                MessageBox.Show("Record Deleted");
-                setInitials();
             }
         }
 

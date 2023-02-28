@@ -32,7 +32,7 @@ namespace RangaHardwareStock
             _salesForm.Hide();
         }
 
-
+        public static bool CustomerReturnFlag = false;
         public static int SalesId = -1;
         SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\3rd Year Project\DEVELOPMENT PROJECT  - software\RangaHardwareStock\Ranga hardware.mdf; Integrated Security = True");
         DataTable dt = new DataTable();
@@ -180,7 +180,7 @@ WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + "", con);
 
             SqlDataAdapter items = new SqlDataAdapter(@"SELECT i.Item_Name as Item, si.Amount as Quantity,si.[Total Price] as [ItemTotal]
 FROM SalesItems si, Item i
-WHERE si.Item_ID = i.Item_ID AND si.Stock_Out_Id = "+ this.SalesDataGridView.Rows[e.RowIndex].Cells[0].Value+ "", con);
+WHERE si.Item_ID = i.Item_ID AND si.Stock_Out_Id = " + this.SalesDataGridView.Rows[e.RowIndex].Cells[0].Value + "", con);
             DataTable itemFillTable = new DataTable();
             itemFillTable.Rows.Clear();
             items.Fill(itemFillTable);
@@ -196,7 +196,21 @@ WHERE si.Item_ID = i.Item_ID AND si.Stock_Out_Id = "+ this.SalesDataGridView.Row
             this.CustomerReturnButton.Enabled = true;
             this.CustomerReturnButton.Visible = true;
 
-
+            //check if selected sale already has a customer return
+            SqlCommand Command = new SqlCommand(@"SELECT  c.Stock_In_ID
+FROM CustomerReturn c, Sales s
+WHERE s.Stock_Out_Id = c.Stock_Out_ID AND s.Stock_Out_Id = " + SalesId + "", con);
+            con.Open();
+            if (Command.ExecuteScalar() == null)
+            {
+                con.Close();
+                CustomerReturnFlag = false;
+            }
+            else
+            {
+                con.Close();
+                CustomerReturnFlag = true;
+            }
         }
 
         private void SalesForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -590,14 +604,10 @@ VALUES ("+Stock_out_Id+","+Item_ID+","+Amount+","+Total_Price+")", con);
         }
 
         private void CustomerReturnButton_Click(object sender, EventArgs e)
-        {   //check if selected sale already has a customer return
-            SqlCommand Command = new SqlCommand(@"SELECT  c.Stock_In_ID
-FROM CustomerReturn c, Sales s
-WHERE s.Stock_Out_Id = c.Stock_Out_ID AND s.Stock_Out_Id = "+SalesId+"", con);
-            con.Open();
+        {   
             
             
-            if (Command.ExecuteScalar()==null)
+            if (CustomerReturnFlag == false)
             {
                 con.Close();
                 this.Hide();
