@@ -151,6 +151,8 @@ WHERE si.Type = 1", con);
 
             this.UpdateButton.Enabled = false;
             this.UpdateButton.Visible = false;
+            this.AddNewInboundOrderButton.Enabled = true;
+            this.AddNewInboundOrderButton.Visible = true;
 
         }
 
