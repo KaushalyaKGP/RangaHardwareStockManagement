@@ -92,8 +92,12 @@ FROM Supplier", con);
             }
 
             //fill data view
-            SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name FROM Item i , Supplier s , StockLevel l
-WHERE i.Supplier_ID = s.Supplier_ID AND i.Stock_Status = l.LevelCode
+            SqlDataAdapter sda = new SqlDataAdapter(@"SELECT i.Item_ID,i.Item_Name,l.Value AS Stock_Status,i.Current_Stock,i.Customer_Return_Stock,i.Mesuring_Unit,i.Unit_Price,s.Name AS Supplier_Name 
+FROM Item i
+LEFT JOIN Supplier s
+ON s.Supplier_ID = i.Supplier_ID
+LEFT JOIN StockLevel l
+ON i.Stock_Status = l.LevelCode 
 ORDER BY i.Item_Name", con);
             sda.Fill(dt);
             
