@@ -157,17 +157,52 @@ WHERE i.Item_ID = " + this.ItemNameComboBox.SelectedValue + "", con);
 
         private void SalesForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Item' table. You can move, or remove it, as needed.
-            this.itemTableAdapter.Fill(this.ranga_hardwareDataSet.Item);
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Customer' table. You can move, or remove it, as needed.
-            this.customerTableAdapter.Fill(this.ranga_hardwareDataSet.Customer);
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockType' table. You can move, or remove it, as needed.
             this.stockTypeTableAdapter.Fill(this.ranga_hardwareDataSet.StockType);
-            setInnitial();
-
             
 
+            //set Item Combo box
+            SqlDataAdapter sdaItem = new SqlDataAdapter(@"SELECT Item_ID,Item_Name
+FROM Item", con);
+            DataTable dtItem = new DataTable();
 
+            this.ItemNameComboBox.DataSource = null;
+            ItemNameComboBox.Items.Clear();
+            try
+            {
+                sdaItem.Fill(dtItem);
+                this.ItemNameComboBox.DataSource = dtItem;
+                this.ItemNameComboBox.DisplayMember = dtItem.Columns["Item_Name"].ColumnName;
+                this.ItemNameComboBox.ValueMember = dtItem.Columns["Item_ID"].ColumnName;
+
+            }
+            catch
+            {
+            }
+            //-----------------------------------------------------
+
+            //set Customer Combo box
+            SqlDataAdapter sdaCustomer = new SqlDataAdapter(@"SELECT Customer_ID,Name
+FROM Customer", con);
+            DataTable dtcustomer = new DataTable();
+
+            this.CustomerComboBox.DataSource = null;
+            CustomerComboBox.Items.Clear();
+            try
+            {
+                sdaCustomer.Fill(dtcustomer);
+                this.CustomerComboBox.DataSource = dtcustomer;
+                this.CustomerComboBox.DisplayMember = dtcustomer.Columns["Name"].ColumnName;
+                this.CustomerComboBox.ValueMember = dtcustomer.Columns["Customer_ID"].ColumnName;
+
+            }
+            catch
+            {
+            }
+            //-----------------------------------------------------
+
+
+            setInnitial();
         }
 
         private void SalesDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)

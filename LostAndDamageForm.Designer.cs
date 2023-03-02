@@ -44,7 +44,6 @@ namespace RangaHardwareStock
             this.QuantityNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.BatchIDTextBox = new System.Windows.Forms.TextBox();
             this.ItemNameComboBox = new System.Windows.Forms.ComboBox();
-            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
             this.FromStockTypeComboBox = new System.Windows.Forms.ComboBox();
             this.stockTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -57,7 +56,6 @@ namespace RangaHardwareStock
             this.CommentLabel = new System.Windows.Forms.Label();
             this.CommentRichTextBox = new System.Windows.Forms.RichTextBox();
             this.stockTypeTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockTypeTableAdapter();
-            this.itemTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.ItemTableAdapter();
             this.Unit2Label = new System.Windows.Forms.Label();
             this.ResetButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
@@ -65,7 +63,6 @@ namespace RangaHardwareStock
             DataLabel = new System.Windows.Forms.Label();
             BatchIDLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.QuantityNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lost_DamagedDataGridView)).BeginInit();
@@ -228,8 +225,6 @@ namespace RangaHardwareStock
             // ItemNameComboBox
             // 
             this.ItemNameComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ItemNameComboBox.DataSource = this.itemBindingSource;
-            this.ItemNameComboBox.DisplayMember = "Item_Name";
             this.ItemNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ItemNameComboBox.FormattingEnabled = true;
             this.ItemNameComboBox.Location = new System.Drawing.Point(155, 212);
@@ -238,11 +233,6 @@ namespace RangaHardwareStock
             this.ItemNameComboBox.TabIndex = 125;
             this.ItemNameComboBox.ValueMember = "Item_ID";
             this.ItemNameComboBox.SelectedIndexChanged += new System.EventHandler(this.ItemNameComboBox_SelectedIndexChanged);
-            // 
-            // itemBindingSource
-            // 
-            this.itemBindingSource.DataMember = "Item";
-            this.itemBindingSource.DataSource = this.ranga_hardwareDataSet;
             // 
             // ranga_hardwareDataSet
             // 
@@ -366,10 +356,6 @@ namespace RangaHardwareStock
             // 
             this.stockTypeTableAdapter.ClearBeforeFill = true;
             // 
-            // itemTableAdapter
-            // 
-            this.itemTableAdapter.ClearBeforeFill = true;
-            // 
             // Unit2Label
             // 
             this.Unit2Label.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -445,7 +431,6 @@ namespace RangaHardwareStock
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LostAndDamageForm_FormClosed);
             this.Load += new System.EventHandler(this.LostAndDamageForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.QuantityNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockTypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lost_DamagedDataGridView)).EndInit();
@@ -481,8 +466,6 @@ namespace RangaHardwareStock
         private Ranga_hardwareDataSet ranga_hardwareDataSet;
         private System.Windows.Forms.BindingSource stockTypeBindingSource;
         private Ranga_hardwareDataSetTableAdapters.StockTypeTableAdapter stockTypeTableAdapter;
-        private System.Windows.Forms.BindingSource itemBindingSource;
-        private Ranga_hardwareDataSetTableAdapters.ItemTableAdapter itemTableAdapter;
         private System.Windows.Forms.Label Unit2Label;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Button ExitButton;

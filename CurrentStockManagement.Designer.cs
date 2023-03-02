@@ -34,7 +34,6 @@ namespace RangaHardwareStock
             System.Windows.Forms.Label supplier_NameLabel;
             System.Windows.Forms.Label StockLevelLabel;
             this.Titlelabel = new System.Windows.Forms.Label();
-            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ranga_hardwareDataSet = new RangaHardwareStock.Ranga_hardwareDataSet();
             this.item_NameComboBox = new System.Windows.Forms.ComboBox();
             this.supplier_NameComboBox = new System.Windows.Forms.ComboBox();
@@ -42,15 +41,13 @@ namespace RangaHardwareStock
             this.CurrentStockDataGridView = new System.Windows.Forms.DataGridView();
             this.ResetButton = new System.Windows.Forms.Button();
             this.StockLevelComboBox = new System.Windows.Forms.ComboBox();
-            this.stockLevelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.stockLevelTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockLevelTableAdapter();
             this.backButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
-            this.itemTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.ItemTableAdapter();
+            this.stockLevelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.stockLevelTableAdapter = new RangaHardwareStock.Ranga_hardwareDataSetTableAdapters.StockLevelTableAdapter();
             item_NameLabel = new System.Windows.Forms.Label();
             supplier_NameLabel = new System.Windows.Forms.Label();
             StockLevelLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrentStockDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockLevelBindingSource)).BeginInit();
@@ -103,11 +100,6 @@ namespace RangaHardwareStock
             this.Titlelabel.Text = "Current Stock";
             this.Titlelabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // itemBindingSource
-            // 
-            this.itemBindingSource.DataMember = "Item";
-            this.itemBindingSource.DataSource = this.ranga_hardwareDataSet;
-            // 
             // ranga_hardwareDataSet
             // 
             this.ranga_hardwareDataSet.DataSetName = "Ranga_hardwareDataSet";
@@ -116,8 +108,6 @@ namespace RangaHardwareStock
             // item_NameComboBox
             // 
             this.item_NameComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.item_NameComboBox.DataSource = this.itemBindingSource;
-            this.item_NameComboBox.DisplayMember = "Item_Name";
             this.item_NameComboBox.FormattingEnabled = true;
             this.item_NameComboBox.Location = new System.Drawing.Point(159, 201);
             this.item_NameComboBox.Name = "item_NameComboBox";
@@ -188,15 +178,6 @@ namespace RangaHardwareStock
             this.StockLevelComboBox.TabIndex = 20;
             this.StockLevelComboBox.ValueMember = "LevelCode";
             // 
-            // stockLevelBindingSource
-            // 
-            this.stockLevelBindingSource.DataMember = "StockLevel";
-            this.stockLevelBindingSource.DataSource = this.ranga_hardwareDataSet;
-            // 
-            // stockLevelTableAdapter
-            // 
-            this.stockLevelTableAdapter.ClearBeforeFill = true;
-            // 
             // backButton
             // 
             this.backButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -225,9 +206,14 @@ namespace RangaHardwareStock
             this.ExitButton.UseVisualStyleBackColor = false;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
-            // itemTableAdapter
+            // stockLevelBindingSource
             // 
-            this.itemTableAdapter.ClearBeforeFill = true;
+            this.stockLevelBindingSource.DataMember = "StockLevel";
+            this.stockLevelBindingSource.DataSource = this.ranga_hardwareDataSet;
+            // 
+            // stockLevelTableAdapter
+            // 
+            this.stockLevelTableAdapter.ClearBeforeFill = true;
             // 
             // CurrentStockManagementForm
             // 
@@ -256,7 +242,6 @@ namespace RangaHardwareStock
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CurrentStockManagementForm_FormClosed);
             this.Load += new System.EventHandler(this.CurrentStockManagementForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ranga_hardwareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrentStockDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockLevelBindingSource)).EndInit();
@@ -275,11 +260,9 @@ namespace RangaHardwareStock
         private Ranga_hardwareDataSet ranga_hardwareDataSet;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.ComboBox StockLevelComboBox;
-        private System.Windows.Forms.BindingSource stockLevelBindingSource;
-        private Ranga_hardwareDataSetTableAdapters.StockLevelTableAdapter stockLevelTableAdapter;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Button ExitButton;
-        private System.Windows.Forms.BindingSource itemBindingSource;
-        private Ranga_hardwareDataSetTableAdapters.ItemTableAdapter itemTableAdapter;
+        private System.Windows.Forms.BindingSource stockLevelBindingSource;
+        private Ranga_hardwareDataSetTableAdapters.StockLevelTableAdapter stockLevelTableAdapter;
     }
 }

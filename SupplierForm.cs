@@ -82,7 +82,7 @@ namespace RangaHardwareStock
 
             //fill data grid
             DataTable supplierData = new DataTable();
-            SqlDataAdapter supplierAdupter = new SqlDataAdapter(@"SELECT s.Supplier_ID, s.Name, s.Company,s.Address,s.[Contact No],s.Contactable_Person_Name,s.Contactable_Person_Mobile,items.Items
+            SqlDataAdapter supplierAdupter = new SqlDataAdapter(@"SELECT s.Supplier_ID, s.Name, s.Company,s.Address,s.[Contact No],s.Email_Address,s.Contactable_Person_Name,s.Contactable_Person_Mobile,items.Items
 From Supplier s
 LEFT JOIN (SELECT s.Supplier_ID,Items = STUFF((SELECT DISTINCT ', ' +Items FROM (SELECT s.Supplier_ID , i.Item_Name as Items
 FROM Supplier s
@@ -92,7 +92,7 @@ FROM Supplier s
 LEFT JOIN Item i
 ON s.Supplier_ID = i.Supplier_ID
 GROUP BY s.Supplier_ID) as items
-ON items.Supplier_ID = s.Supplier_ID",con);
+ON items.Supplier_ID = s.Supplier_ID", con);
             supplierAdupter.Fill(supplierData);
             this.SupplierDataGridView.DataSource = supplierData;
 

@@ -51,6 +51,8 @@ namespace RangaHardwareStock
 
         private void CurrentStockManagementForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockLevel' table. You can move, or remove it, as needed.
+            this.stockLevelTableAdapter.Fill(this.ranga_hardwareDataSet.StockLevel);
 
             SqlDataAdapter sdaitem = new SqlDataAdapter(@"SELECT Item_ID,Item_Name
 FROM Item", con);

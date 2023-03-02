@@ -103,10 +103,29 @@ ON st.Id = s.From_Stock_Type", con);
 
         private void LostAndDamageForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ranga_hardwareDataSet.Item' table. You can move, or remove it, as needed.
-            this.itemTableAdapter.Fill(this.ranga_hardwareDataSet.Item);
             // TODO: This line of code loads data into the 'ranga_hardwareDataSet.StockType' table. You can move, or remove it, as needed.
             this.stockTypeTableAdapter.Fill(this.ranga_hardwareDataSet.StockType);
+
+            //set Item Combo box
+            SqlDataAdapter sdaItem = new SqlDataAdapter(@"SELECT Item_ID,Item_Name
+FROM Item", con);
+            DataTable dtItem = new DataTable();
+
+            this.ItemNameComboBox.DataSource = null;
+            ItemNameComboBox.Items.Clear();
+            try
+            {
+                sdaItem.Fill(dtItem);
+                this.ItemNameComboBox.DataSource = dtItem;
+                this.ItemNameComboBox.DisplayMember = dtItem.Columns["Item_Name"].ColumnName;
+                this.ItemNameComboBox.ValueMember = dtItem.Columns["Item_ID"].ColumnName;
+
+            }
+            catch
+            {
+            }
+            //-----------------------------------------------------
+
             SetInitioalStage();
 
         }
